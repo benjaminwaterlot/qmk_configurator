@@ -12,16 +12,17 @@ const KeymapVisual = ({ layout }: KeymapVisualProps) => {
 
   return (
     <AspectRatio ratio={width / height}>
-      <Grid templateColumns={`repeat(${width}, 1fr)`} gap={2} alignItems="stretch">
+      <Grid templateColumns={`repeat(${Math.round(width)}, 1fr)`} gap={2} alignItems="stretch">
         {layout.map(({ x, y, w = 1 }) => (
           <GridItem
             as={Center}
             key={`${x}_${y}`}
             colSpan={w}
             height="100%"
-            bg="yellow.400"
+            bg="gray.900"
             textAlign="center"
             rounded={3}
+            fontWeight="bold"
           >
             {x}.{y}
           </GridItem>

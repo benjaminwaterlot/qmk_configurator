@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchKeyboardList, keyboardSelectors } from 'store/keyboards'
-import { Box, Divider, Heading, Input, List, Link } from '@chakra-ui/react'
+import {
+  Box,
+  Divider,
+  Heading,
+  Input,
+  List,
+  Link,
+  InputGroup,
+  InputRightElement,
+  IconButton,
+} from '@chakra-ui/react'
 import { AppDispatch } from 'store'
 import { Link as ReachLink, RouteComponentProps } from '@reach/router'
 import { encodeName } from 'lib/encode-keyboard-name'
+import { CloseIcon } from '@chakra-ui/icons'
 
 const Home = (props: RouteComponentProps) => {
   const [input, setInput] = useState('preo')
@@ -19,11 +30,27 @@ const Home = (props: RouteComponentProps) => {
     <Box>
       <Heading mb={4}>Home</Heading>
 
-      <Divider my={6} />
-      <Heading as="h2" size="sm">
-        All keyboards
-      </Heading>
-      <Input my={5} value={input} onChange={(e) => setInput(e.target.value)} />
+      <InputGroup my={5}>
+        <Input
+          placeholder="Search for your keyboard"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        {input && (
+          <InputRightElement
+            children={
+              <IconButton
+                aria-label="close"
+                size="xs"
+                icon={<CloseIcon />}
+                onClick={() => setInput('')}
+                variant="ghost"
+                rounded="100px"
+              />
+            }
+          />
+        )}
+      </InputGroup>
 
       {keyboardNamesFiltered.length > 0 && (
         <List my={4}>
