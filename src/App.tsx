@@ -1,13 +1,24 @@
 import { Container } from '@chakra-ui/react'
 import React from 'react'
-import { NavBar } from 'components'
-import { Home } from 'pages'
+import { Router } from '@reach/router'
 
-function App() {
+import { NavBar } from 'components'
+import HomePage from 'pages/HomePage'
+import KeymapPage, { Keymap, KeymapIndex } from 'pages/KeymapPage'
+
+const App = () => {
   return (
     <Container maxWidth="1200px">
       <NavBar />
-      <Home />
+      <Router>
+        <HomePage path="/" />
+        <KeymapPage path="/keymap">
+          <>
+            <KeymapIndex path="/" />
+            <Keymap path="/:keyboard" />
+          </>
+        </KeymapPage>
+      </Router>
     </Container>
   )
 }

@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
-import { KeyboardsState } from './keyboards'
 
 import reducer from './reducer'
 
@@ -18,13 +17,5 @@ const store = configureStore({
 
 export type AppDispatch = typeof store.dispatch
 export type RootState = ReturnType<typeof reducer>
-// export type RootState = {
-//   test: {
-//     sentence: number | undefined
-//     cursorAt: number
-//     input: string
-//   }
-//   keyboards: KeyboardsState
-// }
 
 export default store

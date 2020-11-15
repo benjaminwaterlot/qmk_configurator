@@ -1,6 +1,6 @@
 import { createAsyncThunk, createEntityAdapter, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import qmkClient from 'clients/qmk'
 import { RootState } from 'store'
+import { qmkClient } from 'clients'
 import { GetKeyboardsListDto, KeyboardsListDto } from './dto/get-keyboard-list.dto'
 import { GetKeyboardDto, KeyboardDto } from './dto/get-keyboard.dto'
 
@@ -8,15 +8,18 @@ import { GetKeyboardDto, KeyboardDto } from './dto/get-keyboard.dto'
  * State
  */
 export interface KeyboardsState {
-  keyboards: {
-    [_: string]: KeyboardDto
-  }
-  keyboardsList: any[]
+  names: string[]
 }
 
-const initialState: KeyboardsState = {
-  keyboards: {},
-  keyboardsList: [],
+const keyboardsAdapter = createEntityAdapter<KeyboardDto>({
+  selectId: (keyboard) => keyboard.keyboard_folder,
+})
+
+export const keyboardSelectors = {
+  ...keyboardsAdapter.getSelectors((state: RootState) => state.keyboards),
+
+  selectKeyboardsNamesByString: (input: string) => (state: RootState) =>
+    state.keyboards.names.filter((keyboard) => keyboard.includes(input)),
 }
 
 /**
@@ -41,27 +44,22 @@ export const fetchKeyboard = createAsyncThunk<KeyboardDto, string, { state: Root
   }
 )
 
-const keyboardsAdapter = createEntityAdapter<KeyboardDto>({
-  selectId: (keyboard) => keyboard.keyboard_folder,
-})
-
 /**
  * Slice
  */
 const keyboardsSlice = createSlice({
-  name: 'test',
-  initialState,
+  name: 'keyboards',
+  initialState: keyboardsAdapter.getInitialState({
+    names: [],
+  } as KeyboardsState),
   reducers: {},
   extraReducers: ({ addCase }) => {
     addCase(fetchKeyboardList.fulfilled, (state, action: PayloadAction<KeyboardsListDto>) => ({
       ...state,
-      keyboardsList: action.payload,
+      names: action.payload,
     }))
 
-    addCase(fetchKeyboard.fulfilled, (state, action: PayloadAction<KeyboardDto>) => ({
-      ...state,
-      keyboards: { ...state.keyboards, [action.payload.keyboard_folder]: action.payload },
-    }))
+    addCase(fetchKeyboard.fulfilled, keyboardsAdapter.addOne)
   },
 })
 
