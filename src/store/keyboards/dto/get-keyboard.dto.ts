@@ -1,3 +1,9 @@
+export type KeyboardLayout = Array<{
+  x: number
+  y: number
+  w?: number
+}>
+
 export interface KeyboardDto {
   keyboard_name: string
   keyboard_folder: string
@@ -5,10 +11,7 @@ export interface KeyboardDto {
   layouts: {
     [_: string]: {
       key_count: number
-      layout: {
-        x: number
-        y: number
-      }
+      layout: KeyboardLayout
     }
   }
 }

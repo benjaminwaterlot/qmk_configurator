@@ -4,7 +4,7 @@ import { Router } from '@reach/router'
 
 import { NavBar } from 'components'
 import HomePage from 'pages/HomePage'
-import KeymapPage, { Keymap, KeymapIndex } from 'pages/KeymapPage'
+import KeymapPage, { KeymapPageContent, KeymapPageIndex } from 'pages/KeymapPage'
 
 const App = () => {
   return (
@@ -15,8 +15,8 @@ const App = () => {
 
         <KeymapPage path="/keymap">
           <>
-            <KeymapIndex path="/" />
-            <Keymap keyboard="" path="/:keyboard" />
+            <KeymapPageIndex path="/" />
+            <KeymapPageContent keyboard="" path="/:keyboard" />
           </>
         </KeymapPage>
       </Router>
