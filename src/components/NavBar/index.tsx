@@ -5,7 +5,7 @@ import logo from './logo.svg'
 
 const NavBar = () => (
   <Link as={ReachLink} to="/">
-    <Flex m={4} align="center">
+    <Flex my={4} align="center">
       <Image src={logo} boxSize="30px" />
       <Heading as="h1" size="md">
         QMK Configurator

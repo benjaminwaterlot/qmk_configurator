@@ -12,10 +12,11 @@ const App = () => {
       <NavBar />
       <Router>
         <HomePage path="/" />
+
         <KeymapPage path="/keymap">
           <>
             <KeymapIndex path="/" />
-            <Keymap path="/:keyboard" />
+            <Keymap keyboard="" path="/:keyboard" />
           </>
         </KeymapPage>
       </Router>
