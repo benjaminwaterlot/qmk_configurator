@@ -19,8 +19,8 @@ export const useDimensionsFromLayout = (layout: KeyboardLayout) =>
  * Generate an array (the keyboard) of arrays (the keyboard rows) containing the keys.
  */
 export const groupKeysByRow = (layout: KeyboardLayout) =>
-  layout.reduce((rows, { x, y, w = 1 }) => {
-    rows[y] = [...(rows[y] ?? []), { x, y, w }]
+  layout.reduce((rows, coords) => {
+    rows[coords.y] = [...(rows[coords.y] ?? []), coords]
 
     return rows
   }, [] as KeyCoordinates[][])
@@ -30,4 +30,5 @@ export const groupKeysByRow = (layout: KeyboardLayout) =>
  * Takes into account the width of each key.
  */
 export const getCSSColumnsFromRow = (row: KeyCoordinates[]) =>
-  row.map((key) => `${key.w}fr`).join(' ')
+  row.map((key) => `${key.w ?? 1}fr`).join(' ')
+// row.map((key) => row.length).join(' ')

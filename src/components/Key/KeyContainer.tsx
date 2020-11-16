@@ -13,7 +13,7 @@ const KeyContainer = ({ coordinates }: KeyContainerProps) => (
     <Popover isLazy>
       <PopoverTrigger>
         <Button h="100%" isFullWidth bg={useColorModeValue('gray.200', 'gray.700')} rounded={3}>
-          <KeyContent>{coordinates.x}</KeyContent>
+          <KeyContent>{coordinates.label ?? '/'}</KeyContent>
         </Button>
       </PopoverTrigger>
 

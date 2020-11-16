@@ -4,7 +4,7 @@ import keyboards from './keyboards'
 
 const reducer = combineReducers({
   // test,
-  keyboards,
+  keyboards: keyboards.reducer,
 })
 
 export default reducer
