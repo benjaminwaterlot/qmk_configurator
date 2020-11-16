@@ -1,14 +1,15 @@
-import { AspectRatio, Center, Grid, GridItem } from '@chakra-ui/react'
-import React, { useMemo } from 'react'
+import { AspectRatio, Center, Grid, GridItem, Text } from '@chakra-ui/react'
+import KeyContainer from 'components/Key/KeyContainer'
+import React from 'react'
 import { KeyboardLayout } from 'store/keyboards/dto/get-keyboard.dto'
-import { getWidthHeightFromLayout } from './keymap-visual.lib'
+import { useDimensionsFromLayout } from './keymap-visual.lib'
 
 interface KeymapVisualProps {
   layout: KeyboardLayout
 }
 
 const KeymapVisual = ({ layout }: KeymapVisualProps) => {
-  const { width, height } = useMemo(() => getWidthHeightFromLayout(layout), [layout])
+  const { width, height } = useDimensionsFromLayout(layout)
 
   return (
     <AspectRatio ratio={width / height}>
@@ -24,7 +25,11 @@ const KeymapVisual = ({ layout }: KeymapVisualProps) => {
             rounded={3}
             fontWeight="bold"
           >
-            {x}.{y}
+            <KeyContainer>
+              <Text>
+                {x}.{y}
+              </Text>
+            </KeyContainer>
           </GridItem>
         ))}
       </Grid>

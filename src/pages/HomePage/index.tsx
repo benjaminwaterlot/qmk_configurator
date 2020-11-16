@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchKeyboardList, keyboardSelectors } from 'store/keyboards'
 import {
   Box,
-  Divider,
   Heading,
   Input,
   List,
