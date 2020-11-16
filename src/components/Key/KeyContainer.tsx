@@ -1,31 +1,27 @@
-import {
-  Button,
-  Popover,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTrigger,
-} from '@chakra-ui/react'
-import React, { PropsWithChildren } from 'react'
+import React from 'react'
+import { Box, Button, Popover, PopoverTrigger, Portal, useColorModeValue } from '@chakra-ui/react'
+import KeyContent from './KeyContent'
+import KeyPopover from './KeyPopover'
+import { KeyCoordinates } from 'components/Keymap/Keymap'
 
-const KeyContainer = (props: PropsWithChildren<{}>) => {
-  return (
+interface KeyContainerProps {
+  coordinates: KeyCoordinates
+}
+
+const KeyContainer = ({ coordinates }: KeyContainerProps) => (
+  <Box p={1}>
     <Popover isLazy>
       <PopoverTrigger>
-        <Button>{props.children}</Button>
+        <Button h="100%" isFullWidth bg={useColorModeValue('gray.200', 'gray.600')} rounded={3}>
+          <KeyContent>{coordinates.x}</KeyContent>
+        </Button>
       </PopoverTrigger>
 
-      <PopoverContent>
-        <PopoverHeader fontWeight="semibold">Popover placement</PopoverHeader>
-        <PopoverCloseButton />
-        <PopoverBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore.
-        </PopoverBody>
-      </PopoverContent>
+      <Portal>
+        <KeyPopover />
+      </Portal>
     </Popover>
-  )
-}
+  </Box>
+)
 
 export default KeyContainer

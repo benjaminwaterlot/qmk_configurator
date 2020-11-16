@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Box, Button, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react'
-import KeymapVisual from 'components/KeymapVisual'
+import KeymapVisual from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 
 export const KeyboardPageContent = ({ keyboard }: { keyboard: KeyboardDto }) => {
