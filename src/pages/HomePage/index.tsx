@@ -19,11 +19,13 @@ import { encodeName } from 'lib/encode-keyboard-name'
 import { CloseIcon } from '@chakra-ui/icons'
 
 const Home = (props: RouteComponentProps) => {
-  const [input, setInput] = useState('')
+  const [input, setInput] = useState('pre')
   const dispatch = useDispatch<AppDispatch>()
-  const keyboardNamesFiltered = useSelector(keyboards.selectors.selectNamesByString(input))
+  const keyboardNamesFiltered = useSelector((state: RootState) =>
+    keyboards.selectors.selectNamesByString(state, input)
+  )
 
-  const isLoading = useSelector<RootState>((state) => state.keyboards.isLoadingNames)
+  const isLoading = useSelector((state: RootState) => state.keyboards.isLoadingNames)
 
   useEffect(() => {
     dispatch(keyboards.thunks.fetchKeyboardList())
@@ -31,7 +33,9 @@ const Home = (props: RouteComponentProps) => {
 
   return (
     <Box>
-      <Heading mb={4}>Home</Heading>
+      <Heading as="h1" size="4xl" color="yellow.400" mt={6} mb={10}>
+        Keyboards
+      </Heading>
 
       <InputGroup my={5}>
         <Input

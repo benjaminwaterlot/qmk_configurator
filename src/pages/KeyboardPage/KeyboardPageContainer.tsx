@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { decodeName } from 'lib/encode-keyboard-name'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import keyboards from 'store/keyboards'
-import { RootState } from 'store'
+import { useAppSelector } from 'store'
 import { Center, Spinner } from '@chakra-ui/react'
 import KeyboardPageContent from './KeyboardPageContent'
 
@@ -15,9 +15,7 @@ export const KeyboardPageContainer = (props: RouteComponentProps & { keyboard: s
     dispatch(keyboards.thunks.fetchKeyboard(keyboardName))
   }, [dispatch, keyboardName])
 
-  const keyboard = useSelector((state: RootState) =>
-    keyboards.selectors.selectById(state, keyboardName)
-  )
+  const keyboard = useAppSelector((state) => keyboards.selectors.selectById(state, keyboardName))
 
   return (
     <>
@@ -25,7 +23,7 @@ export const KeyboardPageContainer = (props: RouteComponentProps & { keyboard: s
         <KeyboardPageContent keyboard={keyboard} />
       ) : (
         <Center minH="50vh">
-          <Spinner size="xl" speed=".8s" />
+          <Spinner size="xl" speed=".8s" color="yellow.400" thickness="5px" />
         </Center>
       )}
     </>

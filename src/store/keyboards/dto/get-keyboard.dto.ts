@@ -1,8 +1,6 @@
-export type KeyboardLayout = Array<{
-  x: number
-  y: number
-  w?: number
-}>
+import { KeyCoordinates } from 'components/Keymap/Keymap'
+
+export type KeyboardLayout = KeyCoordinates[]
 
 export interface KeyboardDto {
   keyboard_name: string

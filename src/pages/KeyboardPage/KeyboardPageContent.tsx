@@ -1,39 +1,44 @@
 import React, { useState } from 'react'
-import { Box, Button, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react'
-import KeymapVisual from 'components/Keymap'
+import { Heading, Select, Tag, Stack, Box } from '@chakra-ui/react'
+import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
+import pluralize from 'lib/pluralize'
 
 export const KeyboardPageContent = ({ keyboard }: { keyboard: KeyboardDto }) => {
   const [layout, setLayout] = useState<string>(Object.keys(keyboard.layouts)[0])
 
   return (
-    <>
-      <Heading as="h1" size="2xl" color="yellow.400" mt={6} mb={10}>
-        {keyboard.keyboard_name}
-      </Heading>
-
-      <Box my={3}>
-        <Wrap>
-          {Object.entries(keyboard.layouts).map(([layoutName, layoutData]) => (
-            <WrapItem key={layoutName}>
-              <Button
-                size="xs"
-                variant="outline"
-                onClick={() => setLayout(layoutName)}
-                isActive={layout === layoutName}
-              >
-                <Text fontWeight="normal" mr={1}>
-                  {layoutName}:
-                </Text>
-                <Text fontWeight="bold">{layoutData.key_count} keys</Text>
-              </Button>
-            </WrapItem>
-          ))}
-        </Wrap>
+    <Stack direction="column" spacing={5}>
+      <Box>
+        <Heading as="h1" size="4xl" color="yellow.400" mt={6}>
+          {keyboard.keyboard_name}
+        </Heading>
+        <Heading as="h2" size="md" color="gray.600" fontWeight="light">
+          {keyboard.keyboard_folder}
+        </Heading>
       </Box>
 
-      <KeymapVisual layout={keyboard.layouts[layout].layout} />
-    </>
+      <div>
+        <Tag variant="subtle" colorScheme="yellow" mb={2}>
+          {pluralize(Object.values(keyboard.layouts).length, 'layout')}
+        </Tag>
+
+        <Select
+          maxW={400}
+          mb={4}
+          value={layout}
+          onChange={(e) => setLayout(e.target.value)}
+        >
+          {Object.entries(keyboard.layouts).map(([layoutName, layoutData]) => (
+            <option value={layoutName}>
+              {layoutName} - {layoutData.key_count} keys
+            </option>
+          ))}
+        </Select>
+      </div>
+
+      <Keymap layout={keyboard.layouts[layout].layout} />
+    </Stack>
   )
 }
 

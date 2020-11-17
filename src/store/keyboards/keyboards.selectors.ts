@@ -4,7 +4,7 @@ import keyboardsAdapter from './keyboards.adapter'
 const keyboardSelectors = {
   ...keyboardsAdapter.getSelectors((state: RootState) => state.keyboards),
 
-  selectNamesByString: (input: string) => (state: RootState) =>
+  selectNamesByString: (state: RootState, input: string) =>
     state.keyboards.names.filter((keyboard) => keyboard.includes(input)),
 }
 

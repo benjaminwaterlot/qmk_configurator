@@ -1,8 +1,8 @@
+import { AspectRatio, Box } from '@chakra-ui/react'
+import KeyContainer from 'components/Key/KeyContainer'
 import React from 'react'
-import { AspectRatio, Box, Grid } from '@chakra-ui/react'
-import { KeyContainer } from 'components/Key'
 import { KeyboardLayout } from 'store/keyboards/dto/get-keyboard.dto'
-import { getCSSColumnsFromRow, groupKeysByRow, useDimensionsFromLayout } from './keymap.lib'
+import { useDimensionsFromLayout } from './keymap.lib'
 
 export interface KeyCoordinates {
   x: number
@@ -12,32 +12,30 @@ export interface KeyCoordinates {
   label?: string
 }
 
-const KeymapRow = ({ row }: { row: KeyCoordinates[] }) => (
-  <Grid templateColumns={getCSSColumnsFromRow(row)}>
-    {row.map((key) => (
-      <KeyContainer key={`${key.x}-${key.y}`} coordinates={key} />
-    ))}
-  </Grid>
-)
+interface KeymapProps {
+  layout: KeyboardLayout
+}
 
-const Keymap = ({ layout }: { layout: KeyboardLayout }) => {
+const Keymap = ({ layout }: KeymapProps) => {
   const { width, height } = useDimensionsFromLayout(layout)
-  const maxWidth = width * 100
 
   return (
-    <AspectRatio ratio={width / height} maxW={maxWidth}>
+    <AspectRatio ratio={width / height} maxW={width * 100}>
       <Box h="100%">
-        <Grid
-          alignContent="stretch"
-          justifyContent="stretch"
-          alignItems="stretch"
-          h="100%"
-          w="100%"
-        >
-          {groupKeysByRow(layout).map((row) => (
-            <KeymapRow row={row} key={row[0].y} />
-          ))}
-        </Grid>
+        {layout.map((key) => (
+          <Box
+            key={`${key.x}-${key.y}`}
+            pos="absolute"
+            w={`${((key.w ?? 1) / width) * 100}%`}
+            h={`${((key.h ?? 1) / height) * 100}%`}
+            top={`${(key.y / height) * 100}%`}
+            left={`${(key.x / width) * 100}%`}
+          >
+            <Box p={1} h="100%" w="100%">
+              <KeyContainer key={`${key.x}-${key.y}`} coordinates={key} />
+            </Box>
+          </Box>
+        ))}
       </Box>
     </AspectRatio>
   )
