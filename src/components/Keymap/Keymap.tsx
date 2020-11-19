@@ -3,8 +3,8 @@ import { AspectRatio, Box } from '@chakra-ui/react'
 import KeyContainer from 'components/Key/KeyContainer'
 import { KeyboardLayout } from 'store/keyboards/dto/get-keyboard.dto'
 import { useDimensionsFromLayout } from './keymap.lib'
-import KeymapPopover from './KeymapPopover'
-import useKeymapPopoverState from './use-keymap-popover-state'
+import KeymapPopover from './KeymapPopover/KeymapPopover'
+import useKeymapPopoverState from './KeymapPopover/use-keymap-popover-state'
 
 const Keymap = ({ layout }: { layout: KeyboardLayout }) => {
   const { width, height } = useDimensionsFromLayout(layout)
