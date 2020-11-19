@@ -1,6 +1,10 @@
 import { useMemo } from 'react'
 import { KeyboardLayout } from 'store/keyboards/dto/get-keyboard.dto'
 
+/**
+ * This extracts the dimensions of a layout
+ * (in relative units where a regular key has 1 width and 1 height)
+ */
 export const useDimensionsFromLayout = (layout: KeyboardLayout) =>
   useMemo(
     () =>
@@ -14,7 +18,7 @@ export const useDimensionsFromLayout = (layout: KeyboardLayout) =>
             height: localHeight > height ? localHeight : height,
           }
         },
-        { width: 0, height: 0 }
+        { width: 0, height: 0 },
       ),
-    [layout]
+    [layout],
   )

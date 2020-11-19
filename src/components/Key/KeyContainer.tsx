@@ -1,28 +1,31 @@
-import React from 'react'
-import { Button, Popover, PopoverTrigger, Portal, useColorModeValue } from '@chakra-ui/react'
+import React, { useRef } from 'react'
+import { Button, useColorModeValue } from '@chakra-ui/react'
 import KeyContent from './KeyContent'
-import KeyPopover from './KeyPopover'
-import { KeyCoordinates } from 'components/Keymap/Keymap'
+import { KeyCoordinates } from 'components/Key/key.types'
 
 interface KeyContainerProps {
   coordinates: KeyCoordinates
+  onClick: (ref: HTMLButtonElement | null) => void
 }
 
-const KeyContainer = ({ coordinates }: KeyContainerProps) => {
-  const bg = useColorModeValue('gray.200', 'gray.700')
+const KeyContainer = ({ coordinates, onClick }: KeyContainerProps) => {
+  const bg = useColorModeValue('gray.200', 'gray.900')
+  const ref = useRef<HTMLButtonElement | null>(null)
 
   return (
-    <Popover isLazy trigger="hover">
-      <PopoverTrigger>
-        <Button h="100%" isFullWidth bg={bg} rounded={3} p={0}>
-          <KeyContent coordinates={coordinates} />
-        </Button>
-      </PopoverTrigger>
-
-      <Portal key="popover">
-        <KeyPopover />
-      </Portal>
-    </Popover>
+    <Button
+      isFullWidth
+      h="100%"
+      p={0}
+      bg={bg}
+      border="1px solid"
+      borderColor="gray.700"
+      rounded={3}
+      ref={ref}
+      onClick={() => onClick(ref.current)}
+    >
+      <KeyContent coordinates={coordinates} />
+    </Button>
   )
 }
 

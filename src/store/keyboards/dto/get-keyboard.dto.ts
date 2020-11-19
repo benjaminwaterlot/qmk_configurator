@@ -1,4 +1,4 @@
-import { KeyCoordinates } from 'components/Keymap/Keymap'
+import { KeyCoordinates } from 'components/Key/key.types'
 
 export type KeyboardLayout = KeyCoordinates[]
 

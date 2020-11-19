@@ -30,7 +30,12 @@
   { "name": ")\n0", "code": "KC_0", "keys": "0" },
   { "name": "_\n-", "code": "KC_MINS", "keys": "-" },
   { "name": "+\n=", "code": "KC_EQL", "keys": "=" },
-  { "name": "Back Space", "code": "KC_BSPC", "keys": "backspace", "width": 2000 },
+  {
+    "name": "Back Space",
+    "code": "KC_BSPC",
+    "keys": "backspace",
+    "width": 2000
+  },
   { "name": "Insert", "code": "KC_INS", "keys": "insert" },
   { "name": "Home", "code": "KC_HOME", "keys": "home" },
   { "name": "Page Up", "code": "KC_PGUP", "keys": "pageup" },
@@ -61,7 +66,12 @@
   { "name": "9", "code": "KC_P9", "keys": "num_9" },
   { "name": "+", "code": "KC_PPLS", "keys": "num_add" },
 
-  { "name": "Caps Lock", "code": "KC_CAPS", "keys": "caps_lock", "width": 1750 },
+  {
+    "name": "Caps Lock",
+    "code": "KC_CAPS",
+    "keys": "caps_lock",
+    "width": 1750
+  },
   { "name": "a", "code": "KC_A", "keys": "a" },
   { "name": "s", "code": "KC_S", "keys": "s" },
   { "name": "d", "code": "KC_D", "keys": "d" },
@@ -111,8 +121,6 @@
   { "name": "0", "code": "KC_P0", "keys": "num_0", "width": 2000 },
   { "name": ".", "code": "KC_PDOT", "keys": "num_decimal" },
   { "name": "Enter", "code": "KC_PENT", "keys": "num_enter" },
-
-  { "label": "Shifted symbols", "width": "label" },
 
   { "name": "~", "code": "KC_TILD", "keys": "~" },
   { "name": "!", "code": "KC_EXLM", "keys": "!" },

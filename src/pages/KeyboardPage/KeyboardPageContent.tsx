@@ -4,7 +4,11 @@ import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import pluralize from 'lib/pluralize'
 
-export const KeyboardPageContent = ({ keyboard }: { keyboard: KeyboardDto }) => {
+export const KeyboardPageContent = ({
+  keyboard,
+}: {
+  keyboard: KeyboardDto
+}) => {
   const [layout, setLayout] = useState<string>(Object.keys(keyboard.layouts)[0])
 
   return (
@@ -30,7 +34,7 @@ export const KeyboardPageContent = ({ keyboard }: { keyboard: KeyboardDto }) => 
           onChange={(e) => setLayout(e.target.value)}
         >
           {Object.entries(keyboard.layouts).map(([layoutName, layoutData]) => (
-            <option value={layoutName}>
+            <option value={layoutName} key={layoutName}>
               {layoutName} - {layoutData.key_count} keys
             </option>
           ))}
