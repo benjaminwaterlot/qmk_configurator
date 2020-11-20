@@ -15,21 +15,20 @@ import {
   Wrap,
   WrapItem,
 } from '@chakra-ui/react'
-
 import usePopoverState from './use-keymap-popover-state'
-import useKeymapPopoverCombobox from './use-keymap-popover-combobox'
+import useKeymapPopoverCombobox, { Key } from './use-keymap-popover-combobox'
 import KeymapPopoverListItem from './KeymapPopoverListItem'
 import { AddIcon, CheckIcon } from '@chakra-ui/icons'
 
 /**
  * A popover that allows to search and select a new keycode from a list.
  */
-const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
-  isPopoverOpen,
-  setIsPopoverOpen,
-  popperDynamicRefModifier,
-  popoverElementRef,
-}) => {
+interface KeymapPopoverProps {
+  state: ReturnType<typeof usePopoverState>
+  onSelection: (key: Key, keyIndex: number) => void
+}
+
+const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
   /**
    * This hook handle the state of the keycodes list.
    */
@@ -40,8 +39,13 @@ const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
     setTypeFilters,
     combo,
   } = useKeymapPopoverCombobox({
-    onSelect: (item) => {
-      console.log('🌈 : item', item)
+    onComboboxSelection: (item) => {
+      if (state.popoverOpenedAtIndex === null)
+        throw new Error(
+          `KeymapPopover shall be opened when a new keycode is selected`,
+        )
+
+      onSelection(item, state.popoverOpenedAtIndex)
       handleClosePopover()
     },
   })
@@ -51,18 +55,18 @@ const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
    */
   const handleClosePopover = useCallback(() => {
     combo.reset()
-    setIsPopoverOpen(false)
+    state.setPopoverOpenedAtIndex(null)
 
-    // Focus back the key which we come from on the keymap
-    popoverElementRef.current?.focus()
-  }, [combo, popoverElementRef, setIsPopoverOpen])
+    // Focus back the key which we came from on the keymap
+    state.popoverElementRef.current?.focus()
+  }, [combo, state])
 
   return (
     <Popover
-      isOpen={isPopoverOpen}
+      isOpen={state.popoverOpenedAtIndex !== null}
       onClose={handleClosePopover}
       placement="auto"
-      modifiers={[popperDynamicRefModifier]}
+      modifiers={[state.popperDynamicRefModifier]}
       initialFocusRef={inputRef}
       // We'll return focus manually (we don't use PopoverTrigger, this prop wouldn't work)
       returnFocusOnClose={false}
@@ -137,7 +141,7 @@ const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
                       isHighlighted={index === combo.highlightedIndex}
                       keyInfo={item}
                       color={typeFilters[item.type].color}
-                      itemProps={combo.getItemProps({
+                      downshiftItemProps={combo.getItemProps({
                         item,
                         index,
                       })}

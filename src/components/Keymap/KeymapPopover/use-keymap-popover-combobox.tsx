@@ -1,45 +1,12 @@
-import { Kbd } from '@chakra-ui/react'
-import React from 'react'
 import KEYCODES_RAW from 'content/keycodes/all.json'
 import { useCombobox } from 'downshift'
 import GetArrayItemsType from 'lib/get-array-items-type'
+import formatKeyDescription from 'lib/format-key-description.lib'
 import { useMemo, useRef, useState } from 'react'
-
-const COMMANDS = new Set([
-  'Left',
-  'Right',
-  'Up',
-  'Down',
-  'Ctrl',
-  'Alt',
-  'Shift',
-  'GUI',
-  'Command',
-  'Return',
-  'Escape',
-  'Delete',
-  'Tab',
-  'Spacebar',
-])
-
-const shouldBeShortcutStyled = (word: string) =>
-  word.length === 1 || COMMANDS.has(word)
 
 const KEYCODES = KEYCODES_RAW.map((key) => ({
   ...key,
-  formatted: key.Description.split(' ').reduce(
-    (elems, word) => [
-      ...elems,
-      shouldBeShortcutStyled(word) ? (
-        <Kbd key={word} fontSize="sm">
-          {word}
-        </Kbd>
-      ) : (
-        <span key={word}> {word} </span>
-      ),
-    ],
-    [] as (JSX.Element | string)[],
-  ),
+  formatted: formatKeyDescription(key.Description),
 }))
 
 export type Key = GetArrayItemsType<typeof KEYCODES>
@@ -48,9 +15,9 @@ export type Key = GetArrayItemsType<typeof KEYCODES>
  * This represents the state of the combobox.
  */
 const useKeymapPopoverCombobox = ({
-  onSelect,
+  onComboboxSelection,
 }: {
-  onSelect: (_: Key) => void
+  onComboboxSelection: (_: Key) => void
 }) => {
   const [inputItems, setInputItems] = useState(KEYCODES)
   const inputRef = useRef<HTMLElement | null>(null)
@@ -77,7 +44,7 @@ const useKeymapPopoverCombobox = ({
     onSelectedItemChange: (changes) => {
       if (!changes.selectedItem) return
 
-      onSelect(changes.selectedItem)
+      onComboboxSelection(changes.selectedItem)
     },
   })
 

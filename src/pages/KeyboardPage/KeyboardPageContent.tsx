@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { Heading, Select, Tag, Stack, Box } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import pluralize from 'lib/pluralize'
 
-export const KeyboardPageContent = ({
-  keyboard,
-}: {
+interface KeyboardPageContentProps {
   keyboard: KeyboardDto
+}
+
+export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
+  keyboard,
 }) => {
   const [layout, setLayout] = useState<string>(Object.keys(keyboard.layouts)[0])
 
