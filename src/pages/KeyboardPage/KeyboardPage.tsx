@@ -1,8 +1,6 @@
 import React, { FC } from 'react'
 import {
   Heading,
-  Select,
-  Tag,
   Stack,
   Box,
   Button,
@@ -10,17 +8,16 @@ import {
   WrapItem,
   ButtonGroup,
   IconButton,
-  InputGroup,
-  InputLeftElement,
   Tooltip,
+  useColorModeValue,
 } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
-import pluralize from 'lib/pluralize'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymapDto } from 'types/keymap.type'
-import { AddIcon, CopyIcon, DragHandleIcon, LockIcon } from '@chakra-ui/icons'
+import { AddIcon, CopyIcon, DragHandleIcon } from '@chakra-ui/icons'
 import useKeyboardPageLayouts from './use-keyboard-page-layouts'
 import useKeyboardPageKeymaps from './use-keyboard-page-keymaps'
+import KeyboardPageLayoutSelect from './KeyboardPageLayoutSelect'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
@@ -38,17 +35,20 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
-  const { currentLayout, setCurrentLayout } = useKeyboardPageLayouts({
+  const layouts = useKeyboardPageLayouts({
     keyboard,
     defaultKeymaps,
+    getKeymaps: () => keymaps,
   })
 
-  const { keymapsState } = useKeyboardPageKeymaps({
+  const keymaps = useKeyboardPageKeymaps({
     defaultKeymaps,
+    getLayouts: () => layouts,
   })
 
   return (
     <Stack direction="column" spacing={5}>
+      {/* Page title */}
       <Box>
         <Heading as="h1" size="4xl" color="primary.400" mt={6}>
           {keyboard.keyboard_name}
@@ -58,82 +58,111 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
         </Heading>
       </Box>
 
-      <div>
-        <Tag variant="subtle" colorScheme="primary" mb={2}>
-          {pluralize(Object.values(keyboard.layouts).length, 'layout')}
-        </Tag>
+      {/* Layout selector */}
+      <KeyboardPageLayoutSelect
+        layouts={keyboard.layouts}
+        currentLayout={layouts.state.currentLayout}
+        setCurrentLayout={(layout: string) =>
+          layouts.dispatch({ type: 'SELECT_LAYOUT', payload: layout })
+        }
+      />
 
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents="none"
-            children={<DragHandleIcon color="gray.300" />}
-          />
-
-          <Select
-            css={{
-              paddingLeft: '36px',
-            }}
-            maxW={400}
-            mb={4}
-            value={currentLayout}
-            onChange={(e) => setCurrentLayout(e.target.value)}
-          >
-            {Object.entries(keyboard.layouts).map(
-              ([layoutName, layoutData]) => (
-                <option value={layoutName} key={layoutName}>
-                  {layoutName} - {layoutData.key_count} keys
-                </option>
-              ),
-            )}
-          </Select>
-        </InputGroup>
-      </div>
-
+      {/* Keymap selector and editor */}
       <Wrap>
-        <WrapItem>
-          <ButtonGroup size="sm" isAttached variant="outline">
-            <Button
-              mr="-px"
-              isActive={keymapsState.currentKeymap === defaultKeymaps.keymap}
-            >
-              <LockIcon mr={2} />
-              {defaultKeymaps.keymap}
-            </Button>
-            <Tooltip
-              label={`New keymap based on ${keymapsState.currentKeymap}`}
-            >
-              <IconButton
-                aria-label={`New keymap based on ${keymapsState.currentKeymap}`}
-                icon={<CopyIcon />}
-              />
-            </Tooltip>
-          </ButtonGroup>
-        </WrapItem>
+        {Object.entries(keymaps.state.keymaps).map(([keymapName, keymap]) => {
+          const isReadonly = keymapName === defaultKeymaps.keymap
+          const isActive = keymaps.state.currentKeymap === keymapName
+
+          return (
+            <WrapItem key={keymapName}>
+              <ButtonGroup size="sm" isAttached variant="outline">
+                {isActive && !isReadonly && (
+                  <Tooltip label={`${keymap.layout}`}>
+                    <IconButton
+                      isActive={isActive}
+                      aria-label=""
+                      _active={{
+                        color: 'primary.400',
+                      }}
+                      icon={<DragHandleIcon />}
+                    />
+                  </Tooltip>
+                )}
+
+                <Button
+                  ml={isActive ? '-px' : ''}
+                  mr="-px"
+                  _active={{
+                    color: 'primary.400',
+                  }}
+                  isActive={isActive}
+                  onClick={() =>
+                    keymaps.dispatch({
+                      type: 'SELECT_KEYMAP',
+                      payload: keymapName,
+                    })
+                  }
+                >
+                  {keymapName}
+                </Button>
+
+                {isActive && (
+                  <Tooltip label="Duplicate">
+                    <IconButton
+                      isActive={isActive}
+                      aria-label=""
+                      _active={{
+                        color: 'primary.400',
+                      }}
+                      onClick={() =>
+                        keymaps.dispatch({
+                          type: 'DUPLICATE_KEYMAP',
+                          payload: keymapName,
+                        })
+                      }
+                      icon={<CopyIcon />}
+                    />
+                  </Tooltip>
+                )}
+              </ButtonGroup>
+            </WrapItem>
+          )
+        })}
 
         <WrapItem>
-          <ButtonGroup size="sm" isAttached variant="outline">
+          <ButtonGroup
+            size="sm"
+            isAttached
+            variant="solid"
+            onClick={() =>
+              keymaps.dispatch({
+                type: 'CREATE_KEYMAP',
+                payload: {
+                  keymapName: 'Newww',
+                  keymap: { layout: layouts.state.currentLayout, layers: [] },
+                },
+              })
+            }
+          >
             <Tooltip label="New keymap from scratch">
-              <Button mr="-px">New keymap</Button>
+              <Button bg={useColorModeValue('gray.50', 'gray.900')} mr="-px">
+                New keymap
+              </Button>
             </Tooltip>
             <Tooltip label="New keymap from scratch">
               <IconButton
+                bg={useColorModeValue('gray.50', 'gray.900')}
                 aria-label="New keymap from scratch"
                 icon={<AddIcon />}
-              />
-            </Tooltip>
-            <Tooltip
-              label={`New keymap based on ${keymapsState.currentKeymap}`}
-            >
-              <IconButton
-                aria-label={`New keymap based on ${keymapsState.currentKeymap}`}
-                icon={<CopyIcon />}
               />
             </Tooltip>
           </ButtonGroup>
         </WrapItem>
       </Wrap>
+
+      {/* Keymap visualisator */}
       <Keymap
-        layout={keyboard.layouts[currentLayout].layout}
+        layout={keyboard.layouts[layouts.state.currentLayout].layout}
         keymap={defaultKeymaps}
       />
     </Stack>

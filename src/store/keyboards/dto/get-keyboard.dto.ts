@@ -2,16 +2,18 @@ import { KeyCoordinates } from 'components/Key/key.types'
 
 export type KeyboardLayoutDto = KeyCoordinates[]
 
+export interface KeyboardLayoutsDto {
+  [_: string]: {
+    key_count: number
+    layout: KeyboardLayoutDto
+  }
+}
+
 export interface KeyboardDto {
   keyboard_name: string
   keyboard_folder: string
   keymaps: unknown[]
-  layouts: {
-    [_: string]: {
-      key_count: number
-      layout: KeyboardLayoutDto
-    }
-  }
+  layouts: KeyboardLayoutsDto
 }
 
 export interface GetKeyboardDto {
