@@ -1,15 +1,16 @@
 import React, { FC, useState } from 'react'
 import { AspectRatio, Box } from '@chakra-ui/react'
 import KeyContainer from 'components/Key/KeyContainer'
-import { KeyboardLayout } from 'store/keyboards/dto/get-keyboard.dto'
+import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { useDimensionsFromLayout } from './keymap.lib'
 import KeymapPopover from './KeymapPopover/KeymapPopover'
 import useKeymapPopoverState from './KeymapPopover/use-keymap-popover-state'
 import { Key } from './KeymapPopover/use-keymap-popover-combobox'
+import { QMKKeymapDto } from 'types/keymap.type'
 
 interface KeymapProps {
-  layout: KeyboardLayout
-  keymap: string[][]
+  layout: KeyboardLayoutDto
+  keymap: QMKKeymapDto
 }
 
 const Keymap: FC<KeymapProps> = (props) => {
@@ -45,7 +46,7 @@ const Keymap: FC<KeymapProps> = (props) => {
             <Box p={1} h="100%" w="100%">
               <KeyContainer
                 coordinates={key}
-                keycode={props.keymap[layer][keyIndex]}
+                keycode={props.keymap.layers[layer][keyIndex]}
                 onClick={(ref) => {
                   popover.popoverElementRef.current = ref
                   popover.setPopoverOpenedAtIndex(keyIndex)
