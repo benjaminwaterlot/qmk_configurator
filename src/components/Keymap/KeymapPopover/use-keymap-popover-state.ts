@@ -1,5 +1,4 @@
 import { useMemo, useRef, useState } from 'react'
-import useCbOnEscape from 'lib/use-cb-on-escape'
 import { ModifierPhases, ModifierArguments } from '@popperjs/core'
 
 const usePopoverState = () => {
@@ -15,11 +14,6 @@ const usePopoverState = () => {
    * The main input in the popover, so it can be auto-focused.
    */
   const popoverInputRef = useRef<HTMLInputElement | null>(null)
-
-  /**
-   * Close the popover on Escape press.
-   */
-  useCbOnEscape(() => setIsPopoverOpen(false))
 
   /**
    * This popper.js modifier binds a popover to `popoverElementRef` when it changes.

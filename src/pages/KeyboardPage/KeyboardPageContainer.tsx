@@ -7,7 +7,9 @@ import { useAppSelector } from 'store'
 import { Center, Spinner } from '@chakra-ui/react'
 import KeyboardPageContent from './KeyboardPageContent'
 
-export const KeyboardPageContainer = (props: RouteComponentProps & { keyboard: string }) => {
+export const KeyboardPageContainer = (
+  props: RouteComponentProps & { keyboard: string },
+) => {
   const dispatch = useDispatch()
   const keyboardName = decodeName(props.keyboard)
 
@@ -15,7 +17,9 @@ export const KeyboardPageContainer = (props: RouteComponentProps & { keyboard: s
     dispatch(keyboards.thunks.fetchKeyboard(keyboardName))
   }, [dispatch, keyboardName])
 
-  const keyboard = useAppSelector((state) => keyboards.selectors.selectById(state, keyboardName))
+  const keyboard = useAppSelector((state) =>
+    keyboards.selectors.selectById(state, keyboardName),
+  )
 
   return (
     <>
@@ -23,7 +27,7 @@ export const KeyboardPageContainer = (props: RouteComponentProps & { keyboard: s
         <KeyboardPageContent keyboard={keyboard} />
       ) : (
         <Center minH="50vh">
-          <Spinner size="xl" speed=".8s" color="yellow.400" thickness="5px" />
+          <Spinner size="xl" speed=".8s" color="primary.400" thickness="5px" />
         </Center>
       )}
     </>

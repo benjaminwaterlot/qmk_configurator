@@ -2,7 +2,10 @@ import { Container } from '@chakra-ui/react'
 import React from 'react'
 import { Router } from '@reach/router'
 
-import KeyboardPage, { KeyboardPageContainer, KeyboardPageIndex } from 'pages/KeyboardPage'
+import KeyboardPage, {
+  KeyboardPageContainer,
+  KeyboardPageIndex,
+} from 'pages/KeyboardPage'
 import HomePage from 'pages/HomePage'
 import NavBar from 'components/NavBar'
 

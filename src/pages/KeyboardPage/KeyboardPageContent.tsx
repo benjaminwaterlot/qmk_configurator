@@ -14,7 +14,7 @@ export const KeyboardPageContent = ({
   return (
     <Stack direction="column" spacing={5}>
       <Box>
-        <Heading as="h1" size="4xl" color="yellow.400" mt={6}>
+        <Heading as="h1" size="4xl" color="primary.400" mt={6}>
           {keyboard.keyboard_name}
         </Heading>
         <Heading as="h2" size="md" color="gray.600" fontWeight="light">
@@ -23,7 +23,7 @@ export const KeyboardPageContent = ({
       </Box>
 
       <div>
-        <Tag variant="subtle" colorScheme="yellow" mb={2}>
+        <Tag variant="subtle" colorScheme="primary" mb={2}>
           {pluralize(Object.values(keyboard.layouts).length, 'layout')}
         </Tag>
 

@@ -5,7 +5,8 @@
     "Description": "Ignore this key (NOOP)",
     "Windows": "*N/A*",
     "macOS": "*N/A*",
-    "Linux<sup>1</sup>": "*N/A*"
+    "Linux<sup>1</sup>": "*N/A*",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_TRANSPARENT",
@@ -13,7 +14,8 @@
     "Description": "Use the next lowest non-transparent key",
     "Windows": "*N/A*",
     "macOS": "*N/A*",
-    "Linux<sup>1</sup>": "*N/A*"
+    "Linux<sup>1</sup>": "*N/A*",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_A",
@@ -21,7 +23,8 @@
     "Description": "a and A",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_B",
@@ -29,7 +32,8 @@
     "Description": "b and B",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_C",
@@ -37,7 +41,8 @@
     "Description": "c and C",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_D",
@@ -45,7 +50,8 @@
     "Description": "d and D",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_E",
@@ -53,7 +59,8 @@
     "Description": "e and E",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F",
@@ -61,7 +68,8 @@
     "Description": "f and F",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_G",
@@ -69,7 +77,8 @@
     "Description": "g and G",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_H",
@@ -77,7 +86,8 @@
     "Description": "h and H",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_I",
@@ -85,7 +95,8 @@
     "Description": "i and I",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_J",
@@ -93,7 +104,8 @@
     "Description": "j and J",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_K",
@@ -101,7 +113,8 @@
     "Description": "k and K",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_L",
@@ -109,7 +122,8 @@
     "Description": "l and L",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_M",
@@ -117,7 +131,8 @@
     "Description": "m and M",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_N",
@@ -125,7 +140,8 @@
     "Description": "n and N",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_O",
@@ -133,7 +149,8 @@
     "Description": "o and O",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_P",
@@ -141,7 +158,8 @@
     "Description": "p and P",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_Q",
@@ -149,7 +167,8 @@
     "Description": "q and Q",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_R",
@@ -157,7 +176,8 @@
     "Description": "r and R",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_S",
@@ -165,7 +185,8 @@
     "Description": "s and S",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_T",
@@ -173,7 +194,8 @@
     "Description": "t and T",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_U",
@@ -181,7 +203,8 @@
     "Description": "u and U",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_V",
@@ -189,7 +212,8 @@
     "Description": "v and V",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_W",
@@ -197,7 +221,8 @@
     "Description": "w and W",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_X",
@@ -205,7 +230,8 @@
     "Description": "x and X",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_Y",
@@ -213,7 +239,8 @@
     "Description": "y and Y",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_Z",
@@ -221,7 +248,8 @@
     "Description": "z and Z",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_1",
@@ -229,7 +257,8 @@
     "Description": "1 and !",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_2",
@@ -237,7 +266,8 @@
     "Description": "2 and @",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_3",
@@ -245,7 +275,8 @@
     "Description": "3 and #",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_4",
@@ -253,7 +284,8 @@
     "Description": "4 and $",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_5",
@@ -261,7 +293,8 @@
     "Description": "5 and %",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_6",
@@ -269,7 +302,8 @@
     "Description": "6 and ^",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_7",
@@ -277,7 +311,8 @@
     "Description": "7 and &",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_8",
@@ -285,7 +320,8 @@
     "Description": "8 and *",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_9",
@@ -293,7 +329,8 @@
     "Description": "9 and (",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_0",
@@ -301,7 +338,8 @@
     "Description": "0 and )",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "numeric"
   },
   {
     "Key": "KC_ENTER",
@@ -309,7 +347,8 @@
     "Description": "Return (Enter)",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "controls"
   },
   {
     "Key": "KC_ESCAPE",
@@ -317,7 +356,8 @@
     "Description": "Escape",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "controls"
   },
   {
     "Key": "KC_BSPACE",
@@ -325,7 +365,8 @@
     "Description": "Delete (Backspace)",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "controls"
   },
   {
     "Key": "KC_TAB",
@@ -333,7 +374,8 @@
     "Description": "Tab",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "controls"
   },
   {
     "Key": "KC_SPACE",
@@ -341,7 +383,8 @@
     "Description": "Spacebar",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "controls"
   },
   {
     "Key": "KC_MINUS",
@@ -349,7 +392,8 @@
     "Description": "- and _",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_EQUAL",
@@ -357,7 +401,8 @@
     "Description": "= and +",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LBRACKET",
@@ -365,7 +410,8 @@
     "Description": "[ and {",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_RBRACKET",
@@ -373,7 +419,8 @@
     "Description": "] and }",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_BSLASH",
@@ -381,7 +428,8 @@
     "Description": "\\ and \\|",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_NONUS_HASH",
@@ -389,7 +437,8 @@
     "Description": "Non-US # and ~",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SCOLON",
@@ -397,7 +446,8 @@
     "Description": "; and :",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_QUOTE",
@@ -405,7 +455,8 @@
     "Description": "' and \"",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_GRAVE",
@@ -413,7 +464,8 @@
     "Description": "<code>&#96;</code> and ~, JIS Zenkaku/Hankaku",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_COMMA",
@@ -421,7 +473,8 @@
     "Description": ", and <",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_DOT",
@@ -429,7 +482,8 @@
     "Description": ". and >",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SLASH",
@@ -437,7 +491,8 @@
     "Description": "/ and ?",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_CAPSLOCK",
@@ -445,7 +500,8 @@
     "Description": "Caps Lock",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F1",
@@ -453,7 +509,8 @@
     "Description": "F1",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F2",
@@ -461,7 +518,8 @@
     "Description": "F2",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F3",
@@ -469,7 +527,8 @@
     "Description": "F3",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F4",
@@ -477,7 +536,8 @@
     "Description": "F4",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F5",
@@ -485,7 +545,8 @@
     "Description": "F5",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F6",
@@ -493,7 +554,8 @@
     "Description": "F6",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F7",
@@ -501,7 +563,8 @@
     "Description": "F7",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F8",
@@ -509,7 +572,8 @@
     "Description": "F8",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F9",
@@ -517,7 +581,8 @@
     "Description": "F9",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F10",
@@ -525,7 +590,8 @@
     "Description": "F10",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F11",
@@ -533,7 +599,8 @@
     "Description": "F11",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F12",
@@ -541,7 +608,8 @@
     "Description": "F12",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_PSCREEN",
@@ -549,7 +617,8 @@
     "Description": "Print Screen",
     "Windows": "✔",
     "macOS": "✔<sup>2</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SCROLLLOCK",
@@ -557,7 +626,8 @@
     "Description": "Scroll Lock, Brightness Down (macOS)",
     "Windows": "✔",
     "macOS": "✔<sup>2</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_PAUSE",
@@ -565,7 +635,8 @@
     "Description": "Pause, Brightness Up (macOS)",
     "Windows": "✔",
     "macOS": "✔<sup>2</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INSERT",
@@ -573,7 +644,8 @@
     "Description": "Insert",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_HOME",
@@ -581,7 +653,8 @@
     "Description": "Home",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_PGUP",
@@ -589,7 +662,8 @@
     "Description": "Page Up",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_DELETE",
@@ -597,7 +671,8 @@
     "Description": "Forward Delete",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_END",
@@ -605,7 +680,8 @@
     "Description": "End",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_PGDOWN",
@@ -613,7 +689,8 @@
     "Description": "Page Down",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_RIGHT",
@@ -621,7 +698,8 @@
     "Description": "Right Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LEFT",
@@ -629,7 +707,8 @@
     "Description": "Left Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_DOWN",
@@ -637,7 +716,8 @@
     "Description": "Down Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_UP",
@@ -645,7 +725,8 @@
     "Description": "Up Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_NUMLOCK",
@@ -653,7 +734,8 @@
     "Description": "Keypad Num Lock and Clear",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_SLASH",
@@ -661,7 +743,8 @@
     "Description": "Keypad /",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_ASTERISK",
@@ -669,7 +752,8 @@
     "Description": "Keypad *",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_MINUS",
@@ -677,7 +761,8 @@
     "Description": "Keypad -",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_PLUS",
@@ -685,7 +770,8 @@
     "Description": "Keypad +",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_ENTER",
@@ -693,7 +779,8 @@
     "Description": "Keypad Enter",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_1",
@@ -701,7 +788,8 @@
     "Description": "Keypad 1 and End",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_2",
@@ -709,7 +797,8 @@
     "Description": "Keypad 2 and Down Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_3",
@@ -717,7 +806,8 @@
     "Description": "Keypad 3 and Page Down",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_4",
@@ -725,7 +815,8 @@
     "Description": "Keypad 4 and Left Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_5",
@@ -733,7 +824,8 @@
     "Description": "Keypad 5",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_6",
@@ -741,7 +833,8 @@
     "Description": "Keypad 6 and Right Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_7",
@@ -749,7 +842,8 @@
     "Description": "Keypad 7 and Home",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_8",
@@ -757,7 +851,8 @@
     "Description": "Keypad 8 and Up Arrow",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_9",
@@ -765,7 +860,8 @@
     "Description": "Keypad 9 and Page Up",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_0",
@@ -773,7 +869,8 @@
     "Description": "Keypad 0 and Insert",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_DOT",
@@ -781,7 +878,8 @@
     "Description": "Keypad . and Delete",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_NONUS_BSLASH",
@@ -789,7 +887,8 @@
     "Description": "Non-US \\ and \\|",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_APPLICATION",
@@ -797,7 +896,8 @@
     "Description": "Application (Windows Context Menu Key)",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_POWER",
@@ -805,7 +905,8 @@
     "Description": "System Power",
     "Windows": "",
     "macOS": "✔<sup>3</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_EQUAL",
@@ -813,7 +914,8 @@
     "Description": "Keypad =",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F13",
@@ -821,7 +923,8 @@
     "Description": "F13",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F14",
@@ -829,7 +932,8 @@
     "Description": "F14",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F15",
@@ -837,7 +941,8 @@
     "Description": "F15",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F16",
@@ -845,7 +950,8 @@
     "Description": "F16",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F17",
@@ -853,7 +959,8 @@
     "Description": "F17",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F18",
@@ -861,7 +968,8 @@
     "Description": "F18",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F19",
@@ -869,7 +977,8 @@
     "Description": "F19",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F20",
@@ -877,7 +986,8 @@
     "Description": "F20",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F21",
@@ -885,7 +995,8 @@
     "Description": "F21",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F22",
@@ -893,7 +1004,8 @@
     "Description": "F22",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F23",
@@ -901,7 +1013,8 @@
     "Description": "F23",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_F24",
@@ -909,7 +1022,8 @@
     "Description": "F24",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_EXECUTE",
@@ -917,7 +1031,8 @@
     "Description": "Execute",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_HELP",
@@ -925,7 +1040,8 @@
     "Description": "Help",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MENU",
@@ -933,7 +1049,8 @@
     "Description": "Menu",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SELECT",
@@ -941,7 +1058,8 @@
     "Description": "Select",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_STOP",
@@ -949,7 +1067,8 @@
     "Description": "Stop",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_AGAIN",
@@ -957,7 +1076,8 @@
     "Description": "Again",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_UNDO",
@@ -965,7 +1085,8 @@
     "Description": "Undo",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_CUT",
@@ -973,7 +1094,8 @@
     "Description": "Cut",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_COPY",
@@ -981,7 +1103,8 @@
     "Description": "Copy",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_PASTE",
@@ -989,7 +1112,8 @@
     "Description": "Paste",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_FIND",
@@ -997,7 +1121,8 @@
     "Description": "Find",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC__MUTE",
@@ -1005,7 +1130,8 @@
     "Description": "Mute",
     "Windows": "",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC__VOLUP",
@@ -1013,7 +1139,8 @@
     "Description": "Volume Up",
     "Windows": "",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC__VOLDOWN",
@@ -1021,7 +1148,8 @@
     "Description": "Volume Down",
     "Windows": "",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LOCKING_CAPS",
@@ -1029,7 +1157,8 @@
     "Description": "Locking Caps Lock",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LOCKING_NUM",
@@ -1037,7 +1166,8 @@
     "Description": "Locking Num Lock",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LOCKING_SCROLL",
@@ -1045,7 +1175,8 @@
     "Description": "Locking Scroll Lock",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_COMMA",
@@ -1053,7 +1184,8 @@
     "Description": "Keypad ,",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_KP_EQUAL_AS400",
@@ -1061,7 +1193,8 @@
     "Description": "Keypad = on AS/400 keyboards",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT1",
@@ -1069,7 +1202,8 @@
     "Description": "JIS \\ and _",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT2",
@@ -1077,7 +1211,8 @@
     "Description": "JIS Katakana/Hiragana",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT3",
@@ -1085,7 +1220,8 @@
     "Description": "JIS ¥ and \\|",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT4",
@@ -1093,7 +1229,8 @@
     "Description": "JIS Henkan",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT5",
@@ -1101,7 +1238,8 @@
     "Description": "JIS Muhenkan",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT6",
@@ -1109,7 +1247,8 @@
     "Description": "JIS Numpad ,",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT7",
@@ -1117,7 +1256,8 @@
     "Description": "International 7",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT8",
@@ -1125,7 +1265,8 @@
     "Description": "International 8",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_INT9",
@@ -1133,7 +1274,8 @@
     "Description": "International 9",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG1",
@@ -1141,7 +1283,8 @@
     "Description": "Hangul/English",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG2",
@@ -1149,7 +1292,8 @@
     "Description": "Hanja",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG3",
@@ -1157,7 +1301,8 @@
     "Description": "JIS Katakana",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG4",
@@ -1165,7 +1310,8 @@
     "Description": "JIS Hiragana",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG5",
@@ -1173,7 +1319,8 @@
     "Description": "JIS Zenkaku/Hankaku",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG6",
@@ -1181,7 +1328,8 @@
     "Description": "Language 6",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG7",
@@ -1189,7 +1337,8 @@
     "Description": "Language 7",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG8",
@@ -1197,7 +1346,8 @@
     "Description": "Language 8",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LANG9",
@@ -1205,7 +1355,8 @@
     "Description": "Language 9",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_ALT_ERASE",
@@ -1213,7 +1364,8 @@
     "Description": "Alternate Erase",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SYSREQ",
@@ -1221,7 +1373,8 @@
     "Description": "SysReq/Attention",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_CANCEL",
@@ -1229,7 +1382,8 @@
     "Description": "Cancel",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_CLEAR",
@@ -1237,7 +1391,8 @@
     "Description": "Clear",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_PRIOR",
@@ -1245,7 +1400,8 @@
     "Description": "Prior",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_RETURN",
@@ -1253,7 +1409,8 @@
     "Description": "Return",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SEPARATOR",
@@ -1261,7 +1418,8 @@
     "Description": "Separator",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_OUT",
@@ -1269,7 +1427,8 @@
     "Description": "Out",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_OPER",
@@ -1277,7 +1436,8 @@
     "Description": "Oper",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_CLEAR_AGAIN",
@@ -1285,7 +1445,8 @@
     "Description": "Clear/Again",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_CRSEL",
@@ -1293,7 +1454,8 @@
     "Description": "CrSel/Props",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_EXSEL",
@@ -1301,7 +1463,8 @@
     "Description": "ExSel",
     "Windows": "",
     "macOS": "",
-    "Linux<sup>1</sup>": ""
+    "Linux<sup>1</sup>": "",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LCTRL",
@@ -1309,7 +1472,8 @@
     "Description": "Left Control",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LSHIFT",
@@ -1317,7 +1481,8 @@
     "Description": "Left Shift",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LALT",
@@ -1325,7 +1490,8 @@
     "Description": "Left Alt (Option)",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_LGUI",
@@ -1333,7 +1499,8 @@
     "Description": "Left GUI (Windows/Command/Meta key)",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_RCTRL",
@@ -1341,7 +1508,8 @@
     "Description": "Right Control",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_RSHIFT",
@@ -1349,7 +1517,8 @@
     "Description": "Right Shift",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_RALT",
@@ -1357,7 +1526,8 @@
     "Description": "Right Alt (Option/AltGr)",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_RGUI",
@@ -1365,7 +1535,8 @@
     "Description": "Right GUI (Windows/Command/Meta key)",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SYSTEM_POWER",
@@ -1373,7 +1544,8 @@
     "Description": "System Power Down",
     "Windows": "✔",
     "macOS": "✔<sup>3</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SYSTEM_SLEEP",
@@ -1381,7 +1553,8 @@
     "Description": "System Sleep",
     "Windows": "✔",
     "macOS": "✔<sup>3</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_SYSTEM_WAKE",
@@ -1389,7 +1562,8 @@
     "Description": "System Wake",
     "Windows": "",
     "macOS": "✔<sup>3</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_AUDIO_MUTE",
@@ -1397,7 +1571,8 @@
     "Description": "Mute",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_AUDIO_VOL_UP",
@@ -1405,7 +1580,8 @@
     "Description": "Volume Up",
     "Windows": "✔",
     "macOS": "✔<sup>4</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_AUDIO_VOL_DOWN",
@@ -1413,7 +1589,8 @@
     "Description": "Volume Down",
     "Windows": "✔",
     "macOS": "✔<sup>4</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_NEXT_TRACK",
@@ -1421,7 +1598,8 @@
     "Description": "Next Track",
     "Windows": "✔",
     "macOS": "✔<sup>5</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_PREV_TRACK",
@@ -1429,7 +1607,8 @@
     "Description": "Previous Track",
     "Windows": "✔",
     "macOS": "✔<sup>5</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_STOP",
@@ -1437,7 +1616,8 @@
     "Description": "Stop Track",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_PLAY_PAUSE",
@@ -1445,7 +1625,8 @@
     "Description": "Play/Pause Track",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_SELECT",
@@ -1453,7 +1634,8 @@
     "Description": "Launch Media Player",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_EJECT",
@@ -1461,7 +1643,8 @@
     "Description": "Eject",
     "Windows": "",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MAIL",
@@ -1469,7 +1652,8 @@
     "Description": "Launch Mail",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_CALCULATOR",
@@ -1477,7 +1661,8 @@
     "Description": "Launch Calculator",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MY_COMPUTER",
@@ -1485,7 +1670,8 @@
     "Description": "Launch My Computer",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_WWW_SEARCH",
@@ -1493,7 +1679,8 @@
     "Description": "Browser Search",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_WWW_HOME",
@@ -1501,7 +1688,8 @@
     "Description": "Browser Home",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_WWW_BACK",
@@ -1509,7 +1697,8 @@
     "Description": "Browser Back",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_WWW_FORWARD",
@@ -1517,7 +1706,8 @@
     "Description": "Browser Forward",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_WWW_STOP",
@@ -1525,7 +1715,8 @@
     "Description": "Browser Stop",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_WWW_REFRESH",
@@ -1533,7 +1724,8 @@
     "Description": "Browser Refresh",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_WWW_FAVORITES",
@@ -1541,7 +1733,8 @@
     "Description": "Browser Favorites",
     "Windows": "✔",
     "macOS": "",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_FAST_FORWARD",
@@ -1549,7 +1742,8 @@
     "Description": "Next Track",
     "Windows": "✔",
     "macOS": "✔<sup>5</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_MEDIA_REWIND",
@@ -1557,7 +1751,8 @@
     "Description": "Previous Track",
     "Windows": "✔<sup>6</sup>",
     "macOS": "✔<sup>5</sup>",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_BRIGHTNESS_UP",
@@ -1565,7 +1760,8 @@
     "Description": "Brightness Up",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   },
   {
     "Key": "KC_BRIGHTNESS_DOWN",
@@ -1573,6 +1769,7 @@
     "Description": "Brightness Down",
     "Windows": "✔",
     "macOS": "✔",
-    "Linux<sup>1</sup>": "✔"
+    "Linux<sup>1</sup>": "✔",
+    "type": "alphanumeric"
   }
 ]

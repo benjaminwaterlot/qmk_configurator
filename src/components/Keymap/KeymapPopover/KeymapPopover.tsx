@@ -1,6 +1,7 @@
-import React, { FC, useRef } from 'react'
+import React, { FC, useCallback } from 'react'
 import {
   Box,
+  Button,
   Divider,
   Input,
   List,
@@ -11,11 +12,14 @@ import {
   PopoverHeader,
   PopoverTrigger,
   Portal,
+  Wrap,
+  WrapItem,
 } from '@chakra-ui/react'
 
 import usePopoverState from './use-keymap-popover-state'
 import useKeymapPopoverCombobox from './use-keymap-popover-combobox'
 import KeymapPopoverListItem from './KeymapPopoverListItem'
+import { AddIcon, CheckIcon } from '@chakra-ui/icons'
 
 /**
  * A popover that allows to search and select a new keycode from a list.
@@ -24,25 +28,44 @@ const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
   isPopoverOpen,
   setIsPopoverOpen,
   popperDynamicRefModifier,
+  popoverElementRef,
 }) => {
-  const inputRef = useRef<HTMLElement | null>(null)
-
-  const { inputItems, combo } = useKeymapPopoverCombobox({
-    onSelect: () => setIsPopoverOpen(false),
+  /**
+   * This hook handle the state of the keycodes list.
+   */
+  const {
+    inputRef,
+    inputItems,
+    typeFilters,
+    setTypeFilters,
+    combo,
+  } = useKeymapPopoverCombobox({
+    onSelect: (item) => {
+      console.log('🌈 : item', item)
+      handleClosePopover()
+    },
   })
+
+  /**
+   * This function cleans the popover state and close it.
+   */
+  const handleClosePopover = useCallback(() => {
+    combo.reset()
+    setIsPopoverOpen(false)
+
+    // Focus back the key which we come from on the keymap
+    popoverElementRef.current?.focus()
+  }, [combo, popoverElementRef, setIsPopoverOpen])
 
   return (
     <Popover
       isOpen={isPopoverOpen}
-      onClose={() => {
-        combo.reset()
-        setIsPopoverOpen(false)
-      }}
+      onClose={handleClosePopover}
       placement="auto"
       modifiers={[popperDynamicRefModifier]}
       initialFocusRef={inputRef}
-      // We prefer useCbOnEscape : it works even when the popover isn't focused.
-      closeOnEsc={false}
+      // We'll return focus manually (we don't use PopoverTrigger, this prop wouldn't work)
+      returnFocusOnClose={false}
     >
       <PopoverTrigger>
         {/* This is only because <Popover /> requires an initial trigger. */}
@@ -50,10 +73,10 @@ const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
       </PopoverTrigger>
 
       <Portal>
-        <PopoverContent>
+        <PopoverContent w={400}>
           <PopoverHeader
             fontWeight="bold"
-            color="yellow.400"
+            color="primary.400"
             {...combo.getLabelProps()}
           >
             Edit a key
@@ -67,7 +90,6 @@ const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
               <Input
                 placeholder="Search by code"
                 variant="filled"
-                mb={3}
                 {...combo.getInputProps(
                   {
                     ref: (e) => (inputRef.current = e),
@@ -77,24 +99,52 @@ const KeymapPopover: FC<ReturnType<typeof usePopoverState>> = ({
               />
             </Box>
 
+            <Wrap m={3} spacing={3}>
+              {Object.entries(typeFilters).map(([id, type]) => (
+                <WrapItem key={id}>
+                  <Button
+                    onClick={() =>
+                      setTypeFilters({
+                        ...typeFilters,
+                        [id]: {
+                          ...type,
+                          isActive: !type.isActive,
+                        },
+                      })
+                    }
+                    size="xs"
+                    colorScheme={type.isActive ? type.color : 'gray'}
+                    leftIcon={type.isActive ? <CheckIcon /> : <AddIcon />}
+                  >
+                    {type.label}
+                  </Button>
+                </WrapItem>
+              ))}
+            </Wrap>
+
             <List
               {...combo.getMenuProps({}, { suppressRefError: true })}
               h="42vh" // Because 42.
               overflow="scroll"
             >
-              {inputItems.slice(0, 20).map((item, index) => (
-                <React.Fragment key={item.Key}>
-                  <KeymapPopoverListItem
-                    isHighlighted={index === combo.highlightedIndex}
-                    keyInfo={item}
-                    itemProps={combo.getItemProps({
-                      item,
-                      index,
-                    })}
-                  />
-                  <Divider />
-                </React.Fragment>
-              ))}
+              <Divider />
+              {inputItems
+                // Temporary limit for DOM performance. Will replace by virtualization later.
+                .slice(0, 40)
+                .map((item, index) => (
+                  <React.Fragment key={item.Key}>
+                    <KeymapPopoverListItem
+                      isHighlighted={index === combo.highlightedIndex}
+                      keyInfo={item}
+                      color={typeFilters[item.type].color}
+                      itemProps={combo.getItemProps({
+                        item,
+                        index,
+                      })}
+                    />
+                    <Divider />
+                  </React.Fragment>
+                ))}
             </List>
           </PopoverBody>
         </PopoverContent>
