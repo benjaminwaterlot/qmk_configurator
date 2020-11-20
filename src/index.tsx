@@ -2,11 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import reportWebVitals from './reportWebVitals'
 import { Provider } from 'react-redux'
-import {
-  ChakraProvider,
-  extendTheme,
-  theme as defaultTheme,
-} from '@chakra-ui/react'
+import { ChakraProvider } from '@chakra-ui/react'
 
 /**
  * Disable the outlines when navigating with a mouse.
@@ -14,46 +10,9 @@ import {
  */
 import 'focus-visible/dist/focus-visible'
 
-import App from './App'
+import App from 'App'
 import store from 'store'
-
-const theme = extendTheme({
-  shadows: {
-    outline: `0 0 0 3px ${defaultTheme.colors.yellow[400]}`,
-  },
-  colors: {
-    primary: defaultTheme.colors.yellow,
-  },
-  components: {
-    Select: {
-      baseStyle: {
-        field: {
-          _focus: {
-            borderColor: 'primary.400',
-          },
-        },
-      },
-    },
-    Input: {
-      baseStyle: {
-        field: {
-          _focus: {
-            borderColor: 'primary.400',
-          },
-        },
-      },
-      variants: {
-        filled: {
-          field: {
-            _focus: {
-              borderColor: 'primary.400',
-            },
-          },
-        },
-      },
-    },
-  },
-})
+import theme from 'theme'
 
 ReactDOM.render(
   <React.StrictMode>

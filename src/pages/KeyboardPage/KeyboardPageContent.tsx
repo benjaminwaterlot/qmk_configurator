@@ -3,15 +3,29 @@ import { Heading, Select, Tag, Stack, Box } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import pluralize from 'lib/pluralize'
+import { QMKKeymap } from './KeyboardPageContainer'
 
 interface KeyboardPageContentProps {
   keyboard: KeyboardDto
+  keymaps: QMKKeymap | null
 }
 
 export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
   keyboard,
+  keymaps,
 }) => {
-  const [layout, setLayout] = useState<string>(Object.keys(keyboard.layouts)[0])
+  if (!keymaps) throw new Error('A keymap should be found for this keyboard')
+
+  const [layout, setLayout] = useState<string>(
+    // Select by default the layout for which we have a keymap...
+    keymaps.layout ??
+      // Or the first layout, arbitrarily.
+      Object.keys(keyboard.layouts)[0],
+  )
+
+  // @todo change this (sometimes we want to create a new keymap !)
+  const keymap = keymaps.layers
+  console.log('🌈 : keymap', keymap)
 
   return (
     <Stack direction="column" spacing={5}>
@@ -43,7 +57,7 @@ export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
         </Select>
       </div>
 
-      <Keymap layout={keyboard.layouts[layout].layout} />
+      <Keymap layout={keyboard.layouts[layout].layout} keymap={keymap} />
     </Stack>
   )
 }

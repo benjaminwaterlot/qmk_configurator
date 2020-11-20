@@ -52,7 +52,7 @@ const useKeymapPopoverCombobox = ({
     alphanumeric: {
       label: 'Alphanumeric',
       color: 'orange',
-      isActive: false,
+      isActive: true,
     },
     controls: {
       label: 'Controls',

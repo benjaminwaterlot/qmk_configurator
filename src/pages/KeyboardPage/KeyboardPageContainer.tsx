@@ -7,6 +7,9 @@ import { useAppSelector } from 'store'
 import { Center, Spinner } from '@chakra-ui/react'
 import KeyboardPageContent from './KeyboardPageContent'
 
+import KEYMAP from 'content/keyboards/preonic_rev3_default.json'
+export type QMKKeymap = typeof KEYMAP
+
 export const KeyboardPageContainer = (
   props: RouteComponentProps & { keyboard: string },
 ) => {
@@ -21,10 +24,12 @@ export const KeyboardPageContainer = (
     keyboards.selectors.selectById(state, keyboardName),
   )
 
+  const DEFAULT_KEYMAPS = keyboardName === 'preonic/rev3' ? KEYMAP : null
+
   return (
     <>
       {keyboard ? (
-        <KeyboardPageContent keyboard={keyboard} />
+        <KeyboardPageContent keyboard={keyboard} keymaps={DEFAULT_KEYMAPS} />
       ) : (
         <Center minH="50vh">
           <Spinner size="xl" speed=".8s" color="primary.400" thickness="5px" />
