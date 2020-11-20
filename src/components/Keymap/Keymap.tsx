@@ -18,7 +18,7 @@ const Keymap: FC<KeymapProps> = (props) => {
 
   const popover = useKeymapPopoverState()
 
-  const [layer, setLayer] = useState<number>(0)
+  const [layer] = useState<number>(0)
 
   const handleSelection = (key: Key, keyIndex: number) => {
     console.log('yuaa', key)

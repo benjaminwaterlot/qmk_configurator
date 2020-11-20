@@ -9,7 +9,6 @@ import {
   PopoverBody,
   PopoverCloseButton,
   PopoverContent,
-  PopoverHeader,
   PopoverTrigger,
   Portal,
   Wrap,
@@ -78,13 +77,6 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
 
       <Portal>
         <PopoverContent w={400}>
-          <PopoverHeader
-            fontWeight="bold"
-            color="primary.400"
-            {...combo.getLabelProps()}
-          >
-            Edit a key
-          </PopoverHeader>
           <PopoverCloseButton />
           <PopoverBody p={0}>
             <Box
@@ -94,6 +86,8 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
               <Input
                 placeholder="Search by code"
                 variant="filled"
+                w="unset"
+                minW="75%"
                 {...combo.getInputProps(
                   {
                     ref: (e) => (inputRef.current = e),

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import {
   Heading,
   Select,
@@ -17,41 +17,35 @@ import {
 import Keymap from 'components/Keymap'
 import pluralize from 'lib/pluralize'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
-import { QMKKeymap, QMKKeymapDto } from 'types/keymap.type'
-import { AddIcon, CopyIcon, DragHandleIcon } from '@chakra-ui/icons'
+import { QMKKeymapDto } from 'types/keymap.type'
+import { AddIcon, CopyIcon, DragHandleIcon, LockIcon } from '@chakra-ui/icons'
+import useKeyboardPageLayouts from './use-keyboard-page-layouts'
+import useKeyboardPageKeymaps from './use-keyboard-page-keymaps'
 
-interface KeyboardPageContentProps {
+/**
+ * This page displays a keyboard, its available layouts, its available keymaps,
+ * and a graphical UI way to see and edit the keymaps.
+ */
+interface KeyboardPageProps {
   keyboard: KeyboardDto
   defaultKeymaps: QMKKeymapDto | null
 }
 
-export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
+export const KeyboardPage: FC<KeyboardPageProps> = ({
   keyboard,
   defaultKeymaps,
 }) => {
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
-  const [currentLayout, setCurrentLayout] = useState<string>(
-    // Select by default the layout for which we have a keymap...
-    (keyboard.layouts[defaultKeymaps.layout] && defaultKeymaps.layout) ??
-      // Or the first layout, arbitrarily.
-      Object.keys(keyboard.layouts)[0],
-  )
-
-  const [keymapsState, setKeymapsState] = useState({
-    currentKeymap: 'default',
-    keymaps: {
-      default: {
-        layout: defaultKeymaps.layout,
-        layers: defaultKeymaps.layers,
-      },
-    } as {
-      [_: string]: QMKKeymap
-    },
+  const { currentLayout, setCurrentLayout } = useKeyboardPageLayouts({
+    keyboard,
+    defaultKeymaps,
   })
 
-  console.log('🌈 : keymap', defaultKeymaps)
+  const { keymapsState } = useKeyboardPageKeymaps({
+    defaultKeymaps,
+  })
 
   return (
     <Stack direction="column" spacing={5}>
@@ -70,19 +64,15 @@ export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
         </Tag>
 
         <InputGroup>
-          {/* <InputLeftAddon>ye</InputLeftAddon> */}
           <InputLeftElement
             pointerEvents="none"
             children={<DragHandleIcon color="gray.300" />}
           />
 
           <Select
-            // pl={7}
             css={{
               paddingLeft: '36px',
-              // backgroundColor: 'tomato',
             }}
-            // borderLeftRadius="0"
             maxW={400}
             mb={4}
             value={currentLayout}
@@ -102,27 +92,13 @@ export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
       <Wrap>
         <WrapItem>
           <ButtonGroup size="sm" isAttached variant="outline">
-            <Tooltip
-              label={`Select another layout for this keymap (${currentLayout})`}
+            <Button
+              mr="-px"
+              isActive={keymapsState.currentKeymap === defaultKeymaps.keymap}
             >
-              <IconButton
-                aria-label={`Select another layout for this keymap (${currentLayout})`}
-                icon={<DragHandleIcon />}
-              />
-            </Tooltip>
-
-            <Button ml="-px" isActive={true}>
+              <LockIcon mr={2} />
               {defaultKeymaps.keymap}
             </Button>
-          </ButtonGroup>
-        </WrapItem>
-
-        <WrapItem>
-          <ButtonGroup size="sm" isAttached variant="outline">
-            <Button disabled mr="-px">
-              New keymap
-            </Button>
-
             <Tooltip
               label={`New keymap based on ${keymapsState.currentKeymap}`}
             >
@@ -131,11 +107,26 @@ export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
                 icon={<CopyIcon />}
               />
             </Tooltip>
+          </ButtonGroup>
+        </WrapItem>
 
+        <WrapItem>
+          <ButtonGroup size="sm" isAttached variant="outline">
+            <Tooltip label="New keymap from scratch">
+              <Button mr="-px">New keymap</Button>
+            </Tooltip>
             <Tooltip label="New keymap from scratch">
               <IconButton
                 aria-label="New keymap from scratch"
                 icon={<AddIcon />}
+              />
+            </Tooltip>
+            <Tooltip
+              label={`New keymap based on ${keymapsState.currentKeymap}`}
+            >
+              <IconButton
+                aria-label={`New keymap based on ${keymapsState.currentKeymap}`}
+                icon={<CopyIcon />}
               />
             </Tooltip>
           </ButtonGroup>
@@ -149,4 +140,4 @@ export const KeyboardPageContent: FC<KeyboardPageContentProps> = ({
   )
 }
 
-export default KeyboardPageContent
+export default KeyboardPage
