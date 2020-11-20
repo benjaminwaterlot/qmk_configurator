@@ -1,10 +1,10 @@
-import { Reducer, useReducer } from 'react'
+import { Reducer, useMemo, useReducer } from 'react'
 import { QMKKeymap, QMKKeymapDto } from 'types/keymap.type'
-import { LayoutReducer } from './use-keyboard-page-layouts'
-import cloneDeep from 'lodash/cloneDeep'
+import { LayoutStore } from './use-keyboard-page-layouts'
+import { sortBy, cloneDeep } from 'lodash'
 
 interface KeymapState {
-  currentKeymap: string
+  current: string
   keymaps: {
     [_: string]: QMKKeymap
   }
@@ -22,12 +22,20 @@ type KeymapAction =
         keymap: QMKKeymap
       }
     }
+  | { type: 'TOGGLE_EDIT_NAME' }
   | {
       type: 'DUPLICATE_KEYMAP'
       payload: string
     }
+  | {
+      type: 'EDIT_KEYMAP_NAME'
+      payload: {
+        before: string
+        after: string
+      }
+    }
 
-export interface KeymapReducer {
+export interface KeymapStore {
   state: KeymapState
   dispatch: React.Dispatch<KeymapAction>
 }
@@ -41,11 +49,21 @@ const reducer: Reducer<KeymapState, KeymapAction> = (state, action) => {
           ...state.keymaps,
           [action.payload.keymapName]: action.payload.keymap,
         },
-        currentKeymap: action.payload.keymapName,
+        current: action.payload.keymapName,
       }
 
     case 'SELECT_KEYMAP':
-      return { ...state, currentKeymap: action.payload }
+      return { ...state, current: action.payload }
+
+    case 'EDIT_KEYMAP_NAME':
+      const { [action.payload.before]: beforeKeymap, ...rest } = state.keymaps
+      return {
+        keymaps: {
+          ...rest,
+          [action.payload.after]: beforeKeymap,
+        },
+        current: action.payload.after,
+      }
 
     case 'DUPLICATE_KEYMAP':
       const copyName = action.payload + ' copy'
@@ -59,7 +77,7 @@ const reducer: Reducer<KeymapState, KeymapAction> = (state, action) => {
           // We deep-clone to avoid side-effects mutation
           [copyName]: cloneDeep(state.keymaps[action.payload]),
         },
-        currentKeymap: copyName,
+        current: copyName,
       }
 
     default:
@@ -75,23 +93,37 @@ const useKeyboardPageKeymaps = ({
   getLayouts,
 }: {
   defaultKeymaps: QMKKeymapDto
-  getLayouts: () => LayoutReducer
+  getLayouts: () => LayoutStore
 }) => {
   const [state, dispatch] = useReducer<typeof reducer>(reducer, {
-    currentKeymap: 'default',
+    current: defaultKeymaps.keymap,
     keymaps: {
-      default: {
-        layout: defaultKeymaps.layout,
-        layers: defaultKeymaps.layers,
-      },
-      'my keymap': {
+      [defaultKeymaps.keymap]: {
         layout: defaultKeymaps.layout,
         layers: defaultKeymaps.layers,
       },
     },
   })
 
-  return { state, dispatch }
+  /**
+   * Turn the keymaps into an array of tuples, and sort them by alphabetical order.
+   */
+  const sorted = useMemo(
+    () =>
+      sortBy(Object.entries(state.keymaps), [
+        ([key]) => key !== defaultKeymaps.keymap,
+        ([key]) => key.toLowerCase(),
+      ]),
+    [state.keymaps, defaultKeymaps.keymap],
+  )
+
+  return {
+    state: {
+      ...state,
+      sorted,
+    },
+    dispatch,
+  }
 }
 
 export default useKeyboardPageKeymaps

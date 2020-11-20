@@ -28,7 +28,7 @@ const Keymap: FC<KeymapProps> = (props) => {
   return (
     // Generate a canvas with correct proportions for this keyboard
     <AspectRatio ratio={width / height} maxW={width * 100}>
-      <Box h="100%">
+      <Box h="100%" m={-1}>
         {/* This is the popover to edit keys */}
         <KeymapPopover state={popover} onSelection={handleSelection} />
 

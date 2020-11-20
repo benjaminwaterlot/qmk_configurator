@@ -1,7 +1,7 @@
 import { Reducer, useReducer } from 'react'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymapDto } from 'types/keymap.type'
-import { KeymapReducer } from './use-keyboard-page-keymaps'
+import { KeymapStore } from './use-keyboard-page-keymaps'
 
 interface LayoutState {
   currentLayout: string
@@ -12,7 +12,7 @@ type LayoutAction = {
   payload: string
 }
 
-export interface LayoutReducer {
+export interface LayoutStore {
   state: LayoutState
   dispatch: React.Dispatch<LayoutAction>
 }
@@ -40,10 +40,11 @@ const useKeyboardPageLayouts = ({
 }: {
   keyboard: KeyboardDto
   defaultKeymaps: QMKKeymapDto
-  getKeymaps: () => KeymapReducer
+  getKeymaps: () => KeymapStore
 }) => {
   const [state, dispatch] = useReducer<typeof reducer>(reducer, {
     currentLayout:
+      // Select by default the layout assigned to the default keymap
       (keyboard.layouts[defaultKeymaps.layout] && defaultKeymaps.layout) ??
       // Or the first layout, arbitrarily.
       Object.keys(keyboard.layouts)[0],
