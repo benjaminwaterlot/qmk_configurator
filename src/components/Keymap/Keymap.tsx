@@ -60,4 +60,5 @@ const Keymap: FC<KeymapProps> = (props) => {
   )
 }
 
-export default Keymap
+export default React.memo(Keymap)
+// export default Keymap

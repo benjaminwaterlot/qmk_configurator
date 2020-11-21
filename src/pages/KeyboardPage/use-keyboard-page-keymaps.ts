@@ -3,6 +3,10 @@ import { QMKKeymap, QMKKeymapDto } from 'types/keymap.type'
 import { LayoutStore } from './use-keyboard-page-layouts'
 import { sortBy, cloneDeep } from 'lodash'
 
+import { createStandaloneToast } from '@chakra-ui/react'
+
+const toast = createStandaloneToast()
+
 interface KeymapState {
   current: string
   keymaps: {
@@ -12,7 +16,7 @@ interface KeymapState {
 
 type KeymapAction =
   | {
-      type: 'SELECT_KEYMAP'
+      type: 'SELECT_KEYMAP' | 'DELETE_KEYMAP' | 'DUPLICATE_KEYMAP'
       payload: string
     }
   | {
@@ -21,11 +25,6 @@ type KeymapAction =
         keymapName: string
         keymap: QMKKeymap
       }
-    }
-  | { type: 'TOGGLE_EDIT_NAME' }
-  | {
-      type: 'DUPLICATE_KEYMAP'
-      payload: string
     }
   | {
       type: 'EDIT_KEYMAP_NAME'
@@ -55,8 +54,32 @@ const reducer: Reducer<KeymapState, KeymapAction> = (state, action) => {
     case 'SELECT_KEYMAP':
       return { ...state, current: action.payload }
 
+    case 'DELETE_KEYMAP':
+      const { [action.payload]: deleted, ...keymaps } = state.keymaps
+
+      return {
+        ...state,
+        keymaps,
+        current:
+          state.current === action.payload
+            ? Object.keys(state.keymaps)[0]
+            : action.payload,
+      }
+
     case 'EDIT_KEYMAP_NAME':
       const { [action.payload.before]: beforeKeymap, ...rest } = state.keymaps
+
+      if (action.payload.after === state.current) return state
+      console.log('🌈 : state.current', state.current)
+
+      if (state.keymaps[action.payload.after]) {
+        toast({
+          title: 'A keymap already has this name.',
+          status: 'error',
+        })
+        return state
+      }
+
       return {
         keymaps: {
           ...rest,
