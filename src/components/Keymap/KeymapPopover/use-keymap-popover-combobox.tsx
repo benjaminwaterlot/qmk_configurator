@@ -1,10 +1,15 @@
-import KEYCODES_RAW from 'content/keycodes/all.json'
+import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import { useCombobox } from 'downshift'
 import GetArrayItemsType from 'lib/get-array-items-type'
 import formatKeyDescription from 'lib/format-key-description.lib'
 import { useMemo, useRef, useState } from 'react'
+import Keycode from 'content/keycodes/keycodes-enum'
+import KEYCODE_CATEGORIES, {
+  KeycodeCategory,
+} from 'content/keycodes/keycodes-categories'
 
-const KEYCODES = KEYCODES_RAW.map((key) => ({
+const KEYCODES = Object.entries(KEYCODES_DATA).map(([keycode, key]) => ({
+  Key: keycode as Keycode,
   ...key,
   formatted: formatKeyDescription(key.Description),
 }))
@@ -22,11 +27,24 @@ const useKeymapPopoverCombobox = ({
   const [inputItems, setInputItems] = useState(KEYCODES)
   const inputRef = useRef<HTMLElement | null>(null)
 
+  const [typeFilters, setTypeFilters] = useState(
+    Object.fromEntries(
+      Object.keys(KEYCODE_CATEGORIES).map(
+        (category) => [category, true] as [KeycodeCategory, boolean],
+      ),
+    ) as Record<KeycodeCategory, boolean>,
+  )
+
+  const filteredByType = useMemo(
+    () => inputItems.filter((item) => typeFilters[item.category]),
+    [inputItems, typeFilters],
+  )
+
   /**
    * Downshift hook which generates props for every DOM node of a combobox.
    */
   const combo = useCombobox({
-    items: inputItems,
+    items: filteredByType,
     itemToString: (item) => `${item?.Key}`,
     /**
      * Filter keycodes when the input changes.
@@ -47,41 +65,6 @@ const useKeymapPopoverCombobox = ({
       onComboboxSelection(changes.selectedItem)
     },
   })
-
-  const [typeFilters, setTypeFilters] = useState({
-    alphanumeric: {
-      label: 'Alphanumeric',
-      color: 'orange',
-      isActive: true,
-    },
-    controls: {
-      label: 'Controls',
-      color: 'purple',
-      isActive: false,
-    },
-    numeric: {
-      label: 'Numeric',
-      color: 'teal',
-      isActive: false,
-    },
-  } as {
-    [_: string]: {
-      label: string
-      color: string
-      isActive: boolean
-    }
-  })
-
-  const filteredByType = useMemo(
-    () =>
-      inputItems.filter((item) => {
-        const filter = typeFilters[item.type]
-        if (!filter) throw new Error(`No filter for key <${item.Key}>`)
-
-        return filter.isActive
-      }),
-    [inputItems, typeFilters],
-  )
 
   return {
     inputRef,

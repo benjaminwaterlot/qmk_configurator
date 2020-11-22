@@ -18,6 +18,9 @@ import usePopoverState from './use-keymap-popover-state'
 import useKeymapPopoverCombobox, { Key } from './use-keymap-popover-combobox'
 import KeymapPopoverListItem from './KeymapPopoverListItem'
 import { AddIcon, CheckIcon } from '@chakra-ui/icons'
+import KEYCODE_CATEGORIES, {
+  KeycodeCategory,
+} from 'content/keycodes/keycodes-categories'
 
 /**
  * A popover that allows to search and select a new keycode from a list.
@@ -98,26 +101,30 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
             </Box>
 
             <Wrap m={3} spacing={3}>
-              {Object.entries(typeFilters).map(([id, type]) => (
-                <WrapItem key={id}>
-                  <Button
-                    onClick={() =>
-                      setTypeFilters({
-                        ...typeFilters,
-                        [id]: {
-                          ...type,
-                          isActive: !type.isActive,
-                        },
-                      })
-                    }
-                    size="xs"
-                    colorScheme={type.isActive ? type.color : 'gray'}
-                    leftIcon={type.isActive ? <CheckIcon /> : <AddIcon />}
-                  >
-                    {type.label}
-                  </Button>
-                </WrapItem>
-              ))}
+              {(Object.entries(typeFilters) as [
+                KeycodeCategory,
+                boolean,
+              ][]).map(([category, isActive]) => {
+                return (
+                  <WrapItem key={category}>
+                    <Button
+                      onClick={() =>
+                        setTypeFilters({
+                          ...typeFilters,
+                          [category]: !isActive,
+                        })
+                      }
+                      size="xs"
+                      colorScheme={
+                        isActive ? KEYCODE_CATEGORIES[category].color : 'gray'
+                      }
+                      leftIcon={isActive ? <CheckIcon /> : <AddIcon />}
+                    >
+                      {KEYCODE_CATEGORIES[category].label}
+                    </Button>
+                  </WrapItem>
+                )
+              })}
             </Wrap>
 
             <List
@@ -134,7 +141,7 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
                     <KeymapPopoverListItem
                       isHighlighted={index === combo.highlightedIndex}
                       keyInfo={item}
-                      color={typeFilters[item.type].color}
+                      color={KEYCODE_CATEGORIES[item.category].color}
                       downshiftItemProps={combo.getItemProps({
                         item,
                         index,

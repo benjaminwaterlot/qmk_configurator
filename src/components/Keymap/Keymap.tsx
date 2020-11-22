@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { AspectRatio, Box } from '@chakra-ui/react'
 import KeyContainer from 'components/Key/KeyContainer'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
@@ -7,11 +7,12 @@ import KeymapPopover from './KeymapPopover/KeymapPopover'
 import useKeymapPopoverState from './KeymapPopover/use-keymap-popover-state'
 import { Key } from './KeymapPopover/use-keymap-popover-combobox'
 import { QMKKeymap } from 'types/keymap.type'
+import Keycode from 'content/keycodes/keycodes-enum'
 
 interface KeymapProps {
   layout: KeyboardLayoutDto
   keymap: QMKKeymap
-  onKeyEdit: (_: { layer: number; key: number; keycode: string }) => void
+  onKeyEdit: (_: { layer: number; key: number; keycode: Keycode }) => void
 }
 
 const Keymap: FC<KeymapProps> = (props) => {
@@ -24,6 +25,14 @@ const Keymap: FC<KeymapProps> = (props) => {
     console.log('yuaa', key)
     props.onKeyEdit({ layer, key: keyIndex, keycode: key.Key })
   }
+
+  const handleKeyClick = useCallback(
+    (ref, keyIndex) => {
+      popover.popoverElementRef.current = ref
+      popover.setPopoverOpenedAtIndex(keyIndex)
+    },
+    [popover],
+  )
 
   return (
     // Generate a canvas with correct proportions for this keyboard
@@ -45,12 +54,9 @@ const Keymap: FC<KeymapProps> = (props) => {
           >
             <Box p={1} h="100%" w="100%">
               <KeyContainer
-                coordinates={key}
+                // coordinates={key}
                 keycode={props.keymap.layers[layer][keyIndex]}
-                onClick={(ref) => {
-                  popover.popoverElementRef.current = ref
-                  popover.setPopoverOpenedAtIndex(keyIndex)
-                }}
+                onClick={(ref) => handleKeyClick(ref, keyIndex)}
               />
             </Box>
           </Box>

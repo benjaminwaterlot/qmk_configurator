@@ -9,4 +9,8 @@ const theme = extendTheme({
   components,
 })
 
+type Theme = typeof theme
+
+export type ThemeColor = keyof Theme['colors']
+
 export default theme

@@ -6,7 +6,7 @@
     "Windows": "*N/A*",
     "macOS": "*N/A*",
     "Linux<sup>1</sup>": "*N/A*",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_TRANSPARENT",
@@ -15,7 +15,7 @@
     "Windows": "*N/A*",
     "macOS": "*N/A*",
     "Linux<sup>1</sup>": "*N/A*",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_A",
@@ -24,7 +24,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_B",
@@ -33,7 +33,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_C",
@@ -42,7 +42,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_D",
@@ -51,7 +51,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_E",
@@ -60,7 +60,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F",
@@ -69,7 +69,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_G",
@@ -78,7 +78,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_H",
@@ -87,7 +87,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_I",
@@ -96,7 +96,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_J",
@@ -105,7 +105,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_K",
@@ -114,7 +114,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_L",
@@ -123,7 +123,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_M",
@@ -132,7 +132,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_N",
@@ -141,7 +141,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_O",
@@ -150,7 +150,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_P",
@@ -159,7 +159,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_Q",
@@ -168,7 +168,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_R",
@@ -177,7 +177,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_S",
@@ -186,7 +186,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_T",
@@ -195,7 +195,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_U",
@@ -204,7 +204,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_V",
@@ -213,7 +213,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_W",
@@ -222,7 +222,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_X",
@@ -231,7 +231,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_Y",
@@ -240,7 +240,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_Z",
@@ -249,7 +249,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_1",
@@ -393,7 +393,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_EQUAL",
@@ -402,7 +402,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LBRACKET",
@@ -411,7 +411,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_RBRACKET",
@@ -420,7 +420,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_BSLASH",
@@ -429,7 +429,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_NONUS_HASH",
@@ -438,7 +438,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SCOLON",
@@ -447,7 +447,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_QUOTE",
@@ -456,7 +456,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_GRAVE",
@@ -465,7 +465,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_COMMA",
@@ -474,7 +474,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_DOT",
@@ -483,7 +483,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SLASH",
@@ -492,7 +492,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_CAPSLOCK",
@@ -501,7 +501,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F1",
@@ -510,7 +510,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F2",
@@ -519,7 +519,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F3",
@@ -528,7 +528,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F4",
@@ -537,7 +537,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F5",
@@ -546,7 +546,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F6",
@@ -555,7 +555,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F7",
@@ -564,7 +564,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F8",
@@ -573,7 +573,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F9",
@@ -582,7 +582,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F10",
@@ -591,7 +591,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F11",
@@ -600,7 +600,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F12",
@@ -609,7 +609,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_PSCREEN",
@@ -618,7 +618,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>2</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SCROLLLOCK",
@@ -627,7 +627,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>2</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_PAUSE",
@@ -636,7 +636,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>2</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INSERT",
@@ -645,7 +645,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_HOME",
@@ -654,7 +654,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_PGUP",
@@ -663,7 +663,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_DELETE",
@@ -672,7 +672,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_END",
@@ -681,7 +681,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_PGDOWN",
@@ -690,7 +690,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_RIGHT",
@@ -699,7 +699,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LEFT",
@@ -708,7 +708,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_DOWN",
@@ -717,7 +717,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_UP",
@@ -726,7 +726,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_NUMLOCK",
@@ -735,7 +735,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_SLASH",
@@ -744,7 +744,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_ASTERISK",
@@ -753,7 +753,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_MINUS",
@@ -762,7 +762,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_PLUS",
@@ -771,7 +771,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_ENTER",
@@ -780,7 +780,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_1",
@@ -789,7 +789,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_2",
@@ -798,7 +798,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_3",
@@ -807,7 +807,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_4",
@@ -816,7 +816,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_5",
@@ -825,7 +825,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_6",
@@ -834,7 +834,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_7",
@@ -843,7 +843,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_8",
@@ -852,7 +852,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_9",
@@ -861,7 +861,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_0",
@@ -870,7 +870,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_DOT",
@@ -879,7 +879,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_NONUS_BSLASH",
@@ -888,7 +888,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_APPLICATION",
@@ -897,7 +897,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_POWER",
@@ -906,7 +906,7 @@
     "Windows": "",
     "macOS": "✔<sup>3</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_EQUAL",
@@ -915,7 +915,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F13",
@@ -924,7 +924,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F14",
@@ -933,7 +933,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F15",
@@ -942,7 +942,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F16",
@@ -951,7 +951,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F17",
@@ -960,7 +960,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F18",
@@ -969,7 +969,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F19",
@@ -978,7 +978,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F20",
@@ -987,7 +987,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F21",
@@ -996,7 +996,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F22",
@@ -1005,7 +1005,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F23",
@@ -1014,7 +1014,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_F24",
@@ -1023,7 +1023,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_EXECUTE",
@@ -1032,7 +1032,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_HELP",
@@ -1041,7 +1041,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MENU",
@@ -1050,7 +1050,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SELECT",
@@ -1059,7 +1059,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_STOP",
@@ -1068,7 +1068,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_AGAIN",
@@ -1077,7 +1077,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_UNDO",
@@ -1086,7 +1086,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_CUT",
@@ -1095,7 +1095,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_COPY",
@@ -1104,7 +1104,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_PASTE",
@@ -1113,7 +1113,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_FIND",
@@ -1122,7 +1122,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC__MUTE",
@@ -1131,7 +1131,7 @@
     "Windows": "",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC__VOLUP",
@@ -1140,7 +1140,7 @@
     "Windows": "",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC__VOLDOWN",
@@ -1149,7 +1149,7 @@
     "Windows": "",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LOCKING_CAPS",
@@ -1158,7 +1158,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LOCKING_NUM",
@@ -1167,7 +1167,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LOCKING_SCROLL",
@@ -1176,7 +1176,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_COMMA",
@@ -1185,7 +1185,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_KP_EQUAL_AS400",
@@ -1194,7 +1194,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT1",
@@ -1203,7 +1203,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT2",
@@ -1212,7 +1212,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT3",
@@ -1221,7 +1221,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT4",
@@ -1230,7 +1230,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT5",
@@ -1239,7 +1239,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT6",
@@ -1248,7 +1248,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT7",
@@ -1257,7 +1257,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT8",
@@ -1266,7 +1266,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_INT9",
@@ -1275,7 +1275,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG1",
@@ -1284,7 +1284,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG2",
@@ -1293,7 +1293,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG3",
@@ -1302,7 +1302,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG4",
@@ -1311,7 +1311,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG5",
@@ -1320,7 +1320,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG6",
@@ -1329,7 +1329,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG7",
@@ -1338,7 +1338,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG8",
@@ -1347,7 +1347,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LANG9",
@@ -1356,7 +1356,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_ALT_ERASE",
@@ -1365,7 +1365,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SYSREQ",
@@ -1374,7 +1374,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_CANCEL",
@@ -1383,7 +1383,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_CLEAR",
@@ -1392,7 +1392,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_PRIOR",
@@ -1401,7 +1401,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_RETURN",
@@ -1410,7 +1410,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SEPARATOR",
@@ -1419,7 +1419,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_OUT",
@@ -1428,7 +1428,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_OPER",
@@ -1437,7 +1437,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_CLEAR_AGAIN",
@@ -1446,7 +1446,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_CRSEL",
@@ -1455,7 +1455,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_EXSEL",
@@ -1464,7 +1464,7 @@
     "Windows": "",
     "macOS": "",
     "Linux<sup>1</sup>": "",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LCTRL",
@@ -1473,7 +1473,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LSHIFT",
@@ -1482,7 +1482,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LALT",
@@ -1491,7 +1491,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_LGUI",
@@ -1500,7 +1500,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_RCTRL",
@@ -1509,7 +1509,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_RSHIFT",
@@ -1518,7 +1518,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_RALT",
@@ -1527,7 +1527,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_RGUI",
@@ -1536,7 +1536,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SYSTEM_POWER",
@@ -1545,7 +1545,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>3</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SYSTEM_SLEEP",
@@ -1554,7 +1554,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>3</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_SYSTEM_WAKE",
@@ -1563,7 +1563,7 @@
     "Windows": "",
     "macOS": "✔<sup>3</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_AUDIO_MUTE",
@@ -1572,7 +1572,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_AUDIO_VOL_UP",
@@ -1581,7 +1581,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>4</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_AUDIO_VOL_DOWN",
@@ -1590,7 +1590,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>4</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_NEXT_TRACK",
@@ -1599,7 +1599,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>5</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_PREV_TRACK",
@@ -1608,7 +1608,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>5</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_STOP",
@@ -1617,7 +1617,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_PLAY_PAUSE",
@@ -1626,7 +1626,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_SELECT",
@@ -1635,7 +1635,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_EJECT",
@@ -1644,7 +1644,7 @@
     "Windows": "",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MAIL",
@@ -1653,7 +1653,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_CALCULATOR",
@@ -1662,7 +1662,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MY_COMPUTER",
@@ -1671,7 +1671,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_WWW_SEARCH",
@@ -1680,7 +1680,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_WWW_HOME",
@@ -1689,7 +1689,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_WWW_BACK",
@@ -1698,7 +1698,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_WWW_FORWARD",
@@ -1707,7 +1707,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_WWW_STOP",
@@ -1716,7 +1716,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_WWW_REFRESH",
@@ -1725,7 +1725,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_WWW_FAVORITES",
@@ -1734,7 +1734,7 @@
     "Windows": "✔",
     "macOS": "",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_FAST_FORWARD",
@@ -1743,7 +1743,7 @@
     "Windows": "✔",
     "macOS": "✔<sup>5</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_MEDIA_REWIND",
@@ -1752,7 +1752,7 @@
     "Windows": "✔<sup>6</sup>",
     "macOS": "✔<sup>5</sup>",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_BRIGHTNESS_UP",
@@ -1761,7 +1761,7 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   },
   {
     "Key": "KC_BRIGHTNESS_DOWN",
@@ -1770,6 +1770,6 @@
     "Windows": "✔",
     "macOS": "✔",
     "Linux<sup>1</sup>": "✔",
-    "type": "alphanumeric"
+    "type": "alphabet"
   }
 ]

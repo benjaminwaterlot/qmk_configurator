@@ -6,8 +6,8 @@ import keyboards from 'store/keyboards'
 import { useAppSelector } from 'store'
 import { Center, Spinner } from '@chakra-ui/react'
 import KeyboardPage from './KeyboardPage'
-
 import KEYMAP from 'content/keyboards/preonic_rev3_default.json'
+import { QMKKeymapDto } from 'types/keymap.type'
 
 /**
  * This component loads the data needed for KeyboardPageContent, then renders it.
@@ -33,7 +33,10 @@ export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
   return (
     <>
       {keyboard ? (
-        <KeyboardPage keyboard={keyboard} defaultKeymaps={DEFAULT_KEYMAPS} />
+        <KeyboardPage
+          keyboard={keyboard}
+          defaultKeymaps={DEFAULT_KEYMAPS as QMKKeymapDto}
+        />
       ) : (
         <Center minH="50vh">
           <Spinner size="xl" speed=".8s" color="primary.400" thickness="5px" />

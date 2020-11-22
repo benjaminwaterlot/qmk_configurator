@@ -8,6 +8,7 @@ import { PartialDeep } from 'type-fest'
 import { useToast } from '@chakra-ui/react'
 import { cloneDeep, sortBy } from 'lodash'
 import { merge, assign } from 'lodash/fp'
+import Keycode from 'content/keycodes/keycodes-enum'
 
 interface State {
   layouts: {
@@ -51,7 +52,7 @@ type Action =
       payload: {
         key: number
         layer: number
-        keycode: string
+        keycode: Keycode
       }
     }
   | {

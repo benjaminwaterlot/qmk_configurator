@@ -1,4 +1,5 @@
 import KEYMAP from 'content/keyboards/preonic_rev3_default.json'
+import Keycode from 'content/keycodes/keycodes-enum'
 
 /**
  * This is an alias (unused) type.
@@ -8,7 +9,7 @@ type QMKKeymapRaw = typeof KEYMAP
 /**
  * This is all keycodes of a QMK layer.
  */
-export type QMKLayer = string[]
+export type QMKLayer = Keycode[]
 
 /**
  * This is the way QMK Api transfers Keymaps.
