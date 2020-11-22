@@ -88,7 +88,11 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                     }
                     mx="-px"
                   />
-                  <EditableInput size={keymapName.length} py="3px" px="12px" />
+                  <EditableInput
+                    size={state.keymaps.current.length}
+                    py="3px"
+                    px="12px"
+                  />
                 </Editable>
               ) : (
                 <Button

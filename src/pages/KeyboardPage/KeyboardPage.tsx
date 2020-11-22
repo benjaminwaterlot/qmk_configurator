@@ -3,8 +3,6 @@ import { Heading, Stack, Box, Tag } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymapDto } from 'types/keymap.type'
-import useKeyboardPageLayouts from './KeyboardPageLayouts/use-keyboard-page-layouts'
-import useKeyboardPageKeymaps from './KeyboardPageKeymaps/use-keyboard-page-keymaps'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
 import pluralize from 'lib/pluralize'
@@ -37,17 +35,6 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   useEffect(() => console.info('[KEYBOARD STORE | NEW STATE]', store.state), [
     store.state,
   ])
-
-  const layouts = useKeyboardPageLayouts({
-    keyboard,
-    defaultLayout: defaultKeymaps.layout,
-    getKeymaps: () => keymaps,
-  })
-
-  const keymaps = useKeyboardPageKeymaps({
-    defaultKeymaps,
-    getLayouts: () => layouts,
-  })
 
   return (
     <Stack direction="column" spacing={5}>
@@ -88,8 +75,8 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
 
       {/* Keymap visualisator */}
       <Keymap
-        layout={keyboard.layouts[layouts.state.current].layout}
-        keymap={defaultKeymaps}
+        layout={store.state.layouts.list[store.state.layouts.current].layout}
+        keymap={store.state.keymaps.list[store.state.keymaps.default]}
       />
     </Stack>
   )

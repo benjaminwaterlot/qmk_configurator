@@ -6,23 +6,21 @@ import { useDimensionsFromLayout } from './keymap.lib'
 import KeymapPopover from './KeymapPopover/KeymapPopover'
 import useKeymapPopoverState from './KeymapPopover/use-keymap-popover-state'
 import { Key } from './KeymapPopover/use-keymap-popover-combobox'
-import { QMKKeymapDto } from 'types/keymap.type'
+import { QMKKeymap } from 'types/keymap.type'
 
 interface KeymapProps {
   layout: KeyboardLayoutDto
-  keymap: QMKKeymapDto
+  keymap: QMKKeymap
 }
 
 const Keymap: FC<KeymapProps> = (props) => {
   const { width, height } = useDimensionsFromLayout(props.layout)
-
   const popover = useKeymapPopoverState()
 
   const [layer] = useState<number>(0)
 
   const handleSelection = (key: Key, keyIndex: number) => {
     console.log('yuaa', key)
-    console.log('yuaa', keyIndex)
   }
 
   return (
@@ -61,4 +59,3 @@ const Keymap: FC<KeymapProps> = (props) => {
 }
 
 export default React.memo(Keymap)
-// export default Keymap
