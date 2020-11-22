@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import {
   Button,
   Wrap,
@@ -13,33 +13,40 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { AddIcon, CopyIcon, LockIcon, SettingsIcon } from '@chakra-ui/icons'
-import useKeyboardPageKeymaps from './use-keyboard-page-keymaps'
-import { QMKKeymapDto } from 'types/keymap.type'
 import KeyboardPageKeymapSettings from './KeyboardPageKeymapSettings'
+import { KeyboardStore } from '../keyboard.store'
 
 interface KeyboardPageKeymapSelectProps {
-  keymapStore: ReturnType<typeof useKeyboardPageKeymaps>
-  defaultKeymaps: QMKKeymapDto
-  currentLayout: string
+  keyboardStore: KeyboardStore
 }
 
 const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
-  keymapStore,
-  defaultKeymaps,
-  currentLayout,
+  keyboardStore,
 }) => {
+  const { state, dispatch } = keyboardStore
   const modal = useDisclosure()
 
   return (
     <Wrap>
-      <KeyboardPageKeymapSettings {...modal} keymapStore={keymapStore} />
-      {keymapStore.state.sorted.map(([keymapName, keymap], keymapIndex) => {
-        const isReadonly = keymapName === defaultKeymaps.keymap
-        const isActive = keymapStore.state.current === keymapName
+      <KeyboardPageKeymapSettings
+        // For safety, reset the component state when changing keymap
+        key={`${state.keymaps.current}-${state.layouts.current}`}
+        {...modal}
+        keyboardStore={keyboardStore}
+      />
+
+      {state.keymaps.sorted.map(([keymapName, keymap], keymapIndex) => {
+        const isReadonly = keymapName === state.keymaps.default
+        const isActive = keymapName === state.keymaps.current
 
         return (
           <WrapItem key={keymapName} fontFamily="mono">
-            <ButtonGroup size="sm" isAttached variant="outline">
+            <ButtonGroup
+              size="sm"
+              isAttached
+              variant="outline"
+              borderColor="primary.400"
+            >
               {/* The "layout" button, which allows to select another layout for this keymap. */}
               {isActive && !isReadonly && (
                 <Tooltip label={`${keymap.layout}`}>
@@ -58,8 +65,8 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
               {isActive && !isReadonly ? (
                 <Editable
                   onSubmit={(name) => {
-                    keymapStore.dispatch({
-                      type: 'EDIT_KEYMAP_NAME',
+                    dispatch({
+                      type: 'KEYMAP_EDIT_NAME',
                       payload: {
                         before: keymapName,
                         after: name,
@@ -86,9 +93,10 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
               ) : (
                 <Button
                   cursor={isActive && isReadonly ? 'unset' : 'pointer'}
+                  isActive={isActive}
                   onClick={() =>
-                    keymapStore.dispatch({
-                      type: 'SELECT_KEYMAP',
+                    dispatch({
+                      type: 'KEYMAP_SELECT',
                       payload: keymapName,
                     })
                   }
@@ -108,8 +116,8 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                       borderLeftRadius: 'none',
                     })}
                     onClick={() =>
-                      keymapStore.dispatch({
-                        type: 'DUPLICATE_KEYMAP',
+                      dispatch({
+                        type: 'KEYMAP_DUPLICATE',
                         payload: keymapName,
                       })
                     }
@@ -129,26 +137,24 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
           isAttached
           variant="solid"
           onClick={() =>
-            keymapStore.dispatch({
-              type: 'CREATE_KEYMAP',
+            dispatch({
+              type: 'KEYMAP_CREATE',
               payload: {
-                keymapName: `New ${Math.floor(Math.random() * 100)}`,
-                keymap: { layout: currentLayout, layers: [] },
+                name: `New ${Math.floor(Math.random() * 100)}`,
+                keymap: { layout: state.layouts.current, layers: [] },
               },
             })
           }
         >
-          <Tooltip label="New keymap from scratch">
-            <Button
-              bg={useColorModeValue('gray.50', 'gray.900')}
-              mr="-px"
-              rightIcon={<AddIcon />}
-              variant="outline"
-              fontFamily="mono"
-            >
-              New keymap
-            </Button>
-          </Tooltip>
+          <Button
+            bg={useColorModeValue('gray.50', 'gray.900')}
+            mr="-px"
+            rightIcon={<AddIcon />}
+            variant="outline"
+            fontFamily="mono"
+          >
+            New keymap
+          </Button>
         </ButtonGroup>
       </WrapItem>
     </Wrap>

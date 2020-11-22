@@ -1,12 +1,14 @@
-import React, { FC } from 'react'
-import { Heading, Stack, Box } from '@chakra-ui/react'
+import React, { FC, useEffect } from 'react'
+import { Heading, Stack, Box, Tag } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymapDto } from 'types/keymap.type'
-import useKeyboardPageLayouts from './use-keyboard-page-layouts'
-import useKeyboardPageKeymaps from './use-keyboard-page-keymaps'
-import KeyboardPageLayoutSelect from './KeyboardPageLayoutSelect'
-import KeyboardPageKeymapSelect from './KeyboardPageKeymapSelect'
+import useKeyboardPageLayouts from './KeyboardPageLayouts/use-keyboard-page-layouts'
+import useKeyboardPageKeymaps from './KeyboardPageKeymaps/use-keyboard-page-keymaps'
+import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
+import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
+import pluralize from 'lib/pluralize'
+import useKeyboardStore from './keyboard.store'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
@@ -24,9 +26,21 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
+  const store = useKeyboardStore({
+    keyboard,
+    defaultLayout: defaultKeymaps.layout,
+    defaultKeymap: defaultKeymaps,
+  })
+
+  window.dev.store = store
+
+  useEffect(() => console.info('[KEYBOARD STORE | NEW STATE]', store.state), [
+    store.state,
+  ])
+
   const layouts = useKeyboardPageLayouts({
     keyboard,
-    defaultKeymaps,
+    defaultLayout: defaultKeymaps.layout,
     getKeymaps: () => keymaps,
   })
 
@@ -54,24 +68,27 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
       </Box>
 
       {/* Layout selector */}
-      <KeyboardPageLayoutSelect
-        layouts={keyboard.layouts}
-        currentLayout={layouts.state.currentLayout}
-        setCurrentLayout={(layout: string) =>
-          layouts.dispatch({ type: 'SELECT_LAYOUT', payload: layout })
-        }
-      />
+      <Box>
+        <Tag variant="subtle" colorScheme="primary" mb={2}>
+          {pluralize(Object.values(store.state.layouts.list).length, 'layout')}
+        </Tag>
+
+        <KeyboardPageLayoutSelect
+          mb={4}
+          list={store.state.layouts.list}
+          value={store.state.layouts.current}
+          onChange={(layout: string) =>
+            store.dispatch({ type: 'LAYOUT_SELECT', payload: layout })
+          }
+        />
+      </Box>
 
       {/* Keymap selector and editor */}
-      <KeyboardPageKeymapSelect
-        currentLayout={layouts.state.currentLayout}
-        keymapStore={keymaps}
-        defaultKeymaps={defaultKeymaps}
-      />
+      <KeyboardPageKeymapSelect keyboardStore={store} />
 
       {/* Keymap visualisator */}
       <Keymap
-        layout={keyboard.layouts[layouts.state.currentLayout].layout}
+        layout={keyboard.layouts[layouts.state.current].layout}
         keymap={defaultKeymaps}
       />
     </Stack>

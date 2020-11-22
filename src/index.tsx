@@ -14,6 +14,19 @@ import App from 'App'
 import store from 'store'
 import theme from 'theme'
 
+/**
+ * Dev tools
+ */
+declare global {
+  interface Window {
+    dev: {
+      [_: string]: any
+    }
+  }
+}
+
+window.dev = {}
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
