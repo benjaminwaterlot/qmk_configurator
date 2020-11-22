@@ -4,11 +4,10 @@ import { KeyCoordinates } from 'components/Key/key.types'
 import last from 'lodash/last'
 
 interface KeyContentProps {
-  coordinates: KeyCoordinates
   keycode: string
 }
 
-const KeyContent: FC<KeyContentProps> = ({ coordinates, keycode }) => (
+const KeyContent: FC<KeyContentProps> = ({ keycode }) => (
   <Grid w="100%" p={[1, 1, 2]} h="100%" templateRows="1fr 2fr 1fr">
     <Text
       fontSize={['xs']}
@@ -16,16 +15,16 @@ const KeyContent: FC<KeyContentProps> = ({ coordinates, keycode }) => (
       color={useColorModeValue('gray.400', 'gray.600')}
       textAlign="left"
     >
-      {keycode ?? coordinates.label ?? '/'}
+      {keycode ?? '/'}
     </Text>
     <Center>
       <Text
         fontFamily="mono"
-        fontSize={['xs', 'xs', 'md', keycode.length > 4 ? 'lg' : '3xl']}
+        fontSize={['xs', 'xs', 'md', keycode?.length > 4 ? 'lg' : '3xl']}
         color={useColorModeValue('gray.700', 'gray.200')}
       >
         {/* <Kbd>{last(keycode.split('_'))}</Kbd> */}
-        {last(keycode.split('_'))}
+        {keycode ? last(keycode.split('_')) : '/'}
       </Text>
     </Center>
   </Grid>

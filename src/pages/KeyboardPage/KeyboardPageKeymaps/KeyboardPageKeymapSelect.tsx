@@ -145,7 +145,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
               type: 'KEYMAP_CREATE',
               payload: {
                 name: `New ${Math.floor(Math.random() * 100)}`,
-                keymap: { layout: state.layouts.current, layers: [] },
+                layout: state.layouts.current,
               },
             })
           }

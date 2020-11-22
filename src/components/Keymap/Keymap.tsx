@@ -11,6 +11,7 @@ import { QMKKeymap } from 'types/keymap.type'
 interface KeymapProps {
   layout: KeyboardLayoutDto
   keymap: QMKKeymap
+  onKeyEdit: (_: { layer: number; key: number; keycode: string }) => void
 }
 
 const Keymap: FC<KeymapProps> = (props) => {
@@ -21,6 +22,7 @@ const Keymap: FC<KeymapProps> = (props) => {
 
   const handleSelection = (key: Key, keyIndex: number) => {
     console.log('yuaa', key)
+    props.onKeyEdit({ layer, key: keyIndex, keycode: key.Key })
   }
 
   return (

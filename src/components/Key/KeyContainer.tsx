@@ -29,7 +29,7 @@ const KeyContainer: FC<KeyContainerProps> = ({
       ref={ref}
       onClick={() => onClick(ref.current)}
     >
-      <KeyContent coordinates={coordinates} keycode={keycode} />
+      <KeyContent keycode={keycode} />
     </Button>
   )
 }

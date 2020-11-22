@@ -36,7 +36,7 @@ type Action =
       type: 'KEYMAP_CREATE'
       payload: {
         name: string
-        keymap: QMKKeymap
+        layout: string
       }
     }
   | {
@@ -44,6 +44,14 @@ type Action =
       payload: {
         before: string
         after: string
+      }
+    }
+  | {
+      type: 'KEYMAP_EDIT_KEY'
+      payload: {
+        key: number
+        layer: number
+        keycode: string
       }
     }
   | {
@@ -80,21 +88,74 @@ const useKeyboardStore = (initialData: {
         })
 
       case 'KEYMAP_CREATE':
+        if (state.keymaps.list[action.payload.name]) {
+          toast({
+            title: `A keymap already has the name [${action.payload.name}]`,
+            status: 'error',
+          })
+
+          return state
+        }
+
         return mergeKeyboardState({
           keymaps: {
             list: {
-              [action.payload.name]: action.payload.keymap,
+              [action.payload.name]: {
+                layout: action.payload.layout,
+                layers: [
+                  Array(state.layouts.list[action.payload.layout].key_count)
+                    .fill(undefined)
+                    .map(() => 'KC_NO'),
+                ],
+              },
             },
             current: action.payload.name,
           },
         })
 
       case 'KEYMAP_EDIT_LAYOUT':
+        const editedKeymap = state.keymaps.list[action.payload.keymap]
+        const newLayout = state.layouts.list[action.payload.layout]
+
         return mergeKeyboardState({
           keymaps: {
             [action.payload.keymap]: {
-              layers: state.keymaps.list[action.payload.keymap].layers,
+              layers: [
+                // For each layer of the original keymap...
+                Array(Object.keys(editedKeymap.layers).length)
+                  .fill(undefined)
+                  .map((_, layerIndex) =>
+                    // Create a new layer with the old keys, but with the new keymap length
+                    Array(newLayout.key_count)
+                      .fill(undefined)
+                      .map(
+                        (_, keyIndex) =>
+                          // Each key contains the same key, or if the new layer is longer than before,
+                          // the key is initialized to 'KC_NO'
+                          editedKeymap.layers[layerIndex]?.[keyIndex] ??
+                          'KC_NO',
+                      ),
+                  ),
+              ],
               layout: action.payload.layout,
+            },
+          },
+        })
+
+      case 'KEYMAP_EDIT_KEY':
+        const layers = cloneDeep(
+          state.keymaps.list[state.keymaps.current].layers,
+        )
+
+        layers[action.payload.layer][action.payload.key] =
+          action.payload.keycode
+
+        return mergeKeyboardState({
+          keymaps: {
+            list: {
+              [state.keymaps.current]: {
+                layers,
+              },
             },
           },
         })

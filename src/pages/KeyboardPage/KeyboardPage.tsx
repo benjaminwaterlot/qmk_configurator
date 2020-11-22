@@ -76,7 +76,13 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
       {/* Keymap visualisator */}
       <Keymap
         layout={store.state.layouts.list[store.state.layouts.current].layout}
-        keymap={store.state.keymaps.list[store.state.keymaps.default]}
+        keymap={store.state.keymaps.list[store.state.keymaps.current]}
+        onKeyEdit={(payload) =>
+          store.dispatch({
+            type: 'KEYMAP_EDIT_KEY',
+            payload,
+          })
+        }
       />
     </Stack>
   )
