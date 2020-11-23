@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { Heading, Stack, Box, Tag } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
@@ -7,6 +7,7 @@ import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSe
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
 import pluralize from 'lib/pluralize'
 import useKeyboardStore from './keyboard.store'
+import { useDimensionsFromLayout } from 'components/Keymap/keymap.lib'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
@@ -29,6 +30,10 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
     defaultLayout: defaultKeymaps.layout,
     defaultKeymap: defaultKeymaps,
   })
+
+  const dimensions = useDimensionsFromLayout(
+    store.state.layouts.list[store.state.layouts.current].layout,
+  )
 
   window.dev.store = store
 
@@ -75,8 +80,10 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
 
       {/* Keymap visualisator */}
       <Keymap
+        key={`keymap-${store.state.keymaps.current}`} // Reset the visualizer state on keymap change
         layout={store.state.layouts.list[store.state.layouts.current].layout}
         keymap={store.state.keymaps.list[store.state.keymaps.current]}
+        dimensions={dimensions}
         onKeyEdit={(payload) =>
           store.dispatch({
             type: 'KEYMAP_EDIT_KEY',
