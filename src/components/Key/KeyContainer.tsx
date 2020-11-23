@@ -1,5 +1,5 @@
 import React, { FC, useRef } from 'react'
-import { Button, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import { Button, useColorMode } from '@chakra-ui/react'
 import KeyContent from './KeyContent'
 import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import Keycode from 'content/keycodes/keycodes-enum'

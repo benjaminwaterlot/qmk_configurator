@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useEffect, useState } from 'react'
+import React, { FC, useCallback, useState } from 'react'
 import { getColor } from '@chakra-ui/theme-tools'
 import {
   AspectRatio,
@@ -7,6 +7,8 @@ import {
   Button,
   Box,
   Text,
+  Heading,
+  IconButton,
 } from '@chakra-ui/react'
 import KeyContainer from 'components/Key/KeyContainer'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
@@ -18,6 +20,7 @@ import Keycode from 'content/keycodes/keycodes-enum'
 import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import KEYCODE_CATEGORIES from 'content/keycodes/keycodes-categories'
 import theme from 'theme'
+import { AddIcon } from '@chakra-ui/icons'
 
 interface KeymapProps {
   layout: KeyboardLayoutDto
@@ -37,6 +40,8 @@ const Keymap: FC<KeymapProps> = (props) => {
     props.onKeyEdit({ layer: currentLayer, key: keyIndex, keycode: key.Key })
   }
 
+  const KEY_OFFSET = 0.15
+
   const handleKeyClick = useCallback(
     (ref, keyIndex) => {
       if (popover.popoverOpenedAtIndex !== keyIndex) {
@@ -49,7 +54,7 @@ const Keymap: FC<KeymapProps> = (props) => {
 
   return (
     <Stack direction="column" spacing={2}>
-      <SimpleGrid columns={[2, 4, 6]} spacing={5}>
+      <SimpleGrid columns={[2, 4, 6, 8]} spacing={5}>
         {props.keymap.layers.map((layer, layerIndex) => (
           <Button
             d="flex"
@@ -65,7 +70,7 @@ const Keymap: FC<KeymapProps> = (props) => {
               as="p"
               mt="-7px"
               mr={2}
-              opacity={0.4}
+              color="gray.500"
               textTransform="uppercase"
               fontSize="4xl"
               fontWeight="bold"
@@ -83,22 +88,33 @@ const Keymap: FC<KeymapProps> = (props) => {
                 <rect
                   opacity={0.9}
                   key={`${keyPlacement.x}-${keyPlacement.y}`}
-                  x={`${keyPlacement.x + 0.075}`}
-                  y={`${keyPlacement.y + 0.075}`}
-                  width={(keyPlacement.w ?? 1) - 0.15}
-                  height={(keyPlacement.h ?? 1) - 0.15}
-                  rx={0.2}
-                  ry={0.2}
-                  fill={getColor(
-                    theme,
-                    KEYCODE_CATEGORIES[KEYCODES_DATA[layer[keyIndex]]?.category]
-                      ?.color + '.400',
-                  )}
+                  x={`${keyPlacement.x + KEY_OFFSET}`}
+                  y={`${keyPlacement.y + KEY_OFFSET}`}
+                  width={(keyPlacement.w ?? 1) - KEY_OFFSET * 2}
+                  height={(keyPlacement.h ?? 1) - KEY_OFFSET * 2}
+                  rx={1}
+                  ry={1}
+                  fill={
+                    getColor(
+                      theme,
+                      KEYCODE_CATEGORIES[
+                        KEYCODES_DATA[layer[keyIndex]]?.category
+                      ]?.color + '.400',
+                    ) ?? getColor(theme, 'gray.900')
+                  }
                 />
               ))}
             </Box>
           </Button>
         ))}
+        <IconButton
+          color="gray.500"
+          icon={<AddIcon mx={4} fontSize="xl" />}
+          aria-label="Add a layer"
+          variant="outline"
+          h="100%"
+          justifySelf="start"
+        />
       </SimpleGrid>
 
       {/* Generate a canvas with correct proportions for this keyboard */}
