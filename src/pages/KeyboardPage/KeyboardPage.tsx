@@ -1,11 +1,10 @@
 import React, { FC, useEffect } from 'react'
-import { Heading, Stack, Box, Tag } from '@chakra-ui/react'
+import { Heading, Stack, Box } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymapDto } from 'types/keymap.type'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
-import pluralize from 'lib/pluralize'
 import useKeyboardStore from './keyboard.store'
 import { useDimensionsFromLayout } from 'components/Keymap/keymap.lib'
 
@@ -60,29 +59,23 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
       </Box>
 
       {/* Layout selector */}
-      <Box>
-        <Tag variant="subtle" colorScheme="primary" mb={2}>
-          {pluralize(Object.values(store.state.layouts.list).length, 'layout')}
-        </Tag>
-
-        <KeyboardPageLayoutSelect
-          mb={4}
-          list={store.state.layouts.list}
-          value={store.state.layouts.current}
-          onChange={(layout: string) =>
-            store.dispatch({ type: 'LAYOUT_SELECT', payload: layout })
-          }
-        />
-      </Box>
+      <KeyboardPageLayoutSelect
+        mb={4}
+        list={store.state.layouts.list}
+        value={store.state.layouts.current}
+        onChange={(layout: string) =>
+          store.dispatch({ type: 'LAYOUT_SELECT', payload: layout })
+        }
+      />
 
       {/* Keymap selector and editor */}
       <KeyboardPageKeymapSelect keyboardStore={store} />
 
       {/* Keymap visualisator */}
       <Keymap
+        store={store}
         key={`keymap-${store.state.keymaps.current}`} // Reset the visualizer state on keymap change
         layout={store.state.layouts.list[store.state.layouts.current].layout}
-        keymap={store.state.keymaps.list[store.state.keymaps.current]}
         dimensions={dimensions}
         onKeyEdit={(payload) =>
           store.dispatch({

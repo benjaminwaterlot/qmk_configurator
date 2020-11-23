@@ -62,6 +62,9 @@ type Action =
         layout: string
       }
     }
+  | {
+      type: 'KEYMAP_LAYER_CREATE'
+    }
 
 const useKeyboardStore = (initialData: {
   keyboard: KeyboardDto
@@ -111,6 +114,25 @@ const useKeyboardStore = (initialData: {
               },
             },
             current: action.payload.name,
+          },
+        })
+
+      case 'KEYMAP_LAYER_CREATE':
+        const keymap = state.keymaps.list[state.keymaps.current]
+        console.log('heeeey', keymap.layout)
+
+        return mergeKeyboardState({
+          keymaps: {
+            list: {
+              [state.keymaps.current]: {
+                layers: [
+                  ...keymap.layers,
+                  Array(keymap.layers[0].length)
+                    .fill(undefined)
+                    .map(() => 'KC_NO'),
+                ],
+              },
+            },
           },
         })
 
