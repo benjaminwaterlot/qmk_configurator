@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import { Button, useColorMode } from '@chakra-ui/react'
 import KeyContent from './KeyContent'
 import KEYCODES_DATA from 'content/keycodes/keycodes-data'
@@ -7,10 +7,18 @@ import KEYCODE_CATEGORIES from 'content/keycodes/keycodes-categories'
 
 interface KeyContainerProps {
   keycode: Keycode
+  keyIndex: number
   onClick: (ref: HTMLButtonElement | null) => void
+  onKeyDropped: (keyIndex: number) => void
 }
 
-const KeyContainer: FC<KeyContainerProps> = ({ keycode, onClick }) => {
+const KeyContainer: FC<KeyContainerProps> = ({
+  keycode,
+  keyIndex,
+  onClick,
+  onKeyDropped,
+}) => {
+  const [isDropHovered, setIsDropHovered] = useState(false)
   const isLight = useColorMode().colorMode === 'light'
   const ref = useRef<HTMLButtonElement | null>(null)
   const keyData = KEYCODES_DATA[keycode] ?? {
@@ -26,6 +34,33 @@ const KeyContainer: FC<KeyContainerProps> = ({ keycode, onClick }) => {
 
   return (
     <Button
+      draggable
+      // Necessary to prevent children from triggering onDragLeave
+      css={{
+        '*': {
+          pointerEvents: 'none',
+        },
+      }}
+      isActive={isDropHovered}
+      // When starting to drag this key, save its keycode in the drag event
+      onDragStart={(e) => {
+        e.dataTransfer.setData('keyIndex', keyIndex.toString())
+      }}
+      onDragEnter={(e) => {
+        setIsDropHovered(true)
+      }}
+      onDragLeave={() => setIsDropHovered(false)}
+      // This is necessary to allow onDrop to work
+      onDragOver={(event) => {
+        event.preventDefault()
+      }}
+      // When dropping another key on this one, trigger the change
+      onDrop={({ dataTransfer }) => {
+        setIsDropHovered(false)
+
+        const keyIndexString = dataTransfer.getData('keyIndex')
+        if (keyIndexString) onKeyDropped(Number(keyIndexString))
+      }}
       isFullWidth
       h="100%"
       p={0}

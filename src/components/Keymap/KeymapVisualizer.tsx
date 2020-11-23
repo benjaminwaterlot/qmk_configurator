@@ -13,6 +13,7 @@ interface KeymapVisualizerProps {
   keymap: QMKKeymap
   dimensions: { width: number; height: number }
   onKeyEdit: (_: { layer: number; key: number; keycode: Keycode }) => void
+  onKeySwap: (sourceKeyIndex: number, destinationKeyIndex: number) => void
   currentLayer: number
 }
 
@@ -20,6 +21,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   layout,
   keymap,
   onKeyEdit,
+  onKeySwap,
   currentLayer,
   dimensions: { width, height },
 }) => {
@@ -60,13 +62,16 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
             left={`${(key.x / width) * 100}%`}
             w={`${((key.w ?? 1) / width) * 100}%`}
             h={`${((key.h ?? 1) / height) * 100}%`}
+            p={1}
           >
-            <Stack p={1} h="100%" w="100%">
-              <KeyContainer
-                keycode={keymap.layers[currentLayer][keyIndex]}
-                onClick={(ref) => handleKeyClick(ref, keyIndex)}
-              />
-            </Stack>
+            <KeyContainer
+              keyIndex={keyIndex}
+              keycode={keymap.layers[currentLayer][keyIndex]}
+              onClick={(ref) => handleKeyClick(ref, keyIndex)}
+              onKeyDropped={(sourceKeyIndex) =>
+                onKeySwap(sourceKeyIndex, keyIndex)
+              }
+            />
           </Stack>
         ))}
       </Stack>

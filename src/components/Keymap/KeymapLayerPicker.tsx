@@ -15,16 +15,16 @@ import KEYCODE_CATEGORIES from 'content/keycodes/keycodes-categories'
 import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import { AddIcon } from '@chakra-ui/icons'
 
-interface KeymapLayoutPickerProps {
+interface KeymapLayerPickerProps {
   layout: KeyboardLayoutDto
   layers: QMKLayer[]
   dimensions: { width: number; height: number }
   currentLayer: number
-  onLayoutSelect: (index: number) => void
-  onLayoutCreate: () => void
+  onLayerSelect: (index: number) => void
+  onLayerCreate: () => void
 }
 
-const KeymapLayoutPicker: FC<KeymapLayoutPickerProps> = (props) => {
+const KeymapLayerPicker: FC<KeymapLayerPickerProps> = (props) => {
   const isLight = useColorMode().colorMode === 'light'
   const KEY_OFFSET = 0.15
 
@@ -37,7 +37,7 @@ const KeymapLayoutPicker: FC<KeymapLayoutPickerProps> = (props) => {
           h="auto"
           p="6px 6px 6px 8px"
           key={layerIndex}
-          onClick={() => props.onLayoutSelect(layerIndex)}
+          onClick={() => props.onLayerSelect(layerIndex)}
           isActive={props.currentLayer === layerIndex}
           variant="outline"
         >
@@ -89,10 +89,10 @@ const KeymapLayoutPicker: FC<KeymapLayoutPickerProps> = (props) => {
         variant="outline"
         h="100%"
         justifySelf="start"
-        onClick={props.onLayoutCreate}
+        onClick={props.onLayerCreate}
       />
     </SimpleGrid>
   )
 }
 
-export default KeymapLayoutPicker
+export default KeymapLayerPicker

@@ -6,7 +6,6 @@ import { QMKKeymapDto } from 'types/keymap.type'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
 import useKeyboardStore from './keyboard.store'
-import { useDimensionsFromLayout } from 'components/Keymap/keymap.lib'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
@@ -24,21 +23,18 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
-  const store = useKeyboardStore({
+  const keyboardStore = useKeyboardStore({
     keyboard,
     defaultLayout: defaultKeymaps.layout,
     defaultKeymap: defaultKeymaps,
   })
 
-  const dimensions = useDimensionsFromLayout(
-    store.state.layouts.list[store.state.layouts.current].layout,
+  window.dev.store = keyboardStore
+
+  useEffect(
+    () => console.info('[KEYBOARD STORE | NEW STATE]', keyboardStore.state),
+    [keyboardStore.state],
   )
-
-  window.dev.store = store
-
-  useEffect(() => console.info('[KEYBOARD STORE | NEW STATE]', store.state), [
-    store.state,
-  ])
 
   return (
     <Stack direction="column" spacing={5}>
@@ -61,28 +57,21 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
       {/* Layout selector */}
       <KeyboardPageLayoutSelect
         mb={4}
-        list={store.state.layouts.list}
-        value={store.state.layouts.current}
+        list={keyboardStore.state.layouts.list}
+        value={keyboardStore.state.layouts.current}
         onChange={(layout: string) =>
-          store.dispatch({ type: 'LAYOUT_SELECT', payload: layout })
+          keyboardStore.dispatch({ type: 'LAYOUT_SELECT', payload: layout })
         }
       />
 
       {/* Keymap selector and editor */}
-      <KeyboardPageKeymapSelect keyboardStore={store} />
+      <KeyboardPageKeymapSelect keyboardStore={keyboardStore} />
 
       {/* Keymap visualisator */}
       <Keymap
-        store={store}
-        key={`keymap-${store.state.keymaps.current}`} // Reset the visualizer state on keymap change
-        layout={store.state.layouts.list[store.state.layouts.current].layout}
-        dimensions={dimensions}
-        onKeyEdit={(payload) =>
-          store.dispatch({
-            type: 'KEYMAP_EDIT_KEY',
-            payload,
-          })
-        }
+        keyboardStore={keyboardStore}
+        // Reset the visualizer state on keymap change
+        key={`keymap-${keyboardStore.state.keymaps.current}`}
       />
     </Stack>
   )

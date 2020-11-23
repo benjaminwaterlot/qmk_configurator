@@ -65,6 +65,14 @@ type Action =
   | {
       type: 'KEYMAP_LAYER_CREATE'
     }
+  | {
+      type: 'KEYMAP_SWAP_KEYS'
+      payload: {
+        layer: number
+        sourceKeyIndex: number
+        destinationKeyIndex: number
+      }
+    }
 
 const useKeyboardStore = (initialData: {
   keyboard: KeyboardDto
@@ -80,18 +88,19 @@ const useKeyboardStore = (initialData: {
     ) => (deep ? merge : assign)(state, newState)
 
     switch (action.type) {
-      case 'LAYOUT_SELECT':
+      case 'LAYOUT_SELECT': {
         return mergeKeyboardState({
           layouts: { current: action.payload },
         })
-
-      case 'KEYMAP_SELECT':
+      }
+      case 'KEYMAP_SELECT': {
         return mergeKeyboardState({
           layouts: { current: state.keymaps.list[action.payload].layout },
           keymaps: { current: action.payload },
         })
+      }
 
-      case 'KEYMAP_CREATE':
+      case 'KEYMAP_CREATE': {
         if (state.keymaps.list[action.payload.name]) {
           toast({
             title: `A keymap already has the name [${action.payload.name}]`,
@@ -116,8 +125,9 @@ const useKeyboardStore = (initialData: {
             current: action.payload.name,
           },
         })
+      }
 
-      case 'KEYMAP_LAYER_CREATE':
+      case 'KEYMAP_LAYER_CREATE': {
         const keymap = state.keymaps.list[state.keymaps.current]
         console.log('heeeey', keymap.layout)
 
@@ -135,8 +145,9 @@ const useKeyboardStore = (initialData: {
             },
           },
         })
+      }
 
-      case 'KEYMAP_EDIT_LAYOUT':
+      case 'KEYMAP_EDIT_LAYOUT': {
         const editedKeymap = state.keymaps.list[action.payload.keymap]
         const newLayout = state.layouts.list[action.payload.layout]
 
@@ -164,8 +175,9 @@ const useKeyboardStore = (initialData: {
             },
           },
         })
+      }
 
-      case 'KEYMAP_EDIT_KEY':
+      case 'KEYMAP_EDIT_KEY': {
         const layers = cloneDeep(
           state.keymaps.list[state.keymaps.current].layers,
         )
@@ -182,8 +194,45 @@ const useKeyboardStore = (initialData: {
             },
           },
         })
+      }
 
-      case 'KEYMAP_EDIT_NAME':
+      case 'KEYMAP_SWAP_KEYS': {
+        /**
+         * Clone the layers so we can mutate them
+         */
+        const clonedLayers = cloneDeep(
+          state.keymaps.list[state.keymaps.current].layers,
+        )
+
+        /**
+         * Get a reference to the currently modified layer
+         */
+        const layer = clonedLayers[action.payload.layer]
+
+        /**
+         * Get the current keycode of the swapped keys
+         */
+        const sourceKey = layer[action.payload.sourceKeyIndex]
+        const destinationKey = layer[action.payload.destinationKeyIndex]
+
+        /**
+         * Swap the keycodes (by mutating our clonedLayers)
+         */
+        layer[action.payload.sourceKeyIndex] = destinationKey
+        layer[action.payload.destinationKeyIndex] = sourceKey
+
+        return mergeKeyboardState({
+          keymaps: {
+            list: {
+              [state.keymaps.current]: {
+                layers: clonedLayers,
+              },
+            },
+          },
+        })
+      }
+
+      case 'KEYMAP_EDIT_NAME': {
         /**
          * The keymap name wasn't changed at all
          */
@@ -223,8 +272,9 @@ const useKeyboardStore = (initialData: {
           },
           { deep: false },
         )
+      }
 
-      case 'KEYMAP_DUPLICATE':
+      case 'KEYMAP_DUPLICATE': {
         const copyName = action.payload + ' copy'
 
         if (state.keymaps.list[copyName] !== undefined) return state
@@ -238,8 +288,9 @@ const useKeyboardStore = (initialData: {
             current: copyName,
           },
         })
+      }
 
-      case 'KEYMAP_DELETE':
+      case 'KEYMAP_DELETE': {
         const { [action.payload]: deleted, ...list } = state.keymaps.list
 
         return mergeKeyboardState(
@@ -255,9 +306,11 @@ const useKeyboardStore = (initialData: {
           },
           { deep: false }, // Impossible to delete a property with mergeDeep
         )
+      }
 
-      default:
+      default: {
         throw new Error(`Unknown action`)
+      }
     }
   }
 

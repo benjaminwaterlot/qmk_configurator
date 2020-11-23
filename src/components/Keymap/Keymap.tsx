@@ -1,37 +1,46 @@
 import React, { FC, useState } from 'react'
 import { Stack } from '@chakra-ui/react'
-import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
-import Keycode from 'content/keycodes/keycodes-enum'
 import { KeyboardStore } from 'pages/KeyboardPage/keyboard.store'
 import KeymapVisualizer from './KeymapVisualizer'
-import KeymapLayoutPicker from './KeymapLayoutPicker'
+import KeymapLayerPicker from './KeymapLayerPicker'
+import { useDimensionsFromLayout } from 'components/Keymap/keymap.lib'
 
 interface KeymapProps {
-  layout: KeyboardLayoutDto
-  dimensions: { width: number; height: number }
-  onKeyEdit: (_: { layer: number; key: number; keycode: Keycode }) => void
-  store: KeyboardStore
+  keyboardStore: KeyboardStore
 }
 
-const Keymap: FC<KeymapProps> = ({
-  dimensions,
-  layout,
-  onKeyEdit,
-  store: { state, dispatch },
-}) => {
+const Keymap: FC<KeymapProps> = ({ keyboardStore: { state, dispatch } }) => {
   const [currentLayer, setCurrentLayer] = useState<number>(0)
+  const { layout } = state.layouts.list[state.layouts.current]
+  const dimensions = useDimensionsFromLayout(layout)
 
   return (
     <Stack direction="column" spacing={2}>
-      <KeymapLayoutPicker
+      <KeymapLayerPicker
         {...{ currentLayer, dimensions, layout }}
         layers={state.keymaps.list[state.keymaps.current].layers}
-        onLayoutSelect={setCurrentLayer}
-        onLayoutCreate={() => dispatch({ type: 'KEYMAP_LAYER_CREATE' })}
+        onLayerSelect={setCurrentLayer}
+        onLayerCreate={() => dispatch({ type: 'KEYMAP_LAYER_CREATE' })}
       />
 
       <KeymapVisualizer
-        {...{ currentLayer, dimensions, layout, onKeyEdit }}
+        {...{ currentLayer, dimensions, layout }}
+        onKeyEdit={(payload) =>
+          dispatch({
+            type: 'KEYMAP_EDIT_KEY',
+            payload,
+          })
+        }
+        onKeySwap={(sourceKeyIndex, destinationKeyIndex) =>
+          dispatch({
+            type: 'KEYMAP_SWAP_KEYS',
+            payload: {
+              layer: currentLayer,
+              sourceKeyIndex,
+              destinationKeyIndex,
+            },
+          })
+        }
         keymap={state.keymaps.list[state.keymaps.current]}
       />
     </Stack>
