@@ -23,6 +23,7 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
+  console.log('🌈 : defaultKeymaps', defaultKeymaps)
   const keyboardStore = useKeyboardStore({
     keyboard,
     defaultLayout: defaultKeymaps.layout,

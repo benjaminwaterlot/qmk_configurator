@@ -12,7 +12,7 @@ interface KeyContentProps {
 const KeyContent: FC<KeyContentProps> = ({ keycode, color }) => (
   <Grid w="100%" p={[1, 1, 2]} h="100%" templateRows="1fr 2fr 1fr">
     <Text
-      fontSize={['xs']}
+      fontSize={'2xs'}
       fontWeight="bold"
       color={useColorModeValue('gray.400', 'gray.600')}
       textAlign="left"

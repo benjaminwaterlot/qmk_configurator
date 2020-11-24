@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { decodeName } from 'lib/encode-keyboard-name'
 import { useDispatch } from 'react-redux'
@@ -7,7 +7,9 @@ import { useAppSelector } from 'store'
 import { Center, Spinner } from '@chakra-ui/react'
 import KeyboardPage from './KeyboardPage'
 import KEYMAP from 'content/keyboards/preonic_rev3_default.json'
-import { QMKKeymapDto } from 'types/keymap.type'
+import { QMKKeymap, QMKKeymapDto } from 'types/keymap.type'
+import remapLayout from './remap-layout'
+import Axios from 'axios'
 
 /**
  * This component loads the data needed for KeyboardPageContent, then renders it.
@@ -19,6 +21,10 @@ export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
 ) => {
   const dispatch = useDispatch()
   const keyboardName = decodeName(props.keyboard)
+  const [keyboardDefaultKeymap, setKeyboardDefaultKeymap] = useState<
+    QMKKeymapDto | undefined
+  >(undefined)
+  console.log('🌈 : keyboardName', keyboardName)
 
   useEffect(() => {
     dispatch(keyboards.thunks.fetchKeyboard(keyboardName))
@@ -28,14 +34,28 @@ export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
     keyboards.selectors.selectById(state, keyboardName),
   )
 
+  useEffect(() => {
+    Axios.get<QMKKeymapDto>(
+      `/keymaps/${keyboardName.replaceAll('/', '_')}_default.json`,
+    ).then(({ data }) => {
+      setKeyboardDefaultKeymap({
+        ...data,
+        layout:
+          (remapLayout as any)[keyboardName]?.layouts[data.layout] ??
+          data.layout,
+      })
+    })
+  }, [keyboardName])
+
   const DEFAULT_KEYMAPS = keyboardName === 'preonic/rev3' ? KEYMAP : null
 
   return (
     <>
-      {keyboard ? (
+      {keyboard && keyboardDefaultKeymap ? (
         <KeyboardPage
           keyboard={keyboard}
-          defaultKeymaps={DEFAULT_KEYMAPS as QMKKeymapDto}
+          defaultKeymaps={keyboardDefaultKeymap}
+          // defaultKeymaps={DEFAULT_KEYMAPS as QMKKeymapDto}
         />
       ) : (
         <Center minH="50vh">

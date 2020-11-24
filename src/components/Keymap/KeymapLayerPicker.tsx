@@ -67,8 +67,8 @@ const KeymapLayerPicker: FC<KeymapLayerPickerProps> = (props) => {
                 y={`${keyPlacement.y + KEY_OFFSET}`}
                 width={(keyPlacement.w ?? 1) - KEY_OFFSET * 2}
                 height={(keyPlacement.h ?? 1) - KEY_OFFSET * 2}
-                rx={1}
-                ry={1}
+                rx={1 / 2 - KEY_OFFSET}
+                ry={1 / 2 - KEY_OFFSET}
                 fill={
                   getColor(
                     theme,
