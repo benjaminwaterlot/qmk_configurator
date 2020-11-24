@@ -1,16 +1,16 @@
 import { KeycodeCategory } from '../keycodes-categories'
 
 const modifiersKeycodesData = {
-  KC_LCTRL: {
-    Aliases: 'KC_LCTL',
+  KC_LCTL: {
+    Aliases: 'KC_LCTRL',
     Description: 'Left Control',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.MODIFIERS,
   },
-  KC_LSHIFT: {
-    Aliases: 'KC_LSFT',
+  KC_LSFT: {
+    Aliases: 'KC_LSHIFT',
     Description: 'Left Shift',
     Windows: '✔',
     macOS: '✔',
@@ -33,16 +33,16 @@ const modifiersKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.MODIFIERS,
   },
-  KC_RCTRL: {
-    Aliases: 'KC_RCTL',
+  KC_RCTL: {
+    Aliases: 'KC_RCTRL',
     Description: 'Right Control',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.MODIFIERS,
   },
-  KC_RSHIFT: {
-    Aliases: 'KC_RSFT',
+  KC_RSFT: {
+    Aliases: 'KC_RSHIFT',
     Description: 'Right Shift',
     Windows: '✔',
     macOS: '✔',

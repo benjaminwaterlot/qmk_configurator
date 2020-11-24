@@ -1,16 +1,16 @@
 import { KeycodeCategory } from '../keycodes-categories'
 
 const functionKeycodesData = {
-  KC_PAUSE: {
-    Aliases: 'KC_PAUS, KC_BRK, KC_BRMU',
+  KC_PAUS: {
+    Aliases: 'KC_PAUSE, KC_BRK, KC_BRMU',
     Description: 'Pause, Brightness Up (macOS)',
     Windows: '✔',
     macOS: '✔<sup>2</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_INSERT: {
-    Aliases: 'KC_INS',
+  KC_INS: {
+    Aliases: 'KC_INSERT',
     Description: 'Insert',
     Windows: '✔',
     macOS: '',
@@ -41,88 +41,88 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_PGDOWN: {
-    Aliases: 'KC_PGDN',
+  KC_PGDN: {
+    Aliases: 'KC_PGDOWN',
     Description: 'Page Down',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_NUMLOCK: {
-    Aliases: 'KC_NLCK',
+  KC_NLCK: {
+    Aliases: 'KC_NUMLOCK',
     Description: 'Keypad Num Lock and Clear',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_AUDIO_MUTE: {
-    Aliases: 'KC_MUTE',
+  KC_MUTE: {
+    Aliases: 'KC_AUDIO_MUTE',
     Description: 'Mute',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_AUDIO_VOL_UP: {
-    Aliases: 'KC_VOLU',
+  KC_VOLU: {
+    Aliases: 'KC_AUDIO_VOL_UP',
     Description: 'Volume Up',
     Windows: '✔',
     macOS: '✔<sup>4</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_AUDIO_VOL_DOWN: {
-    Aliases: 'KC_VOLD',
+  KC_VOLD: {
+    Aliases: 'KC_AUDIO_VOL_DOWN',
     Description: 'Volume Down',
     Windows: '✔',
     macOS: '✔<sup>4</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_NEXT_TRACK: {
-    Aliases: 'KC_MNXT',
+  KC_MNXT: {
+    Aliases: 'KC_MEDIA_NEXT_TRACK',
     Description: 'Next Track',
     Windows: '✔',
     macOS: '✔<sup>5</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_PREV_TRACK: {
-    Aliases: 'KC_MPRV',
+  KC_MPRV: {
+    Aliases: 'KC_MEDIA_PREV_TRACK',
     Description: 'Previous Track',
     Windows: '✔',
     macOS: '✔<sup>5</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_STOP: {
-    Aliases: 'KC_MSTP',
+  KC_MSTP: {
+    Aliases: 'KC_MEDIA_STOP',
     Description: 'Stop Track',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_PLAY_PAUSE: {
-    Aliases: 'KC_MPLY',
+  KC_MPLY: {
+    Aliases: 'KC_MEDIA_PLAY_PAUSE',
     Description: 'Play/Pause Track',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_SELECT: {
-    Aliases: 'KC_MSEL',
+  KC_MSEL: {
+    Aliases: 'KC_MEDIA_SELECT',
     Description: 'Launch Media Player',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_EJECT: {
-    Aliases: 'KC_EJCT',
+  KC_EJCT: {
+    Aliases: 'KC_MEDIA_EJECT',
     Description: 'Eject',
     Windows: '',
     macOS: '✔',
@@ -137,111 +137,110 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_CALCULATOR: {
-    Aliases: 'KC_CALC',
+  KC_CALC: {
+    Aliases: 'KC_CALCULATOR',
     Description: 'Launch Calculator',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MY_COMPUTER: {
-    Aliases: 'KC_MYCM',
+  KC_MYCM: {
+    Aliases: 'KC_MY_COMPUTER',
     Description: 'Launch My Computer',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_WWW_SEARCH: {
-    Aliases: 'KC_WSCH',
+  KC_WSCH: {
+    Aliases: 'KC_WWW_SEARCH',
     Description: 'Browser Search',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_WWW_HOME: {
-    Aliases: 'KC_WHOM',
+  KC_WHOM: {
+    Aliases: 'KC_WWW_HOME',
     Description: 'Browser Home',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_WWW_BACK: {
-    Aliases: 'KC_WBAK',
+  KC_WBAK: {
+    Aliases: 'KC_WWW_BACK',
     Description: 'Browser Back',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_WWW_FORWARD: {
-    Aliases: 'KC_WFWD',
+  KC_WFWD: {
+    Aliases: 'KC_WWW_FORWARD',
     Description: 'Browser Forward',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_WWW_STOP: {
-    Aliases: 'KC_WSTP',
+  KC_WSTP: {
+    Aliases: 'KC_WWW_STOP',
     Description: 'Browser Stop',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_WWW_REFRESH: {
-    Aliases: 'KC_WREF',
+  KC_WREF: {
+    Aliases: 'KC_WWW_REFRESH',
     Description: 'Browser Refresh',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_WWW_FAVORITES: {
-    Aliases: 'KC_WFAV',
+  KC_WFAV: {
+    Aliases: 'KC_WWW_FAVORITES',
     Description: 'Browser Favorites',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_FAST_FORWARD: {
-    Aliases: 'KC_MFFD',
+  KC_MFFD: {
+    Aliases: 'KC_MEDIA_FAST_FORWARD',
     Description: 'Next Track',
     Windows: '✔',
     macOS: '✔<sup>5</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_MEDIA_REWIND: {
-    Aliases: 'KC_MRWD',
+  KC_MRWD: {
+    Aliases: 'KC_MEDIA_REWIND',
     Description: 'Previous Track',
     Windows: '✔<sup>6</sup>',
     macOS: '✔<sup>5</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_BRIGHTNESS_UP: {
-    Aliases: 'KC_BRIU',
+  KC_BRIU: {
+    Aliases: 'KC_BRIGHTNESS_UP',
     Description: 'Brightness Up',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_BRIGHTNESS_DOWN: {
-    Aliases: 'KC_BRID',
+  KC_BRID: {
+    Aliases: 'KC_BRIGHTNESS_DOWN',
     Description: 'Brightness Down',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-
   KC_F1: {
     Aliases: '',
     Description: 'F1',
@@ -434,24 +433,24 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_PSCREEN: {
-    Aliases: 'KC_PSCR',
+  KC_PSCR: {
+    Aliases: 'KC_PSCREEN',
     Description: 'Print Screen',
     Windows: '✔',
     macOS: '✔<sup>2</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_SCROLLLOCK: {
-    Aliases: 'KC_SLCK, KC_BRMD',
+  KC_SLCK: {
+    Aliases: 'KC_SCROLLLOCK, KC_BRMD',
     Description: 'Scroll Lock, Brightness Down (macOS)',
     Windows: '✔',
     macOS: '✔<sup>2</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_APPLICATION: {
-    Aliases: 'KC_APP',
+  KC_APP: {
+    Aliases: 'KC_APPLICATION',
     Description: 'Application (Windows Context Menu Key)',
     Windows: '✔',
     macOS: '',
@@ -466,8 +465,8 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_EXECUTE: {
-    Aliases: 'KC_EXEC',
+  KC_EXEC: {
+    Aliases: 'KC_EXECUTE',
     Description: 'Execute',
     Windows: '',
     macOS: '',
@@ -490,8 +489,8 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_SELECT: {
-    Aliases: 'KC_SLCT',
+  KC_SLCT: {
+    Aliases: 'KC_SELECT',
     Description: 'Select',
     Windows: '',
     macOS: '',
@@ -506,8 +505,8 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_AGAIN: {
-    Aliases: 'KC_AGIN',
+  KC_AGIN: {
+    Aliases: 'KC_AGAIN',
     Description: 'Again',
     Windows: '',
     macOS: '',
@@ -538,8 +537,8 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_PASTE: {
-    Aliases: 'KC_PSTE',
+  KC_PSTE: {
+    Aliases: 'KC_PASTE',
     Description: 'Paste',
     Windows: '',
     macOS: '',
@@ -578,32 +577,32 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_LOCKING_CAPS: {
-    Aliases: 'KC_LCAP',
+  KC_LCAP: {
+    Aliases: 'KC_LOCKING_CAPS',
     Description: 'Locking Caps Lock',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_LOCKING_NUM: {
-    Aliases: 'KC_LNUM',
+  KC_LNUM: {
+    Aliases: 'KC_LOCKING_NUM',
     Description: 'Locking Num Lock',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_LOCKING_SCROLL: {
-    Aliases: 'KC_LSCR',
+  KC_LSCR: {
+    Aliases: 'KC_LOCKING_SCROLL',
     Description: 'Locking Scroll Lock',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_ALT_ERASE: {
-    Aliases: 'KC_ERAS',
+  KC_ERAS: {
+    Aliases: 'KC_ALT_ERASE',
     Description: 'Alternate Erase',
     Windows: '',
     macOS: '',
@@ -626,8 +625,8 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_CLEAR: {
-    Aliases: 'KC_CLR',
+  KC_CLR: {
+    Aliases: 'KC_CLEAR',
     Description: 'Clear',
     Windows: '',
     macOS: '',
@@ -698,24 +697,24 @@ const functionKeycodesData = {
     'Linux<sup>1</sup>': '',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_SYSTEM_POWER: {
-    Aliases: 'KC_PWR',
+  KC_PWR: {
+    Aliases: 'KC_SYSTEM_POWER',
     Description: 'System Power Down',
     Windows: '✔',
     macOS: '✔<sup>3</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_SYSTEM_SLEEP: {
-    Aliases: 'KC_SLEP',
+  KC_SLEP: {
+    Aliases: 'KC_SYSTEM_SLEEP',
     Description: 'System Sleep',
     Windows: '✔',
     macOS: '✔<sup>3</sup>',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.FUNCTION,
   },
-  KC_SYSTEM_WAKE: {
-    Aliases: 'KC_WAKE',
+  KC_WAKE: {
+    Aliases: 'KC_SYSTEM_WAKE',
     Description: 'System Wake',
     Windows: '',
     macOS: '✔<sup>3</sup>',

@@ -1,40 +1,40 @@
 import { KeycodeCategory } from '../keycodes-categories'
 
 const internationalKeycodesData = {
-  KC_INT1: {
-    Aliases: 'KC_RO',
+  KC_RO: {
+    Aliases: 'KC_INT1',
     Description: 'JIS \\ and _',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.INTERNATIONAL,
   },
-  KC_INT2: {
-    Aliases: 'KC_KANA',
+  KC_KANA: {
+    Aliases: 'KC_INT2',
     Description: 'JIS Katakana/Hiragana',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.INTERNATIONAL,
   },
-  KC_INT3: {
-    Aliases: 'KC_JYEN',
+  KC_JYEN: {
+    Aliases: 'KC_INT3',
     Description: 'JIS ¥ and \\|',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.INTERNATIONAL,
   },
-  KC_INT4: {
-    Aliases: 'KC_HENK',
+  KC_HENK: {
+    Aliases: 'KC_INT4',
     Description: 'JIS Henkan',
     Windows: '✔',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.INTERNATIONAL,
   },
-  KC_INT5: {
-    Aliases: 'KC_MHEN',
+  KC_MHEN: {
+    Aliases: 'KC_INT5',
     Description: 'JIS Muhenkan',
     Windows: '✔',
     macOS: '',
@@ -73,16 +73,16 @@ const internationalKeycodesData = {
     'Linux<sup>1</sup>': '',
     category: KeycodeCategory.INTERNATIONAL,
   },
-  KC_LANG1: {
-    Aliases: 'KC_HAEN',
+  KC_HAEN: {
+    Aliases: 'KC_LANG1',
     Description: 'Hangul/English',
     Windows: '',
     macOS: '',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.INTERNATIONAL,
   },
-  KC_LANG2: {
-    Aliases: 'KC_HANJ',
+  KC_HANJ: {
+    Aliases: 'KC_LANG2',
     Description: 'Hanja',
     Windows: '',
     macOS: '',

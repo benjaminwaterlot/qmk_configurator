@@ -9,7 +9,7 @@ const qmkKeycodesData = {
     'Linux<sup>1</sup>': '*N/A*',
     category: KeycodeCategory.QMK,
   },
-  KC_TRANSPARENT: {
+  KC_TRNS: {
     Aliases: 'KC_TRANSPARENT, _______',
     Description: 'Use the next lowest non-transparent key',
     Windows: '*N/A*',

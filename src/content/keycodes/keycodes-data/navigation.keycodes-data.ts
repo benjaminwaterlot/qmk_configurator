@@ -1,24 +1,24 @@
 import { KeycodeCategory } from '../keycodes-categories'
 
 const navigationKeycodesData = {
-  KC_ENTER: {
-    Aliases: 'KC_ENT',
+  KC_ENT: {
+    Aliases: 'KC_ENTER',
     Description: 'Return (Enter)',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_ESCAPE: {
-    Aliases: 'KC_ESC',
+  KC_ESC: {
+    Aliases: 'KC_ESCAPE',
     Description: 'Escape',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_BSPACE: {
-    Aliases: 'KC_BSPC',
+  KC_BSPC: {
+    Aliases: 'KC_BSPACE',
     Description: 'Delete (Backspace)',
     Windows: '✔',
     macOS: '✔',
@@ -33,40 +33,40 @@ const navigationKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_SPACE: {
-    Aliases: 'KC_SPC',
+  KC_SPC: {
+    Aliases: 'KC_SPACE',
     Description: 'Spacebar',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_GRAVE: {
-    Aliases: 'KC_GRV, KC_ZKHK',
+  KC_GRV: {
+    Aliases: 'KC_GRAVE, KC_ZKHK',
     Description: '<code>&#96;</code> and ~, JIS Zenkaku/Hankaku',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_CAPSLOCK: {
-    Aliases: 'KC_CLCK, KC_CAPS',
+  KC_CAPS: {
+    Aliases: 'KC_CAPSLOCK, KC_CLCK',
     Description: 'Caps Lock',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_DELETE: {
-    Aliases: 'KC_DEL',
+  KC_DEL: {
+    Aliases: 'KC_DELETE',
     Description: 'Forward Delete',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_RIGHT: {
-    Aliases: 'KC_RGHT',
+  KC_RGHT: {
+    Aliases: 'KC_RIGHT',
     Description: 'Right Arrow',
     Windows: '✔',
     macOS: '✔',
@@ -97,8 +97,8 @@ const navigationKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.NAVIGATION,
   },
-  KC_KP_ENTER: {
-    Aliases: 'KC_PENT',
+  KC_PENT: {
+    Aliases: 'KC_KP_ENTER',
     Description: 'Keypad Enter',
     Windows: '✔',
     macOS: '✔',

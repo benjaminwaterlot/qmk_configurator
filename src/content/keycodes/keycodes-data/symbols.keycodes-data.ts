@@ -1,72 +1,72 @@
 import { KeycodeCategory } from '../keycodes-categories'
 
 const symbolsKeycodesData = {
-  KC_MINUS: {
-    Aliases: 'KC_MINS',
+  KC_MINS: {
+    Aliases: 'KC_MINUS',
     Description: '- and _',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_EQUAL: {
-    Aliases: 'KC_EQL',
+  KC_EQL: {
+    Aliases: 'KC_EQUAL',
     Description: '= and +',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_LBRACKET: {
-    Aliases: 'KC_LBRC',
+  KC_LBRC: {
+    Aliases: 'KC_LBRACKET',
     Description: '[ and {',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_RBRACKET: {
-    Aliases: 'KC_RBRC',
+  KC_RBRC: {
+    Aliases: 'KC_RBRACKET',
     Description: '] and }',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_BSLASH: {
-    Aliases: 'KC_BSLS',
+  KC_BSLS: {
+    Aliases: 'KC_BSLASH',
     Description: '\\ and \\|',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_NONUS_HASH: {
-    Aliases: 'KC_NUHS',
+  KC_NUHS: {
+    Aliases: 'KC_NONUS_HASH',
     Description: 'Non-US # and ~',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_SCOLON: {
-    Aliases: 'KC_SCLN',
+  KC_SCLN: {
+    Aliases: 'KC_SCOLON',
     Description: '; and :',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_QUOTE: {
-    Aliases: 'KC_QUOT',
+  KC_QUOT: {
+    Aliases: 'KC_QUOTE',
     Description: '\' and "',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_COMMA: {
-    Aliases: 'KC_COMM',
+  KC_COMM: {
+    Aliases: 'KC_COMMA',
     Description: ', and <',
     Windows: '✔',
     macOS: '✔',
@@ -81,72 +81,72 @@ const symbolsKeycodesData = {
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_SLASH: {
-    Aliases: 'KC_SLSH',
+  KC_SLSH: {
+    Aliases: 'KC_SLASH',
     Description: '/ and ?',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_KP_SLASH: {
-    Aliases: 'KC_PSLS',
+  KC_PSLS: {
+    Aliases: 'KC_KP_SLASH',
     Description: 'Keypad /',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_KP_ASTERISK: {
-    Aliases: 'KC_PAST',
+  KC_PAST: {
+    Aliases: 'KC_KP_ASTERISK',
     Description: 'Keypad *',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_KP_MINUS: {
-    Aliases: 'KC_PMNS',
+  KC_PMNS: {
+    Aliases: 'KC_KP_MINUS',
     Description: 'Keypad -',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_KP_PLUS: {
-    Aliases: 'KC_PPLS',
+  KC_PPLS: {
+    Aliases: 'KC_KP_PLUS',
     Description: 'Keypad +',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_KP_DOT: {
-    Aliases: 'KC_PDOT',
+  KC_PDOT: {
+    Aliases: 'KC_KP_DOT',
     Description: 'Keypad . and Delete',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_NONUS_BSLASH: {
-    Aliases: 'KC_NUBS',
+  KC_NUBS: {
+    Aliases: 'KC_NONUS_BSLASH',
     Description: 'Non-US \\ and \\|',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_KP_EQUAL: {
-    Aliases: 'KC_PEQL',
+  KC_PEQL: {
+    Aliases: 'KC_KP_EQUAL',
     Description: 'Keypad =',
     Windows: '✔',
     macOS: '✔',
     'Linux<sup>1</sup>': '✔',
     category: KeycodeCategory.SYMBOLS,
   },
-  KC_KP_COMMA: {
-    Aliases: 'KC_PCMM',
+  KC_PCMM: {
+    Aliases: 'KC_KP_COMMA',
     Description: 'Keypad ,',
     Windows: '',
     macOS: '',
