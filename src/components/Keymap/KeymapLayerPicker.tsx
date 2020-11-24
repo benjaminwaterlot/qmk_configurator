@@ -25,7 +25,7 @@ interface KeymapLayerPickerProps {
 }
 
 const KeymapLayerPicker: FC<KeymapLayerPickerProps> = (props) => {
-  const isLight = useColorMode().colorMode === 'light'
+  const isLightMode = useColorMode().colorMode === 'light'
   const KEY_OFFSET = 0.15
 
   return (
@@ -74,7 +74,7 @@ const KeymapLayerPicker: FC<KeymapLayerPickerProps> = (props) => {
                     theme,
                     KEYCODE_CATEGORIES[KEYCODES_DATA[layer[keyIndex]]?.category]
                       ?.color + '.400',
-                  ) ?? getColor(theme, isLight ? 'gray.500' : 'gray.900')
+                  ) ?? getColor(theme, isLightMode ? 'gray.500' : 'gray.900')
                 }
               />
             ))}

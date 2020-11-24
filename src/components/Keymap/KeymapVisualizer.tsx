@@ -1,4 +1,4 @@
-import { AspectRatio, Stack } from '@chakra-ui/react'
+import { AspectRatio, Box, Stack } from '@chakra-ui/react'
 import KeyContainer from 'components/Key/KeyContainer'
 import Keycode from 'content/keycodes/keycodes-enum'
 import React, { FC, useCallback } from 'react'
@@ -7,6 +7,7 @@ import { QMKKeymap } from 'types/keymap.type'
 import KeymapPopover from './KeymapPopover'
 import { Key } from './KeymapPopover/use-keymap-popover-combobox'
 import useKeymapPopoverState from './KeymapPopover/use-keymap-popover-state'
+import useKeyBaseSize from './use-key-size-variant'
 
 interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
@@ -26,6 +27,13 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   dimensions: { width, height },
 }) => {
   const popover = useKeymapPopoverState()
+
+  /**
+   * A size ('xs', 'md', etc.) computed with
+   * the current breakpoint and the width of the keyboard.
+   * Used for all sizings of the KeyMap and Keys.
+   */
+  const keyBaseSizing = useKeyBaseSize({ width })
 
   const handleKeyClick = useCallback(
     (ref, keyIndex) => {
@@ -48,21 +56,23 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   return (
     // Generate a canvas with correct proportions for this keyboard
     <AspectRatio ratio={width / height} maxW={width * 100}>
-      <Stack h="100%" m={-1}>
+      {/* The key sizing and margins are based on this fontSize */}
+      <Stack h="100%" m={-1} fontSize={keyBaseSizing}>
         {/* This is the popover to edit keys */}
         <KeymapPopover state={popover} onSelection={handleSelection} />
 
         {/* Position each key on the canvas */}
         {layout.map((key, keyIndex) => (
-          <Stack
+          <Box
             key={`${key.x}-${key.y}`}
             // Absolute positioning of the key
             pos="absolute"
+            overflow="hidden"
             top={`${(key.y / height) * 100}%`}
             left={`${(key.x / width) * 100}%`}
             w={`${((key.w ?? 1) / width) * 100}%`}
             h={`${((key.h ?? 1) / height) * 100}%`}
-            p={1}
+            p=".2em"
           >
             <KeyContainer
               keyIndex={keyIndex}
@@ -72,7 +82,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
                 onKeySwap(sourceKeyIndex, keyIndex)
               }
             />
-          </Stack>
+          </Box>
         ))}
       </Stack>
     </AspectRatio>

@@ -1,6 +1,6 @@
 import { Badge, ListItem, Text, useColorModeValue } from '@chakra-ui/react'
 import React, { FC } from 'react'
-import { ThemeColor } from 'theme'
+import { AppTheme } from 'theme'
 import { Key } from './use-keymap-popover-combobox'
 
 /**
@@ -10,7 +10,7 @@ interface KeymapPopoverListItemProps {
   isHighlighted: boolean
   downshiftItemProps: object
   keyInfo: Key
-  color: ThemeColor
+  color: keyof AppTheme['colors']
 }
 
 const KeymapPopoverListItem: FC<KeymapPopoverListItemProps> = ({

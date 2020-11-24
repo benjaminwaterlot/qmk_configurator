@@ -4,7 +4,7 @@ import Keycode from 'content/keycodes/keycodes-enum'
 /**
  * This is an alias (unused) type.
  */
-type QMKKeymapRaw = typeof KEYMAP
+type _RAW_QMKKeymap = typeof KEYMAP
 
 /**
  * This is all keycodes of a QMK layer.
@@ -14,7 +14,7 @@ export type QMKLayer = Keycode[]
 /**
  * This is the way QMK Api transfers Keymaps.
  */
-export interface QMKKeymapDto extends QMKKeymapRaw {
+export interface QMKKeymapDto extends _RAW_QMKKeymap {
   layers: QMKLayer[]
 }
 

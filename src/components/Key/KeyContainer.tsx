@@ -34,33 +34,35 @@ const KeyContainer: FC<KeyContainerProps> = ({
 
   return (
     <Button
+      // Each key can be dragged on another key.
       draggable
-      // Necessary to prevent children from triggering onDragLeave
-      css={{
-        '*': {
-          pointerEvents: 'none',
-        },
-      }}
-      isActive={isDropHovered}
-      // When starting to drag this key, save its keycode in the drag event
+      // When starting to drag this key, save its keycode in the drag event.
       onDragStart={(e) => {
         e.dataTransfer.setData('keyIndex', keyIndex.toString())
       }}
-      onDragEnter={(e) => {
+      onDragEnter={() => {
         setIsDropHovered(true)
       }}
-      onDragLeave={() => setIsDropHovered(false)}
-      // This is necessary to allow onDrop to work
+      // This is necessary to allow onDrop to work.
       onDragOver={(event) => {
         event.preventDefault()
       }}
-      // When dropping another key on this one, trigger the change
+      onDragLeave={() => setIsDropHovered(false)}
+      // When dropping another key on this one, trigger the change.
       onDrop={({ dataTransfer }) => {
         setIsDropHovered(false)
 
         const keyIndexString = dataTransfer.getData('keyIndex')
         if (keyIndexString) onKeyDropped(Number(keyIndexString))
       }}
+      onClick={() => onClick(ref.current)}
+      // Necessary to prevent children from triggering onDragLeave.
+      css={{
+        '*': {
+          pointerEvents: 'none',
+        },
+      }}
+      isActive={isDropHovered}
       isFullWidth
       h="100%"
       p={0}
@@ -71,7 +73,7 @@ const KeyContainer: FC<KeyContainerProps> = ({
       transition="all .12s ease-out"
       rounded={3}
       ref={ref}
-      onClick={() => onClick(ref.current)}
+      fontSize="inherit"
     >
       <KeyContent keycode={keycode} color={color} />
     </Button>

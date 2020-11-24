@@ -1,4 +1,4 @@
-import { ThemeColor } from 'theme'
+import { AppTheme } from 'theme'
 
 export enum KeycodeCategory {
   ALPHABET = 'alphabet',
@@ -13,7 +13,7 @@ export enum KeycodeCategory {
 
 const KEYCODE_CATEGORIES: Record<
   KeycodeCategory,
-  { label: string; color: ThemeColor }
+  { label: string; color: keyof AppTheme['colors'] }
 > = {
   alphabet: {
     label: 'Alphabet',

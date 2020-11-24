@@ -1,36 +1,35 @@
-import { Center, Grid, Text, useColorModeValue } from '@chakra-ui/react'
+import { Grid, Text, useColorModeValue } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import last from 'lodash/last'
 import Keycode from 'content/keycodes/keycodes-enum'
-import { ThemeColor } from 'theme'
+import { AppTheme } from 'theme'
 
 interface KeyContentProps {
   keycode: Keycode
-  color: ThemeColor
+  color: keyof AppTheme['colors']
 }
 
-const KeyContent: FC<KeyContentProps> = ({ keycode, color }) => (
-  <Grid w="100%" p={[1, 1, 2]} h="100%" templateRows="1fr 2fr 1fr">
-    <Text
-      fontSize={'2xs'}
-      fontWeight="bold"
-      color={useColorModeValue('gray.400', 'gray.600')}
-      textAlign="left"
-    >
-      {keycode ?? '/'}
-    </Text>
-    <Center>
+const KeyContent: FC<KeyContentProps> = ({ keycode, color }) => {
+  return (
+    <Grid w="100%" p=".1em" h="100%" templateRows="1fr 2fr 1fr">
       <Text
+        fontSize=".6em"
+        fontWeight="bold"
+        color={useColorModeValue('gray.400', 'gray.600')}
+        textAlign="left"
+      >
+        {keycode ?? '/'}
+      </Text>
+      <Text
+        minW={0}
         fontFamily="mono"
-        fontSize={['xs', 'xs', 'md', keycode?.length > 4 ? 'lg' : '3xl']}
-        // color={useColorModeValue('gray.700', 'gray.200')}
+        fontSize="1.5em"
         color={useColorModeValue(`${color}.400`, `${color}.200`)}
       >
-        {/* <Kbd>{last(keycode.split('_'))}</Kbd> */}
         {keycode ? last(keycode.split('_')) : '/'}
       </Text>
-    </Center>
-  </Grid>
-)
+    </Grid>
+  )
+}
 
 export default KeyContent

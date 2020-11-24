@@ -11,8 +11,6 @@ const theme = extendTheme({
   fontSizes,
 })
 
-type Theme = typeof theme
-
-export type ThemeColor = keyof Theme['colors']
+export type AppTheme = typeof theme
 
 export default theme

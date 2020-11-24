@@ -1,3 +1,7 @@
+/**
+ * All basic keycodes.
+ * @see https://docs.qmk.fm/#/keycodes
+ */
 enum Keycode {
   KC_NO = 'KC_NO',
   KC_TRNS = 'KC_TRNS',
