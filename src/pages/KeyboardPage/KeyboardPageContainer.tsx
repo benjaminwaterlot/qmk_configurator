@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { RouteComponentProps } from '@reach/router'
 import { decodeName } from 'lib/encode-keyboard-name'
 import { useDispatch } from 'react-redux'
@@ -6,8 +6,7 @@ import keyboards from 'store/keyboards'
 import { useAppSelector } from 'store'
 import { Center, Spinner } from '@chakra-ui/react'
 import KeyboardPage from './KeyboardPage'
-import KEYMAP from 'content/keyboards/preonic_rev3_default.json'
-import { QMKKeymap, QMKKeymapDto } from 'types/keymap.type'
+import { QMKKeymapDto } from 'types/keymap.type'
 import remapLayout from './remap-layout'
 import Axios from 'axios'
 
@@ -46,8 +45,6 @@ export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
       })
     })
   }, [keyboardName])
-
-  const DEFAULT_KEYMAPS = keyboardName === 'preonic/rev3' ? KEYMAP : null
 
   return (
     <>

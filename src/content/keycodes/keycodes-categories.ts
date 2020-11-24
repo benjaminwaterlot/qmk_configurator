@@ -1,13 +1,15 @@
 import { ThemeColor } from 'theme'
 
-export type KeycodeCategory =
-  | 'alphabet'
-  | 'numeric'
-  | 'controls'
-  | 'layers'
-  | 'qmk'
-  | 'symbols'
-  | 'default'
+export enum KeycodeCategory {
+  ALPHABET = 'alphabet',
+  NUMERIC = 'numeric',
+  SYMBOLS = 'symbols',
+  MODIFIERS = 'modifiers',
+  NAVIGATION = 'navigation',
+  FUNCTION = 'function',
+  INTERNATIONAL = 'international',
+  QMK = 'qmk',
+}
 
 const KEYCODE_CATEGORIES: Record<
   KeycodeCategory,
@@ -17,32 +19,33 @@ const KEYCODE_CATEGORIES: Record<
     label: 'Alphabet',
     color: 'blue',
   },
-  controls: {
-    label: 'Controls',
-    color: 'purple',
-  },
   numeric: {
     label: 'Numeric',
-    color: 'yellow',
-  },
-  layers: {
-    label: 'Layers',
-    color: 'red',
-  },
-  qmk: {
-    label: 'QMK',
-    color: 'pink',
+    color: 'cyan',
   },
   symbols: {
     label: 'Symbols',
-    color: 'green',
+    color: 'teal',
   },
-  /**
-   * Default case
-   */
-  default: {
-    label: 'Default',
-    color: 'gray',
+  modifiers: {
+    label: 'Modifiers',
+    color: 'yellow',
+  },
+  navigation: {
+    label: 'Alphabet',
+    color: 'orange',
+  },
+  function: {
+    label: 'Controls',
+    color: 'purple',
+  },
+  international: {
+    label: 'Layers',
+    color: 'pink',
+  },
+  qmk: {
+    label: 'QMK',
+    color: 'red',
   },
 }
 

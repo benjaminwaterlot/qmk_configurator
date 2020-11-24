@@ -93,6 +93,7 @@ const useKeyboardStore = (initialData: {
           layouts: { current: action.payload },
         })
       }
+
       case 'KEYMAP_SELECT': {
         return mergeKeyboardState({
           layouts: { current: state.keymaps.list[action.payload].layout },
@@ -118,7 +119,7 @@ const useKeyboardStore = (initialData: {
                 layers: [
                   Array(state.layouts.list[action.payload.layout].key_count)
                     .fill(undefined)
-                    .map(() => 'KC_NO'),
+                    .map(() => Keycode.KC_NO),
                 ],
               },
             },
@@ -139,7 +140,7 @@ const useKeyboardStore = (initialData: {
                   ...keymap.layers,
                   Array(keymap.layers[0].length)
                     .fill(undefined)
-                    .map(() => 'KC_NO'),
+                    .map(() => Keycode.KC_NO),
                 ],
               },
             },
@@ -165,9 +166,9 @@ const useKeyboardStore = (initialData: {
                       .map(
                         (_, keyIndex) =>
                           // Each key contains the same key, or if the new layer is longer than before,
-                          // the key is initialized to 'KC_NO'
+                          // the key is initialized to Keycode.KC_NO
                           editedKeymap.layers[layerIndex]?.[keyIndex] ??
-                          'KC_NO',
+                          Keycode.KC_NO,
                       ),
                   ),
               ],
