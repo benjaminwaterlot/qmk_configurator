@@ -1,9 +1,7 @@
 import React, { FC, useRef, useState } from 'react'
 import { Button, useColorMode } from '@chakra-ui/react'
 import KeyContent from './KeyContent'
-import KEYCODES_DATA from 'content/keycodes/keycodes-basic/keycodes-basic-data'
 import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
-import KEYCODE_CATEGORIES from 'content/keycodes/keycodes-categories'
 
 interface KeyContainerProps {
   keycode: KeycodeBasic
@@ -21,16 +19,6 @@ const KeyContainer: FC<KeyContainerProps> = ({
   const [isDropHovered, setIsDropHovered] = useState(false)
   const isLight = useColorMode().colorMode === 'light'
   const ref = useRef<HTMLButtonElement | null>(null)
-  const keyData = KEYCODES_DATA[keycode] ?? {
-    aliases: 'XXXXXXX',
-    description: 'Ignore this key (NOOP)',
-    Windows: '*N/A*',
-    macOS: '*N/A*',
-    Linux: '*N/A*',
-    category: 'alphabet',
-  }
-
-  const color = KEYCODE_CATEGORIES[keyData.category].color
 
   return (
     <Button
@@ -75,7 +63,7 @@ const KeyContainer: FC<KeyContainerProps> = ({
       ref={ref}
       fontSize="inherit"
     >
-      <KeyContent keycode={keycode} color={color} />
+      <KeyContent keycode={keycode} />
     </Button>
   )
 }

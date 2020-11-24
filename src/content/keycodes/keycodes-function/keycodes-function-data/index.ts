@@ -3,11 +3,8 @@ import layerKeycodesData from './layer.keycodes-data'
 import KeycodeFunction from '../keycodes-function.enum'
 
 export interface KeycodeFunctionData {
-  aliases: string
   description: string
-  Windows?: string
-  macOS?: string
-  Linux?: string
+  variables: { name: string; description?: string }[]
   category: KeycodeCategory
 }
 

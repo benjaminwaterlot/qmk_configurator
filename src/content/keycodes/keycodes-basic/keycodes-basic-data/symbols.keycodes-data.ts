@@ -67,6 +67,7 @@ const symbolsKeycodesData = {
   },
   KC_COMM: {
     aliases: 'KC_COMMA',
+    defaultDisplay: '< \n ,',
     description: ', and <',
     Windows: '✔',
     macOS: '✔',
@@ -75,6 +76,7 @@ const symbolsKeycodesData = {
   },
   KC_DOT: {
     aliases: '',
+    defaultDisplay: '> \n .',
     description: '. and >',
     Windows: '✔',
     macOS: '✔',

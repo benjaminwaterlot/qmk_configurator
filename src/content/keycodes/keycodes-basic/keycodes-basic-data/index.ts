@@ -12,6 +12,7 @@ import KeycodeBasic from '../keycodes-basic.enum'
 export interface KeycodeBasicData {
   aliases: string
   description: string
+  defaultDisplay?: string
   Windows: string
   macOS: string
   Linux: string

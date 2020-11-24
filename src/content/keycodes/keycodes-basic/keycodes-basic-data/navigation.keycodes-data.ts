@@ -12,6 +12,7 @@ const navigationKeycodesData = {
   KC_ESC: {
     aliases: 'KC_ESCAPE',
     description: 'Escape',
+    defaultDisplay: 'Esc',
     Windows: '✔',
     macOS: '✔',
     Linux: '✔',
@@ -28,6 +29,7 @@ const navigationKeycodesData = {
   KC_TAB: {
     aliases: '',
     description: 'Tab',
+    defaultDisplay: 'Tab',
     Windows: '✔',
     macOS: '✔',
     Linux: '✔',
@@ -35,6 +37,7 @@ const navigationKeycodesData = {
   },
   KC_SPC: {
     aliases: 'KC_SPACE',
+    defaultDisplay: '⎵',
     description: 'Spacebar',
     Windows: '✔',
     macOS: '✔',
@@ -43,6 +46,7 @@ const navigationKeycodesData = {
   },
   KC_GRV: {
     aliases: 'KC_GRAVE, KC_ZKHK',
+    defaultDisplay: '`',
     description: '<code>&#96;</code> and ~, JIS Zenkaku/Hankaku',
     Windows: '✔',
     macOS: '✔',

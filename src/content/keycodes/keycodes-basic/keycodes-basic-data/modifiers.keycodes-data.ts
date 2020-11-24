@@ -11,6 +11,7 @@ const modifiersKeycodesData = {
   },
   KC_LSFT: {
     aliases: 'KC_LSHIFT',
+    defaultDisplay: '⇧',
     description: 'Left Shift',
     Windows: '✔',
     macOS: '✔',

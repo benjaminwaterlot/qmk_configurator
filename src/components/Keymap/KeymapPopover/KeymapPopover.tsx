@@ -17,10 +17,10 @@ import {
 import usePopoverState from './use-keymap-popover-state'
 import useKeymapPopoverCombobox, { Key } from './use-keymap-popover-combobox'
 import KeymapPopoverListItem from './KeymapPopoverListItem'
-import { AddIcon, CheckIcon } from '@chakra-ui/icons'
 import KEYCODE_CATEGORIES, {
   KeycodeCategory,
 } from 'content/keycodes/keycodes-categories'
+import { map } from 'lodash'
 
 /**
  * A popover that allows to search and select a new keycode from a list.
@@ -37,9 +37,9 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
   const {
     inputRef,
     inputItems,
-    typeFilters,
-    setTypeFilters,
     combo,
+    currentFilter,
+    setCurrentFilter,
   } = useKeymapPopoverCombobox({
     onComboboxSelection: (item) => {
       if (state.popoverOpenedAtIndex === null)
@@ -101,30 +101,31 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
             </Box>
 
             <Wrap m={3} spacing={3}>
-              {(Object.entries(typeFilters) as [
-                KeycodeCategory,
-                boolean,
-              ][]).map(([category, isActive]) => {
-                return (
-                  <WrapItem key={category}>
-                    <Button
-                      onClick={() =>
-                        setTypeFilters({
-                          ...typeFilters,
-                          [category]: !isActive,
-                        })
-                      }
-                      size="xs"
-                      colorScheme={
-                        isActive ? KEYCODE_CATEGORIES[category].color : 'gray'
-                      }
-                      leftIcon={isActive ? <CheckIcon /> : <AddIcon />}
-                    >
-                      {KEYCODE_CATEGORIES[category].label}
-                    </Button>
-                  </WrapItem>
-                )
-              })}
+              {map(
+                KEYCODE_CATEGORIES,
+                (categoryData, category: KeycodeCategory) => {
+                  return (
+                    <WrapItem key={category}>
+                      <Button
+                        onClick={() =>
+                          setCurrentFilter(
+                            category === currentFilter ? null : category,
+                          )
+                        }
+                        size="xs"
+                        title={KEYCODE_CATEGORIES[category].label}
+                        colorScheme={
+                          currentFilter === category
+                            ? categoryData.color
+                            : 'gray'
+                        }
+                      >
+                        {KEYCODE_CATEGORIES[category].icon}
+                      </Button>
+                    </WrapItem>
+                  )
+                },
+              )}
             </Wrap>
 
             <List

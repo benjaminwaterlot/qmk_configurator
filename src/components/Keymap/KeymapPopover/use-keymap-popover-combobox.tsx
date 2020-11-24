@@ -4,9 +4,7 @@ import GetArrayItemsType from 'lib/get-array-items-type'
 import formatKeyDescription from 'lib/format-key-description.lib'
 import { useMemo, useRef, useState } from 'react'
 import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
-import KEYCODE_CATEGORIES, {
-  KeycodeCategory,
-} from 'content/keycodes/keycodes-categories'
+import { KeycodeCategory } from 'content/keycodes/keycodes-categories'
 
 const KEYCODES = Object.entries(KEYCODES_DATA).map(([keycode, key]) => ({
   Key: keycode as KeycodeBasic,
@@ -27,17 +25,16 @@ const useKeymapPopoverCombobox = ({
   const [inputItems, setInputItems] = useState(KEYCODES)
   const inputRef = useRef<HTMLElement | null>(null)
 
-  const [typeFilters, setTypeFilters] = useState(
-    Object.fromEntries(
-      Object.keys(KEYCODE_CATEGORIES).map(
-        (category) => [category, true] as [KeycodeCategory, boolean],
-      ),
-    ) as Record<KeycodeCategory, boolean>,
+  const [currentFilter, setCurrentFilter] = useState<null | KeycodeCategory>(
+    null,
   )
 
   const filteredByType = useMemo(
-    () => inputItems.filter((item) => typeFilters[item.category]),
-    [inputItems, typeFilters],
+    () =>
+      inputItems.filter((item) =>
+        currentFilter ? item.category === currentFilter : true,
+      ),
+    [inputItems, currentFilter],
   )
 
   /**
@@ -68,8 +65,8 @@ const useKeymapPopoverCombobox = ({
 
   return {
     inputRef,
-    typeFilters,
-    setTypeFilters,
+    currentFilter,
+    setCurrentFilter,
     inputItems: filteredByType,
     setInputItems,
     combo,
