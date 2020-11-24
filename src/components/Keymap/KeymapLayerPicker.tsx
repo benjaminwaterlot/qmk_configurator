@@ -12,7 +12,7 @@ import { QMKLayer } from 'types/keymap.type'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import theme from 'theme'
 import KEYCODE_CATEGORIES from 'content/keycodes/keycodes-categories'
-import KEYCODES_DATA from 'content/keycodes/keycodes-data'
+import KEYCODES_DATA from 'content/keycodes/keycodes-basic/keycodes-basic-data'
 import { AddIcon } from '@chakra-ui/icons'
 
 interface KeymapLayerPickerProps {

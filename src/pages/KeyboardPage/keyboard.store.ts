@@ -8,7 +8,7 @@ import { PartialDeep } from 'type-fest'
 import { useToast } from '@chakra-ui/react'
 import { cloneDeep, sortBy } from 'lodash'
 import { merge, assign } from 'lodash/fp'
-import Keycode from 'content/keycodes/keycodes-enum'
+import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
 
 interface State {
   layouts: {
@@ -52,7 +52,7 @@ type Action =
       payload: {
         key: number
         layer: number
-        keycode: Keycode
+        keycode: KeycodeBasic
       }
     }
   | {
@@ -119,7 +119,7 @@ const useKeyboardStore = (initialData: {
                 layers: [
                   Array(state.layouts.list[action.payload.layout].key_count)
                     .fill(undefined)
-                    .map(() => Keycode.KC_NO),
+                    .map(() => KeycodeBasic.KC_NO),
                 ],
               },
             },
@@ -140,7 +140,7 @@ const useKeyboardStore = (initialData: {
                   ...keymap.layers,
                   Array(keymap.layers[0].length)
                     .fill(undefined)
-                    .map(() => Keycode.KC_NO),
+                    .map(() => KeycodeBasic.KC_NO),
                 ],
               },
             },
@@ -168,7 +168,7 @@ const useKeyboardStore = (initialData: {
                           // Each key contains the same key, or if the new layer is longer than before,
                           // the key is initialized to Keycode.KC_NO
                           editedKeymap.layers[layerIndex]?.[keyIndex] ??
-                          Keycode.KC_NO,
+                          KeycodeBasic.KC_NO,
                       ),
                   ),
               ],

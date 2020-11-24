@@ -2,7 +2,7 @@
  * All basic keycodes.
  * @see https://docs.qmk.fm/#/keycodes
  */
-enum Keycode {
+enum KeycodeBasic {
   KC_NO = 'KC_NO',
   KC_TRNS = 'KC_TRNS',
   KC_A = 'KC_A',
@@ -202,4 +202,4 @@ enum Keycode {
   KC_BRID = 'KC_BRID',
 }
 
-export default Keycode
+export default KeycodeBasic

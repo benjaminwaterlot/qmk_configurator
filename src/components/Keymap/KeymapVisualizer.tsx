@@ -1,6 +1,6 @@
 import { AspectRatio, Box, Stack } from '@chakra-ui/react'
 import KeyContainer from 'components/Key/KeyContainer'
-import Keycode from 'content/keycodes/keycodes-enum'
+import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
 import React, { FC, useCallback } from 'react'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymap } from 'types/keymap.type'
@@ -13,7 +13,7 @@ interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
   keymap: QMKKeymap
   dimensions: { width: number; height: number }
-  onKeyEdit: (_: { layer: number; key: number; keycode: Keycode }) => void
+  onKeyEdit: (_: { layer: number; key: number; keycode: KeycodeBasic }) => void
   onKeySwap: (sourceKeyIndex: number, destinationKeyIndex: number) => void
   currentLayer: number
 }
