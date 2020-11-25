@@ -1,10 +1,10 @@
 import React, { FC, useRef, useState } from 'react'
 import { Button, useColorMode } from '@chakra-ui/react'
-import KeyContent from './KeyContent'
-import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
+import KeyContent from './components/KeyContent'
+import Keycode from 'content/keycodes/keycodes.enum'
 
 interface KeyContainerProps {
-  keycode: KeycodeBasic
+  keycode: Keycode
   keyIndex: number
   onClick: (ref: HTMLButtonElement | null) => void
   onKeyDropped: (keyIndex: number) => void

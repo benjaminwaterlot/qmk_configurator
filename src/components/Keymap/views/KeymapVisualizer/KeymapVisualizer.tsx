@@ -1,19 +1,18 @@
 import { AspectRatio, Box, Stack } from '@chakra-ui/react'
-import KeyContainer from 'components/Key/KeyContainer'
-import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
+import KeyContainer from 'components/Key/Key'
+import Keycode from 'content/keycodes/keycodes.enum'
 import React, { FC, useCallback } from 'react'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymap } from 'types/keymap.type'
-import KeymapPopover from './KeymapPopover'
-import { Key } from './KeymapPopover/use-keymap-popover-combobox'
-import useKeymapPopoverState from './KeymapPopover/use-keymap-popover-state'
-import useKeyBaseSize from './use-key-size-variant'
+import KeymapPopover from '../KeymapPopover'
+import useKeymapPopoverState from '../KeymapPopover/hooks/use-keymap-popover-state'
+import useKeyBaseSize from './hooks/use-key-base-size'
 
 interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
   keymap: QMKKeymap
   dimensions: { width: number; height: number }
-  onKeyEdit: (_: { layer: number; key: number; keycode: KeycodeBasic }) => void
+  onKeyEdit: (_: { layer: number; keyIndex: number; keycode: Keycode }) => void
   onKeySwap: (sourceKeyIndex: number, destinationKeyIndex: number) => void
   currentLayer: number
 }
@@ -45,11 +44,11 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
     [popover],
   )
 
-  const handleSelection = (key: Key, keyIndex: number) => {
+  const handleSelection = (keycode: Keycode, keyIndex: number) => {
     onKeyEdit({
       layer: currentLayer,
-      key: keyIndex,
-      keycode: key.Key,
+      keyIndex,
+      keycode,
     })
   }
 

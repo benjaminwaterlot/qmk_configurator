@@ -1,13 +1,13 @@
-import KEYCODES_DATA from 'content/keycodes/keycodes-basic/keycodes-basic-data'
+import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import { useCombobox } from 'downshift'
 import GetArrayItemsType from 'lib/get-array-items-type'
 import formatKeyDescription from 'lib/format-key-description.lib'
 import { useMemo, useRef, useState } from 'react'
-import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
-import { KeycodeCategory } from 'content/keycodes/keycodes-categories'
+import Keycode from 'content/keycodes/keycodes.enum'
+import { KeycodeCategory } from 'content/keycodes/keycodes.categories'
 
 const KEYCODES = Object.entries(KEYCODES_DATA).map(([keycode, key]) => ({
-  Key: keycode as KeycodeBasic,
+  Key: keycode as Keycode,
   ...key,
   formatted: formatKeyDescription(key.description),
 }))

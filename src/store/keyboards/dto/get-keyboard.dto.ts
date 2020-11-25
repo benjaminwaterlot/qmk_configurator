@@ -1,6 +1,10 @@
-import { KeyCoordinates } from 'components/Key'
-
-export type KeyboardLayoutDto = KeyCoordinates[]
+export type KeyboardLayoutDto = {
+  x: number
+  y: number
+  w?: number
+  h?: number
+  label?: string
+}[]
 
 export interface KeyboardLayoutsDto {
   [_: string]: {

@@ -1,23 +1,18 @@
 import { Grid, Text, useColorModeValue } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import last from 'lodash/last'
-import KeycodeBasic from 'content/keycodes/keycodes-basic/keycodes-basic.enum'
-import { AppTheme } from 'theme'
-import KEYCODES_DATA from 'content/keycodes/keycodes-basic/keycodes-basic-data'
-import KEYCODE_CATEGORIES from 'content/keycodes/keycodes-categories'
+import Keycode from 'content/keycodes/keycodes.enum'
+import KEYCODES_DATA from 'content/keycodes/keycodes-data'
+import KEYCODE_CATEGORIES from 'content/keycodes/keycodes.categories'
 
 interface KeyContentProps {
-  keycode: KeycodeBasic
-  // color: keyof AppTheme['colors']
+  keycode: Keycode
 }
 
 const KeyContent: FC<KeyContentProps> = ({ keycode }) => {
   const keyData = KEYCODES_DATA[keycode] ?? {
     Aliases: 'XXXXXXX',
     Description: 'Ignore this key (NOOP)',
-    Windows: '*N/A*',
-    macOS: '*N/A*',
-    Linux: '*N/A*',
     category: 'alphabet',
   }
 

@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react'
 import { Stack } from '@chakra-ui/react'
 import { KeyboardStore } from 'pages/KeyboardPage/keyboard.store'
-import KeymapVisualizer from './KeymapVisualizer'
-import KeymapLayerPicker from './KeymapLayerPicker'
-import { useDimensionsFromLayout } from 'components/Keymap/keymap.lib'
+import KeymapVisualizer from './views/KeymapVisualizer/KeymapVisualizer'
+import KeymapLayerPicker from './views/KeymapLayerPicker/KeymapLayerPicker'
+import { useDimensionsFromLayout } from 'components/Keymap/hooks/use-dimensions-from-layout'
 
 interface KeymapProps {
   keyboardStore: KeyboardStore
@@ -21,6 +21,7 @@ const Keymap: FC<KeymapProps> = ({ keyboardStore: { state, dispatch } }) => {
         layers={state.keymaps.list[state.keymaps.current].layers}
         onLayerSelect={setCurrentLayer}
         onLayerCreate={() => dispatch({ type: 'KEYMAP_LAYER_CREATE' })}
+        onLayerSwap={(from, to) => console.log('LAYER SWAPPED', from, to)}
       />
 
       <KeymapVisualizer

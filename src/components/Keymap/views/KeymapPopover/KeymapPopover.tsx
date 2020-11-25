@@ -14,20 +14,21 @@ import {
   Wrap,
   WrapItem,
 } from '@chakra-ui/react'
-import usePopoverState from './use-keymap-popover-state'
-import useKeymapPopoverCombobox, { Key } from './use-keymap-popover-combobox'
-import KeymapPopoverListItem from './KeymapPopoverListItem'
+import usePopoverState from './hooks/use-keymap-popover-state'
+import useKeymapPopoverCombobox from './hooks/use-keymap-popover-combobox'
+import KeymapPopoverListItem from './components/KeymapPopoverListItem'
 import KEYCODE_CATEGORIES, {
   KeycodeCategory,
-} from 'content/keycodes/keycodes-categories'
+} from 'content/keycodes/keycodes.categories'
 import { map } from 'lodash'
+import Keycode from 'content/keycodes/keycodes.enum'
 
 /**
  * A popover that allows to search and select a new keycode from a list.
  */
 interface KeymapPopoverProps {
   state: ReturnType<typeof usePopoverState>
-  onSelection: (key: Key, keyIndex: number) => void
+  onSelection: (keycode: Keycode, keyIndex: number) => void
 }
 
 const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
@@ -47,7 +48,7 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
           `KeymapPopover shall be opened when a new keycode is selected`,
         )
 
-      onSelection(item, state.popoverOpenedAtIndex)
+      onSelection(item.Key, state.popoverOpenedAtIndex)
       handleClosePopover()
     },
   })

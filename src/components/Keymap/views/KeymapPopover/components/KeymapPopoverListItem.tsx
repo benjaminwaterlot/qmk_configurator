@@ -1,7 +1,7 @@
 import { Badge, ListItem, Text, useColorModeValue } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import { AppTheme } from 'theme'
-import { Key } from './use-keymap-popover-combobox'
+import { Key } from '../hooks/use-keymap-popover-combobox'
 
 /**
  * Dumb component displaying a key (keycode + information about the keycode) in the Popover list.
