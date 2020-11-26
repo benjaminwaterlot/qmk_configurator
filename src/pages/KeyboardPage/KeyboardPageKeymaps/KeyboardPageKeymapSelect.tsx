@@ -14,30 +14,26 @@ import {
 } from '@chakra-ui/react'
 import { AddIcon, CopyIcon, LockIcon, SettingsIcon } from '@chakra-ui/icons'
 import KeyboardPageKeymapSettings from './KeyboardPageKeymapSettings'
-import { KeyboardStore } from '../keyboard.store'
+import useNewKeyboardStore from '../keyboard.store.new'
+import shallow from 'zustand/shallow'
 
-interface KeyboardPageKeymapSelectProps {
-  keyboardStore: KeyboardStore
-}
+interface KeyboardPageKeymapSelectProps {}
 
-const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
-  keyboardStore,
-}) => {
-  const { state, dispatch } = keyboardStore
+const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({}) => {
   const modal = useDisclosure()
+  const keymaps = useNewKeyboardStore((state) => state.keymaps, shallow)
 
   return (
     <Wrap>
       <KeyboardPageKeymapSettings
         // For safety, reset the component state when changing keymap
-        key={`${state.keymaps.current}-${state.layouts.current}`}
+        key={`${keymaps.current}`}
         {...modal}
-        keyboardStore={keyboardStore}
       />
 
-      {state.keymaps.sorted.map(([keymapName, keymap], keymapIndex) => {
-        const isReadonly = keymapName === state.keymaps.default
-        const isActive = keymapName === state.keymaps.current
+      {Object.entries(keymaps.list).map(([keymapName, keymap], keymapIndex) => {
+        const isReadonly = keymapName === keymaps.default
+        const isActive = keymapName === keymaps.current
 
         return (
           <WrapItem key={keymapName} fontFamily="mono">
@@ -65,13 +61,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
               {isActive && !isReadonly ? (
                 <Editable
                   onSubmit={(name) => {
-                    dispatch({
-                      type: 'KEYMAP_EDIT_NAME',
-                      payload: {
-                        before: keymapName,
-                        after: name,
-                      },
-                    })
+                    keymaps.actions.editName(name)
                   }}
                   fontWeight="semibold"
                   fontSize="sm"
@@ -89,7 +79,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                     mx="-px"
                   />
                   <EditableInput
-                    size={state.keymaps.current.length}
+                    size={keymaps.current.length}
                     py="3px"
                     px="12px"
                   />
@@ -98,11 +88,12 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                 <Button
                   cursor={isActive && isReadonly ? 'unset' : 'pointer'}
                   isActive={isActive}
-                  onClick={() =>
-                    dispatch({
-                      type: 'KEYMAP_SELECT',
-                      payload: keymapName,
-                    })
+                  onClick={
+                    () => keymaps.actions.select(keymapName)
+                    // dispatch({
+                    //   type: 'KEYMAP_SELECT',
+                    //   payload: keymapName,
+                    // })
                   }
                   leftIcon={isReadonly ? <LockIcon mb="1px" /> : undefined}
                 >
@@ -119,12 +110,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                     {...(keymapIndex === 0 && {
                       borderLeftRadius: 'none',
                     })}
-                    onClick={() =>
-                      dispatch({
-                        type: 'KEYMAP_DUPLICATE',
-                        payload: keymapName,
-                      })
-                    }
+                    onClick={() => keymaps.actions.duplicate()}
                     icon={<CopyIcon />}
                   />
                 </Tooltip>
@@ -141,13 +127,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
           isAttached
           variant="solid"
           onClick={() =>
-            dispatch({
-              type: 'KEYMAP_CREATE',
-              payload: {
-                name: `New ${Math.floor(Math.random() * 100)}`,
-                layout: state.layouts.current,
-              },
-            })
+            keymaps.actions.create(`New ${Math.floor(Math.random() * 100)}`)
           }
         >
           <Button

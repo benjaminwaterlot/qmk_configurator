@@ -19,23 +19,25 @@ import {
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import KeyboardPageLayoutSelect from '../KeyboardPageLayouts/KeyboardPageLayoutSelect'
-import { KeyboardStore } from '../keyboard.store'
+import useNewKeyboardStore from '../keyboard.store.new'
+import shallow from 'zustand/shallow'
 
 type UseDisclosure = ReturnType<typeof useDisclosure>
 
-interface KeyboardPageKeymapSettingsProps extends UseDisclosure {
-  keyboardStore: KeyboardStore
-}
+interface KeyboardPageKeymapSettingsProps extends UseDisclosure {}
 
 const KeyboardPageKeymapSettings: FC<KeyboardPageKeymapSettingsProps> = ({
   isOpen,
   onClose,
-  keyboardStore: { state, dispatch },
 }) => {
-  const [nameInputValue, setNameInputValue] = useState(state.keymaps.current)
+  const { keymaps, layouts } = useNewKeyboardStore(
+    ({ keymaps, layouts }) => ({ keymaps, layouts }),
+    shallow,
+  )
+  const [nameInputValue, setNameInputValue] = useState(keymaps.current)
 
   const [layoutSelectorValue, setLayoutSelectorValue] = useState(
-    state.keymaps.list[state.keymaps.current].layout,
+    keymaps.list[keymaps.current].layout,
   )
 
   const [confirmDeletion, setConfirmDeletion] = useState(false)
@@ -46,13 +48,13 @@ const KeyboardPageKeymapSettings: FC<KeyboardPageKeymapSettingsProps> = ({
   const close = useCallback(() => {
     onClose()
     setConfirmDeletion(false)
-    setLayoutSelectorValue(state.keymaps.list[state.keymaps.current].layout)
-    setNameInputValue(state.keymaps.current)
-  }, [state.keymaps, onClose])
+    setLayoutSelectorValue(keymaps.list[keymaps.current].layout)
+    setNameInputValue(keymaps.current)
+  }, [keymaps, onClose])
 
   const initialFocus = useRef<HTMLButtonElement | null>(null)
 
-  useEffect(() => setNameInputValue(state.keymaps.current), [state.keymaps])
+  useEffect(() => setNameInputValue(keymaps.current), [keymaps])
 
   return (
     <Modal isOpen={isOpen} onClose={close} initialFocusRef={initialFocus}>
@@ -109,7 +111,7 @@ const KeyboardPageKeymapSettings: FC<KeyboardPageKeymapSettingsProps> = ({
               </Tag>
 
               <KeyboardPageLayoutSelect
-                list={state.layouts.list}
+                list={layouts.list}
                 value={layoutSelectorValue}
                 onChange={setLayoutSelectorValue}
               />
@@ -126,10 +128,7 @@ const KeyboardPageKeymapSettings: FC<KeyboardPageKeymapSettingsProps> = ({
               if (!confirmDeletion) return setConfirmDeletion(true)
 
               close()
-              dispatch({
-                type: 'KEYMAP_DELETE',
-                payload: state.keymaps.current,
-              })
+              keymaps.actions.delete()
             }}
           >
             <DeleteIcon mr={2} />
@@ -138,26 +137,9 @@ const KeyboardPageKeymapSettings: FC<KeyboardPageKeymapSettingsProps> = ({
           <Button
             colorScheme="primary"
             onClick={() => {
-              dispatch({
-                type: 'KEYMAP_EDIT_LAYOUT',
-                payload: {
-                  keymap: state.keymaps.current,
-                  layout: layoutSelectorValue,
-                },
-              })
-
-              dispatch({
-                type: 'LAYOUT_SELECT',
-                payload: layoutSelectorValue,
-              })
-
-              dispatch({
-                type: 'KEYMAP_EDIT_NAME',
-                payload: {
-                  before: state.keymaps.current,
-                  after: nameInputValue,
-                },
-              })
+              keymaps.actions.changeLayout(layoutSelectorValue)
+              layouts.actions.select(layoutSelectorValue)
+              keymaps.actions.editName(nameInputValue)
 
               close()
             }}

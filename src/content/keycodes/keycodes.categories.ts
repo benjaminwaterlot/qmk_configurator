@@ -1,5 +1,9 @@
 import { AppTheme } from 'theme'
 
+/**
+ * Every possible keycode category.
+ * @see https://docs.qmk.fm/#/keycodes_basic
+ */
 export enum KeycodeCategory {
   ALPHABET = 'alphabet',
   NUMERIC = 'numeric',
@@ -11,6 +15,9 @@ export enum KeycodeCategory {
   QMK = 'qmk',
 }
 
+/**
+ * These infos are used to differentiate keycode categories (by their colors, mainly).
+ */
 export interface KeycodeCategoryData {
   label: string
   icon: string
@@ -44,19 +51,19 @@ const KEYCODE_CATEGORIES: Record<KeycodeCategory, KeycodeCategoryData> = {
     color: 'orange',
   },
   function: {
-    label: 'Controls',
+    label: 'Functions',
     icon: 'Fn',
     color: 'purple',
+  },
+  qmk: {
+    label: 'QMK Functions',
+    icon: 'QMK',
+    color: 'red',
   },
   international: {
     label: 'International',
     icon: 'Int',
     color: 'pink',
-  },
-  qmk: {
-    label: 'QMK',
-    icon: 'QMK',
-    color: 'red',
   },
 }
 

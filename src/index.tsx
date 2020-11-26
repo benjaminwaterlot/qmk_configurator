@@ -13,6 +13,7 @@ import 'focus-visible/dist/focus-visible'
 import App from 'App'
 import store from 'store'
 import theme from 'theme'
+import { RecoilRoot } from 'recoil'
 
 /**
  * Dev tools
@@ -29,11 +30,13 @@ window.dev = {}
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <ChakraProvider theme={theme}>
-        <App />
-      </ChakraProvider>
-    </Provider>
+    <RecoilRoot>
+      <Provider store={store}>
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </Provider>
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById('root'),
 )

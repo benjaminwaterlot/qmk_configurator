@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import { qmkClient } from 'clients'
 import { RootState } from 'store'
 import { GetKeyboardsListDto } from './dto/get-keyboard-list.dto'
-import { GetKeyboardDto, KeyboardDto } from './dto/get-keyboard.dto'
+import { KeyboardDto } from './dto/get-keyboard.dto'
 
 export const fetchKeyboardList = createAsyncThunk(
   'fetchKeyboardList',
@@ -18,9 +18,13 @@ export const fetchKeyboard = createAsyncThunk<
   string,
   { state: RootState }
 >('fetchKeyboard', async (keyboardName: string, { getState }) => {
-  const request = await qmkClient.get<GetKeyboardDto>(
-    `/keyboards/${keyboardName}`,
-  )
+  const request = await qmkClient.get<{
+    git_hash: string
+    last_updated: string
+    keyboards: {
+      [_: string]: KeyboardDto
+    }
+  }>(`/keyboards/${keyboardName}`)
 
   const keyboard = request.data.keyboards[keyboardName]
 

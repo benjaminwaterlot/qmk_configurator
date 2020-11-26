@@ -1,5 +1,5 @@
 import { AspectRatio, Box, Stack } from '@chakra-ui/react'
-import KeyContainer from 'components/Key/Key'
+import Key from 'components/Key/Key'
 import Keycode from 'content/keycodes/keycodes.enum'
 import React, { FC, useCallback } from 'react'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
@@ -55,7 +55,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   return (
     // Generate a canvas with correct proportions for this keyboard
     <AspectRatio ratio={width / height} maxW={width * 100}>
-      {/* The key sizing and margins are based on this fontSize */}
+      {/* The key sizing and margins will inherit from this fontSize */}
       <Stack h="100%" m={-1} fontSize={keyBaseSizing}>
         {/* This is the popover to edit keys */}
         <KeymapPopover state={popover} onSelection={handleSelection} />
@@ -71,9 +71,10 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
             left={`${(key.x / width) * 100}%`}
             w={`${((key.w ?? 1) / width) * 100}%`}
             h={`${((key.h ?? 1) / height) * 100}%`}
-            p=".2em"
+            // A dynamic padding, whose value inherits from `keyBaseSizing`
+            p=".1em"
           >
-            <KeyContainer
+            <Key
               keyIndex={keyIndex}
               keycode={keymap.layers[currentLayer][keyIndex]}
               onClick={(ref) => handleKeyClick(ref, keyIndex)}

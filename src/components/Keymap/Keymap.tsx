@@ -1,48 +1,47 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { Stack } from '@chakra-ui/react'
-import { KeyboardStore } from 'pages/KeyboardPage/keyboard.store'
 import KeymapVisualizer from './views/KeymapVisualizer/KeymapVisualizer'
 import KeymapLayerPicker from './views/KeymapLayerPicker/KeymapLayerPicker'
 import { useDimensionsFromLayout } from 'components/Keymap/hooks/use-dimensions-from-layout'
+import useNewKeyboardStore from 'pages/KeyboardPage/keyboard.store.new'
+import shallow from 'zustand/shallow'
 
-interface KeymapProps {
-  keyboardStore: KeyboardStore
-}
+interface KeymapProps {}
 
-const Keymap: FC<KeymapProps> = ({ keyboardStore: { state, dispatch } }) => {
-  const [currentLayer, setCurrentLayer] = useState<number>(0)
-  const { layout } = state.layouts.list[state.layouts.current]
+const Keymap: FC<KeymapProps> = () => {
+  const { keymap, actions, layout, layers } = useNewKeyboardStore(
+    (state) => ({
+      keymap: state.keymaps.list[state.keymaps.current],
+      actions: state.keymaps.actions,
+      layout: state.layouts.list[state.layouts.current].layout,
+      layers: state.layers,
+    }),
+    shallow,
+  )
+
   const dimensions = useDimensionsFromLayout(layout)
 
   return (
     <Stack direction="column" spacing={2}>
       <KeymapLayerPicker
-        {...{ currentLayer, dimensions, layout }}
-        layers={state.keymaps.list[state.keymaps.current].layers}
-        onLayerSelect={setCurrentLayer}
-        onLayerCreate={() => dispatch({ type: 'KEYMAP_LAYER_CREATE' })}
-        onLayerSwap={(from, to) => console.log('LAYER SWAPPED', from, to)}
+        {...{ currentLayer: layers.current, dimensions, layout }}
+        layers={keymap.layers}
+        onLayerSelect={layers.actions.setCurrent}
+        onLayerCreate={actions.createLayer}
+        onLayerSwap={actions.swapLayers}
       />
 
       <KeymapVisualizer
-        {...{ currentLayer, dimensions, layout }}
-        onKeyEdit={(payload) =>
-          dispatch({
-            type: 'KEYMAP_EDIT_KEY',
-            payload,
-          })
-        }
+        {...{ currentLayer: layers.current, dimensions, layout }}
+        onKeyEdit={actions.editKey}
         onKeySwap={(sourceKeyIndex, destinationKeyIndex) =>
-          dispatch({
-            type: 'KEYMAP_SWAP_KEYS',
-            payload: {
-              layer: currentLayer,
-              sourceKeyIndex,
-              destinationKeyIndex,
-            },
+          actions.swapKeys({
+            layer: layers.current,
+            sourceKeyIndex,
+            destinationKeyIndex,
           })
         }
-        keymap={state.keymaps.list[state.keymaps.current]}
+        keymap={keymap}
       />
     </Stack>
   )

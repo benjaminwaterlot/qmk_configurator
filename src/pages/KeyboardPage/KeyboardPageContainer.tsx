@@ -23,7 +23,6 @@ export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
   const [keyboardDefaultKeymap, setKeyboardDefaultKeymap] = useState<
     QMKKeymapDto | undefined
   >(undefined)
-  console.log('🌈 : keyboardName', keyboardName)
 
   useEffect(() => {
     dispatch(keyboards.thunks.fetchKeyboard(keyboardName))
@@ -52,7 +51,6 @@ export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
         <KeyboardPage
           keyboard={keyboard}
           defaultKeymaps={keyboardDefaultKeymap}
-          // defaultKeymaps={DEFAULT_KEYMAPS as QMKKeymapDto}
         />
       ) : (
         <Center minH="50vh">

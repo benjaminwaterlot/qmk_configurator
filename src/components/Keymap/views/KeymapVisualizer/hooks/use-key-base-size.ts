@@ -19,17 +19,18 @@ import { AppTheme } from 'theme'
 const useKeyBaseSize = ({ width }: { width: number }) => {
   const breakpointSizeScore =
     useBreakpointValue({
-      base: 0,
-      sm: 0.3,
-      md: 0.6,
-      lg: 1,
+      base: 0.4,
+      sm: 0.6,
+      md: 0.8,
+      lg: 0.9,
+      xl: 1,
     }) ?? 0
 
   return useMemo(() => {
     /**
      * A keyboard of 12 keys wide (ex: a planck) has the minimum value.
      */
-    const arbitraryWidthValue = (width - 12) / 3
+    const arbitraryWidthValue = (width - 12) / 5
 
     /**
      * We inverse this value : `1 / value`, to get the width score.
@@ -41,21 +42,9 @@ const useKeyBaseSize = ({ width }: { width: number }) => {
      */
     const score = widthScore * breakpointSizeScore
 
-    /**
-     * We map this score to a theme fontSize.
-     */
-    const fontSizes: {
-      scoreCeil: number
-      size: keyof AppTheme['fontSizes']
-    }[] = [
-      { scoreCeil: 0.2, size: '2xs' },
-      { scoreCeil: 0.4, size: 'xs' },
-      { scoreCeil: 0.6, size: 'md' },
-      { scoreCeil: 0.8, size: 'lg' },
-      { scoreCeil: 1, size: 'xl' },
-    ]
+    const MAX_KEY_SIZE = 35 // the maximum fontSize keys can inherit from.
 
-    return fontSizes.find(({ scoreCeil }) => score <= scoreCeil)?.size ?? '2xs'
+    return score * MAX_KEY_SIZE
   }, [breakpointSizeScore, width])
 }
 

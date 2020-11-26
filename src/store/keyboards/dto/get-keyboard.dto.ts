@@ -1,10 +1,10 @@
-export type KeyboardLayoutDto = {
+export type KeyboardLayoutDto = Array<{
   x: number
   y: number
   w?: number
   h?: number
   label?: string
-}[]
+}>
 
 export interface KeyboardLayoutsDto {
   [_: string]: {
@@ -16,14 +16,6 @@ export interface KeyboardLayoutsDto {
 export interface KeyboardDto {
   keyboard_name: string
   keyboard_folder: string
-  keymaps: unknown[]
+  keymaps: unknown[] // This seems to always be empty.
   layouts: KeyboardLayoutsDto
-}
-
-export interface GetKeyboardDto {
-  git_hash: string
-  last_updated: string
-  keyboards: {
-    [_: string]: KeyboardDto
-  }
 }

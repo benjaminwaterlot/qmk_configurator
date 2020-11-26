@@ -21,7 +21,7 @@ interface KeymapLayerPickerProps {
   dimensions: { width: number; height: number }
   currentLayer: number
   onLayerSelect: (index: number) => void
-  onLayerSwap: (from: number, to: number) => void
+  onLayerSwap: (payload: { from: number; to: number }) => void
   onLayerCreate: () => void
 }
 
@@ -57,7 +57,10 @@ const KeymapLayerPicker: FC<KeymapLayerPickerProps> = (props) => {
 
             const layerIndexString = dataTransfer.getData('layerIndex')
             if (layerIndexString)
-              props.onLayerSwap(Number(layerIndexString), layerIndex)
+              props.onLayerSwap({
+                from: Number(layerIndexString),
+                to: layerIndex,
+              })
           }}
           // Necessary to prevent children from triggering onDragLeave.
           css={{
