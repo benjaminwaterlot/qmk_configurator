@@ -200,6 +200,7 @@ enum Keycode {
   KC_MRWD = 'KC_MRWD',
   KC_BRIU = 'KC_BRIU',
   KC_BRID = 'KC_BRID',
+  MO = 'MO',
 }
 
 export default Keycode

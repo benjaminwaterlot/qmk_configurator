@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import KeyboardPageLayoutSelect from '../KeyboardPageLayouts/KeyboardPageLayoutSelect'
-import useNewKeyboardStore from '../keyboard.store.new'
+import useNewKeyboardStore from '../keyboard.store'
 import shallow from 'zustand/shallow'
 
 type UseDisclosure = ReturnType<typeof useDisclosure>

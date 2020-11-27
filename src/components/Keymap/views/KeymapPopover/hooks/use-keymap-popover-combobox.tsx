@@ -6,8 +6,11 @@ import { useMemo, useRef, useState } from 'react'
 import Keycode from 'content/keycodes/keycodes.enum'
 import { KeycodeCategory } from 'content/keycodes/keycodes.categories'
 
-const KEYCODES = Object.entries(KEYCODES_DATA).map(([keycode, key]) => ({
-  Key: keycode as Keycode,
+/**
+ * @todo Overhaul of keycode organisation
+ */
+export const KEYCODES = Object.entries(KEYCODES_DATA).map(([keycode, key]) => ({
+  key: keycode as Keycode,
   ...key,
   formatted: formatKeyDescription(key.description),
 }))
@@ -42,14 +45,14 @@ const useKeymapPopoverCombobox = ({
    */
   const combo = useCombobox({
     items: filteredByType,
-    itemToString: (item) => `${item?.Key}`,
+    itemToString: (item) => `${item?.key}`,
     /**
      * Filter keycodes when the input changes.
      */
     onInputValueChange: ({ inputValue }) => {
       setInputItems(
         KEYCODES.filter((item) =>
-          item.Key.toLowerCase().includes(inputValue?.toLowerCase() ?? ''),
+          item.key.toLowerCase().includes(inputValue?.toLowerCase() ?? ''),
         ),
       )
     },

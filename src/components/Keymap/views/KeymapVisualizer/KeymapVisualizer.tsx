@@ -27,6 +27,8 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
 }) => {
   const popover = useKeymapPopoverState()
 
+  const { popoverElementRef, setPopoverOpenedAtIndex } = popover
+
   /**
    * A size ('xs', 'md', etc.) computed with
    * the current breakpoint and the width of the keyboard.
@@ -35,22 +37,23 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   const keyBaseSizing = useKeyBaseSize({ width })
 
   const handleKeyClick = useCallback(
-    (ref, keyIndex) => {
-      if (popover.popoverOpenedAtIndex !== keyIndex) {
-        popover.popoverElementRef.current = ref
-        popover.setPopoverOpenedAtIndex(keyIndex)
-      }
+    (keyIndex, ref) => {
+      popoverElementRef.current = ref
+      setPopoverOpenedAtIndex(keyIndex)
     },
-    [popover],
+    [popoverElementRef, setPopoverOpenedAtIndex],
   )
 
-  const handleSelection = (keycode: Keycode, keyIndex: number) => {
-    onKeyEdit({
-      layer: currentLayer,
-      keyIndex,
-      keycode,
-    })
-  }
+  const handleSelection = useCallback(
+    (keycode: Keycode, keyIndex: number) => {
+      onKeyEdit({
+        layer: currentLayer,
+        keyIndex,
+        keycode,
+      })
+    },
+    [currentLayer, onKeyEdit],
+  )
 
   return (
     // Generate a canvas with correct proportions for this keyboard
@@ -77,10 +80,8 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
             <Key
               keyIndex={keyIndex}
               keycode={keymap.layers[currentLayer][keyIndex]}
-              onClick={(ref) => handleKeyClick(ref, keyIndex)}
-              onKeyDropped={(sourceKeyIndex) =>
-                onKeySwap(sourceKeyIndex, keyIndex)
-              }
+              onClick={handleKeyClick}
+              onKeySwap={onKeySwap}
             />
           </Box>
         ))}

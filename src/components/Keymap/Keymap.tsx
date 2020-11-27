@@ -1,15 +1,15 @@
-import React, { FC } from 'react'
+import React, { FC, useCallback } from 'react'
 import { Stack } from '@chakra-ui/react'
 import KeymapVisualizer from './views/KeymapVisualizer/KeymapVisualizer'
 import KeymapLayerPicker from './views/KeymapLayerPicker/KeymapLayerPicker'
 import { useDimensionsFromLayout } from 'components/Keymap/hooks/use-dimensions-from-layout'
-import useNewKeyboardStore from 'pages/KeyboardPage/keyboard.store.new'
+import useKeyboardStore from 'pages/KeyboardPage/keyboard.store'
 import shallow from 'zustand/shallow'
 
 interface KeymapProps {}
 
 const Keymap: FC<KeymapProps> = () => {
-  const { keymap, actions, layout, layers } = useNewKeyboardStore(
+  const { keymap, actions, layout, layers } = useKeyboardStore(
     (state) => ({
       keymap: state.keymaps.list[state.keymaps.current],
       actions: state.keymaps.actions,
@@ -20,6 +20,17 @@ const Keymap: FC<KeymapProps> = () => {
   )
 
   const dimensions = useDimensionsFromLayout(layout)
+
+  const { swapKeys } = actions
+  const handleKeySwap = useCallback(
+    (sourceKeyIndex, destinationKeyIndex) =>
+      swapKeys({
+        layer: layers.current,
+        sourceKeyIndex,
+        destinationKeyIndex,
+      }),
+    [swapKeys, layers],
+  )
 
   return (
     <Stack direction="column" spacing={2}>
@@ -34,13 +45,7 @@ const Keymap: FC<KeymapProps> = () => {
       <KeymapVisualizer
         {...{ currentLayer: layers.current, dimensions, layout }}
         onKeyEdit={actions.editKey}
-        onKeySwap={(sourceKeyIndex, destinationKeyIndex) =>
-          actions.swapKeys({
-            layer: layers.current,
-            sourceKeyIndex,
-            destinationKeyIndex,
-          })
-        }
+        onKeySwap={handleKeySwap}
         keymap={keymap}
       />
     </Stack>

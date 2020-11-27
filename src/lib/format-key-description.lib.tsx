@@ -30,14 +30,14 @@ const shouldBeShortcutStyled = (word: string) =>
  */
 const formatKeyDescription = (description: string) =>
   description.split(' ').reduce(
-    (elems, word) => [
+    (elems, word, index) => [
       ...elems,
       shouldBeShortcutStyled(word) ? (
-        <Kbd key={word} fontSize="sm">
+        <Kbd key={`${word}-${index}`} fontSize="sm">
           {word}
         </Kbd>
       ) : (
-        <span key={word}> {word} </span>
+        <span key={`${word}-${index}`}> {word} </span>
       ),
     ],
     [] as (JSX.Element | string)[],

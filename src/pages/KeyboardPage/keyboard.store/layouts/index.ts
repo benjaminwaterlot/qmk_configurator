@@ -21,7 +21,18 @@ const layouts = (
   current: '',
   list: {},
   actions: {
-    select: (layout) => set(({ layouts }) => void (layouts.current = layout)),
+    select: (layout) =>
+      set(({ layouts, keymaps }) => {
+        if (
+          layouts.list[keymaps.list[keymaps.current].layout].key_count <
+          layouts.list[layout].key_count
+        )
+          return console.error(
+            "You can't go to a larger layout with a smaller keyboard.",
+          )
+
+        layouts.current = layout
+      }),
   },
 })
 

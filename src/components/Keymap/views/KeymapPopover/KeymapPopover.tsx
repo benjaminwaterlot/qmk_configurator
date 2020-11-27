@@ -1,27 +1,21 @@
-import React, { FC, useCallback } from 'react'
+import React, { FC, memo, useCallback } from 'react'
 import {
   Box,
-  Button,
-  Divider,
   Input,
-  List,
   Popover,
   PopoverBody,
   PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
   Portal,
-  Wrap,
-  WrapItem,
 } from '@chakra-ui/react'
 import usePopoverState from './hooks/use-keymap-popover-state'
 import useKeymapPopoverCombobox from './hooks/use-keymap-popover-combobox'
 import KeymapPopoverListItem from './components/KeymapPopoverListItem'
-import KEYCODE_CATEGORIES, {
-  KeycodeCategory,
-} from 'content/keycodes/keycodes.categories'
-import { map } from 'lodash'
+import KEYCODE_CATEGORIES from 'content/keycodes/keycodes.categories'
 import Keycode from 'content/keycodes/keycodes.enum'
+import KeymapPopoverCategories from './components/KeymapPopoverCategories'
+import { FixedSizeList } from 'react-window'
 
 /**
  * A popover that allows to search and select a new keycode from a list.
@@ -33,7 +27,7 @@ interface KeymapPopoverProps {
 
 const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
   /**
-   * This hook handle the state of the keycodes list.
+   * This hook handles the state of the keycodes list.
    */
   const {
     inputRef,
@@ -48,7 +42,7 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
           `KeymapPopover shall be opened when a new keycode is selected`,
         )
 
-      onSelection(item.Key, state.popoverOpenedAtIndex)
+      onSelection(item.key, state.popoverOpenedAtIndex)
       handleClosePopover()
     },
   })
@@ -56,13 +50,16 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
   /**
    * This function cleans the popover state and close it.
    */
+  const { reset } = combo
+  const { setPopoverOpenedAtIndex, popoverElementRef } = state
   const handleClosePopover = useCallback(() => {
-    combo.reset()
-    state.setPopoverOpenedAtIndex(null)
+    setPopoverOpenedAtIndex(null)
 
     // Focus back the key which we came from on the keymap
-    state.popoverElementRef.current?.focus()
-  }, [combo, state])
+    popoverElementRef.current?.focus()
+
+    reset()
+  }, [setPopoverOpenedAtIndex, popoverElementRef, reset])
 
   return (
     <Popover
@@ -76,6 +73,7 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
     >
       <PopoverTrigger>
         {/* This is only because <Popover /> requires an initial trigger. */}
+        {/* We will trigger it manually anyway. */}
         <Box d="none" />
       </PopoverTrigger>
 
@@ -101,58 +99,27 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
               />
             </Box>
 
-            <Wrap m={3} spacing={3}>
-              {map(
-                KEYCODE_CATEGORIES,
-                (categoryData, category: KeycodeCategory) => {
-                  return (
-                    <WrapItem key={category}>
-                      <Button
-                        onClick={() =>
-                          setCurrentFilter(
-                            category === currentFilter ? null : category,
-                          )
-                        }
-                        size="xs"
-                        title={KEYCODE_CATEGORIES[category].label}
-                        colorScheme={
-                          currentFilter === category
-                            ? categoryData.color
-                            : 'gray'
-                        }
-                      >
-                        {KEYCODE_CATEGORIES[category].icon}
-                      </Button>
-                    </WrapItem>
-                  )
-                },
-              )}
-            </Wrap>
+            <KeymapPopoverCategories
+              categories={KEYCODE_CATEGORIES}
+              currentCategory={currentFilter}
+              onCategorySelect={setCurrentFilter}
+            />
 
-            <List
+            <FixedSizeList
               {...combo.getMenuProps({}, { suppressRefError: true })}
-              h="42vh" // Because 42.
-              overflow="scroll"
+              height={300}
+              itemCount={inputItems.length}
+              itemSize={40}
+              width="100%"
+              itemData={{
+                items: inputItems,
+                getItemProps: combo.getItemProps,
+                highlightedIndex: combo.highlightedIndex,
+                selectedItem: combo.selectedItem,
+              }}
             >
-              <Divider />
-              {inputItems
-                // Temporary limit for DOM performance. Will replace by virtualization later.
-                .slice(0, 40)
-                .map((item, index) => (
-                  <React.Fragment key={item.Key}>
-                    <KeymapPopoverListItem
-                      isHighlighted={index === combo.highlightedIndex}
-                      keyInfo={item}
-                      color={KEYCODE_CATEGORIES[item.category].color}
-                      downshiftItemProps={combo.getItemProps({
-                        item,
-                        index,
-                      })}
-                    />
-                    <Divider />
-                  </React.Fragment>
-                ))}
-            </List>
+              {KeymapPopoverListItem}
+            </FixedSizeList>
           </PopoverBody>
         </PopoverContent>
       </Portal>
@@ -160,4 +127,4 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
   )
 }
 
-export default KeymapPopover
+export default memo(KeymapPopover)

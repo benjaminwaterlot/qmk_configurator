@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import KeyContent from './components/KeyContent'
 import Keycode from 'content/keycodes/keycodes.enum'
 import KeyContainer from './components/KeyContainer'
@@ -6,8 +6,8 @@ import KeyContainer from './components/KeyContainer'
 export interface KeyProps {
   keycode: Keycode
   keyIndex: number
-  onClick: (ref: HTMLButtonElement | null) => void
-  onKeyDropped: (keyIndex: number) => void
+  onClick: (keyIndex: number, ref: HTMLButtonElement | null) => void
+  onKeySwap: (sourceKeyIndex: number, destinationKeyIndex: number) => void
 }
 
 const Key: FC<KeyProps> = (props) => (
@@ -16,4 +16,4 @@ const Key: FC<KeyProps> = (props) => (
   </KeyContainer>
 )
 
-export default Key
+export default memo(Key)

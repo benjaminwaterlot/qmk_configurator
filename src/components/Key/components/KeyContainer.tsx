@@ -7,7 +7,7 @@ interface KeyContainerProps extends KeyProps {}
 const KeyContainer: FC<KeyContainerProps> = ({
   keyIndex,
   onClick,
-  onKeyDropped,
+  onKeySwap,
   children,
 }) => {
   const [isDropHovered, setIsDropHovered] = useState(false)
@@ -35,9 +35,9 @@ const KeyContainer: FC<KeyContainerProps> = ({
         setIsDropHovered(false)
 
         const keyIndexString = dataTransfer.getData('keyIndex')
-        if (keyIndexString) onKeyDropped(Number(keyIndexString))
+        if (keyIndexString) onKeySwap(keyIndex, Number(keyIndexString))
       }}
-      onClick={() => onClick(ref.current)}
+      onClick={() => onClick(keyIndex, ref.current)}
       // Necessary to prevent children from triggering onDragLeave.
       css={{
         '*': {

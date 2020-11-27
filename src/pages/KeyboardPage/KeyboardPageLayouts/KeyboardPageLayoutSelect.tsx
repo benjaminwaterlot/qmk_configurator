@@ -5,7 +5,7 @@ import {
   Select,
   SelectProps,
 } from '@chakra-ui/react'
-import React, { FC } from 'react'
+import React, { FC, memo } from 'react'
 import { KeyboardLayoutsDto } from 'store/keyboards/dto/get-keyboard.dto'
 
 /**
@@ -47,4 +47,4 @@ const KeyboardPageLayoutSelect: FC<KeyboardPageLayoutSelectProps> = ({
   </InputGroup>
 )
 
-export default KeyboardPageLayoutSelect
+export default memo(KeyboardPageLayoutSelect)

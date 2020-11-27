@@ -24,6 +24,6 @@ const qmkKeycodesData = {
     ],
     category: KeycodeCategory.QMK,
   },
-} as const
+}
 
 export default qmkKeycodesData

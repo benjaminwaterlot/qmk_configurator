@@ -1,16 +1,16 @@
 import { KeycodeCategory } from './keycodes.categories'
 
 export enum KeycodeVariableType {
-  NUMBER = 'NUMBER',
-  STRING = 'STRING',
+  NUMBER = 'number',
+  STRING = 'string',
 }
 
 /**
  * The data tied to a keycode.
  */
 export interface KeycodeData {
-  aliases: string
   description: string
+  aliases?: string
   // The default representation on a keyboard.
   // Can be overrided for different localizations.
   defaultDisplay?: string

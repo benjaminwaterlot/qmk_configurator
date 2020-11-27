@@ -1,7 +1,6 @@
 import { useBreakpointValue } from '@chakra-ui/react'
 import { clamp } from 'lodash'
 import { useMemo } from 'react'
-import { AppTheme } from 'theme'
 
 /**
  * The size of a key on the screen is very important,
@@ -14,7 +13,7 @@ import { AppTheme } from 'theme'
  * -> the width of the current keyboard (a 30-keys keyboard will have comparatively larger keys).
  *
  * We compute a score between 0 and 1 based on these values,
- * then map the result to a fontSize of our theme.
+ * then map the result to a base fontSize.
  */
 const useKeyBaseSize = ({ width }: { width: number }) => {
   const breakpointSizeScore =
@@ -29,6 +28,7 @@ const useKeyBaseSize = ({ width }: { width: number }) => {
   return useMemo(() => {
     /**
      * A keyboard of 12 keys wide (ex: a planck) has the minimum value.
+     * The last number is a constant to prevent large boards from having invisible fonts.
      */
     const arbitraryWidthValue = (width - 12) / 5
 

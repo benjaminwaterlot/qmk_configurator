@@ -5,7 +5,7 @@ import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymapDto } from 'types/keymap.type'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
-import useNewKeyboardStore from './keyboard.store.new'
+import useKeyboardStore from './keyboard.store'
 
 /**
  *
@@ -26,20 +26,16 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
-  const keyboardStore = useNewKeyboardStore()
+  const { keymaps, layouts, init } = useKeyboardStore()
 
-  useEffect(
-    () =>
-      keyboardStore.init({
-        keyboard,
-        defaultKeymaps,
-      }),
-    // Adding the keyboardStore dependency create an infinite loop.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [keyboard, defaultKeymaps],
-  )
+  useEffect(() => {
+    init({
+      keyboard,
+      defaultKeymaps,
+    })
+  }, [init, keyboard, defaultKeymaps])
 
-  return keyboardStore.keymaps.current ? (
+  return keymaps.current ? (
     <Stack direction="column" spacing={5}>
       {/* Page title */}
       <Box>
@@ -60,11 +56,9 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
       {/* Layout selector */}
       <KeyboardPageLayoutSelect
         mb={4}
-        list={keyboardStore.layouts.list}
-        value={keyboardStore.layouts.current}
-        onChange={(layout: string) =>
-          keyboardStore.layouts.actions.select(layout)
-        }
+        list={layouts.list}
+        value={layouts.current}
+        onChange={layouts.actions.select}
       />
 
       {/* Keymap selector and editor */}

@@ -113,10 +113,10 @@ const keymaps = (
     changeLayout: (layout) =>
       set(({ keymaps, layouts }) => {
         const newLayout = layouts.list[layout]
-        const oldLayers = keymaps.list[keymaps.current].layers
+        const keymap = keymaps.list[keymaps.current]
 
-        keymaps.list[keymaps.current].layout = layout
-        keymaps.list[keymaps.current].layers = oldLayers.map((layer) =>
+        keymap.layout = layout
+        keymap.layers = keymap.layers.map((layer) =>
           Array(newLayout.key_count)
             .fill(undefined)
             .map((_, i) => layer[i] ?? Keycode.KC_NO),
