@@ -1,11 +1,10 @@
 import React, { FC, memo, useState } from 'react'
 import { getColor } from '@chakra-ui/theme-tools'
-import { Button, Box, Text, useColorMode } from '@chakra-ui/react'
+import { Button, Box, Text } from '@chakra-ui/react'
 import theme from 'theme'
-import KEYCODE_CATEGORIES from 'content/keycodes/keycodes.categories'
-import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKLayer } from 'types/keymap.type'
+import getKeydata from 'lib/get-key-data'
 
 interface KeymapLayerItemProps {
   layerIndex: number
@@ -27,8 +26,12 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
   onClick,
 }) => {
   const [isBeingDraggedOn, setIsBeingDraggedOn] = useState<boolean>(false)
+
+  // The space we let between keys. For comparison, a regular key is 1 by 1.
   const KEY_OFFSET = 0.15
-  const isLightMode = useColorMode().colorMode === 'light'
+
+  const getKeyPreviewColor = (key: string) =>
+    getColor(theme, `${getKeydata(key).category.color}.400`)
 
   return (
     <Button
@@ -102,13 +105,7 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
             height={(keyPlacement.h ?? 1) - KEY_OFFSET * 2}
             rx={1 / 2 - KEY_OFFSET}
             ry={1 / 2 - KEY_OFFSET}
-            fill={
-              getColor(
-                theme,
-                KEYCODE_CATEGORIES[KEYCODES_DATA[layer[keyIndex]]?.category]
-                  ?.color + '.400',
-              ) ?? getColor(theme, isLightMode ? 'gray.500' : 'gray.900')
-            }
+            fill={getKeyPreviewColor(layer[keyIndex])}
           />
         ))}
       </Box>

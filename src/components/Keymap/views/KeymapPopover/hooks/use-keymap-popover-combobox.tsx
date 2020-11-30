@@ -1,29 +1,23 @@
 import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import { useCombobox } from 'downshift'
-import GetArrayItemsType from 'lib/get-array-items-type'
-import formatKeyDescription from 'lib/format-key-description.lib'
 import { useMemo, useRef, useState } from 'react'
 import Keycode from 'content/keycodes/keycodes.enum'
 import { KeycodeCategory } from 'content/keycodes/keycodes.categories'
+import getKeydata from 'lib/get-key-data'
 
-/**
- * @todo Overhaul of keycode organisation
- */
-export const KEYCODES = Object.entries(KEYCODES_DATA).map(([keycode, key]) => ({
-  key: keycode as Keycode,
-  ...key,
-  formatted: formatKeyDescription(key.description),
-}))
-
-export type Key = GetArrayItemsType<typeof KEYCODES>
+export const KEYCODES = Object.keys(KEYCODES_DATA) as Keycode[]
 
 /**
  * This represents the state of the combobox.
  */
 const useKeymapPopoverCombobox = ({
-  onComboboxSelection,
+  currentKey,
+  handleSelection,
+  closePopover,
 }: {
-  onComboboxSelection: (_: Key) => void
+  currentKey?: string
+  handleSelection: (keystring: string) => void
+  closePopover: () => void
 }) => {
   const [inputItems, setInputItems] = useState(KEYCODES)
   const inputRef = useRef<HTMLElement | null>(null)
@@ -35,7 +29,7 @@ const useKeymapPopoverCombobox = ({
   const filteredByType = useMemo(
     () =>
       inputItems.filter((item) =>
-        currentFilter ? item.category === currentFilter : true,
+        currentFilter ? KEYCODES_DATA[item].category === currentFilter : true,
       ),
     [inputItems, currentFilter],
   )
@@ -43,26 +37,58 @@ const useKeymapPopoverCombobox = ({
   /**
    * Downshift hook which generates props for every DOM node of a combobox.
    */
-  const combo = useCombobox({
+  const combobox = useCombobox({
     items: filteredByType,
-    itemToString: (item) => `${item?.key}`,
+    itemToString: (item) => `${item}`,
+    // selectedItem: currentKey,
     /**
      * Filter keycodes when the input changes.
      */
     onInputValueChange: ({ inputValue }) => {
       setInputItems(
         KEYCODES.filter((item) =>
-          item.key.toLowerCase().includes(inputValue?.toLowerCase() ?? ''),
+          item.toLowerCase().includes(inputValue?.toLowerCase() ?? ''),
         ),
       )
     },
+
+    /**
+     * Reset the search field when a key is selected.
+     */
+    stateReducer: (state, { type, changes }) => {
+      switch (type) {
+        case useCombobox.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+        case useCombobox.stateChangeTypes.ItemClick:
+          return {
+            ...changes,
+            ...(changes.selectedItem && {
+              inputValue: '',
+            }),
+          }
+
+        default:
+          return changes
+      }
+    },
+
     /**
      * Handle the selection of an item.
      */
     onSelectedItemChange: (changes) => {
       if (!changes.selectedItem) return
 
-      onComboboxSelection(changes.selectedItem)
+      const keyData = getKeydata(changes.selectedItem)
+
+      /**
+       * Initialize all keycode variables at 0 if they aren't specified
+       */
+      if (keyData.metadata.variables && !keyData.variables)
+        handleSelection(
+          keyData.setVariables(keyData.metadata.variables.map(() => 0)),
+        )
+      else handleSelection(keyData.keystring)
+
+      if (!keyData.metadata.variables) closePopover()
     },
   })
 
@@ -72,7 +98,7 @@ const useKeymapPopoverCombobox = ({
     setCurrentFilter,
     inputItems: filteredByType,
     setInputItems,
-    combo,
+    combobox,
   }
 }
 

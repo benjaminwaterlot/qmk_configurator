@@ -1,6 +1,5 @@
 import { AspectRatio, Box, Stack } from '@chakra-ui/react'
 import Key from 'components/Key/Key'
-import Keycode from 'content/keycodes/keycodes.enum'
 import React, { FC, useCallback } from 'react'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymap } from 'types/keymap.type'
@@ -12,8 +11,11 @@ interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
   keymap: QMKKeymap
   dimensions: { width: number; height: number }
-  onKeyEdit: (_: { layer: number; keyIndex: number; keycode: Keycode }) => void
-  onKeySwap: (sourceKeyIndex: number, destinationKeyIndex: number) => void
+  onKeyEdit: (_: { layer: number; keyIndex: number; keycode: string }) => void
+  onKeySwap: (payload: {
+    sourceKeyIndex: number
+    destinationKeyIndex: number
+  }) => void
   currentLayer: number
 }
 
@@ -27,8 +29,6 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
 }) => {
   const popover = useKeymapPopoverState()
 
-  const { popoverElementRef, setPopoverOpenedAtIndex } = popover
-
   /**
    * A size ('xs', 'md', etc.) computed with
    * the current breakpoint and the width of the keyboard.
@@ -36,6 +36,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
    */
   const keyBaseSizing = useKeyBaseSize({ width })
 
+  const { popoverElementRef, setPopoverOpenedAtIndex } = popover
   const handleKeyClick = useCallback(
     (keyIndex, ref) => {
       popoverElementRef.current = ref
@@ -45,7 +46,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   )
 
   const handleSelection = useCallback(
-    (keycode: Keycode, keyIndex: number) => {
+    (keycode: string, keyIndex: number) => {
       onKeyEdit({
         layer: currentLayer,
         keyIndex,
@@ -61,7 +62,15 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
       {/* The key sizing and margins will inherit from this fontSize */}
       <Stack h="100%" m={-1} fontSize={keyBaseSizing}>
         {/* This is the popover to edit keys */}
-        <KeymapPopover state={popover} onSelection={handleSelection} />
+        <KeymapPopover
+          state={popover}
+          currentKey={
+            popover.popoverOpenedAtIndex
+              ? keymap.layers[currentLayer][popover.popoverOpenedAtIndex]
+              : undefined
+          }
+          onSelection={handleSelection}
+        />
 
         {/* Position each key on the canvas */}
         {layout.map((key, keyIndex) => (

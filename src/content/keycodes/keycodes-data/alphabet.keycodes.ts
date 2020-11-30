@@ -3,7 +3,7 @@ import { KeycodeCategory } from '../keycodes.categories'
 const alphabetKeycodesData = {
   KC_A: {
     aliases: '',
-    description: 'a and A',
+    description: '[kbd]a[/kbd] and [kbd]A[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -11,7 +11,7 @@ const alphabetKeycodesData = {
   },
   KC_B: {
     aliases: '',
-    description: 'b and B',
+    description: '[kbd]b[/kbd] and [kbd]B[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -19,7 +19,7 @@ const alphabetKeycodesData = {
   },
   KC_C: {
     aliases: '',
-    description: 'c and C',
+    description: '[kbd]c[/kbd] and [kbd]C[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -27,7 +27,7 @@ const alphabetKeycodesData = {
   },
   KC_D: {
     aliases: '',
-    description: 'd and D',
+    description: '[kbd]d[/kbd] and [kbd]D[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -35,7 +35,7 @@ const alphabetKeycodesData = {
   },
   KC_E: {
     aliases: '',
-    description: 'e and E',
+    description: '[kbd]e[/kbd] and [kbd]E[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -43,7 +43,7 @@ const alphabetKeycodesData = {
   },
   KC_F: {
     aliases: '',
-    description: 'f and F',
+    description: '[kbd]f[/kbd] and [kbd]F[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -51,7 +51,7 @@ const alphabetKeycodesData = {
   },
   KC_G: {
     aliases: '',
-    description: 'g and G',
+    description: '[kbd]g[/kbd] and [kbd]G[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -59,7 +59,7 @@ const alphabetKeycodesData = {
   },
   KC_H: {
     aliases: '',
-    description: 'h and H',
+    description: '[kbd]h[/kbd] and [kbd]H[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -67,7 +67,7 @@ const alphabetKeycodesData = {
   },
   KC_I: {
     aliases: '',
-    description: 'i and I',
+    description: '[kbd]i[/kbd] and [kbd]I[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -75,7 +75,7 @@ const alphabetKeycodesData = {
   },
   KC_J: {
     aliases: '',
-    description: 'j and J',
+    description: '[kbd]j[/kbd] and [kbd]J[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -83,7 +83,7 @@ const alphabetKeycodesData = {
   },
   KC_K: {
     aliases: '',
-    description: 'k and K',
+    description: '[kbd]k[/kbd] and [kbd]K[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -91,7 +91,7 @@ const alphabetKeycodesData = {
   },
   KC_L: {
     aliases: '',
-    description: 'l and L',
+    description: '[kbd]l[/kbd] and [kbd]L[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -99,7 +99,7 @@ const alphabetKeycodesData = {
   },
   KC_M: {
     aliases: '',
-    description: 'm and M',
+    description: '[kbd]m[/kbd] and [kbd]M[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -107,7 +107,7 @@ const alphabetKeycodesData = {
   },
   KC_N: {
     aliases: '',
-    description: 'n and N',
+    description: '[kbd]n[/kbd] and [kbd]N[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -115,7 +115,7 @@ const alphabetKeycodesData = {
   },
   KC_O: {
     aliases: '',
-    description: 'o and O',
+    description: '[kbd]o[/kbd] and [kbd]O[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -123,7 +123,7 @@ const alphabetKeycodesData = {
   },
   KC_P: {
     aliases: '',
-    description: 'p and P',
+    description: '[kbd]p[/kbd] and [kbd]P[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -131,7 +131,7 @@ const alphabetKeycodesData = {
   },
   KC_Q: {
     aliases: '',
-    description: 'q and Q',
+    description: '[kbd]q[/kbd] and [kbd]Q[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -139,7 +139,7 @@ const alphabetKeycodesData = {
   },
   KC_R: {
     aliases: '',
-    description: 'r and R',
+    description: '[kbd]r[/kbd] and [kbd]R[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -147,7 +147,7 @@ const alphabetKeycodesData = {
   },
   KC_S: {
     aliases: '',
-    description: 's and S',
+    description: '[kbd]s[/kbd] and [kbd]S[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -155,7 +155,7 @@ const alphabetKeycodesData = {
   },
   KC_T: {
     aliases: '',
-    description: 't and T',
+    description: '[kbd]t[/kbd] and [kbd]T[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -163,7 +163,7 @@ const alphabetKeycodesData = {
   },
   KC_U: {
     aliases: '',
-    description: 'u and U',
+    description: '[kbd]u[/kbd] and [kbd]U[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -171,7 +171,7 @@ const alphabetKeycodesData = {
   },
   KC_V: {
     aliases: '',
-    description: 'v and V',
+    description: '[kbd]v[/kbd] and [kbd]V[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -179,7 +179,7 @@ const alphabetKeycodesData = {
   },
   KC_W: {
     aliases: '',
-    description: 'w and W',
+    description: '[kbd]w[/kbd] and [kbd]W[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -187,7 +187,7 @@ const alphabetKeycodesData = {
   },
   KC_X: {
     aliases: '',
-    description: 'x and X',
+    description: '[kbd]x[/kbd] and [kbd]X[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -195,7 +195,7 @@ const alphabetKeycodesData = {
   },
   KC_Y: {
     aliases: '',
-    description: 'y and Y',
+    description: '[kbd]y[/kbd] and [kbd]Y[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -203,7 +203,7 @@ const alphabetKeycodesData = {
   },
   KC_Z: {
     aliases: '',
-    description: 'z and Z',
+    description: '[kbd]z[/kbd] and [kbd]Z[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,

@@ -3,7 +3,7 @@ import { KeycodeCategory } from '../keycodes.categories'
 const numericKeycodesData = {
   KC_1: {
     aliases: '',
-    description: '1 and !',
+    description: '[kbd]1[/kbd] and [kbd]![/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -11,7 +11,7 @@ const numericKeycodesData = {
   },
   KC_2: {
     aliases: '',
-    description: '2 and @',
+    description: '[kbd]2[/kbd] and [kbd]@[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -19,7 +19,7 @@ const numericKeycodesData = {
   },
   KC_3: {
     aliases: '',
-    description: '3 and #',
+    description: '[kbd]3[/kbd] and [kbd]#[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -27,7 +27,7 @@ const numericKeycodesData = {
   },
   KC_4: {
     aliases: '',
-    description: '4 and $',
+    description: '[kbd]4[/kbd] and [kbd]$[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -35,7 +35,7 @@ const numericKeycodesData = {
   },
   KC_5: {
     aliases: '',
-    description: '5 and %',
+    description: '[kbd]5[/kbd] and [kbd]%[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -43,7 +43,7 @@ const numericKeycodesData = {
   },
   KC_6: {
     aliases: '',
-    description: '6 and ^',
+    description: '[kbd]6[/kbd] and [kbd]^[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -51,7 +51,7 @@ const numericKeycodesData = {
   },
   KC_7: {
     aliases: '',
-    description: '7 and &',
+    description: '[kbd]7[/kbd] and [kbd]&[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -59,7 +59,7 @@ const numericKeycodesData = {
   },
   KC_8: {
     aliases: '',
-    description: '8 and *',
+    description: '[kbd]8[/kbd] and [kbd]*[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -67,7 +67,7 @@ const numericKeycodesData = {
   },
   KC_9: {
     aliases: '',
-    description: '9 and (',
+    description: '[kbd]9[/kbd] and [kbd]([/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -75,7 +75,7 @@ const numericKeycodesData = {
   },
   KC_0: {
     aliases: '',
-    description: '0 and )',
+    description: '[kbd]0[/kbd] and [kbd])[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -83,7 +83,7 @@ const numericKeycodesData = {
   },
   KC_P1: {
     aliases: 'KC_KP_1',
-    description: 'Keypad 1 and End',
+    description: 'Keypad [kbd]1[/kbd] and [code]End[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -91,7 +91,7 @@ const numericKeycodesData = {
   },
   KC_P2: {
     aliases: 'KC_KP_2',
-    description: 'Keypad 2 and Down Arrow',
+    description: 'Keypad [kbd]2[/kbd] and [code]Down Arrow[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -99,7 +99,7 @@ const numericKeycodesData = {
   },
   KC_P3: {
     aliases: 'KC_KP_3',
-    description: 'Keypad 3 and Page Down',
+    description: 'Keypad [kbd]3[/kbd] and [code]Page Down[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -107,7 +107,7 @@ const numericKeycodesData = {
   },
   KC_P4: {
     aliases: 'KC_KP_4',
-    description: 'Keypad 4 and Left Arrow',
+    description: 'Keypad [kbd]4[/kbd] and [code]Left Arrow[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -115,7 +115,7 @@ const numericKeycodesData = {
   },
   KC_P5: {
     aliases: 'KC_KP_5',
-    description: 'Keypad 5',
+    description: 'Keypad [kbd]5[/kbd]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -123,7 +123,7 @@ const numericKeycodesData = {
   },
   KC_P6: {
     aliases: 'KC_KP_6',
-    description: 'Keypad 6 and Right Arrow',
+    description: 'Keypad [kbd]6[/kbd] and [code]Right Arrow[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -131,7 +131,7 @@ const numericKeycodesData = {
   },
   KC_P7: {
     aliases: 'KC_KP_7',
-    description: 'Keypad 7 and Home',
+    description: 'Keypad [kbd]7[/kbd] and [code]Home[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -139,7 +139,7 @@ const numericKeycodesData = {
   },
   KC_P8: {
     aliases: 'KC_KP_8',
-    description: 'Keypad 8 and Up Arrow',
+    description: 'Keypad [kbd]8[/kbd] and [code]Up Arrow[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -147,7 +147,7 @@ const numericKeycodesData = {
   },
   KC_P9: {
     aliases: 'KC_KP_9',
-    description: 'Keypad 9 and Page Up',
+    description: 'Keypad [kbd]9[/kbd] and [code]Page Up[/code]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -155,7 +155,7 @@ const numericKeycodesData = {
   },
   KC_P0: {
     aliases: 'KC_KP_0',
-    description: 'Keypad 0 and Insert',
+    description: 'Keypad [kbd]0[/kbd] and [code]Insert[/code]',
     Windows: true,
     macOS: true,
     Linux: true,

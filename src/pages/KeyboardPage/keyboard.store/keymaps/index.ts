@@ -21,10 +21,10 @@ export type KeyboardStateKeymaps = {
     editKey: (payload: {
       layer: number
       keyIndex: number
-      keycode: Keycode
+      keycode: string
     }) => void
     swapKeys: (payload: {
-      layer: number
+      layerIndex: number
       sourceKeyIndex: number
       destinationKeyIndex: number
     }) => void
@@ -91,14 +91,16 @@ const keymaps = (
       }),
 
     createLayer: () =>
-      set(({ keymaps }) => {
-        const layers = keymaps.list[keymaps.current].layers
+      set(({ keymaps, layers }) => {
+        const keymapLayers = keymaps.list[keymaps.current].layers
 
-        layers.push(
-          Array(layers[0].length)
+        keymapLayers.push(
+          Array(keymapLayers[0].length)
             .fill(undefined)
             .map(() => Keycode.KC_NO),
         )
+
+        layers.current = keymapLayers.length - 1
       }),
 
     swapLayers: ({ from, to }) =>
@@ -128,7 +130,7 @@ const keymaps = (
         keymaps.list[keymaps.current].layers[layer][keyIndex] = keycode
       }),
 
-    swapKeys: ({ layer: layerIndex, sourceKeyIndex, destinationKeyIndex }) =>
+    swapKeys: ({ layerIndex, sourceKeyIndex, destinationKeyIndex }) =>
       set(({ keymaps }) => {
         const layer = keymaps.list[keymaps.current].layers[layerIndex]
         const sourceKey = layer[sourceKeyIndex]

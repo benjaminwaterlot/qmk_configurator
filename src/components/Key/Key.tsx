@@ -1,13 +1,15 @@
 import React, { FC, memo } from 'react'
 import KeyContent from './components/KeyContent'
-import Keycode from 'content/keycodes/keycodes.enum'
 import KeyContainer from './components/KeyContainer'
 
 export interface KeyProps {
-  keycode: Keycode
+  keycode: string
   keyIndex: number
   onClick: (keyIndex: number, ref: HTMLButtonElement | null) => void
-  onKeySwap: (sourceKeyIndex: number, destinationKeyIndex: number) => void
+  onKeySwap: (payload: {
+    sourceKeyIndex: number
+    destinationKeyIndex: number
+  }) => void
 }
 
 const Key: FC<KeyProps> = (props) => (

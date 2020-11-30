@@ -16,6 +16,7 @@ const Keymap: FC<KeymapProps> = () => {
       layout: state.layouts.list[state.layouts.current].layout,
       layers: state.layers,
     }),
+
     shallow,
   )
 
@@ -23,9 +24,9 @@ const Keymap: FC<KeymapProps> = () => {
 
   const { swapKeys } = actions
   const handleKeySwap = useCallback(
-    (sourceKeyIndex, destinationKeyIndex) =>
+    ({ sourceKeyIndex, destinationKeyIndex }) =>
       swapKeys({
-        layer: layers.current,
+        layerIndex: layers.current,
         sourceKeyIndex,
         destinationKeyIndex,
       }),

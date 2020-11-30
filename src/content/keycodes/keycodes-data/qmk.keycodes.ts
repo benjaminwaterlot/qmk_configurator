@@ -14,10 +14,10 @@ const qmkKeycodesData = {
   },
   MO: {
     description:
-      'Momentarily activates layer. As soon as you let go of the key, the layer is deactivated.',
+      'Momentarily activates [badge]layer[/badge]. As soon as you let go of the key, the layer is deactivated.',
     variables: [
       {
-        name: 'layer',
+        name: 'Layer',
         type: KeycodeVariableType.NUMBER,
         description: 'The layer to activate',
       },

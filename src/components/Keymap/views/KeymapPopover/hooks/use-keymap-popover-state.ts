@@ -3,9 +3,11 @@ import { ModifierPhases, ModifierArguments } from '@popperjs/core'
 
 const usePopoverState = () => {
   /**
-   * This is as the info whether the popover should be opened,
+   * This is the info whether the popover should be opened,
    * AND for which key it should be opened, with its index.
-   * The boolean check for the openness shall be `popoverOpenedAtIndex !== null`.
+   * Warning :
+   * The boolean check for openness should be `popoverOpenedAtIndex !== null`.
+   * At index 0, if you coerce popoverOpenedAtIndex to a boolean, it will evaluate to false!
    */
   const [popoverOpenedAtIndex, setPopoverOpenedAtIndex] = useState<
     number | null
@@ -16,11 +18,6 @@ const usePopoverState = () => {
    * It is the <button> wrapping the key the user has selected.
    */
   const popoverElementRef = useRef<HTMLButtonElement | null>(null)
-
-  /**
-   * This is the main input in the popover, we get a ref so we can auto-focus it on opening.
-   */
-  const popoverInputRef = useRef<HTMLInputElement | null>(null)
 
   /**
    * This popper.js modifier binds a popover to `popoverElementRef` when it changes.
@@ -50,7 +47,6 @@ const usePopoverState = () => {
     popoverElementRef,
     popoverOpenedAtIndex,
     setPopoverOpenedAtIndex,
-    popoverInputRef,
     popperDynamicRefModifier,
   }
 }

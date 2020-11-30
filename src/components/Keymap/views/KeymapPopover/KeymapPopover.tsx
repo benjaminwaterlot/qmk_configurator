@@ -1,10 +1,13 @@
 import React, { FC, memo, useCallback } from 'react'
 import {
   Box,
+  Divider,
+  IconButton,
   Input,
+  InputGroup,
+  InputRightElement,
   Popover,
   PopoverBody,
-  PopoverCloseButton,
   PopoverContent,
   PopoverTrigger,
   Portal,
@@ -13,62 +16,95 @@ import usePopoverState from './hooks/use-keymap-popover-state'
 import useKeymapPopoverCombobox from './hooks/use-keymap-popover-combobox'
 import KeymapPopoverListItem from './components/KeymapPopoverListItem'
 import KEYCODE_CATEGORIES from 'content/keycodes/keycodes.categories'
-import Keycode from 'content/keycodes/keycodes.enum'
 import KeymapPopoverCategories from './components/KeymapPopoverCategories'
 import { FixedSizeList } from 'react-window'
+import { CloseIcon } from '@chakra-ui/icons'
+import getKeydata from 'lib/get-key-data'
+import KeymapPopoverHeader from './components/KeymapPopoverHeader'
 
 /**
  * A popover that allows to search and select a new keycode from a list.
  */
 interface KeymapPopoverProps {
   state: ReturnType<typeof usePopoverState>
-  onSelection: (keycode: Keycode, keyIndex: number) => void
+  currentKey?: string
+  onSelection: (keycode: string, keyIndex: number) => void
 }
 
-const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
+const KeymapPopover: FC<KeymapPopoverProps> = ({
+  state: {
+    popoverElementRef,
+    popoverOpenedAtIndex,
+    popperDynamicRefModifier,
+    setPopoverOpenedAtIndex,
+  },
+  currentKey,
+  onSelection,
+}) => {
+  const handleSelection = useCallback(
+    (keycode) => {
+      if (popoverOpenedAtIndex === null)
+        throw new Error(
+          `KeymapPopover should be opened when a new keycode is selected`,
+        )
+
+      onSelection(keycode, popoverOpenedAtIndex)
+    },
+    [onSelection, popoverOpenedAtIndex],
+  )
+
   /**
    * This hook handles the state of the keycodes list.
    */
   const {
     inputRef,
     inputItems,
-    combo,
+    combobox: {
+      getComboboxProps,
+      getItemProps,
+      getInputProps,
+      getMenuProps,
+      inputValue,
+      reset: resetCombobox,
+      highlightedIndex,
+      selectedItem,
+    },
     currentFilter,
     setCurrentFilter,
   } = useKeymapPopoverCombobox({
-    onComboboxSelection: (item) => {
-      if (state.popoverOpenedAtIndex === null)
-        throw new Error(
-          `KeymapPopover shall be opened when a new keycode is selected`,
-        )
-
-      onSelection(item.key, state.popoverOpenedAtIndex)
-      handleClosePopover()
-    },
+    currentKey,
+    handleSelection,
+    closePopover: () => closePopover(),
   })
 
   /**
-   * This function cleans the popover state and close it.
+   * This function cleans the popover state and closes it.
    */
-  const { reset } = combo
-  const { setPopoverOpenedAtIndex, popoverElementRef } = state
-  const handleClosePopover = useCallback(() => {
+  const closePopover = useCallback(() => {
     setPopoverOpenedAtIndex(null)
 
     // Focus back the key which we came from on the keymap
     popoverElementRef.current?.focus()
 
-    reset()
-  }, [setPopoverOpenedAtIndex, popoverElementRef, reset])
+    resetCombobox()
+  }, [setPopoverOpenedAtIndex, popoverElementRef, resetCombobox])
+
+  /**
+   * Memoize the combobox method which allows to navigate a list with the arrow keys
+   */
+  const handleArrowsNavigation = useCallback(
+    (args) => getInputProps().onKeyDown(args),
+    [getInputProps],
+  )
 
   return (
     <Popover
-      isOpen={state.popoverOpenedAtIndex !== null}
-      onClose={handleClosePopover}
-      placement="auto"
-      modifiers={[state.popperDynamicRefModifier]}
+      isOpen={popoverOpenedAtIndex !== null}
+      onClose={closePopover}
+      placement="right-start"
+      modifiers={[popperDynamicRefModifier]}
       initialFocusRef={inputRef}
-      // We'll return focus manually (we don't use PopoverTrigger, this prop wouldn't work)
+      // We'll return focus manually (we don't use PopoverTrigger, so this prop wouldn't work)
       returnFocusOnClose={false}
     >
       <PopoverTrigger>
@@ -78,48 +114,70 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({ state, onSelection }) => {
       </PopoverTrigger>
 
       <Portal>
-        <PopoverContent w={400}>
-          <PopoverCloseButton />
+        <PopoverContent w={420}>
           <PopoverBody p={0}>
-            <Box
-              m={3}
-              {...combo.getComboboxProps({}, { suppressRefError: true })}
-            >
-              <Input
-                placeholder="Search by code"
-                variant="filled"
-                w="unset"
-                minW="75%"
-                {...combo.getInputProps(
-                  {
-                    ref: (e) => (inputRef.current = e),
-                  },
-                  { suppressRefError: true },
-                )}
+            {currentKey && (
+              <KeymapPopoverHeader
+                keyData={getKeydata(currentKey)}
+                onKeyEdit={handleSelection}
               />
+            )}
+
+            <Divider />
+
+            <Box m={3} {...getComboboxProps({}, { suppressRefError: true })}>
+              <InputGroup>
+                <Input
+                  placeholder="Search by code"
+                  variant="filled"
+                  {...getInputProps(
+                    {
+                      ref: (e) => (inputRef.current = e),
+                    },
+                    { suppressRefError: true },
+                  )}
+                />
+                {inputValue && (
+                  <InputRightElement
+                    children={
+                      <IconButton
+                        size="sm"
+                        variant="ghost"
+                        isRound
+                        aria-label="Clear search input"
+                        onClick={resetCombobox}
+                        icon={<CloseIcon />}
+                      />
+                    }
+                  />
+                )}
+              </InputGroup>
             </Box>
 
             <KeymapPopoverCategories
+              onKeyDown={handleArrowsNavigation}
               categories={KEYCODE_CATEGORIES}
               currentCategory={currentFilter}
               onCategorySelect={setCurrentFilter}
             />
 
-            <FixedSizeList
-              {...combo.getMenuProps({}, { suppressRefError: true })}
-              height={300}
-              itemCount={inputItems.length}
-              itemSize={40}
-              width="100%"
-              itemData={{
-                items: inputItems,
-                getItemProps: combo.getItemProps,
-                highlightedIndex: combo.highlightedIndex,
-                selectedItem: combo.selectedItem,
-              }}
-            >
-              {KeymapPopoverListItem}
-            </FixedSizeList>
+            <Box onKeyDown={handleArrowsNavigation}>
+              <FixedSizeList
+                {...getMenuProps({}, { suppressRefError: true })}
+                height={300}
+                itemCount={inputItems.length}
+                itemSize={40}
+                width="100%"
+                itemData={{
+                  items: inputItems,
+                  getItemProps: getItemProps,
+                  highlightedIndex: highlightedIndex,
+                  selectedItem: selectedItem,
+                }}
+              >
+                {KeymapPopoverListItem}
+              </FixedSizeList>
+            </Box>
           </PopoverBody>
         </PopoverContent>
       </Portal>

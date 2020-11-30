@@ -35,7 +35,11 @@ const KeyContainer: FC<KeyContainerProps> = ({
         setIsDropHovered(false)
 
         const keyIndexString = dataTransfer.getData('keyIndex')
-        if (keyIndexString) onKeySwap(keyIndex, Number(keyIndexString))
+        if (keyIndexString)
+          onKeySwap({
+            sourceKeyIndex: keyIndex,
+            destinationKeyIndex: Number(keyIndexString),
+          })
       }}
       onClick={() => onClick(keyIndex, ref.current)}
       // Necessary to prevent children from triggering onDragLeave.
