@@ -57,7 +57,7 @@ const KeyContainer: FC<KeyContainerProps> = ({
       _hover={{
         bg: isLight ? 'gray.300' : 'gray.700',
       }}
-      transition="all .12s ease-out"
+      transition="background-color .12s ease-out"
       rounded={3}
       ref={ref}
       fontSize="inherit"

@@ -14,8 +14,8 @@ const layers = (
   current: 0,
   actions: {
     setCurrent: (layer) =>
-      set(({ layers }) => {
-        layers.current = layer
+      set(({}) => {
+        // layers.current = layer
       }),
   },
 })

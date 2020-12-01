@@ -79,7 +79,6 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
     >
       <Text
         as="p"
-        mt="-7px"
         mr={2}
         color="gray.500"
         textTransform="uppercase"

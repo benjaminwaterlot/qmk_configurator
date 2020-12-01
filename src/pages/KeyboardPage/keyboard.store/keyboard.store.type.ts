@@ -1,7 +1,7 @@
 import { GetState, StateCreator, StoreApi } from 'zustand'
 import { Initial } from './keyboard.store.init'
 import { KeyboardStateKeymaps } from './keymaps'
-import { KeyboardStateLayers } from './layers'
+// import { KeyboardStateLayers } from './layers'
 import { KeyboardStateLayouts } from './layouts'
 
 export type KeyboardSetState = (fn: (draft: KeyboardState) => void) => void
@@ -16,5 +16,5 @@ export type KeyboardState = {
   init: (_: Initial) => void
   layouts: KeyboardStateLayouts
   keymaps: KeyboardStateKeymaps
-  layers: KeyboardStateLayers
+  // layers: KeyboardStateLayers
 }

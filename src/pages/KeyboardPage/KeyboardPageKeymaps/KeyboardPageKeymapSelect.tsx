@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { Dispatch, FC, SetStateAction } from 'react'
 import {
   Button,
   Wrap,
@@ -18,12 +18,20 @@ import { KeyboardStateKeymaps } from '../keyboard.store/keymaps'
 
 interface KeyboardPageKeymapSelectProps {
   currentLayout: string
-  keymaps: KeyboardStateKeymaps
+  keymaps: KeyboardStateKeymaps['list']
+  actions: KeyboardStateKeymaps['actions']
+  currentKeymap: string
+  setCurrentKeymap: Dispatch<SetStateAction<string>>
+  defaultKeymap: string
 }
 
 const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
   currentLayout,
+  currentKeymap,
+  defaultKeymap,
+  setCurrentKeymap,
   keymaps,
+  actions,
 }) => {
   const modal = useDisclosure()
 
@@ -31,13 +39,14 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
     <Wrap>
       <KeyboardPageKeymapSettings
         // For safety, reset the component state when changing keymap or layout
-        key={`${keymaps.current}-${currentLayout}`}
+        key={`${currentKeymap}-${currentLayout}`}
+        {...{ currentKeymap, setCurrentKeymap, defaultKeymap }}
         {...modal}
       />
 
-      {Object.entries(keymaps.list).map(([keymapName, keymap], keymapIndex) => {
-        const isReadonly = keymapName === keymaps.default
-        const isActive = keymapName === keymaps.current
+      {Object.entries(keymaps).map(([keymapName, keymap], keymapIndex) => {
+        const isReadonly = keymapName === defaultKeymap
+        const isActive = keymapName === currentKeymap
 
         return (
           <WrapItem key={keymapName} fontFamily="mono">
@@ -65,7 +74,8 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
               {isActive && !isReadonly ? (
                 <Editable
                   onSubmit={(name) => {
-                    keymaps.actions.editName(name)
+                    actions.editName({ oldName: keymapName, newName: name })
+                    setCurrentKeymap(name)
                   }}
                   fontWeight="semibold"
                   fontSize="sm"
@@ -83,7 +93,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                     mx="-px"
                   />
                   <EditableInput
-                    size={keymaps.current.length}
+                    size={currentKeymap.length}
                     py="3px"
                     px="12px"
                   />
@@ -92,13 +102,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                 <Button
                   cursor={isActive && isReadonly ? 'unset' : 'pointer'}
                   isActive={isActive}
-                  onClick={
-                    () => keymaps.actions.select(keymapName)
-                    // dispatch({
-                    //   type: 'KEYMAP_SELECT',
-                    //   payload: keymapName,
-                    // })
-                  }
+                  onClick={() => setCurrentKeymap(keymapName)}
                   leftIcon={isReadonly ? <LockIcon mb="1px" /> : undefined}
                 >
                   {keymapName}
@@ -114,7 +118,13 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                     {...(keymapIndex === 0 && {
                       borderLeftRadius: 'none',
                     })}
-                    onClick={() => keymaps.actions.duplicate()}
+                    onClick={() => {
+                      const duplicated = actions.duplicate({
+                        keymap: keymapName,
+                      })
+
+                      setCurrentKeymap(duplicated)
+                    }}
                     icon={<CopyIcon />}
                   />
                 </Tooltip>
@@ -130,9 +140,14 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
           size="sm"
           isAttached
           variant="solid"
-          onClick={() =>
-            keymaps.actions.create(`New ${Math.floor(Math.random() * 100)}`)
-          }
+          onClick={() => {
+            const keymap = actions.create({
+              layout: currentLayout,
+              keymap: `New ${Math.floor(Math.random() * 100)}`,
+            })
+
+            setCurrentKeymap(keymap)
+          }}
         >
           <Button
             bg={useColorModeValue('gray.50', 'gray.900')}

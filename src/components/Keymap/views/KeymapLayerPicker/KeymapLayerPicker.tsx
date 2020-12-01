@@ -9,29 +9,34 @@ interface KeymapLayerPickerProps {
   layout: KeyboardLayoutDto
   layers: QMKLayer[]
   dimensions: { width: number; height: number }
-  currentLayer: number
+  currentLayerIndex: number
+  keymapName: string
+  onLayerCreate: (payload: { keymap: string }) => void
   onLayerSelect: (index: number) => void
-  onLayerSwap: (payload: { from: number; to: number }) => void
-  onLayerCreate: () => void
+  onLayerSwap: (payload: { keymap: string; from: number; to: number }) => void
 }
 
 const KeymapLayerPicker: FC<KeymapLayerPickerProps> = ({
   layout,
   layers,
   dimensions,
-  currentLayer,
+  currentLayerIndex,
+  keymapName,
+  onLayerCreate,
   onLayerSelect,
   onLayerSwap,
-  onLayerCreate,
 }) => {
   return (
-    <SimpleGrid columns={[2, 4, 6, 8]} spacing={3}>
+    <SimpleGrid columns={[2, 4, 6, 8]} spacing={3} fontFamily="mono">
       {layers.map((layer, layerIndex) => (
         <KeymapLayerItem
           key={layerIndex}
-          {...{ layer, layerIndex, onLayerSwap, layout, dimensions }}
+          {...{ layer, layerIndex, layout, dimensions }}
+          onLayerSwap={(payload) =>
+            onLayerSwap({ ...payload, keymap: keymapName })
+          }
           onClick={onLayerSelect}
-          isActive={layerIndex === currentLayer}
+          isActive={layerIndex === currentLayerIndex}
         />
       ))}
       <IconButton
@@ -42,7 +47,7 @@ const KeymapLayerPicker: FC<KeymapLayerPickerProps> = ({
         variant="outline"
         h="100%"
         justifySelf="start"
-        onClick={onLayerCreate}
+        onClick={() => onLayerCreate({ keymap: keymapName })}
       />
     </SimpleGrid>
   )

@@ -4,26 +4,26 @@ import { QMKKeymap } from 'types/keymap.type'
 import { KeyboardGetState, KeyboardSetState } from '../keyboard.store.type'
 
 export type KeyboardStateKeymaps = {
-  current: string
   default: string
   list: {
     [_: string]: QMKKeymap
   }
   actions: {
-    select: (keymap: string) => void
-    create: (keymap: string) => void
-    delete: () => void
-    duplicate: () => void
-    editName: (newName: string) => void
-    createLayer: () => void
-    swapLayers: (payload: { from: number; to: number }) => void
-    changeLayout: (layout: string) => void
+    create: (payload: { layout: string; keymap: string }) => string
+    delete: (payload: { keymap: string }) => string
+    duplicate: (payload: { keymap: string }) => string
+    editName: (payload: { oldName: string; newName: string }) => string
+    createLayer: (payload: { keymap: string }) => number
+    swapLayers: (payload: { keymap: string; from: number; to: number }) => void
+    changeLayout: (payload: { keymap: string; layout: string }) => string
     editKey: (payload: {
-      layer: number
+      keymap: string
+      layerIndex: number
       keyIndex: number
       keycode: string
-    }) => void
+    }) => string
     swapKeys: (payload: {
+      keymap: string
       layerIndex: number
       sourceKeyIndex: number
       destinationKeyIndex: number
@@ -35,87 +35,84 @@ const keymaps = (
   set: KeyboardSetState,
   get: KeyboardGetState,
 ): KeyboardStateKeymaps => ({
-  current: '',
   default: '',
   list: {},
   actions: {
-    select: (keymap) =>
-      set(({ layers, keymaps }) => {
-        layers.current = 0
-
-        keymaps.current = keymap
-      }),
-
-    create: (keymap) =>
-      set(({ layers, keymaps, layouts }) => {
-        layers.current = 0
-
+    create: ({ layout, keymap }) => {
+      set(({ keymaps, layouts }) => {
         keymaps.list[keymap] = {
-          layout: layouts.current,
+          layout,
           layers: [
-            Array(layouts.list[layouts.current].key_count)
+            Array(layouts.list[layout].key_count)
               .fill(undefined)
               .map(() => Keycode.KC_NO),
           ],
         }
+      })
 
-        keymaps.current = keymap
-      }),
+      return keymap
+    },
 
-    delete: () =>
-      set(({ layers, keymaps }) => {
-        layers.current = 0
-
-        delete keymaps.list[keymaps.current]
-        keymaps.current = keymaps.default
-      }),
-
-    duplicate: () =>
-      set(({ layers, keymaps }) => {
-        layers.current = 0
-
-        const duplicated = `${keymaps.current} copy`
-
-        if (keymaps.list[duplicated]) return
-
-        keymaps.list[duplicated] = cloneDeep(keymaps.list[keymaps.current])
-      }),
-
-    editName: (newName) =>
+    delete: ({ keymap }) => {
       set(({ keymaps }) => {
-        if (newName === keymaps.current) return
+        delete keymaps.list[keymap]
+      })
 
-        keymaps.list[newName] = keymaps.list[keymaps.current]
-        delete keymaps.list[keymaps.current]
-        keymaps.current = newName
-      }),
+      return keymap
+    },
 
-    createLayer: () =>
-      set(({ keymaps, layers }) => {
-        const keymapLayers = keymaps.list[keymaps.current].layers
+    duplicate: ({ keymap }) => {
+      const duplicated = `${keymap} copy`
+
+      set(({ keymaps }) => {
+        if (!keymaps.list[keymap] || keymaps.list[duplicated]) return
+
+        keymaps.list[duplicated] = cloneDeep(keymaps.list[keymap])
+      })
+
+      return duplicated
+    },
+
+    editName: ({ oldName, newName }) => {
+      set(({ keymaps }) => {
+        if (oldName === newName) return
+
+        keymaps.list[newName] = keymaps.list[oldName]
+        delete keymaps.list[oldName]
+      })
+
+      return newName
+    },
+
+    createLayer: ({ keymap }) => {
+      // Create a layer, and fill it with `KC_NO`
+      set(({ keymaps }) => {
+        const keymapLayers = keymaps.list[keymap].layers
 
         keymapLayers.push(
           Array(keymapLayers[0].length)
             .fill(undefined)
             .map(() => Keycode.KC_NO),
         )
+      })
 
-        layers.current = keymapLayers.length - 1
-      }),
+      // Return the index of the created layer.
+      return get().keymaps.list[keymap].layers.length - 1
+    },
 
-    swapLayers: ({ from, to }) =>
+    swapLayers: ({ keymap, from, to }) =>
       set(({ keymaps }) => {
-        const layers = keymaps.list[keymaps.current].layers
+        const layers = keymaps.list[keymap].layers
         const fromLayer = layers[from]
 
         layers[from] = layers[to]
         layers[to] = fromLayer
       }),
 
-    changeLayout: (layout) =>
+    changeLayout: ({ keymap: keymapName, layout }) => {
       set(({ keymaps, layouts }) => {
         const newLayout = layouts.list[layout]
-        const keymap = keymaps.list[keymaps.current]
+        const keymap = keymaps.list[keymapName]
 
         keymap.layout = layout
         keymap.layers = keymap.layers.map((layer) =>
@@ -123,16 +120,22 @@ const keymaps = (
             .fill(undefined)
             .map((_, i) => layer[i] ?? Keycode.KC_NO),
         )
-      }),
+      })
 
-    editKey: ({ layer, keyIndex, keycode }) =>
-      set(({ keymaps }) => {
-        keymaps.list[keymaps.current].layers[layer][keyIndex] = keycode
-      }),
+      return layout
+    },
 
-    swapKeys: ({ layerIndex, sourceKeyIndex, destinationKeyIndex }) =>
+    editKey: ({ keymap, layerIndex, keyIndex, keycode }) => {
       set(({ keymaps }) => {
-        const layer = keymaps.list[keymaps.current].layers[layerIndex]
+        keymaps.list[keymap].layers[layerIndex][keyIndex] = keycode
+      })
+
+      return keycode
+    },
+
+    swapKeys: ({ keymap, layerIndex, sourceKeyIndex, destinationKeyIndex }) =>
+      set(({ keymaps }) => {
+        const layer = keymaps.list[keymap].layers[layerIndex]
         const sourceKey = layer[sourceKeyIndex]
 
         layer[sourceKeyIndex] = layer[destinationKeyIndex]

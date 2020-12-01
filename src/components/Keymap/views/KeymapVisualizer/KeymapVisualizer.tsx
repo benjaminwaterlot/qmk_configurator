@@ -10,21 +10,28 @@ import useKeyBaseSize from './hooks/use-key-base-size'
 interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
   keymap: QMKKeymap
+  keymapName: string
   dimensions: { width: number; height: number }
-  onKeyEdit: (_: { layer: number; keyIndex: number; keycode: string }) => void
+  onKeyEdit: (payload: {
+    keymap: string
+    layerIndex: number
+    keyIndex: number
+    keycode: string
+  }) => void
   onKeySwap: (payload: {
     sourceKeyIndex: number
     destinationKeyIndex: number
   }) => void
-  currentLayer: number
+  currentLayerIndex: number
 }
 
 const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   layout,
   keymap,
+  keymapName,
   onKeyEdit,
   onKeySwap,
-  currentLayer,
+  currentLayerIndex,
   dimensions: { width, height },
 }) => {
   const popover = useKeymapPopoverState()
@@ -48,12 +55,13 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   const handleSelection = useCallback(
     (keycode: string, keyIndex: number) => {
       onKeyEdit({
-        layer: currentLayer,
+        keymap: keymapName,
+        layerIndex: currentLayerIndex,
         keyIndex,
         keycode,
       })
     },
-    [currentLayer, onKeyEdit],
+    [currentLayerIndex, onKeyEdit, keymapName],
   )
 
   return (
@@ -66,7 +74,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
           state={popover}
           currentKey={
             popover.popoverOpenedAtIndex
-              ? keymap.layers[currentLayer][popover.popoverOpenedAtIndex]
+              ? keymap.layers[currentLayerIndex][popover.popoverOpenedAtIndex]
               : undefined
           }
           onSelection={handleSelection}
@@ -88,7 +96,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
           >
             <Key
               keyIndex={keyIndex}
-              keycode={keymap.layers[currentLayer][keyIndex]}
+              keycode={keymap.layers[currentLayerIndex][keyIndex]}
               onClick={handleKeyClick}
               onKeySwap={onKeySwap}
             />

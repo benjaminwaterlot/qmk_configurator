@@ -1,10 +1,4 @@
-import { DragHandleIcon } from '@chakra-ui/icons'
-import {
-  InputGroup,
-  InputLeftElement,
-  Select,
-  SelectProps,
-} from '@chakra-ui/react'
+import { Box, Select, SelectProps } from '@chakra-ui/react'
 import React, { FC, memo } from 'react'
 import { KeyboardLayoutsDto } from 'store/keyboards/dto/get-keyboard.dto'
 
@@ -23,19 +17,11 @@ const KeyboardPageLayoutSelect: FC<KeyboardPageLayoutSelectProps> = ({
   onChange,
   ...props
 }) => (
-  <InputGroup>
-    <InputLeftElement
-      pointerEvents="none"
-      children={<DragHandleIcon color="gray.300" />}
-    />
-
+  <Box>
     <Select
-      css={{
-        paddingLeft: '36px',
-      }}
-      maxW={400}
       value={value}
       onChange={(e) => onChange(e.target.value)}
+      variant="unstyled"
       {...props}
     >
       {Object.entries(list).map(([layoutName, layoutData]) => (
@@ -44,7 +30,7 @@ const KeyboardPageLayoutSelect: FC<KeyboardPageLayoutSelectProps> = ({
         </option>
       ))}
     </Select>
-  </InputGroup>
+  </Box>
 )
 
 export default memo(KeyboardPageLayoutSelect)

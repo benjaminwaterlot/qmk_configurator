@@ -67,7 +67,7 @@ const parseKeyString = (keystring: string) => {
   /**
    * This warning will be an error once we add every existing keycodes.
    */
-  if (!(keycode in Keycode)) console.debug(`Unknown keycode : ${keystring}`)
+  // if (!(keycode in Keycode)) console.debug(`Unknown keycode : ${keystring}`)
 
   /**
    * If this keystring represents a command, parse and save its variables.

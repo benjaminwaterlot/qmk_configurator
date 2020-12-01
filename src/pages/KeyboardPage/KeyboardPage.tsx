@@ -1,16 +1,13 @@
-import React, { FC, useEffect } from 'react'
-import { Heading, Stack, Box } from '@chakra-ui/react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
+import { Heading, Stack, Box, HStack, useToast } from '@chakra-ui/react'
 import Keymap from 'components/Keymap'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKKeymapDto } from 'types/keymap.type'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
 import useKeyboardStore from './keyboard.store'
+import { ChevronRightIcon } from '@chakra-ui/icons'
 
-/**
- *
- * Component
- */
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
  * and a graphical UI way to see and edit the keymaps.
@@ -26,7 +23,8 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
-  const { keymaps, layers, layouts, init } = useKeyboardStore()
+  const { keymaps, layouts, init } = useKeyboardStore()
+  const toast = useToast()
 
   useEffect(() => {
     init({
@@ -35,7 +33,45 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
     })
   }, [init, keyboard, defaultKeymaps])
 
-  return keymaps.current ? (
+  const [currentKeymap, setCurrentKeymap] = useState('default')
+
+  const currentLayout = useMemo(() => keymaps.list[currentKeymap]?.layout, [
+    currentKeymap,
+    keymaps.list,
+  ])
+
+  const setCurrentLayout = (layout: string) => {
+    const keymapsArray = Object.entries(keymaps.list)
+
+    let compatibleKeymap = keymapsArray.find(
+      ([, keymap]) => keymap.layout === layout,
+    )?.[0]
+
+    if (!compatibleKeymap) {
+      const duplicated = keymaps.actions.duplicate({ keymap: 'default' })
+
+      compatibleKeymap = keymaps.actions.changeLayout({
+        keymap: duplicated,
+        layout,
+      })
+      compatibleKeymap = keymaps.actions.editName({
+        oldName: duplicated,
+        newName: `default-${layout}`,
+      })
+
+      toast({
+        title: `Created keymap [${compatibleKeymap}]`,
+        description: `No compatible keymap for this layout, so we created one for you.\nWARNING: As the layout is different, keys may be shifted!`,
+        duration: 15000,
+        status: 'warning',
+        isClosable: true,
+      })
+    }
+
+    setCurrentKeymap(compatibleKeymap)
+  }
+
+  return keymaps.list[currentKeymap] ? (
     <Stack direction="column" spacing={5}>
       {/* Page title */}
       <Box>
@@ -48,33 +84,38 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
         >
           {keyboard.keyboard_name}
         </Heading>
-        <Heading as="h2" size="md" color="gray.600" fontWeight="light">
-          {keyboard.keyboard_folder}
-        </Heading>
+        <HStack alignItems="center" color="gray.500">
+          <Heading as="h2" size="md" fontWeight="light">
+            {keyboard.keyboard_folder}
+          </Heading>
+          <ChevronRightIcon />
+          {/* Layout selector */}
+          <KeyboardPageLayoutSelect
+            list={layouts.list}
+            value={currentLayout}
+            onChange={setCurrentLayout}
+          />
+        </HStack>
       </Box>
-
-      {/* Layout selector */}
-      <KeyboardPageLayoutSelect
-        mb={4}
-        list={layouts.list}
-        value={layouts.current}
-        onChange={layouts.actions.select}
-      />
 
       {/* Keymap selector and editor */}
       <KeyboardPageKeymapSelect
-        currentLayout={layouts.current}
-        keymaps={keymaps}
+        keymaps={keymaps.list}
+        actions={keymaps.actions}
+        currentLayout={currentLayout}
+        defaultKeymap={'default'}
+        currentKeymap={currentKeymap}
+        setCurrentKeymap={setCurrentKeymap}
       />
 
       {/* Keymap visualisator */}
       <Keymap
-        keymap={keymaps.list[keymaps.current]}
-        actions={keymaps.actions}
-        layout={layouts.list[layouts.current].layout}
-        layers={layers}
         // Reset the visualizer state on keymap change
-        // key={`keymap-${keyboardStore.state.keymaps.current}`}
+        key={`keymap-${currentKeymap}`}
+        keymapName={currentKeymap}
+        keymap={keymaps.list[currentKeymap]}
+        actions={keymaps.actions}
+        layout={layouts.list[currentLayout].layout}
       />
     </Stack>
   ) : null
