@@ -4,7 +4,7 @@ import { Button, Box, Text } from '@chakra-ui/react'
 import theme from 'theme'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKLayer } from 'types/keymap.type'
-import getKeydata from 'lib/get-key-data'
+import getKeyData from 'lib/get-key-data'
 
 interface KeymapLayerItemProps {
   layerIndex: number
@@ -31,7 +31,7 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
   const KEY_OFFSET = 0.15
 
   const getKeyPreviewColor = (key: string) =>
-    getColor(theme, `${getKeydata(key).category.color}.400`)
+    getColor(theme, `${getKeyData(key).category.color}.400`)
 
   return (
     <Button

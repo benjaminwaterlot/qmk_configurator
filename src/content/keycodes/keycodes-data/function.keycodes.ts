@@ -243,7 +243,7 @@ const functionKeycodesData = {
   },
   KC_F1: {
     aliases: '',
-    description: 'F1',
+    description: '[kbd]F1[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -251,7 +251,7 @@ const functionKeycodesData = {
   },
   KC_F2: {
     aliases: '',
-    description: 'F2',
+    description: '[kbd]F2[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -259,7 +259,7 @@ const functionKeycodesData = {
   },
   KC_F3: {
     aliases: '',
-    description: 'F3',
+    description: '[kbd]F3[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -267,7 +267,7 @@ const functionKeycodesData = {
   },
   KC_F4: {
     aliases: '',
-    description: 'F4',
+    description: '[kbd]F4[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -275,7 +275,7 @@ const functionKeycodesData = {
   },
   KC_F5: {
     aliases: '',
-    description: 'F5',
+    description: '[kbd]F5[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -283,7 +283,7 @@ const functionKeycodesData = {
   },
   KC_F6: {
     aliases: '',
-    description: 'F6',
+    description: '[kbd]F6[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -291,7 +291,7 @@ const functionKeycodesData = {
   },
   KC_F7: {
     aliases: '',
-    description: 'F7',
+    description: '[kbd]F7[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -299,7 +299,7 @@ const functionKeycodesData = {
   },
   KC_F8: {
     aliases: '',
-    description: 'F8',
+    description: '[kbd]F8[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -307,7 +307,7 @@ const functionKeycodesData = {
   },
   KC_F9: {
     aliases: '',
-    description: 'F9',
+    description: '[kbd]F9[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -315,7 +315,7 @@ const functionKeycodesData = {
   },
   KC_F10: {
     aliases: '',
-    description: 'F10',
+    description: '[kbd]F10[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -323,7 +323,7 @@ const functionKeycodesData = {
   },
   KC_F11: {
     aliases: '',
-    description: 'F11',
+    description: '[kbd]F11[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -331,7 +331,7 @@ const functionKeycodesData = {
   },
   KC_F12: {
     aliases: '',
-    description: 'F12',
+    description: '[kbd]F12[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -339,7 +339,7 @@ const functionKeycodesData = {
   },
   KC_F13: {
     aliases: '',
-    description: 'F13',
+    description: '[kbd]F13[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -347,7 +347,7 @@ const functionKeycodesData = {
   },
   KC_F14: {
     aliases: '',
-    description: 'F14',
+    description: '[kbd]F14[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -355,7 +355,7 @@ const functionKeycodesData = {
   },
   KC_F15: {
     aliases: '',
-    description: 'F15',
+    description: '[kbd]F15[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -363,7 +363,7 @@ const functionKeycodesData = {
   },
   KC_F16: {
     aliases: '',
-    description: 'F16',
+    description: '[kbd]F16[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -371,7 +371,7 @@ const functionKeycodesData = {
   },
   KC_F17: {
     aliases: '',
-    description: 'F17',
+    description: '[kbd]F17[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -379,7 +379,7 @@ const functionKeycodesData = {
   },
   KC_F18: {
     aliases: '',
-    description: 'F18',
+    description: '[kbd]F18[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -387,7 +387,7 @@ const functionKeycodesData = {
   },
   KC_F19: {
     aliases: '',
-    description: 'F19',
+    description: '[kbd]F19[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -395,7 +395,7 @@ const functionKeycodesData = {
   },
   KC_F20: {
     aliases: '',
-    description: 'F20',
+    description: '[kbd]F20[/]',
     Windows: true,
     macOS: false,
     Linux: true,
@@ -403,7 +403,7 @@ const functionKeycodesData = {
   },
   KC_F21: {
     aliases: '',
-    description: 'F21',
+    description: '[kbd]F21[/]',
     Windows: true,
     macOS: false,
     Linux: true,
@@ -411,7 +411,7 @@ const functionKeycodesData = {
   },
   KC_F22: {
     aliases: '',
-    description: 'F22',
+    description: '[kbd]F22[/]',
     Windows: true,
     macOS: false,
     Linux: true,
@@ -419,7 +419,7 @@ const functionKeycodesData = {
   },
   KC_F23: {
     aliases: '',
-    description: 'F23',
+    description: '[kbd]F23[/]',
     Windows: true,
     macOS: false,
     Linux: true,
@@ -427,7 +427,7 @@ const functionKeycodesData = {
   },
   KC_F24: {
     aliases: '',
-    description: 'F24',
+    description: '[kbd]F24[/]',
     Windows: true,
     macOS: false,
     Linux: true,
@@ -451,7 +451,7 @@ const functionKeycodesData = {
   },
   KC_APP: {
     aliases: 'KC_APPLICATION',
-    description: 'Application (Windows Context Menu Key)',
+    description: 'Application ([code]Windows Context Menu Key[/])',
     Windows: true,
     macOS: false,
     Linux: true,

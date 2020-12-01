@@ -8,8 +8,10 @@ import {
   NumberInputField,
   NumberInputStepper,
   SimpleGrid,
+  useToast,
 } from '@chakra-ui/react'
 import { KeyData } from 'lib/get-key-data'
+import useIsLightMode from 'lib/use-is-light-mode'
 import React, { FC } from 'react'
 
 interface KeymapPopoverHeaderProps {
@@ -21,6 +23,9 @@ const KeymapPopoverHeader: FC<KeymapPopoverHeaderProps> = ({
   keyData,
   onKeyEdit,
 }) => {
+  const toast = useToast()
+  const isLight = useIsLightMode()
+
   return (
     <Box m={3}>
       <Flex alignItems={keyData.variables ? 'start' : 'center'}>
@@ -52,18 +57,35 @@ const KeymapPopoverHeader: FC<KeymapPopoverHeaderProps> = ({
 
                   <NumberInput
                     size="sm"
+                    bg={isLight ? 'gray.50' : 'gray.600'}
                     value={keyData.variables?.[index]}
-                    /**
-                     * @todo: update the variables in a way that keeps other variables.
-                     * At the moment, this only works for keys that have no more than 1 variable.
-                     */
-                    onChange={(newVariable) =>
-                      onKeyEdit(keyData.setVariables([newVariable]))
-                    }
+                    onChange={(newVariable) => {
+                      const value = Number(newVariable)
+
+                      if (0 <= value && value <= 32)
+                        onKeyEdit(
+                          keyData.setVariables([
+                            ...(keyData.variables ?? []).slice(0, index),
+                            value,
+                            ...(keyData.variables ?? []).slice(index + 1),
+                          ]),
+                        )
+                      else
+                        toast({
+                          title: `The <${variableMetadata.name.toLowerCase()}> variable should be between 0 and 32.`,
+                          status: 'warning',
+                        })
+                    }}
+                    inputMode="numeric"
                     min={0}
                     max={32}
                   >
-                    <NumberInputField borderTopLeftRadius="0" autoFocus />
+                    <NumberInputField
+                      fontWeight="bold"
+                      borderTopLeftRadius="0"
+                      autoFocus
+                      onBlur={(newVariable) => console.log(newVariable)}
+                    />
                     <NumberInputStepper>
                       <NumberIncrementStepper />
                       <NumberDecrementStepper />

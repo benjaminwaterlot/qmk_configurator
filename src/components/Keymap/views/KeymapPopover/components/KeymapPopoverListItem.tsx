@@ -2,7 +2,7 @@ import { Badge, ListItem, Text, useColorModeValue } from '@chakra-ui/react'
 import { KeycodeData } from 'content/keycodes/keycodes.types'
 import React, { AllHTMLAttributes, FC, memo } from 'react'
 import { KEYCODES } from 'components/Keymap/views/KeymapPopover/hooks/use-keymap-popover-combobox'
-import getKeydata from 'lib/get-key-data'
+import getKeyData from 'lib/get-key-data'
 
 /**
  * Dumb component displaying a key (keycode + information about the keycode) in the Popover list.
@@ -23,7 +23,8 @@ const KeymapPopoverListItem: FC<KeymapPopoverListItemProps> = ({
   data: { items, getItemProps, highlightedIndex, selectedItem },
   style,
 }) => {
-  const keyData = getKeydata(items[index])
+  const keyData = getKeyData(items[index])
+  const highlightedBg = useColorModeValue('gray.300', 'gray.800')
 
   return (
     <ListItem
@@ -31,7 +32,7 @@ const KeymapPopoverListItem: FC<KeymapPopoverListItemProps> = ({
       h="40px"
       w="100%"
       px={3}
-      bg={highlightedIndex === index ? 'gray.800' : undefined}
+      bg={highlightedIndex === index ? highlightedBg : undefined}
       style={style}
       {...getItemProps({ item: items[index], index })}
     >

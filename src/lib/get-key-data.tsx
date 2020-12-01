@@ -18,18 +18,22 @@ const COMPONENTS = {
 
   code: {
     Component: Code,
-    props: {},
+    props: { fontSize: '.85em', bg: 'transparent', fontStyle: 'italic' },
   },
 } as {
   [_: string]: {
-    Component: typeof Code | typeof Kbd
+    Component: typeof Code | typeof Kbd | typeof Badge
     props: object
   }
 }
 
+/**
+ * Given a string containing formatting tokens (for example `[kbd]a[/kbd] and [kbd]A[/kbd]`),
+ * this function will return an array of strings and Chakra components, for use with React.
+ */
 const getFormattedDescription = (description: string) =>
-  reactStringReplace(description, /(\[\w+\][^[]+\[\/\w+\])/g, (match, i, w) => {
-    const matchs = match.match(/\[(?<type>\w+)\](?<content>[^[]+)\[\/\w+\]/)
+  reactStringReplace(description, /(\[\w+\][^[]+\[\/\w*\])/g, (match, i, w) => {
+    const matchs = match.match(/\[(?<type>\w+)\](?<content>[^[]+)\[\/\w*\]/)
 
     if (!(matchs?.groups?.type && matchs.groups.content))
       throw new Error(`Match failed for string ${description}`)
@@ -80,6 +84,10 @@ const parseKeyString = (keystring: string) => {
   return { keystring, keycode, variables }
 }
 
+/**
+ * Given infos about a keystring (its keycode and variables),
+ * this function will add metadata infos and helper functions.
+ */
 const addKeycodeInfo = ({
   keystring,
   keycode,
@@ -109,9 +117,9 @@ const addKeycodeInfo = ({
   }
 }
 
-const getKeydata = (keystring: string) =>
+const getKeyData = (keystring: string) =>
   addKeycodeInfo(parseKeyString(keystring))
 
-export type KeyData = ReturnType<typeof getKeydata>
+export type KeyData = ReturnType<typeof getKeyData>
 
-export default getKeydata
+export default getKeyData

@@ -3,7 +3,7 @@ import { KeycodeCategory } from '../keycodes.categories'
 const navigationKeycodesData = {
   KC_ENT: {
     aliases: 'KC_ENTER',
-    description: 'Return (Enter)',
+    description: '[kbd]Return[/] ([code]Enter[/])',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -11,7 +11,7 @@ const navigationKeycodesData = {
   },
   KC_ESC: {
     aliases: 'KC_ESCAPE',
-    description: 'Escape',
+    description: '[kbd]Escape[/]',
     defaultDisplay: 'Esc',
     Windows: true,
     macOS: true,
@@ -20,7 +20,7 @@ const navigationKeycodesData = {
   },
   KC_BSPC: {
     aliases: 'KC_BSPACE',
-    description: 'Delete (Backspace)',
+    description: '[kbd]Backspace[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -28,7 +28,7 @@ const navigationKeycodesData = {
   },
   KC_TAB: {
     aliases: '',
-    description: 'Tab',
+    description: '[kbd]Tab[/]',
     defaultDisplay: 'Tab',
     Windows: true,
     macOS: true,
@@ -38,7 +38,7 @@ const navigationKeycodesData = {
   KC_SPC: {
     aliases: 'KC_SPACE',
     defaultDisplay: '⎵',
-    description: 'Spacebar',
+    description: '[kbd]Spacebar[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -47,7 +47,7 @@ const navigationKeycodesData = {
   KC_GRV: {
     aliases: 'KC_GRAVE, KC_ZKHK',
     defaultDisplay: '`',
-    description: '<code>&#96;</code> and ~, JIS Zenkaku/Hankaku',
+    description: '[kbd]`[/] and [kbd]~[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -55,7 +55,7 @@ const navigationKeycodesData = {
   },
   KC_CAPS: {
     aliases: 'KC_CAPSLOCK, KC_CLCK',
-    description: 'Caps Lock',
+    description: '[kbd]Caps Lock[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -63,7 +63,7 @@ const navigationKeycodesData = {
   },
   KC_DEL: {
     aliases: 'KC_DELETE',
-    description: 'Forward Delete',
+    description: '[kbd]Delete[/] ([code]Forward delete[/])',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -103,7 +103,7 @@ const navigationKeycodesData = {
   },
   KC_PENT: {
     aliases: 'KC_KP_ENTER',
-    description: 'Keypad Enter',
+    description: 'Keypad [kbd]Enter[/]',
     Windows: true,
     macOS: true,
     Linux: true,

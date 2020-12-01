@@ -3,7 +3,7 @@ import { KeycodeCategory } from '../keycodes.categories'
 const modifiersKeycodesData = {
   KC_LCTL: {
     aliases: 'KC_LCTRL',
-    description: 'Left Control',
+    description: 'Left [kbd]Control[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -12,7 +12,7 @@ const modifiersKeycodesData = {
   KC_LSFT: {
     aliases: 'KC_LSHIFT',
     defaultDisplay: '⇧',
-    description: 'Left Shift',
+    description: 'Left [kbd]Control[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -20,7 +20,7 @@ const modifiersKeycodesData = {
   },
   KC_LALT: {
     aliases: 'KC_LOPT',
-    description: 'Left Alt (Option)',
+    description: 'Left [kbd]Alt[/] ([code]Option[/])',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -28,7 +28,8 @@ const modifiersKeycodesData = {
   },
   KC_LGUI: {
     aliases: 'KC_LCMD, KC_LWIN',
-    description: 'Left GUI (Windows/Command/Meta key)',
+    description:
+      'Left [kbd]GUI[/] ([code]Windows[/] / [code]Command[/] / [code]Meta[/])',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -36,7 +37,7 @@ const modifiersKeycodesData = {
   },
   KC_RCTL: {
     aliases: 'KC_RCTRL',
-    description: 'Right Control',
+    description: 'Right [kbd]Control[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -44,7 +45,7 @@ const modifiersKeycodesData = {
   },
   KC_RSFT: {
     aliases: 'KC_RSHIFT',
-    description: 'Right Shift',
+    description: 'Right [kbd]Shift[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -52,7 +53,7 @@ const modifiersKeycodesData = {
   },
   KC_RALT: {
     aliases: 'KC_ROPT, KC_ALGR',
-    description: 'Right Alt (Option/AltGr)',
+    description: 'Right [kbd]Alt[/] ([code]Option[/] / [code]AltGr[/])',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -60,7 +61,8 @@ const modifiersKeycodesData = {
   },
   KC_RGUI: {
     aliases: 'KC_RCMD, KC_RWIN',
-    description: 'Right GUI (Windows/Command/Meta key)',
+    description:
+      'Right [kbd]GUI[/] ([code]Windows[/] / [code]Command[/] / [code]Meta key[/])',
     Windows: true,
     macOS: true,
     Linux: true,

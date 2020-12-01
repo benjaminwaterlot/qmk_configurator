@@ -9,6 +9,9 @@ const theme = extendTheme({
   colors,
   components,
   fontSizes,
+  fonts: {
+    mono: 'Fira Code',
+  },
 })
 
 export type AppTheme = typeof theme

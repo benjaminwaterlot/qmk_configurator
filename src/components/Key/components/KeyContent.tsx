@@ -1,15 +1,16 @@
-import { Flex, Grid, Text, useColorMode } from '@chakra-ui/react'
+import { Flex, Grid, Tag, Text } from '@chakra-ui/react'
 import React, { FC } from 'react'
 import last from 'lodash/last'
 import { KeyProps } from '../Key'
 import { clamp } from 'lodash'
 import { SettingsIcon } from '@chakra-ui/icons'
-import getKeydata from 'lib/get-key-data'
+import getKeyData from 'lib/get-key-data'
+import useIsLightMode from 'lib/use-is-light-mode'
 
 type KeyContentProps = Pick<KeyProps, 'keycode'>
 
 const KeyContent: FC<KeyContentProps> = ({ keycode }) => {
-  const keyData = getKeydata(keycode)
+  const keyData = getKeyData(keycode)
 
   const color = keyData.category.color
 
@@ -23,7 +24,7 @@ const KeyContent: FC<KeyContentProps> = ({ keycode }) => {
   const adaptiveSize = clamp(1 / (content.length / 2.5), 1)
 
   const isCommand = Boolean(keyData.variables)
-  const isLight = useColorMode().colorMode === 'light'
+  const isLight = useIsLightMode()
 
   return (
     <Grid w="100%" p=".2em" h="100%" templateRows="1fr 2fr 1fr">
@@ -46,15 +47,28 @@ const KeyContent: FC<KeyContentProps> = ({ keycode }) => {
       </Flex>
 
       <Text
+        d="flex"
+        alignItems="center"
         alignSelf="center"
+        justifyContent="center"
         minW={0}
         fontFamily="mono"
-        fontSize={`${adaptiveSize - 0.1}em`}
-        whiteSpace="pre"
+        fontSize={isCommand ? '.6em' : `${adaptiveSize - 0.1}em`}
+        whiteSpace="pre-wrap"
         lineHeight=".5"
         color={isLight ? `${color}.400` : `${color}.200`}
       >
-        {content}
+        {isCommand ? (
+          <>
+            <Text mr={1}>{keyData.keycode}</Text>
+            <Tag size="md" fontWeight="bold">
+              {keyData.variables?.join(',')}
+            </Tag>
+          </>
+        ) : (
+          content
+          // 'blablablalkdbj lksj sdlkfj sdlf'
+        )}
       </Text>
     </Grid>
   )

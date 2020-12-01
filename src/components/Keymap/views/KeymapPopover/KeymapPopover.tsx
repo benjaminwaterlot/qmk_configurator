@@ -19,7 +19,7 @@ import KEYCODE_CATEGORIES from 'content/keycodes/keycodes.categories'
 import KeymapPopoverCategories from './components/KeymapPopoverCategories'
 import { FixedSizeList } from 'react-window'
 import { CloseIcon } from '@chakra-ui/icons'
-import getKeydata from 'lib/get-key-data'
+import getKeyData from 'lib/get-key-data'
 import KeymapPopoverHeader from './components/KeymapPopoverHeader'
 
 /**
@@ -101,7 +101,7 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({
     <Popover
       isOpen={popoverOpenedAtIndex !== null}
       onClose={closePopover}
-      placement="right-start"
+      placement="auto-start"
       modifiers={[popperDynamicRefModifier]}
       initialFocusRef={inputRef}
       // We'll return focus manually (we don't use PopoverTrigger, so this prop wouldn't work)
@@ -118,7 +118,7 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({
           <PopoverBody p={0}>
             {currentKey && (
               <KeymapPopoverHeader
-                keyData={getKeydata(currentKey)}
+                keyData={getKeyData(currentKey)}
                 onKeyEdit={handleSelection}
               />
             )}

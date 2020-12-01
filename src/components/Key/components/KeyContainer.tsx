@@ -1,6 +1,7 @@
 import React, { FC, useRef, useState } from 'react'
-import { Button, useColorMode } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { KeyProps } from '../Key'
+import useIsLightMode from 'lib/use-is-light-mode'
 
 interface KeyContainerProps extends KeyProps {}
 
@@ -11,7 +12,7 @@ const KeyContainer: FC<KeyContainerProps> = ({
   children,
 }) => {
   const [isDropHovered, setIsDropHovered] = useState(false)
-  const isLight = useColorMode().colorMode === 'light'
+  const isLight = useIsLightMode()
   const ref = useRef<HTMLButtonElement | null>(null)
 
   return (

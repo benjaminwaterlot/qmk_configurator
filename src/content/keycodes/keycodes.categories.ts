@@ -53,12 +53,12 @@ const KEYCODE_CATEGORIES: Record<KeycodeCategory, KeycodeCategoryData> = {
   function: {
     label: 'Functions',
     icon: 'Fn',
-    color: 'purple',
+    color: 'red',
   },
   qmk: {
     label: 'QMK Functions',
     icon: 'QMK',
-    color: 'red',
+    color: 'purple',
   },
   international: {
     label: 'International',

@@ -3,7 +3,7 @@ import { useCombobox } from 'downshift'
 import { useMemo, useRef, useState } from 'react'
 import Keycode from 'content/keycodes/keycodes.enum'
 import { KeycodeCategory } from 'content/keycodes/keycodes.categories'
-import getKeydata from 'lib/get-key-data'
+import getKeyData from 'lib/get-key-data'
 
 export const KEYCODES = Object.keys(KEYCODES_DATA) as Keycode[]
 
@@ -77,7 +77,7 @@ const useKeymapPopoverCombobox = ({
     onSelectedItemChange: (changes) => {
       if (!changes.selectedItem) return
 
-      const keyData = getKeydata(changes.selectedItem)
+      const keyData = getKeyData(changes.selectedItem)
 
       /**
        * Initialize all keycode variables at 0 if they aren't specified

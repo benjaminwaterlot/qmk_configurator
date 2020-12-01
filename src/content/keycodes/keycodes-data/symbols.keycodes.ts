@@ -3,7 +3,7 @@ import { KeycodeCategory } from '../keycodes.categories'
 const symbolsKeycodesData = {
   KC_MINS: {
     aliases: 'KC_MINUS',
-    description: '- and _',
+    description: '[kbd]-[/] and [kbd]_[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -11,7 +11,7 @@ const symbolsKeycodesData = {
   },
   KC_EQL: {
     aliases: 'KC_EQUAL',
-    description: '= and +',
+    description: '[kbd]=[/] and [kbd]+[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -19,7 +19,7 @@ const symbolsKeycodesData = {
   },
   KC_LBRC: {
     aliases: 'KC_LBRACKET',
-    description: '[ and {',
+    description: '[ and [kbd]{[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -27,7 +27,7 @@ const symbolsKeycodesData = {
   },
   KC_RBRC: {
     aliases: 'KC_RBRACKET',
-    description: '] and }',
+    description: '[kbd]][/] and [kbd]}[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -35,7 +35,7 @@ const symbolsKeycodesData = {
   },
   KC_BSLS: {
     aliases: 'KC_BSLASH',
-    description: '\\ and \\|',
+    description: '[kbd]\\[/] and [kbd]|[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -43,7 +43,7 @@ const symbolsKeycodesData = {
   },
   KC_NUHS: {
     aliases: 'KC_NONUS_HASH',
-    description: 'Non-US # and ~',
+    description: 'Non-US [kbd]#[/] and [kbd]~[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -51,7 +51,7 @@ const symbolsKeycodesData = {
   },
   KC_SCLN: {
     aliases: 'KC_SCOLON',
-    description: '; and :',
+    description: '[kbd];[/] and [kbd]:[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -59,7 +59,7 @@ const symbolsKeycodesData = {
   },
   KC_QUOT: {
     aliases: 'KC_QUOTE',
-    description: '\' and "',
+    description: '[kbd]\'[/] and [kbd]"[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -68,7 +68,7 @@ const symbolsKeycodesData = {
   KC_COMM: {
     aliases: 'KC_COMMA',
     defaultDisplay: '< \n ,',
-    description: ', and <',
+    description: '[kbd],[/] and [kbd]<[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -77,7 +77,7 @@ const symbolsKeycodesData = {
   KC_DOT: {
     aliases: '',
     defaultDisplay: '> \n .',
-    description: '. and >',
+    description: '[kbd].[/] and [kbd]>[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -85,7 +85,7 @@ const symbolsKeycodesData = {
   },
   KC_SLSH: {
     aliases: 'KC_SLASH',
-    description: '/ and ?',
+    description: '[kbd]/[/] and [kbd]?[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -93,7 +93,7 @@ const symbolsKeycodesData = {
   },
   KC_PSLS: {
     aliases: 'KC_KP_SLASH',
-    description: 'Keypad /',
+    description: 'Keypad [kbd]/[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -101,7 +101,7 @@ const symbolsKeycodesData = {
   },
   KC_PAST: {
     aliases: 'KC_KP_ASTERISK',
-    description: 'Keypad *',
+    description: 'Keypad [kbd]*[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -109,7 +109,7 @@ const symbolsKeycodesData = {
   },
   KC_PMNS: {
     aliases: 'KC_KP_MINUS',
-    description: 'Keypad -',
+    description: 'Keypad [kbd]-[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -117,7 +117,7 @@ const symbolsKeycodesData = {
   },
   KC_PPLS: {
     aliases: 'KC_KP_PLUS',
-    description: 'Keypad +',
+    description: 'Keypad [kbd]+[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -125,7 +125,7 @@ const symbolsKeycodesData = {
   },
   KC_PDOT: {
     aliases: 'KC_KP_DOT',
-    description: 'Keypad . and Delete',
+    description: 'Keypad [kbd].[/] and [kbd]Delete[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -133,7 +133,7 @@ const symbolsKeycodesData = {
   },
   KC_NUBS: {
     aliases: 'KC_NONUS_BSLASH',
-    description: 'Non-US \\ and \\|',
+    description: 'Non-US [kbd]\\[/] and [kbd]|[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -141,7 +141,7 @@ const symbolsKeycodesData = {
   },
   KC_PEQL: {
     aliases: 'KC_KP_EQUAL',
-    description: 'Keypad =',
+    description: 'Keypad [kbd]=[/]',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -149,7 +149,7 @@ const symbolsKeycodesData = {
   },
   KC_PCMM: {
     aliases: 'KC_KP_COMMA',
-    description: 'Keypad ,',
+    description: 'Keypad [kbd],[/]',
     Windows: false,
     macOS: false,
     Linux: true,
@@ -157,7 +157,7 @@ const symbolsKeycodesData = {
   },
   KC_KP_EQUAL_AS400: {
     aliases: '',
-    description: 'Keypad = on AS/400 keyboards',
+    description: 'Keypad [kbd]=[/] on [code]AS/400[/] keyboards',
     Windows: false,
     macOS: false,
     Linux: false,
