@@ -1,25 +1,21 @@
-import React, { FC, useCallback } from 'react'
+import React, { FC, memo, useCallback } from 'react'
 import { Stack } from '@chakra-ui/react'
 import KeymapVisualizer from './views/KeymapVisualizer/KeymapVisualizer'
 import KeymapLayerPicker from './views/KeymapLayerPicker/KeymapLayerPicker'
 import { useDimensionsFromLayout } from 'components/Keymap/hooks/use-dimensions-from-layout'
-import useKeyboardStore from 'pages/KeyboardPage/keyboard.store'
-import shallow from 'zustand/shallow'
+import { QMKKeymap } from 'types/keymap.type'
+import { KeyboardStateKeymaps } from 'pages/KeyboardPage/keyboard.store/keymaps'
+import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
+import { KeyboardStateLayers } from 'pages/KeyboardPage/keyboard.store/layers'
 
-interface KeymapProps {}
+interface KeymapProps {
+  keymap: QMKKeymap
+  actions: KeyboardStateKeymaps['actions']
+  layout: KeyboardLayoutDto
+  layers: KeyboardStateLayers
+}
 
-const Keymap: FC<KeymapProps> = () => {
-  const { keymap, actions, layout, layers } = useKeyboardStore(
-    (state) => ({
-      keymap: state.keymaps.list[state.keymaps.current],
-      actions: state.keymaps.actions,
-      layout: state.layouts.list[state.layouts.current].layout,
-      layers: state.layers,
-    }),
-
-    shallow,
-  )
-
+const Keymap: FC<KeymapProps> = ({ keymap, actions, layout, layers }) => {
   const dimensions = useDimensionsFromLayout(layout)
 
   const { swapKeys } = actions
@@ -53,4 +49,4 @@ const Keymap: FC<KeymapProps> = () => {
   )
 }
 
-export default React.memo(Keymap)
+export default memo(Keymap)

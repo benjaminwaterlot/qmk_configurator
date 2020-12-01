@@ -26,7 +26,7 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
   if (!defaultKeymaps)
     throw new Error('A keymap should be found for this keyboard')
 
-  const { keymaps, layouts, init } = useKeyboardStore()
+  const { keymaps, layers, layouts, init } = useKeyboardStore()
 
   useEffect(() => {
     init({
@@ -62,12 +62,19 @@ export const KeyboardPage: FC<KeyboardPageProps> = ({
       />
 
       {/* Keymap selector and editor */}
-      <KeyboardPageKeymapSelect />
+      <KeyboardPageKeymapSelect
+        currentLayout={layouts.current}
+        keymaps={keymaps}
+      />
 
       {/* Keymap visualisator */}
       <Keymap
-      // Reset the visualizer state on keymap change
-      // key={`keymap-${keyboardStore.state.keymaps.current}`}
+        keymap={keymaps.list[keymaps.current]}
+        actions={keymaps.actions}
+        layout={layouts.list[layouts.current].layout}
+        layers={layers}
+        // Reset the visualizer state on keymap change
+        // key={`keymap-${keyboardStore.state.keymaps.current}`}
       />
     </Stack>
   ) : null

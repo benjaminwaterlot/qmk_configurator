@@ -60,7 +60,9 @@ const KeyContent: FC<KeyContentProps> = ({ keycode }) => {
       >
         {isCommand ? (
           <>
-            <Text mr={1}>{keyData.keycode}</Text>
+            <Text as="span" mr={1}>
+              {keyData.keycode}
+            </Text>
             <Tag size="md" fontWeight="bold">
               {keyData.variables?.join(',')}
             </Tag>

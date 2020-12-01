@@ -14,20 +14,18 @@ import {
 } from '@chakra-ui/react'
 import { AddIcon, CopyIcon, LockIcon, SettingsIcon } from '@chakra-ui/icons'
 import KeyboardPageKeymapSettings from './KeyboardPageKeymapSettings'
-import useKeyboardStore from '../keyboard.store'
-import shallow from 'zustand/shallow'
+import { KeyboardStateKeymaps } from '../keyboard.store/keymaps'
 
-interface KeyboardPageKeymapSelectProps {}
+interface KeyboardPageKeymapSelectProps {
+  currentLayout: string
+  keymaps: KeyboardStateKeymaps
+}
 
-const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({}) => {
+const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
+  currentLayout,
+  keymaps,
+}) => {
   const modal = useDisclosure()
-  const { currentLayout, keymaps } = useKeyboardStore(
-    (state) => ({
-      currentLayout: state.layouts.current,
-      keymaps: state.keymaps,
-    }),
-    shallow,
-  )
 
   return (
     <Wrap>
