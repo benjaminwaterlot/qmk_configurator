@@ -17,7 +17,7 @@ export const fetchKeyboard = createAsyncThunk<
   KeyboardDto,
   string,
   { state: RootState }
->('fetchKeyboard', async (keyboardName: string, { getState }) => {
+>('fetchKeyboard', async (keyboardName: string, { getState, dispatch }) => {
   const request = await qmkClient.get<{
     git_hash: string
     last_updated: string

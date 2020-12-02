@@ -23,11 +23,14 @@ const keyboardsSlice = createSlice({
       isLoadingNames: true,
     }))
 
-    addCase(fetchKeyboardList.fulfilled, (state, action: PayloadAction<KeyboardsListDto>) => ({
-      ...state,
-      names: action.payload,
-      isLoadingNames: false,
-    }))
+    addCase(
+      fetchKeyboardList.fulfilled,
+      (state, action: PayloadAction<KeyboardsListDto>) => ({
+        ...state,
+        names: action.payload,
+        isLoadingNames: false,
+      }),
+    )
 
     addCase(fetchKeyboard.fulfilled, keyboardsAdapter.addOne)
   },

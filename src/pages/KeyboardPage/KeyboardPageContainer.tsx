@@ -7,17 +7,16 @@ import { useAppSelector } from 'store'
 import { Center, Spinner } from '@chakra-ui/react'
 import KeyboardPage from './KeyboardPage'
 import { QMKKeymapDto } from 'types/keymap.type'
-import remapLayout from './remap-layout'
+import remapLayout from 'store/keymaps'
 import Axios from 'axios'
+import keymaps from 'store/keymaps'
 
 /**
  * This component loads the data needed for KeyboardPageContent, then renders it.
  */
 type KeyboardPageContainerProps = RouteComponentProps & { keyboard: string }
 
-export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
-  props,
-) => {
+const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
   const dispatch = useDispatch()
   const keyboardName = decodeName(props.keyboard)
   const [keyboardDefaultKeymap, setKeyboardDefaultKeymap] = useState<
@@ -26,11 +25,19 @@ export const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (
 
   useEffect(() => {
     dispatch(keyboards.thunks.fetchKeyboard(keyboardName))
+    dispatch(keymaps.thunks.fetchDefaultKeymap(keyboardName))
   }, [dispatch, keyboardName])
 
   const keyboard = useAppSelector((state) =>
     keyboards.selectors.selectById(state, keyboardName),
   )
+
+  const thiskeymaps = useAppSelector((state) =>
+    keymaps.selectors.selectByKeyboard(state, keyboardName),
+  )
+  console.log(`[LOG]   thiskeymaps`, thiskeymaps)
+
+  useEffect(() => console.log('✨', thiskeymaps), [thiskeymaps])
 
   useEffect(() => {
     Axios.get<QMKKeymapDto>(

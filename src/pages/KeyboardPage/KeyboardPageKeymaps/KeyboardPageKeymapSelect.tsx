@@ -58,14 +58,12 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
             >
               {/* The "layout" button, which allows to select another layout for this keymap. */}
               {isActive && !isReadonly && (
-                <Tooltip label={`${keymap.layout}`}>
-                  <IconButton
-                    isActive={isActive}
-                    aria-label=""
-                    icon={<SettingsIcon />}
-                    onClick={modal.onOpen}
-                  />
-                </Tooltip>
+                <IconButton
+                  isActive={isActive}
+                  aria-label=""
+                  icon={<SettingsIcon />}
+                  onClick={modal.onOpen}
+                />
               )}
 
               {/* The keymap name. */}

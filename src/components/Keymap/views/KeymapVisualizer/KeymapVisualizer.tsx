@@ -7,6 +7,8 @@ import KeymapPopover from '../KeymapPopover'
 import useKeymapPopoverState from '../KeymapPopover/hooks/use-keymap-popover-state'
 import useKeyBaseSize from './hooks/use-key-base-size'
 
+const KEY_EM_PADDING = 0.08
+
 interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
   keymap: QMKKeymap
@@ -68,7 +70,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
     // Generate a canvas with correct proportions for this keyboard
     <AspectRatio ratio={width / height} maxW={width * 100}>
       {/* The key sizing and margins will inherit from this fontSize */}
-      <Stack h="100%" m={-1} fontSize={keyBaseSizing}>
+      <Stack h="100%" fontSize={keyBaseSizing} m={`-${KEY_EM_PADDING}em`}>
         {/* This is the popover to edit keys */}
         <KeymapPopover
           state={popover}
@@ -92,7 +94,7 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
             w={`${((key.w ?? 1) / width) * 100}%`}
             h={`${((key.h ?? 1) / height) * 100}%`}
             // A dynamic padding, whose value inherits from `keyBaseSizing`
-            p=".1em"
+            p={`${KEY_EM_PADDING}em`}
           >
             <Key
               keyIndex={keyIndex}
