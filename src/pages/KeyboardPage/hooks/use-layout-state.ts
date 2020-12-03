@@ -47,8 +47,8 @@ const useLayoutState = ({ keymaps }: { keymaps: KeymapEntity[] }) => {
         )
 
         toast({
-          title: `Created keymap ${duplicatedName}`,
-          description: `There was no keymap for this layout, so we created one for you.\nWARNING: As the layout is different, keys may be shifted!`,
+          title: `We created a keymap`,
+          description: `There was no keymap for this layout, so we created one for you.\nWARNING: As the layout is different, keys will be shifted!`,
           duration: 15000,
           status: 'warning',
           isClosable: true,

@@ -8,6 +8,7 @@ import { v4 } from 'uuid'
 import { KeymapEntity } from './keymaps.adapter'
 import keymapsSlice from './keymaps.slice'
 import remapLayout from './remap-layout'
+import FileSaver from 'file-saver'
 
 export const fetchDefaultKeymap = createAsyncThunk<KeymapEntity, string>(
   'fetchDefaultKeymap',
@@ -85,4 +86,19 @@ export const changeKeymapLayout = (payload: {
       },
     }),
   )
+}
+
+export const downloadKeymap = (payload: { keymapId: string }) => (
+  dispatch: AppDispatch,
+  getState: () => RootState,
+) => {
+  const state = getState()
+  const keymap = state.keymaps.entities[payload.keymapId]
+  assert(keymap, 'changeKeymapLayout > keymap')
+
+  const blob = new Blob([JSON.stringify(keymap, null, 2)], {
+    type: 'text/plain;charset=utf-8',
+  })
+
+  return FileSaver.saveAs(blob, 'hello world.json')
 }

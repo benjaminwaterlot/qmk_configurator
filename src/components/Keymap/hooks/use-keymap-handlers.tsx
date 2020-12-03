@@ -27,6 +27,7 @@ const useKeymapHandlers = ({
       description: `[${keymap.name}] is readonly. Duplicate it to create your own 🚀`,
       status: 'warning',
       duration: 6000,
+      isClosable: true,
     })
   }, [toast, keymap.name])
 

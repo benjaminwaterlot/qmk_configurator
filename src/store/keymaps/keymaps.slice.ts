@@ -106,6 +106,8 @@ const keymapsSlice = createSlice({
       const keymap = state.entities[payload.keymapId]
       assert(keymap, 'createLayer > keymap')
 
+      if (keymap.layers.length >= 32) return
+
       keymap.layers.push(
         Array(keymap.layers[0].length)
           .fill(undefined)

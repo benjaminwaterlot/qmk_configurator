@@ -1,14 +1,23 @@
 import React, { FC } from 'react'
-import { Heading, Stack, Box, HStack, useDisclosure } from '@chakra-ui/react'
+import {
+  Heading,
+  Stack,
+  Box,
+  HStack,
+  useDisclosure,
+  Button,
+  ButtonGroup,
+} from '@chakra-ui/react'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
-import { ChevronRightIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, DownloadIcon } from '@chakra-ui/icons'
 import store, { useAppSelector } from 'store'
 import Keymap from 'components/Keymap'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
 import KeyboardPageKeymapSettings from './KeyboardPageKeymaps/KeyboardPageKeymapSettings'
 import useLayoutState from './hooks/use-layout-state'
+import { useDispatch } from 'react-redux'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
@@ -34,6 +43,8 @@ const KeyboardPage: FC<KeyboardPageProps> = ({ keyboard, keymaps }) => {
   const keymap = useAppSelector((state) =>
     store.keymaps.selectors.selectById(state, currentKeymap),
   ) as KeymapEntity
+
+  const dispatch = useDispatch()
 
   return (
     <Stack direction="column" spacing={5}>
@@ -82,12 +93,36 @@ const KeyboardPage: FC<KeyboardPageProps> = ({ keyboard, keymaps }) => {
       />
 
       {/* Keymap visualisator */}
-      <Keymap
-        // Reset the visualizer state on keymap change
-        // key={`keymap-${currentKeymap}`}
-        layout={currentLayout}
-        keymap={keymap}
-      />
+      <Keymap layout={currentLayout} keymap={keymap} />
+
+      <Box>
+        <ButtonGroup isAttached>
+          <Button
+            aria-label="Download this keymap"
+            title="Download this keymap"
+            variant="outline"
+            onClick={() => {
+              dispatch(
+                store.keymaps.thunks.downloadKeymap({ keymapId: keymap.id }),
+              )
+            }}
+            leftIcon={<DownloadIcon />}
+            mr="-px"
+          >
+            Download
+          </Button>
+          <Button
+            aria-label="Import a new keymap"
+            title="Import a new keymap"
+            variant="outline"
+            onClick={() => alert('yey')}
+            leftIcon={<DownloadIcon transform="rotate(180deg)" />}
+            mr="-px"
+          >
+            Import
+          </Button>
+        </ButtonGroup>
+      </Box>
     </Stack>
   )
 }

@@ -80,20 +80,22 @@ const KeymapLayerPicker: FC<KeymapLayerPickerProps> = ({
             </Stack>
           </ModalBody>
           <ModalFooter as={HStack} spacing={4}>
-            <Button
-              variant="ghost"
-              colorScheme="red"
-              onClick={() => {
-                if (!confirmDeletion) return setConfirmDeletion(true)
+            {layers.length > 1 && (
+              <Button
+                variant="ghost"
+                colorScheme="red"
+                onClick={() => {
+                  if (!confirmDeletion) return setConfirmDeletion(true)
 
-                closeModal()
-                onLayerSelect(0)
-                onLayerDelete(currentLayerIndex)
-              }}
-            >
-              <DeleteIcon mr={2} />
-              {confirmDeletion ? 'Are you sure?' : 'Delete this layer'}
-            </Button>
+                  closeModal()
+                  onLayerSelect(0)
+                  onLayerDelete(currentLayerIndex)
+                }}
+              >
+                <DeleteIcon mr={2} />
+                {confirmDeletion ? 'Are you sure?' : 'Delete this layer'}
+              </Button>
+            )}
             <Button variant="ghost" colorScheme="primary" onClick={closeModal}>
               Close
             </Button>

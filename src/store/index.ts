@@ -20,7 +20,7 @@ import keymaps from './keymaps'
 const persistedReducer = persistReducer(
   {
     key: 'root',
-    version: 2,
+    version: 1,
     storage,
     whitelist: ['keymaps'],
   },

@@ -1,6 +1,8 @@
 import { useBreakpointValue } from '@chakra-ui/react'
-import { clamp } from 'lodash'
+import { clamp, max } from 'lodash'
 import { useMemo } from 'react'
+
+const MAX_KEY_SIZE = 35 // the maximum fontSize keys can inherit from.
 
 /**
  * The size of a key on the screen is very important,
@@ -19,8 +21,8 @@ const useKeyBaseSize = ({ width }: { width: number }) => {
   const breakpointSizeScore =
     useBreakpointValue({
       base: 0.4,
-      sm: 0.6,
-      md: 0.8,
+      sm: 0.5,
+      md: 0.75,
       lg: 0.9,
       xl: 1,
     }) ?? 0
@@ -30,7 +32,7 @@ const useKeyBaseSize = ({ width }: { width: number }) => {
      * A keyboard of 12 keys wide (ex: a planck) has the minimum value.
      * The last number is a constant to prevent large boards from having invisible fonts.
      */
-    const arbitraryWidthValue = clamp(width - 12, 0, 1) / 5
+    const arbitraryWidthValue = max([(width - 12) / 6, 0]) as number
 
     /**
      * We inverse this value : `1 / value`, to get the width score.
@@ -41,8 +43,6 @@ const useKeyBaseSize = ({ width }: { width: number }) => {
      * A representation of the size of a key on the screen, between 0 and 1.
      */
     const score = widthScore * breakpointSizeScore
-
-    const MAX_KEY_SIZE = 35 // the maximum fontSize keys can inherit from.
 
     return score * MAX_KEY_SIZE
   }, [breakpointSizeScore, width])
