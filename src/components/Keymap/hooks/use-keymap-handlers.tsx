@@ -1,5 +1,5 @@
-import { useToast } from '@chakra-ui/react'
-import { Dispatch, SetStateAction, useCallback } from 'react'
+import { useDisclosure } from '@chakra-ui/react'
+import { Dispatch, SetStateAction, useCallback, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import store from 'store'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
@@ -15,34 +15,26 @@ const useKeymapHandlers = ({
   currentLayerIndex: number
   setCurrentLayerIndex: Dispatch<SetStateAction<number>>
 }) => {
-  const toast = useToast()
   const dispatch = useDispatch()
 
   /**
    * Warns that the user was trying to modify a readonly keymap.
    */
-  const readonlyWarningToast = useCallback(() => {
-    toast({
-      title: `Readonly keymap`,
-      description: `[${keymap.name}] is readonly. Duplicate it to create your own 🚀`,
-      status: 'warning',
-      duration: 6000,
-      isClosable: true,
-    })
-  }, [toast, keymap.name])
+  const readonlyModal = useDisclosure()
+  const cancelRef = useRef<HTMLButtonElement | null>(null)
 
   const handleKeyEdit = useCallback<KeymapVisualizerProps['onKeyEdit']>(
     (payload) => {
-      if (keymap.isDefault) return readonlyWarningToast()
+      if (keymap.isDefault) return readonlyModal.onOpen()
 
       dispatch(store.keymaps.actions.editKey(payload))
     },
-    [dispatch, keymap.isDefault, readonlyWarningToast],
+    [dispatch, keymap.isDefault, readonlyModal],
   )
 
   const handleKeySwap = useCallback<KeymapVisualizerProps['onKeySwap']>(
     (payload) => {
-      if (keymap.isDefault) return readonlyWarningToast()
+      if (keymap.isDefault) return readonlyModal.onOpen()
 
       dispatch(
         store.keymaps.actions.swapKeys({
@@ -52,55 +44,50 @@ const useKeymapHandlers = ({
         }),
       )
     },
-    [
-      dispatch,
-      currentLayerIndex,
-      keymap.id,
-      readonlyWarningToast,
-      keymap.isDefault,
-    ],
+    [keymap.isDefault, keymap.id, readonlyModal, dispatch, currentLayerIndex],
   )
 
   const handleLayerCreate = useCallback<
     KeymapLayerPickerProps['onLayerCreate']
   >(() => {
-    if (keymap.isDefault) return readonlyWarningToast()
+    if (keymap.isDefault) return readonlyModal.onOpen()
 
     dispatch(store.keymaps.actions.createLayer({ keymapId: keymap.id }))
     setCurrentLayerIndex(keymap.layers.length - 1)
   }, [
-    dispatch,
-    keymap.layers,
-    keymap.id,
-    setCurrentLayerIndex,
     keymap.isDefault,
-    readonlyWarningToast,
+    keymap.id,
+    keymap.layers.length,
+    readonlyModal,
+    dispatch,
+    setCurrentLayerIndex,
   ])
 
   const handleLayerSwap = useCallback<KeymapLayerPickerProps['onLayerSwap']>(
     (payload) => {
-      if (keymap.isDefault) return readonlyWarningToast()
+      if (keymap.isDefault) return readonlyModal.onOpen()
 
       dispatch(store.keymaps.actions.swapLayers(payload))
       setCurrentLayerIndex(payload.to)
     },
-    [dispatch, keymap.isDefault, readonlyWarningToast, setCurrentLayerIndex],
+    [dispatch, keymap.isDefault, readonlyModal, setCurrentLayerIndex],
   )
 
   const handleLayerDelete = useCallback<
     KeymapLayerPickerProps['onLayerDelete']
   >(
     (layerIndex: number) => {
-      if (keymap.isDefault) return readonlyWarningToast()
+      if (keymap.isDefault) return readonlyModal.onOpen()
 
       dispatch(
         store.keymaps.actions.deleteLayer({ keymapId: keymap.id, layerIndex }),
       )
     },
-    [dispatch, keymap.id, keymap.isDefault, readonlyWarningToast],
+    [dispatch, keymap.id, keymap.isDefault, readonlyModal],
   )
 
   return {
+    readonlyDialog: { ...readonlyModal, cancelRef },
     handleKeyEdit,
     handleKeySwap,
     handleLayerCreate,

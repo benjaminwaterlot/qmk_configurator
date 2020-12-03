@@ -93,7 +93,14 @@ const KeyboardPage: FC<KeyboardPageProps> = ({ keyboard, keymaps }) => {
       />
 
       {/* Keymap visualisator */}
-      <Keymap layout={currentLayout} keymap={keymap} />
+      <Keymap
+        layout={currentLayout}
+        keymap={keymap}
+        onKeymapDuplicate={(payload) => {
+          dispatch(store.keymaps.actions.duplicate(payload))
+          setCurrentKeymap(payload.toId)
+        }}
+      />
 
       <Box>
         <ButtonGroup isAttached>
