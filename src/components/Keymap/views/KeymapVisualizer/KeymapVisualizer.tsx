@@ -9,7 +9,7 @@ import useKeyBaseSize from './hooks/use-key-base-size'
 
 const KEY_EM_PADDING = 0.08
 
-interface KeymapVisualizerProps {
+export interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
   keymap: KeymapEntity
   dimensions: { width: number; height: number }

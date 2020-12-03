@@ -11,9 +11,9 @@ import { ChakraProvider } from '@chakra-ui/react'
 import 'focus-visible/dist/focus-visible'
 
 import App from 'App'
-import { rootStore } from 'store'
+import { persistor, rootStore } from 'store'
 import theme from 'theme'
-import { RecoilRoot } from 'recoil'
+import { PersistGate } from 'redux-persist/integration/react'
 
 /**
  * Dev tools
@@ -28,13 +28,13 @@ declare global {
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecoilRoot>
-      <Provider store={rootStore}>
+    <Provider store={rootStore}>
+      <PersistGate loading={null} persistor={persistor}>
         <ChakraProvider theme={theme}>
           <App />
         </ChakraProvider>
-      </Provider>
-    </RecoilRoot>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 )

@@ -30,7 +30,7 @@ const useKeyBaseSize = ({ width }: { width: number }) => {
      * A keyboard of 12 keys wide (ex: a planck) has the minimum value.
      * The last number is a constant to prevent large boards from having invisible fonts.
      */
-    const arbitraryWidthValue = (width - 12) / 5
+    const arbitraryWidthValue = clamp(width - 12, 0, 1) / 5
 
     /**
      * We inverse this value : `1 / value`, to get the width score.

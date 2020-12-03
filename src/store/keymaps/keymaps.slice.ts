@@ -109,8 +109,20 @@ const keymapsSlice = createSlice({
       keymap.layers.push(
         Array(keymap.layers[0].length)
           .fill(undefined)
-          .map(() => Keycode.KC_NO),
+          .map(() => Keycode.KC_TRNS),
       )
+    },
+
+    deleteLayer: (
+      state,
+      { payload }: PayloadAction<{ keymapId: string; layerIndex: number }>,
+    ) => {
+      const keymap = state.entities[payload.keymapId]
+      assert(keymap, 'createLayer > keymap')
+
+      if (keymap.layers.length <= 1) return
+
+      keymap.layers.splice(payload.layerIndex, 1)
     },
 
     swapLayers: (

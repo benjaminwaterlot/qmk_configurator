@@ -1,7 +1,16 @@
-import { MoonIcon, SunIcon, UpDownIcon } from '@chakra-ui/icons'
-import { Flex, Heading, IconButton, Link, useColorMode } from '@chakra-ui/react'
+import { MoonIcon, RepeatIcon, SunIcon, UpDownIcon } from '@chakra-ui/icons'
+import {
+  Flex,
+  Heading,
+  HStack,
+  IconButton,
+  Link,
+  Tooltip,
+  useColorMode,
+} from '@chakra-ui/react'
 import { Link as ReachLink } from '@reach/router'
 import React from 'react'
+import { persistor } from 'store'
 
 const NavBar = () => {
   const { toggleColorMode, colorMode } = useColorMode()
@@ -18,7 +27,23 @@ const NavBar = () => {
           </Heading>
         </Flex>
       </Link>
-      <IconButton icon={<ColorModeIcon />} aria-label="" onClick={toggleColorMode} />
+      <HStack spacing={4}>
+        <IconButton
+          icon={<ColorModeIcon />}
+          aria-label=""
+          onClick={toggleColorMode}
+        />
+        <Tooltip label="Clear ALL your keymaps">
+          <IconButton
+            icon={<RepeatIcon />}
+            aria-label=""
+            onClick={() => {
+              persistor.purge()
+              document.location.reload()
+            }}
+          />
+        </Tooltip>
+      </HStack>
     </Flex>
   )
 }

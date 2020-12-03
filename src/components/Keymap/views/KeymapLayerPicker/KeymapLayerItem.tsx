@@ -1,12 +1,12 @@
 import React, { FC, memo, useState } from 'react'
 import { getColor } from '@chakra-ui/theme-tools'
-import { Button, Box, Text } from '@chakra-ui/react'
+import { Button, Box, Text, ButtonProps } from '@chakra-ui/react'
 import theme from 'theme'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { QMKLayer } from 'types/keymap.type'
 import getKeyData from 'lib/get-key-data'
 
-interface KeymapLayerItemProps {
+interface KeymapLayerItemProps extends Omit<ButtonProps, 'onClick'> {
   layerIndex: number
   layer: QMKLayer
   onLayerSwap: (payload: { from: number; to: number }) => void
@@ -24,6 +24,7 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
   onLayerSwap,
   isActive,
   onClick,
+  ...props
 }) => {
   const [isBeingDraggedOn, setIsBeingDraggedOn] = useState<boolean>(false)
 
@@ -35,6 +36,7 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
 
   return (
     <Button
+      {...props}
       // Each key can be dragged on another key.
       draggable
       // When starting to drag this key, save its keycode in the drag event.

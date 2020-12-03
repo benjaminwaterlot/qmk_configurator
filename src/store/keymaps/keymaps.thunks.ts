@@ -80,7 +80,7 @@ export const changeKeymapLayout = (payload: {
         layers: keymap.layers.map((layer) =>
           Array(layout.key_count)
             .fill(undefined)
-            .map((_, i) => layer[i] ?? Keycode.KC_NO),
+            .map((_, i) => layer[i] ?? Keycode.KC_TRNS),
         ),
       },
     }),

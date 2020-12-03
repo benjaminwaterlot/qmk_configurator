@@ -16,11 +16,6 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
   const dispatch = useDispatch()
   const keyboardName = decodeName(props.keyboard)
 
-  useEffect(() => {
-    dispatch(store.keyboards.thunks.fetchKeyboard(keyboardName))
-    dispatch(store.keymaps.thunks.fetchDefaultKeymap(keyboardName))
-  }, [dispatch, keyboardName])
-
   const keyboard = useAppSelector((state) =>
     store.keyboards.selectors.selectById(state, keyboardName),
   )
@@ -29,9 +24,19 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
     store.keymaps.selectors.selectByKeyboard(state, keyboardName),
   )
 
+  const hasDefaultKeymap =
+    keymaps.findIndex((keymap) => keymap.isDefault) !== -1
+
+  useEffect(() => {
+    dispatch(store.keyboards.thunks.fetchKeyboard(keyboardName))
+
+    if (!hasDefaultKeymap)
+      dispatch(store.keymaps.thunks.fetchDefaultKeymap(keyboardName))
+  }, [dispatch, keyboardName, hasDefaultKeymap])
+
   return (
     <>
-      {keyboard && keymaps ? (
+      {keyboard && keymaps.length ? (
         <KeyboardPage keyboard={keyboard} keymaps={keymaps} />
       ) : (
         <Center minH="50vh">
