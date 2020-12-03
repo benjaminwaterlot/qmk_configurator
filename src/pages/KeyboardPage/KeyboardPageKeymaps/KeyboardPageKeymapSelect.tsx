@@ -25,7 +25,7 @@ interface KeyboardPageKeymapSelectProps {
   currentKeymap: string
   keyboard: string
   setCurrentKeymap: Dispatch<SetStateAction<string>>
-  keymapSettings: JSX.Element
+  // keymapSettings: JSX.Element
 }
 
 const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
@@ -35,13 +35,13 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
   setCurrentKeymap,
   keymaps,
   keyboard,
-  keymapSettings,
+  // keymapSettings,
 }) => {
   const dispatch = useDispatch()
 
   return (
     <Wrap>
-      {keymapSettings}
+      {/* {keymapSettings} */}
 
       {keymaps.map((keymap, keymapIndex) => {
         const isReadonly = keymap.isDefault

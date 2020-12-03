@@ -72,8 +72,12 @@ const KeyboardPageKeymapSettings: FC<KeyboardPageKeymapSettingsProps> = ({
   const initialFocus = useRef<HTMLButtonElement | null>(null)
 
   useEffect(() => {
+    setLayoutSelectorValue(currentLayout)
+  }, [currentLayout])
+
+  useEffect(() => {
     setNameInputValue(currentKeymap.name)
-  }, [currentKeymap])
+  }, [currentKeymap.name])
 
   return (
     <Modal isOpen={isOpen} onClose={close} initialFocusRef={initialFocus}>

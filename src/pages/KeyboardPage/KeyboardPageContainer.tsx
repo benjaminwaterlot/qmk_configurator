@@ -32,7 +32,7 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
   return (
     <>
       {keyboard && keymaps ? (
-        <KeyboardPage keyboard={keyboard} />
+        <KeyboardPage keyboard={keyboard} keymaps={keymaps} />
       ) : (
         <Center minH="50vh">
           <Spinner size="xl" speed=".8s" color="primary.400" thickness="5px" />

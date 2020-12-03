@@ -14,9 +14,12 @@ interface KeymapProps {
 }
 
 const Keymap: FC<KeymapProps> = ({ keymap, layout }) => {
-  const [currentLayerIndex, setCurrentLayerIndex] = useState(0)
-  const dimensions = useDimensionsFromLayout(layout.layout)
   const dispatch = useDispatch()
+  const dimensions = useDimensionsFromLayout(layout.layout)
+
+  const [currentLayerIndex, setCurrentLayerIndex] = useState(0)
+  // Prevent crashing when changing keymap and there is less layers in the new one.
+  if (currentLayerIndex >= keymap.layers.length) setCurrentLayerIndex(0)
 
   const handleKeyEdit = useCallback(
     (payload) => {
@@ -64,11 +67,10 @@ const Keymap: FC<KeymapProps> = ({ keymap, layout }) => {
 
       <KeymapVisualizer
         {...{ currentLayerIndex, dimensions }}
-        keymapName={keymap.id}
+        keymap={keymap}
         layout={layout.layout}
         onKeyEdit={handleKeyEdit}
         onKeySwap={handleKeySwap}
-        keymap={keymap}
       />
     </Stack>
   )

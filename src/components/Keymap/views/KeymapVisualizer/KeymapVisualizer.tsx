@@ -2,7 +2,7 @@ import { AspectRatio, Box, Stack } from '@chakra-ui/react'
 import Key from 'components/Key/Key'
 import React, { FC, useCallback } from 'react'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
-import { QMKKeymap } from 'types/keymap.type'
+import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import KeymapPopover from '../KeymapPopover'
 import useKeymapPopoverState from '../KeymapPopover/hooks/use-keymap-popover-state'
 import useKeyBaseSize from './hooks/use-key-base-size'
@@ -11,8 +11,7 @@ const KEY_EM_PADDING = 0.08
 
 interface KeymapVisualizerProps {
   layout: KeyboardLayoutDto
-  keymap: QMKKeymap
-  keymapName: string
+  keymap: KeymapEntity
   dimensions: { width: number; height: number }
   onKeyEdit: (payload: {
     keymap: string
@@ -30,7 +29,6 @@ interface KeymapVisualizerProps {
 const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   layout,
   keymap,
-  keymapName,
   onKeyEdit,
   onKeySwap,
   currentLayerIndex,
@@ -57,13 +55,13 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
   const handleSelection = useCallback(
     (keycode: string, keyIndex: number) => {
       onKeyEdit({
-        keymap: keymapName,
+        keymap: keymap.id,
         layerIndex: currentLayerIndex,
         keyIndex,
         keycode,
       })
     },
-    [currentLayerIndex, onKeyEdit, keymapName],
+    [currentLayerIndex, onKeyEdit, keymap.id],
   )
 
   return (
