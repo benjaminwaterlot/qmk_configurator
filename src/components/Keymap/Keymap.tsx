@@ -3,49 +3,70 @@ import { Stack } from '@chakra-ui/react'
 import KeymapVisualizer from './views/KeymapVisualizer/KeymapVisualizer'
 import KeymapLayerPicker from './views/KeymapLayerPicker/KeymapLayerPicker'
 import { useDimensionsFromLayout } from 'components/Keymap/hooks/use-dimensions-from-layout'
-import { QMKKeymap } from 'types/keymap.type'
-import { KeyboardStateKeymaps } from 'pages/KeyboardPage/keyboard.store/keymaps'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
+import store from 'store'
+import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
+import { useDispatch } from 'react-redux'
 
 interface KeymapProps {
-  keymapName: string
-  keymap: QMKKeymap
-  actions: KeyboardStateKeymaps['actions']
-  layout: KeyboardLayoutDto
+  keymap: KeymapEntity
+  layout: { name: string; layout: KeyboardLayoutDto }
 }
 
-const Keymap: FC<KeymapProps> = ({ keymapName, keymap, actions, layout }) => {
+const Keymap: FC<KeymapProps> = ({ keymap, layout }) => {
   const [currentLayerIndex, setCurrentLayerIndex] = useState(0)
-  const dimensions = useDimensionsFromLayout(layout)
+  const dimensions = useDimensionsFromLayout(layout.layout)
+  const dispatch = useDispatch()
 
-  const { swapKeys } = actions
+  const handleKeyEdit = useCallback(
+    (payload) => {
+      dispatch(store.keymaps.actions.editKey(payload))
+    },
+    [dispatch],
+  )
+
   const handleKeySwap = useCallback(
-    ({ sourceKeyIndex, destinationKeyIndex }) =>
-      swapKeys({
-        keymap: keymapName,
-        layerIndex: currentLayerIndex,
-        sourceKeyIndex,
-        destinationKeyIndex,
-      }),
-    [swapKeys, currentLayerIndex, keymapName],
+    (payload) => {
+      dispatch(
+        store.keymaps.actions.swapKeys({
+          ...payload,
+          keymap: keymap.id,
+          layerIndex: currentLayerIndex,
+        }),
+      )
+    },
+    [dispatch, currentLayerIndex, keymap.id],
+  )
+
+  const handleLayerCreate = useCallback(() => {
+    dispatch(store.keymaps.actions.createLayer({ keymapId: keymap.id }))
+    setCurrentLayerIndex(keymap.layers.length - 1)
+  }, [dispatch, keymap.layers, keymap.id, setCurrentLayerIndex])
+
+  const handleLayerSwap = useCallback(
+    (payload) => {
+      dispatch(store.keymaps.actions.swapLayers(payload))
+    },
+    [dispatch],
   )
 
   return (
     <Stack direction="column" spacing={2}>
       <KeymapLayerPicker
-        {...{ currentLayerIndex, keymapName, dimensions, layout }}
+        {...{ currentLayerIndex, dimensions }}
+        keymapName={keymap.id}
+        layout={layout.layout}
         layers={keymap.layers}
         onLayerSelect={setCurrentLayerIndex}
-        onLayerCreate={(payload) => {
-          const newLayer = actions.createLayer(payload)
-          setCurrentLayerIndex(newLayer)
-        }}
-        onLayerSwap={actions.swapLayers}
+        onLayerCreate={handleLayerCreate}
+        onLayerSwap={handleLayerSwap}
       />
 
       <KeymapVisualizer
-        {...{ currentLayerIndex, keymapName, dimensions, layout }}
-        onKeyEdit={actions.editKey}
+        {...{ currentLayerIndex, dimensions }}
+        keymapName={keymap.id}
+        layout={layout.layout}
+        onKeyEdit={handleKeyEdit}
         onKeySwap={handleKeySwap}
         keymap={keymap}
       />

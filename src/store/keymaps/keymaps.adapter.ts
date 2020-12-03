@@ -2,6 +2,7 @@ import { createEntityAdapter } from '@reduxjs/toolkit'
 
 export interface KeymapEntity {
   id: string // ID of shape `preonic/rev3__default`
+  name: string
   keyboard: string // Keyboard, eg `preonic/rev3`
   layout: string // Layout, eg `LAYOUT_ortho_5x12`
   layers: string[][]

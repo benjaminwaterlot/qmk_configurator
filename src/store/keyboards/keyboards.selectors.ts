@@ -1,18 +1,35 @@
+import assert from 'lib/assert'
+import { createSelector } from '@reduxjs/toolkit'
 import { RootState } from 'store'
 import keyboardsAdapter from './keyboards.adapter'
 
-const keyboardSelectors = {
-  ...keyboardsAdapter.getSelectors((state: RootState) => state.keyboards),
+const {
+  selectAll,
+  selectById,
+  selectEntities,
+  selectIds,
+  selectTotal,
+} = keyboardsAdapter.getSelectors((state: RootState) => state.keyboards)
 
-  selectNamesByString: (state: RootState, input: string) =>
-    state.keyboards.names.filter((keyboard) => keyboard.includes(input)),
-}
+const selectNamesByString = (state: RootState, input: string) =>
+  state.keyboards.names.filter((keyboard) => keyboard.includes(input))
 
-export const {
+const selectLayouts = createSelector(
+  (state: RootState, args: { keyboard: string }) => {
+    const keyboard = selectById(state, args.keyboard)
+    assert(keyboard, 'selectLayouts')
+    return keyboard
+  },
+
+  (keyboard) => keyboard.layouts,
+)
+
+export {
   selectAll,
   selectById,
   selectEntities,
   selectIds,
   selectTotal,
   selectNamesByString,
-} = keyboardSelectors
+  selectLayouts,
+}

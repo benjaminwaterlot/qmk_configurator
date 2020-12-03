@@ -1,13 +1,14 @@
-import React, { FC, useEffect } from 'react'
-import { Heading, Stack, Box, HStack } from '@chakra-ui/react'
-import Keymap from 'components/Keymap'
+import React, { FC, useState } from 'react'
+import { Heading, Stack, Box, HStack, useDisclosure } from '@chakra-ui/react'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
-import { QMKKeymapDto } from 'types/keymap.type'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
-import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
-import useKeyboardStore from './keyboard.store'
 import { ChevronRightIcon } from '@chakra-ui/icons'
-import useKeyboardDisplayState from './hooks/use-current-layout-state'
+import store, { useAppSelector } from 'store'
+import { selectDefaultForKeyboard } from 'store/keymaps/keymaps.selectors'
+import Keymap from 'components/Keymap'
+import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
+import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
+import KeyboardPageKeymapSettings from './KeyboardPageKeymaps/KeyboardPageKeymapSettings'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
@@ -15,30 +16,39 @@ import useKeyboardDisplayState from './hooks/use-current-layout-state'
  */
 interface KeyboardPageProps {
   keyboard: KeyboardDto
-  defaultKeymaps: QMKKeymapDto | null
 }
 
-const KeyboardPage: FC<KeyboardPageProps> = ({ keyboard, defaultKeymaps }) => {
-  if (!defaultKeymaps)
-    throw new Error('A keymap should be found for this keyboard')
+const KeyboardPage: FC<KeyboardPageProps> = ({ keyboard }) => {
+  const modal = useDisclosure()
 
-  const { keymaps, layouts, init } = useKeyboardStore()
+  const _keyboard = useAppSelector((state) =>
+    store.keyboards.selectors.selectById(state, keyboard.keyboard_folder),
+  )
 
-  useEffect(() => {
-    init({
-      keyboard,
-      defaultKeymaps,
-    })
-  }, [init, keyboard, defaultKeymaps])
+  if (!_keyboard)
+    throw new Error(`Keyboard not found in KeyboardPage: ${keyboard}`)
 
-  const {
-    currentKeymap,
-    setCurrentKeymap,
-    currentLayout,
-    setCurrentLayout,
-  } = useKeyboardDisplayState({ keymaps })
+  const _keymaps = useAppSelector((state) =>
+    store.keymaps.selectors.selectByKeyboard(state, keyboard.keyboard_folder),
+  )
 
-  return keymaps.list[currentKeymap] ? (
+  const _defaultKeymap = useAppSelector((state) =>
+    selectDefaultForKeyboard(state, _keyboard.keyboard_folder),
+  )
+
+  const [_currentKeymap, _setCurrentKeymap] = useState(_defaultKeymap.id)
+
+  const _layout = useAppSelector((state) =>
+    store.keymaps.selectors.selectLayoutByKeymap(state, {
+      keymapId: _currentKeymap,
+    }),
+  )
+
+  const _keymap = useAppSelector((state) =>
+    store.keymaps.selectors.selectById(state, _currentKeymap),
+  ) as KeymapEntity
+
+  return (
     <Stack direction="column" spacing={5}>
       {/* Page title */}
       <Box>
@@ -49,43 +59,51 @@ const KeyboardPage: FC<KeyboardPageProps> = ({ keyboard, defaultKeymaps }) => {
           mt={6}
           fontFamily="mono"
         >
-          {keyboard.keyboard_name}
+          {_keyboard.keyboard_name}
         </Heading>
         <HStack alignItems="center" color="gray.500">
           <Heading as="h2" size="md" fontWeight="light">
-            {keyboard.keyboard_folder}
+            {_keyboard.keyboard_folder}
           </Heading>
           <ChevronRightIcon />
           {/* Layout selector */}
           <KeyboardPageLayoutSelect
-            list={layouts.list}
-            value={currentLayout}
-            onChange={setCurrentLayout}
+            list={_keyboard.layouts}
+            value={_layout.name}
+            onChange={() => alert('not implemented yet')}
           />
         </HStack>
       </Box>
 
       {/* Keymap selector and editor */}
       <KeyboardPageKeymapSelect
-        keymaps={keymaps.list}
-        actions={keymaps.actions}
-        currentLayout={currentLayout}
-        defaultKeymap={'default'}
-        currentKeymap={currentKeymap}
-        setCurrentKeymap={setCurrentKeymap}
+        keymaps={_keymaps}
+        keyboard={keyboard.keyboard_folder}
+        currentLayout={_layout.name}
+        currentKeymap={_currentKeymap}
+        setCurrentKeymap={_setCurrentKeymap}
+        modal={modal}
+        keymapSettings={
+          <KeyboardPageKeymapSettings
+            {...modal}
+            keyboard={_keyboard}
+            keymaps={_keymaps}
+            currentLayout={_layout.name}
+            currentKeymap={_keymap}
+            setCurrentKeymap={_setCurrentKeymap}
+          />
+        }
       />
 
       {/* Keymap visualisator */}
       <Keymap
         // Reset the visualizer state on keymap change
-        key={`keymap-${currentKeymap}`}
-        keymapName={currentKeymap}
-        keymap={keymaps.list[currentKeymap]}
-        actions={keymaps.actions}
-        layout={layouts.list[currentLayout].layout}
+        key={`keymap-${_currentKeymap}`}
+        layout={_layout}
+        keymap={_keymap}
       />
     </Stack>
-  ) : null
+  )
 }
 
 export default KeyboardPage

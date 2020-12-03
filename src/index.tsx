@@ -11,7 +11,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import 'focus-visible/dist/focus-visible'
 
 import App from 'App'
-import store from 'store'
+import { rootStore } from 'store'
 import theme from 'theme'
 import { RecoilRoot } from 'recoil'
 
@@ -26,12 +26,10 @@ declare global {
   }
 }
 
-window.dev = {}
-
 ReactDOM.render(
   <React.StrictMode>
     <RecoilRoot>
-      <Provider store={store}>
+      <Provider store={rootStore}>
         <ChakraProvider theme={theme}>
           <App />
         </ChakraProvider>

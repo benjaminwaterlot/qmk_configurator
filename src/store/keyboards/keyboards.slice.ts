@@ -1,5 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { KeyboardsListDto } from './dto/get-keyboard-list.dto'
+import { createSlice } from '@reduxjs/toolkit'
 import keyboardsAdapter from './keyboards.adapter'
 import { fetchKeyboard, fetchKeyboardList } from './keyboards.thunks'
 
@@ -23,16 +22,20 @@ const keyboardsSlice = createSlice({
       isLoadingNames: true,
     }))
 
-    addCase(
-      fetchKeyboardList.fulfilled,
-      (state, action: PayloadAction<KeyboardsListDto>) => ({
-        ...state,
-        names: action.payload,
-        isLoadingNames: false,
-      }),
-    )
+    addCase(fetchKeyboardList.fulfilled, (state, action) => ({
+      ...state,
+      names: action.payload,
+      isLoadingNames: false,
+    }))
 
-    addCase(fetchKeyboard.fulfilled, keyboardsAdapter.addOne)
+    addCase(fetchKeyboard.pending, (state) => {
+      state.isLoading = true
+    })
+
+    addCase(fetchKeyboard.fulfilled, (state, entity) => {
+      keyboardsAdapter.addOne(state, entity)
+      state.isLoading = false
+    })
   },
 })
 
