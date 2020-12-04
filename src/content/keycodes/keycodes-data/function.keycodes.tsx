@@ -3,18 +3,19 @@ import { Icon } from '@chakra-ui/react'
 import {
   BsChevronBarDown,
   BsChevronBarUp,
-  BsEjectFill,
-  BsFillBrightnessAltHighFill,
-  BsFillBrightnessAltLowFill,
-  BsFolderFill,
-  BsPauseFill,
-  BsPlayFill,
-  BsSkipBackwardFill,
-  BsSkipForwardFill,
-  BsStopFill,
-  BsVolumeDownFill,
-  BsVolumeMuteFill,
-  BsVolumeUpFill,
+  BsEject,
+  BsBrightnessAltHigh,
+  BsBrightnessAltLow,
+  BsFolder,
+  BsPause,
+  BsPlay,
+  BsSkipBackward,
+  BsSkipForward,
+  BsStop,
+  BsVolumeDown,
+  BsVolumeMute,
+  BsVolumeUp,
+  BsHouseDoor,
 } from 'react-icons/bs'
 import { SiVlcmediaplayer } from 'react-icons/si'
 import { KeycodeCategory } from '../keycodes.categories'
@@ -23,7 +24,7 @@ const functionKeycodesData = {
   KC_PAUS: {
     aliases: 'KC_PAUSE, KC_BRK, KC_BRMU',
     description: 'Pause, Brightness Up (macOS)',
-    display: <Icon as={BsPauseFill} />,
+    display: <Icon as={BsPause} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -41,7 +42,7 @@ const functionKeycodesData = {
   KC_HOME: {
     aliases: '',
     description: 'Home',
-    display: <Icon as={BsFolderFill} />,
+    display: <Icon as={BsHouseDoor} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -84,7 +85,7 @@ const functionKeycodesData = {
   KC_MUTE: {
     aliases: 'KC_AUDIO_MUTE',
     description: 'Mute',
-    display: <Icon as={BsVolumeMuteFill} />,
+    display: <Icon as={BsVolumeMute} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -93,7 +94,7 @@ const functionKeycodesData = {
   KC_VOLU: {
     aliases: 'KC_AUDIO_VOL_UP',
     description: 'Volume Up',
-    display: <Icon as={BsVolumeUpFill} />,
+    display: <Icon as={BsVolumeUp} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -102,7 +103,7 @@ const functionKeycodesData = {
   KC_VOLD: {
     aliases: 'KC_AUDIO_VOL_DOWN',
     description: 'Volume Down',
-    display: <Icon as={BsVolumeDownFill} />,
+    display: <Icon as={BsVolumeDown} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -111,7 +112,7 @@ const functionKeycodesData = {
   KC_MNXT: {
     aliases: 'KC_MEDIA_NEXT_TRACK',
     description: 'Next Track',
-    display: <Icon as={BsSkipForwardFill} />,
+    display: <Icon as={BsSkipForward} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -120,7 +121,7 @@ const functionKeycodesData = {
   KC_MPRV: {
     aliases: 'KC_MEDIA_PREV_TRACK',
     description: 'Previous Track',
-    display: <Icon as={BsSkipBackwardFill} />,
+    display: <Icon as={BsSkipBackward} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -129,7 +130,7 @@ const functionKeycodesData = {
   KC_MSTP: {
     aliases: 'KC_MEDIA_STOP',
     description: 'Stop Track',
-    display: <Icon as={BsStopFill} />,
+    display: <Icon as={BsStop} />,
     Windows: true,
     macOS: false,
     Linux: true,
@@ -138,7 +139,7 @@ const functionKeycodesData = {
   KC_MPLY: {
     aliases: 'KC_MEDIA_PLAY_PAUSE',
     description: 'Play/Pause Track',
-    display: <Icon as={BsPlayFill} />,
+    display: <Icon as={BsPlay} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -156,7 +157,7 @@ const functionKeycodesData = {
   KC_EJCT: {
     aliases: 'KC_MEDIA_EJECT',
     description: 'Eject',
-    display: <Icon as={BsEjectFill} />,
+    display: <Icon as={BsEject} />,
     Windows: false,
     macOS: true,
     Linux: true,
@@ -261,7 +262,7 @@ const functionKeycodesData = {
   KC_BRIU: {
     aliases: 'KC_BRIGHTNESS_UP',
     description: 'Brightness Up',
-    display: <Icon as={BsFillBrightnessAltHighFill} />,
+    display: <Icon as={BsBrightnessAltHigh} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -270,7 +271,7 @@ const functionKeycodesData = {
   KC_BRID: {
     aliases: 'KC_BRIGHTNESS_DOWN',
     description: 'Brightness Down',
-    display: <Icon as={BsFillBrightnessAltLowFill} />,
+    display: <Icon as={BsBrightnessAltLow} />,
     Windows: true,
     macOS: true,
     Linux: true,

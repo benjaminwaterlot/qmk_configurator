@@ -58,7 +58,7 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
         setIsBeingDraggedOn(false)
 
         const layerIndexString = dataTransfer.getData('layerIndex')
-        if (layerIndexString)
+        if (layerIndexString && Number(layerIndexString) !== layerIndex)
           onLayerSwap({
             from: Number(layerIndexString),
             to: layerIndex,

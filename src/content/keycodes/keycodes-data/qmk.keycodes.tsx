@@ -3,11 +3,13 @@ import { KeycodeVariableType } from '../keycodes.types'
 import { KeycodeCategory } from '../keycodes.categories'
 import { Icon } from '@chakra-ui/react'
 import { IoLayers } from 'react-icons/io5'
+import { AiOutlineStop } from 'react-icons/ai'
 
 const qmkKeycodesData = {
   KC_NO: {
     aliases: 'XXXXXXX',
     description: 'Ignore this key (NOOP)',
+    display: <Icon as={AiOutlineStop} />,
     category: KeycodeCategory.QMK,
   },
   KC_TRNS: {

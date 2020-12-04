@@ -136,10 +136,11 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
 
       {/* A button allowing to create a new keymap from scratch. */}
       <WrapItem>
-        <ButtonGroup
+        <IconButton
           size="sm"
-          isAttached
-          variant="solid"
+          aria-label="Create a keymap"
+          variant="outline"
+          icon={<AddIcon />}
           onClick={() => {
             const id = v4()
 
@@ -154,17 +155,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
 
             setCurrentKeymap(id)
           }}
-        >
-          <Button
-            bg={useColorModeValue('gray.50', 'gray.900')}
-            mr="-px"
-            rightIcon={<AddIcon />}
-            variant="outline"
-            fontFamily="mono"
-          >
-            New keymap
-          </Button>
-        </ButtonGroup>
+        />
       </WrapItem>
     </Wrap>
   )

@@ -8,7 +8,7 @@ import {
 import { KeycodeCategory } from '../keycodes.categories'
 import { Icon } from '@chakra-ui/react'
 import { MdKeyboardReturn, MdKeyboardTab } from 'react-icons/md'
-import { BsBackspace, BsBackspaceReverse } from 'react-icons/bs'
+import { BsBackspace, BsBackspaceReverse, BsCapslock } from 'react-icons/bs'
 
 const navigationKeycodesData = {
   KC_ENT: {
@@ -68,6 +68,7 @@ const navigationKeycodesData = {
   KC_CAPS: {
     aliases: 'KC_CAPSLOCK, KC_CLCK',
     description: '[kbd]Caps Lock[/]',
+    display: <Icon as={BsCapslock} />,
     Windows: true,
     macOS: true,
     Linux: true,

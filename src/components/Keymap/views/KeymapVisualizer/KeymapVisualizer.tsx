@@ -1,11 +1,12 @@
 import { AspectRatio, Box, Stack } from '@chakra-ui/react'
 import Key from 'components/Key/Key'
-import React, { FC, useCallback } from 'react'
+import React, { FC, useCallback, useEffect } from 'react'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import KeymapPopover from '../KeymapPopover'
 import useKeymapPopoverState from '../KeymapPopover/hooks/use-keymap-popover-state'
 import useKeyBaseSize from './hooks/use-key-base-size'
+import useKeymapVisualizerHandlers from './hooks/use-keymap-visualizer-handlers'
 
 const KEY_EM_PADDING = 0.08
 
@@ -43,26 +44,34 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
    */
   const keyBaseSizing = useKeyBaseSize({ width })
 
-  const { popoverElementRef, setPopoverOpenedAtIndex } = popover
-  const handleKeyClick = useCallback(
-    (keyIndex, ref) => {
-      popoverElementRef.current = ref
-      setPopoverOpenedAtIndex(keyIndex)
-    },
-    [popoverElementRef, setPopoverOpenedAtIndex],
-  )
+  /**
+   * Memoized handlers.
+   */
+  const { handleKeyClick, handleSelection } = useKeymapVisualizerHandlers({
+    currentLayerIndex,
+    keymapId: keymap.id,
+    onKeyEdit,
+    popoverElementRef: popover.popoverElementRef,
+    setPopoverOpenedAtIndex: popover.setPopoverOpenedAtIndex,
+  })
 
-  const handleSelection = useCallback(
-    (keycode: string, keyIndex: number) => {
-      onKeyEdit({
-        keymap: keymap.id,
-        layerIndex: currentLayerIndex,
-        keyIndex,
-        keycode,
-      })
-    },
-    [currentLayerIndex, onKeyEdit, keymap.id],
-  )
+  const ARROW_KEYS = new Set([
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowUp',
+    'ArrowDown',
+  ])
+  useEffect(() => {
+    const onKeyDown = (key: KeyboardEvent) => {
+      if (!ARROW_KEYS.has(key.key)) return
+    }
+
+    document.addEventListener('keydown', onKeyDown)
+
+    return () => {
+      document.removeEventListener('keydown', onKeyDown)
+    }
+  }, [])
 
   return (
     // Generate a canvas with correct proportions for this keyboard
