@@ -1,9 +1,20 @@
+import React from 'react'
+import {
+  ArrowBackIcon,
+  ArrowDownIcon,
+  ArrowForwardIcon,
+  ArrowUpIcon,
+} from '@chakra-ui/icons'
 import { KeycodeCategory } from '../keycodes.categories'
+import { Icon } from '@chakra-ui/react'
+import { MdKeyboardReturn, MdKeyboardTab } from 'react-icons/md'
+import { BsBackspace, BsBackspaceReverse } from 'react-icons/bs'
 
 const navigationKeycodesData = {
   KC_ENT: {
     aliases: 'KC_ENTER',
     description: '[kbd]Return[/] ([code]Enter[/])',
+    display: <Icon as={MdKeyboardReturn} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -12,7 +23,7 @@ const navigationKeycodesData = {
   KC_ESC: {
     aliases: 'KC_ESCAPE',
     description: '[kbd]Escape[/]',
-    defaultDisplay: 'Esc',
+    display: 'esc',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -21,6 +32,7 @@ const navigationKeycodesData = {
   KC_BSPC: {
     aliases: 'KC_BSPACE',
     description: '[kbd]Backspace[/]',
+    display: <Icon as={BsBackspace} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -29,7 +41,7 @@ const navigationKeycodesData = {
   KC_TAB: {
     aliases: '',
     description: '[kbd]Tab[/]',
-    defaultDisplay: 'Tab',
+    display: <Icon as={MdKeyboardTab} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -37,7 +49,7 @@ const navigationKeycodesData = {
   },
   KC_SPC: {
     aliases: 'KC_SPACE',
-    defaultDisplay: '⎵',
+    display: '⎵',
     description: '[kbd]Spacebar[/]',
     Windows: true,
     macOS: true,
@@ -46,7 +58,7 @@ const navigationKeycodesData = {
   },
   KC_GRV: {
     aliases: 'KC_GRAVE, KC_ZKHK',
-    defaultDisplay: '`',
+    display: '`',
     description: '[kbd]`[/] and [kbd]~[/]',
     Windows: true,
     macOS: true,
@@ -64,6 +76,7 @@ const navigationKeycodesData = {
   KC_DEL: {
     aliases: 'KC_DELETE',
     description: '[kbd]Delete[/] ([code]Forward delete[/])',
+    display: <Icon as={BsBackspaceReverse} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -72,6 +85,7 @@ const navigationKeycodesData = {
   KC_RGHT: {
     aliases: 'KC_RIGHT',
     description: 'Right Arrow',
+    display: <ArrowForwardIcon />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -80,6 +94,7 @@ const navigationKeycodesData = {
   KC_LEFT: {
     aliases: '',
     description: 'Left Arrow',
+    display: <ArrowBackIcon />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -88,6 +103,7 @@ const navigationKeycodesData = {
   KC_DOWN: {
     aliases: '',
     description: 'Down Arrow',
+    display: <ArrowDownIcon />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -96,6 +112,7 @@ const navigationKeycodesData = {
   KC_UP: {
     aliases: '',
     description: 'Up Arrow',
+    display: <ArrowUpIcon />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -104,6 +121,7 @@ const navigationKeycodesData = {
   KC_PENT: {
     aliases: 'KC_KP_ENTER',
     description: 'Keypad [kbd]Enter[/]',
+    display: <Icon as={MdKeyboardReturn} />,
     Windows: true,
     macOS: true,
     Linux: true,

@@ -4,6 +4,7 @@ const symbolsKeycodesData = {
   KC_MINS: {
     aliases: 'KC_MINUS',
     description: '[kbd]-[/] and [kbd]_[/]',
+    display: ['_', '-'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -12,6 +13,7 @@ const symbolsKeycodesData = {
   KC_EQL: {
     aliases: 'KC_EQUAL',
     description: '[kbd]=[/] and [kbd]+[/]',
+    display: ['+', '='],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -20,6 +22,7 @@ const symbolsKeycodesData = {
   KC_LBRC: {
     aliases: 'KC_LBRACKET',
     description: '[ and [kbd]{[/]',
+    display: ['[', '{'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -28,6 +31,7 @@ const symbolsKeycodesData = {
   KC_RBRC: {
     aliases: 'KC_RBRACKET',
     description: '[kbd]][/] and [kbd]}[/]',
+    display: [']', '}'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -36,6 +40,7 @@ const symbolsKeycodesData = {
   KC_BSLS: {
     aliases: 'KC_BSLASH',
     description: '[kbd]\\[/] and [kbd]|[/]',
+    display: ['\\', '|'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -52,6 +57,7 @@ const symbolsKeycodesData = {
   KC_SCLN: {
     aliases: 'KC_SCOLON',
     description: '[kbd];[/] and [kbd]:[/]',
+    display: ';',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -60,6 +66,7 @@ const symbolsKeycodesData = {
   KC_QUOT: {
     aliases: 'KC_QUOTE',
     description: '[kbd]\'[/] and [kbd]"[/]',
+    display: '"',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -67,7 +74,7 @@ const symbolsKeycodesData = {
   },
   KC_COMM: {
     aliases: 'KC_COMMA',
-    defaultDisplay: '< \n ,',
+    display: ['<', ','],
     description: '[kbd],[/] and [kbd]<[/]',
     Windows: true,
     macOS: true,
@@ -76,7 +83,7 @@ const symbolsKeycodesData = {
   },
   KC_DOT: {
     aliases: '',
-    defaultDisplay: '> \n .',
+    display: ['>', '.'],
     description: '[kbd].[/] and [kbd]>[/]',
     Windows: true,
     macOS: true,
@@ -86,6 +93,7 @@ const symbolsKeycodesData = {
   KC_SLSH: {
     aliases: 'KC_SLASH',
     description: '[kbd]/[/] and [kbd]?[/]',
+    display: ['?', '/'],
     Windows: true,
     macOS: true,
     Linux: true,

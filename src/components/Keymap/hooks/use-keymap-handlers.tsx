@@ -21,20 +21,21 @@ const useKeymapHandlers = ({
    * Warns that the user was trying to modify a readonly keymap.
    */
   const readonlyModal = useDisclosure()
+  const { onOpen: openWarningDialog } = readonlyModal
   const cancelRef = useRef<HTMLButtonElement | null>(null)
 
   const handleKeyEdit = useCallback<KeymapVisualizerProps['onKeyEdit']>(
     (payload) => {
-      if (keymap.isDefault) return readonlyModal.onOpen()
+      if (keymap.isDefault) return openWarningDialog()
 
       dispatch(store.keymaps.actions.editKey(payload))
     },
-    [dispatch, keymap.isDefault, readonlyModal],
+    [dispatch, keymap.isDefault, openWarningDialog],
   )
 
   const handleKeySwap = useCallback<KeymapVisualizerProps['onKeySwap']>(
     (payload) => {
-      if (keymap.isDefault) return readonlyModal.onOpen()
+      if (keymap.isDefault) return openWarningDialog()
 
       dispatch(
         store.keymaps.actions.swapKeys({
@@ -44,13 +45,19 @@ const useKeymapHandlers = ({
         }),
       )
     },
-    [keymap.isDefault, keymap.id, readonlyModal, dispatch, currentLayerIndex],
+    [
+      keymap.isDefault,
+      keymap.id,
+      openWarningDialog,
+      dispatch,
+      currentLayerIndex,
+    ],
   )
 
   const handleLayerCreate = useCallback<
     KeymapLayerPickerProps['onLayerCreate']
   >(() => {
-    if (keymap.isDefault) return readonlyModal.onOpen()
+    if (keymap.isDefault) return openWarningDialog()
 
     dispatch(store.keymaps.actions.createLayer({ keymapId: keymap.id }))
     setCurrentLayerIndex(keymap.layers.length - 1)
@@ -58,32 +65,32 @@ const useKeymapHandlers = ({
     keymap.isDefault,
     keymap.id,
     keymap.layers.length,
-    readonlyModal,
+    openWarningDialog,
     dispatch,
     setCurrentLayerIndex,
   ])
 
   const handleLayerSwap = useCallback<KeymapLayerPickerProps['onLayerSwap']>(
     (payload) => {
-      if (keymap.isDefault) return readonlyModal.onOpen()
+      if (keymap.isDefault) return openWarningDialog()
 
       dispatch(store.keymaps.actions.swapLayers(payload))
       setCurrentLayerIndex(payload.to)
     },
-    [dispatch, keymap.isDefault, readonlyModal, setCurrentLayerIndex],
+    [dispatch, keymap.isDefault, openWarningDialog, setCurrentLayerIndex],
   )
 
   const handleLayerDelete = useCallback<
     KeymapLayerPickerProps['onLayerDelete']
   >(
     (layerIndex: number) => {
-      if (keymap.isDefault) return readonlyModal.onOpen()
+      if (keymap.isDefault) return openWarningDialog()
 
       dispatch(
         store.keymaps.actions.deleteLayer({ keymapId: keymap.id, layerIndex }),
       )
     },
-    [dispatch, keymap.id, keymap.isDefault, readonlyModal],
+    [dispatch, keymap.id, keymap.isDefault, openWarningDialog],
   )
 
   return {

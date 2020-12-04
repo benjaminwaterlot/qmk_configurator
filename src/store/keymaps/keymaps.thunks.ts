@@ -100,5 +100,5 @@ export const downloadKeymap = (payload: { keymapId: string }) => (
     type: 'text/plain;charset=utf-8',
   })
 
-  return FileSaver.saveAs(blob, 'hello world.json')
+  return FileSaver.saveAs(blob, `${keymap.keyboard}-${keymap.name}.json`)
 }

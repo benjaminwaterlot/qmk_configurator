@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { KeycodeCategory } from './keycodes.categories'
 
 export enum KeycodeVariableType {
@@ -13,7 +14,7 @@ export interface KeycodeData {
   aliases?: string
   // The default representation on a keyboard.
   // Can be overrided for different localizations.
-  defaultDisplay?: string
+  display?: string | readonly string[] | ReactElement
   // If variables are specified, this means this keycode is a command, like `MO(layer)`.
   // In this case, the app will behave differently.
   variables?: {
