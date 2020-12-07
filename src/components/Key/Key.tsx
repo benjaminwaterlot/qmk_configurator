@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react'
+import { FC, memo } from 'react'
 import KeyContent from './components/KeyContent'
 import KeyContainer from './components/KeyContainer'
 

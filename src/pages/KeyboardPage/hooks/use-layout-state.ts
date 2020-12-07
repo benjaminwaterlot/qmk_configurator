@@ -1,11 +1,19 @@
 import { useToast } from '@chakra-ui/react'
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useDispatch } from 'react-redux'
 import store, { useAppSelector } from 'store'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import { v4 } from 'uuid'
 
-const useLayoutState = ({ keymaps }: { keymaps: KeymapEntity[] }) => {
+const useLayoutState = ({
+  keymaps,
+  currentKeymap,
+  setCurrentKeymap,
+}: {
+  keymaps: KeymapEntity[]
+  currentKeymap: string
+  setCurrentKeymap: (keymap: string) => Promise<void>
+}) => {
   const dispatch = useDispatch()
   const toast = useToast()
 
@@ -13,7 +21,6 @@ const useLayoutState = ({ keymaps }: { keymaps: KeymapEntity[] }) => {
     () => keymaps.find((keymap) => keymap.isDefault) as KeymapEntity,
     [keymaps],
   )
-  const [currentKeymap, setCurrentKeymap] = useState(defaultKeymap.id)
 
   const currentLayout = useAppSelector((state) =>
     store.keymaps.selectors.selectLayoutByKeymap(state, {
@@ -22,7 +29,7 @@ const useLayoutState = ({ keymaps }: { keymaps: KeymapEntity[] }) => {
   )
 
   const setCurrentLayout = useCallback(
-    (layoutID) => {
+    (layoutID: string) => {
       let compatibleKeymapID = keymaps.find(
         (keymap) => keymap.layout === layoutID,
       )?.id
@@ -57,7 +64,7 @@ const useLayoutState = ({ keymaps }: { keymaps: KeymapEntity[] }) => {
 
       setCurrentKeymap(compatibleKeymapID)
     },
-    [defaultKeymap, dispatch, keymaps, toast],
+    [defaultKeymap, dispatch, keymaps, setCurrentKeymap, toast],
   )
 
   return {

@@ -1,5 +1,4 @@
 import { Container } from '@chakra-ui/react'
-import React from 'react'
 import { Router } from '@reach/router'
 
 import KeyboardPage, { KeyboardPageContainer } from 'pages/KeyboardPage'
@@ -14,7 +13,7 @@ const App = () => (
 
       <KeyboardPage path="/keymap">
         <>
-          <KeyboardPageContainer keyboard="" path="/:keyboard" />
+          <KeyboardPageContainer path="/:keyboard/*" keyboard="" />
         </>
       </KeyboardPage>
     </Router>

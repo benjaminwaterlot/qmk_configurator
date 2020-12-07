@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { KeyData } from 'lib/get-key-data'
 import useIsLightMode from 'lib/use-is-light-mode'
-import React, { FC } from 'react'
+import { FC } from 'react'
 
 interface KeymapPopoverHeaderProps {
   keyData: KeyData

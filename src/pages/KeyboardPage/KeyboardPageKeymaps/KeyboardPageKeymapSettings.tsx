@@ -1,12 +1,4 @@
-import React, {
-  Dispatch,
-  FC,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import { FC, useCallback, useEffect, useRef, useState } from 'react'
 import {
   Button,
   IconButton,
@@ -38,7 +30,7 @@ interface KeyboardPageKeymapSettingsProps extends UseDisclosure {
   keyboard: KeyboardDto
   keymaps: KeymapEntity[]
   currentKeymap: KeymapEntity
-  setCurrentKeymap: Dispatch<SetStateAction<string>>
+  setCurrentKeymap: (keymap: string) => Promise<void>
   currentLayout: string
 }
 

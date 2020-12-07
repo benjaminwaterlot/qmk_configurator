@@ -1,29 +1,29 @@
 import { Badge, ListItem, Text, useColorModeValue } from '@chakra-ui/react'
-import { KeycodeData } from 'content/keycodes/keycodes.types'
-import React, { AllHTMLAttributes, FC, memo } from 'react'
-import { KEYCODES } from 'components/Keymap/views/KeymapPopover/hooks/use-keymap-popover-combobox'
+import { CSSProperties, FC, memo } from 'react'
 import getKeyData from 'lib/get-key-data'
+import { UseComboboxGetItemPropsOptions } from 'downshift'
+import Keycode from 'content/keycodes/keycodes.enum'
+import { omit } from 'lodash'
 
 /**
  * Dumb component displaying a key (keycode + information about the keycode) in the Popover list.
  */
 interface KeymapPopoverListItemProps {
   index: number
-  data: {
-    items: typeof KEYCODES
-    getItemProps: (_: object) => object
-    highlightedIndex: number
-    selectedItem: KeycodeData
-  }
-  style: AllHTMLAttributes<{}>
+  isHighlighted: boolean
+  getItemProps: (options: UseComboboxGetItemPropsOptions<Keycode>) => any
+  style: CSSProperties
+  keycode: Keycode
 }
 
 const KeymapPopoverListItem: FC<KeymapPopoverListItemProps> = ({
   index,
-  data: { items, getItemProps, highlightedIndex, selectedItem },
+  keycode,
+  isHighlighted,
+  getItemProps,
   style,
 }) => {
-  const keyData = getKeyData(items[index])
+  const keyData = getKeyData(keycode)
   const highlightedBg = useColorModeValue('gray.300', 'gray.800')
 
   return (
@@ -31,10 +31,19 @@ const KeymapPopoverListItem: FC<KeymapPopoverListItemProps> = ({
       as="button"
       h="40px"
       w="100%"
+      transition="background-color .2s ease-out"
       px={3}
-      bg={highlightedIndex === index ? highlightedBg : undefined}
+      bg={isHighlighted ? highlightedBg : undefined}
       style={style}
-      {...getItemProps({ item: items[index], index })}
+      // @todo: understand why 'ref' triggers error `function components cannot be given refs`.
+      // and what was its utility, because it seems it isn't needed by Downshift anyway.
+      {...omit(
+        getItemProps({
+          item: keycode,
+          index,
+        }),
+        'ref',
+      )}
     >
       <Text fontSize="sm" textAlign="start" d="flex" alignItems="center">
         <Badge

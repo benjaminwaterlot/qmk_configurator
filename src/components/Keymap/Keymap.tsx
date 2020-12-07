@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import { Stack } from '@chakra-ui/react'
 import KeymapVisualizer from './views/KeymapVisualizer/KeymapVisualizer'
 import KeymapLayerPicker from './views/KeymapLayerPicker/KeymapLayerPicker'

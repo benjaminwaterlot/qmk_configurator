@@ -1,4 +1,4 @@
-import React, { FC, useRef, useState } from 'react'
+import { FC, useRef, useState } from 'react'
 import { Button } from '@chakra-ui/react'
 import { KeyProps } from '../Key'
 import useIsLightMode from 'lib/use-is-light-mode'

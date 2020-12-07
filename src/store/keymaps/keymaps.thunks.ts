@@ -9,6 +9,7 @@ import { KeymapEntity } from './keymaps.adapter'
 import keymapsSlice from './keymaps.slice'
 import remapLayout from './remap-layout'
 import FileSaver from 'file-saver'
+import convertKeymapToDownloadable from './lib/convert-keymap-to-downloadable'
 
 export const fetchDefaultKeymap = createAsyncThunk<KeymapEntity, string>(
   'fetchDefaultKeymap',
@@ -96,7 +97,9 @@ export const downloadKeymap = (payload: { keymapId: string }) => (
   const keymap = state.keymaps.entities[payload.keymapId]
   assert(keymap, 'changeKeymapLayout > keymap')
 
-  const blob = new Blob([JSON.stringify(keymap, null, 2)], {
+  const downloadableKeymap = convertKeymapToDownloadable(keymap)
+
+  const blob = new Blob([downloadableKeymap], {
     type: 'text/plain;charset=utf-8',
   })
 

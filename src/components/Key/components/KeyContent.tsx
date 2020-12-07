@@ -1,5 +1,5 @@
 import { Flex, Grid, Text } from '@chakra-ui/react'
-import React, { FC, memo } from 'react'
+import { FC, memo } from 'react'
 import last from 'lodash/last'
 import { KeyProps } from '../Key'
 import getKeyData from 'lib/get-key-data'
@@ -18,7 +18,7 @@ const KeyContent: FC<KeyContentProps> = ({ keycode }) => {
   const ContentComponent = getComponent(content)
 
   return (
-    <Grid w="100%" p=".2em" h="100%" templateRows="1fr 2fr .7fr">
+    <Grid w="100%" p=".2em" h="100%" templateRows="1fr 2fr">
       <Flex justifyContent="space-between">
         <Text
           fontSize=".4em"

@@ -1,4 +1,3 @@
-import React from 'react'
 import { Icon } from '@chakra-ui/react'
 import {
   BsChevronBarDown,
@@ -6,7 +5,6 @@ import {
   BsEject,
   BsBrightnessAltHigh,
   BsBrightnessAltLow,
-  BsFolder,
   BsPause,
   BsPlay,
   BsSkipBackward,
@@ -17,6 +15,8 @@ import {
   BsVolumeUp,
   BsHouseDoor,
 } from 'react-icons/bs'
+import { CgScrollV } from 'react-icons/cg'
+import { BiScreenshot } from 'react-icons/bi'
 import { SiVlcmediaplayer } from 'react-icons/si'
 import { KeycodeCategory } from '../keycodes.categories'
 
@@ -60,6 +60,7 @@ const functionKeycodesData = {
   KC_END: {
     aliases: '',
     description: 'End',
+    display: 'end',
     Windows: true,
     macOS: true,
     Linux: true,
@@ -472,6 +473,7 @@ const functionKeycodesData = {
   KC_PSCR: {
     aliases: 'KC_PSCREEN',
     description: 'Print Screen',
+    display: <Icon as={BiScreenshot} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -480,6 +482,7 @@ const functionKeycodesData = {
   KC_SLCK: {
     aliases: 'KC_SCROLLLOCK, KC_BRMD',
     description: 'Scroll Lock, Brightness Down (macOS)',
+    display: <Icon as={CgScrollV} />,
     Windows: true,
     macOS: true,
     Linux: true,

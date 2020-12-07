@@ -57,7 +57,7 @@ const symbolsKeycodesData = {
   KC_SCLN: {
     aliases: 'KC_SCOLON',
     description: '[kbd];[/] and [kbd]:[/]',
-    display: ';',
+    display: [':', ';'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -66,7 +66,7 @@ const symbolsKeycodesData = {
   KC_QUOT: {
     aliases: 'KC_QUOTE',
     description: '[kbd]\'[/] and [kbd]"[/]',
-    display: '"',
+    display: ['"', "'"],
     Windows: true,
     macOS: true,
     Linux: true,

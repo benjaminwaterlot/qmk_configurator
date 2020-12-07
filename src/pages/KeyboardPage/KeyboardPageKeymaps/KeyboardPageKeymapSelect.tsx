@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction } from 'react'
+import { FC } from 'react'
 import {
   Button,
   Wrap,
@@ -6,7 +6,6 @@ import {
   ButtonGroup,
   IconButton,
   Tooltip,
-  useColorModeValue,
   Editable,
   EditablePreview,
   EditableInput,
@@ -24,7 +23,7 @@ interface KeyboardPageKeymapSelectProps {
   currentLayout: string
   currentKeymap: string
   keyboard: string
-  setCurrentKeymap: Dispatch<SetStateAction<string>>
+  setCurrentKeymap: (keymap: string) => Promise<void>
   // keymapSettings: JSX.Element
 }
 

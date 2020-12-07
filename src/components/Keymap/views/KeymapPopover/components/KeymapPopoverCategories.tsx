@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react'
+import { FC, memo } from 'react'
 import KEYCODE_CATEGORIES, {
   KeycodeCategory,
 } from 'content/keycodes/keycodes.categories'

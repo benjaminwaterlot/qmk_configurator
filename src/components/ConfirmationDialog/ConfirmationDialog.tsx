@@ -1,4 +1,4 @@
-import React, { FC, MutableRefObject } from 'react'
+import { FC, MutableRefObject } from 'react'
 import {
   AlertDialog,
   AlertDialogBody,

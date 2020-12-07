@@ -1,18 +1,38 @@
-import React, { FC, useEffect } from 'react'
-import { RouteComponentProps } from '@reach/router'
+import { FC, useCallback, useEffect, useMemo } from 'react'
+import {
+  NavigateFn,
+  RouteComponentProps2,
+  useMatch,
+  WindowLocation,
+} from '@reach/router'
 import { decodeName } from 'lib/encode-keyboard-name'
 import { useDispatch } from 'react-redux'
-import { Center, Spinner } from '@chakra-ui/react'
+import { Spinner, Text, VStack } from '@chakra-ui/react'
 import KeyboardPage from './KeyboardPage'
 import { useAppSelector } from 'store'
 import store from 'store'
 
+// type T = RouteComponentProps
+
 /**
  * This component loads the data needed for KeyboardPageContent, then renders it.
  */
-type KeyboardPageContainerProps = RouteComponentProps & { keyboard: string }
+type KeyboardPageContainerProps = RouteComponentProps2<{ keyboard: string }>
+
+declare module '@reach/router' {
+  // namespace React {
+  type RouteComponentProps2<TParams = {}> = TParams & {
+    path?: string
+    default?: boolean
+    location?: WindowLocation
+    navigate?: NavigateFn
+    uri?: string
+  }
+  // }
+}
 
 const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
+  const navigate = props.navigate as NavigateFn
   const dispatch = useDispatch()
   const keyboardName = decodeName(props.keyboard)
 
@@ -24,24 +44,61 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
     store.keymaps.selectors.selectByKeyboard(state, keyboardName),
   )
 
-  const hasDefaultKeymap =
-    keymaps.findIndex((keymap) => keymap.isDefault) !== -1
+  const defaultKeymap = useMemo(
+    () => keymaps.find((keymap) => keymap.isDefault),
+    [keymaps],
+  )
 
   useEffect(() => {
     dispatch(store.keyboards.thunks.fetchKeyboard(keyboardName))
 
-    if (!hasDefaultKeymap)
+    if (!defaultKeymap)
       dispatch(store.keymaps.thunks.fetchDefaultKeymap(keyboardName))
-  }, [dispatch, keyboardName, hasDefaultKeymap])
+  }, [dispatch, keyboardName, defaultKeymap])
+
+  const match = useMatch(':keymap')
+  const currentKeymap = keymaps.find(({ id }) => id === match?.keymap)
+  const setCurrentKeymap = useCallback((keymap: string) => navigate(keymap), [
+    navigate,
+  ])
+
+  useEffect(() => {
+    if (!currentKeymap && defaultKeymap?.id)
+      navigate(defaultKeymap.id, { replace: true })
+  }, [
+    match,
+    defaultKeymap?.id,
+    navigate,
+    props.keyboard,
+    keymaps,
+    currentKeymap,
+  ])
 
   return (
     <>
-      {keyboard && keymaps.length ? (
-        <KeyboardPage keyboard={keyboard} keymaps={keymaps} />
+      {keyboard && currentKeymap ? (
+        <KeyboardPage
+          keymaps={keymaps}
+          {...props}
+          currentKeymap={currentKeymap.id}
+          setCurrentKeymap={setCurrentKeymap}
+          keyboard={keyboard}
+        />
       ) : (
-        <Center minH="50vh">
+        <VStack minH="50vh" justify="center" spacing={8}>
           <Spinner size="xl" speed=".8s" color="primary.400" thickness="5px" />
-        </Center>
+          {!keyboard && (
+            <Text as="span" color="primary.400" fontWeight="bold" size="xl">
+              Loading keyboard...
+            </Text>
+          )}
+
+          {!currentKeymap && (
+            <Text as="span" color="primary.400" fontWeight="bold" size="xl">
+              Loading keymap...
+            </Text>
+          )}
+        </VStack>
       )}
     </>
   )

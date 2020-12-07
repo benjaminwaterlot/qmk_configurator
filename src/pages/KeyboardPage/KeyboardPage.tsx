@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import {
   Heading,
   Stack,
@@ -18,26 +18,32 @@ import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSe
 import KeyboardPageKeymapSettings from './KeyboardPageKeymaps/KeyboardPageKeymapSettings'
 import useLayoutState from './hooks/use-layout-state'
 import { useDispatch } from 'react-redux'
+import { RouteComponentProps } from '@reach/router'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
  * and a graphical UI way to see and edit the keymaps.
  */
-interface KeyboardPageProps {
+interface KeyboardPageProps extends RouteComponentProps {
   keyboard: KeyboardDto
   keymaps: KeymapEntity[]
+  currentKeymap: string
+  setCurrentKeymap: (keymap: string) => Promise<void>
 }
 
-const KeyboardPage: FC<KeyboardPageProps> = ({ keyboard, keymaps }) => {
+const KeyboardPage: FC<KeyboardPageProps> = ({
+  keyboard,
+  keymaps,
+  currentKeymap,
+  setCurrentKeymap,
+  location,
+}) => {
   const modal = useDisclosure()
 
-  const {
+  const { currentLayout, setCurrentLayout } = useLayoutState({
+    keymaps,
     currentKeymap,
     setCurrentKeymap,
-    currentLayout,
-    setCurrentLayout,
-  } = useLayoutState({
-    keymaps,
   })
 
   const keymap = useAppSelector((state) =>

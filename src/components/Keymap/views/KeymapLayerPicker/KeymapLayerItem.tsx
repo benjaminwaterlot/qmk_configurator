@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react'
+import { FC, memo, useState } from 'react'
 import { getColor } from '@chakra-ui/theme-tools'
 import { Button, Box, Text, ButtonProps } from '@chakra-ui/react'
 import theme from 'theme'

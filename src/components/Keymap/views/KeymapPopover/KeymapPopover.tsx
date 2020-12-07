@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback } from 'react'
+import { FC, memo, useCallback } from 'react'
 import {
   Box,
   Divider,
@@ -67,7 +67,6 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({
       inputValue,
       reset: resetCombobox,
       highlightedIndex,
-      selectedItem,
     },
     currentFilter,
     setCurrentFilter,
@@ -168,14 +167,16 @@ const KeymapPopover: FC<KeymapPopoverProps> = ({
                 itemCount={inputItems.length}
                 itemSize={40}
                 width="100%"
-                itemData={{
-                  items: inputItems,
-                  getItemProps: getItemProps,
-                  highlightedIndex: highlightedIndex,
-                  selectedItem: selectedItem,
-                }}
               >
-                {KeymapPopoverListItem}
+                {(props) => (
+                  <KeymapPopoverListItem
+                    index={props.index}
+                    style={props.style}
+                    isHighlighted={props.index === highlightedIndex}
+                    getItemProps={getItemProps}
+                    keycode={inputItems[props.index]}
+                  />
+                )}
               </FixedSizeList>
             </Box>
           </PopoverBody>

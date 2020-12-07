@@ -28,12 +28,12 @@ const KEYCODE_CATEGORIES: Record<KeycodeCategory, KeycodeCategoryData> = {
   alphabet: {
     label: 'Alphabet',
     icon: 'aA',
-    color: 'blue',
+    color: 'gray',
   },
   numeric: {
     label: 'Numeric',
     icon: '123',
-    color: 'cyan',
+    color: 'yellow',
   },
   symbols: {
     label: 'Symbols',
@@ -43,17 +43,17 @@ const KEYCODE_CATEGORIES: Record<KeycodeCategory, KeycodeCategoryData> = {
   modifiers: {
     label: 'Modifiers',
     icon: 'Ctrl',
-    color: 'yellow',
+    color: 'purple',
   },
   navigation: {
     label: 'Navigation',
     icon: '⇠⇡⇢',
-    color: 'orange',
+    color: 'blue',
   },
   function: {
     label: 'Functions',
     icon: 'Fn',
-    color: 'red',
+    color: 'orange',
   },
   qmk: {
     label: 'QMK Functions',

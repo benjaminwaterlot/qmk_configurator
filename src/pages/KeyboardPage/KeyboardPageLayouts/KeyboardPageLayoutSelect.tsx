@@ -1,5 +1,5 @@
 import { Box, Select, SelectProps } from '@chakra-ui/react'
-import React, { FC, memo } from 'react'
+import { FC, memo } from 'react'
 import { KeyboardLayoutsDto } from 'store/keyboards/dto/get-keyboard.dto'
 
 /**

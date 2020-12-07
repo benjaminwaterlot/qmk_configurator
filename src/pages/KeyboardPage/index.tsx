@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 import { RouteComponentProps } from '@reach/router'
 
 const KeyboardPage = (props: PropsWithChildren<RouteComponentProps>) => (

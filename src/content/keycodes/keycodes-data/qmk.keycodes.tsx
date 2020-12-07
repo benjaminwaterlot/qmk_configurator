@@ -1,4 +1,3 @@
-import React from 'react'
 import { KeycodeVariableType } from '../keycodes.types'
 import { KeycodeCategory } from '../keycodes.categories'
 import { Icon } from '@chakra-ui/react'

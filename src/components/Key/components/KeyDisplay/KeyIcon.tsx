@@ -1,5 +1,5 @@
 import { Tag, Text } from '@chakra-ui/react'
-import React, { FC, ReactElement } from 'react'
+import { FC, ReactElement } from 'react'
 import { KeyContentDisplayProps } from './key-content-display-props'
 
 const KeyContentIcon: FC<KeyContentDisplayProps<ReactElement>> = ({

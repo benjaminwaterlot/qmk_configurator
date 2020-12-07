@@ -1,4 +1,3 @@
-import React from 'react'
 import { KeycodeCategory } from '../keycodes.categories'
 import { BsCommand, BsOption, BsShift } from 'react-icons/bs'
 import { Icon } from '@chakra-ui/react'
@@ -45,6 +44,7 @@ const modifiersKeycodesData = {
   KC_RCTL: {
     aliases: 'KC_RCTRL',
     description: 'Right [kbd]Control[/]',
+    display: <Icon as={MdKeyboardArrowUp} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -62,6 +62,7 @@ const modifiersKeycodesData = {
   KC_RALT: {
     aliases: 'KC_ROPT, KC_ALGR',
     description: 'Right [kbd]Alt[/] ([code]Option[/] / [code]AltGr[/])',
+    display: <Icon as={BsOption} />,
     Windows: true,
     macOS: true,
     Linux: true,
@@ -71,6 +72,7 @@ const modifiersKeycodesData = {
     aliases: 'KC_RCMD, KC_RWIN',
     description:
       'Right [kbd]GUI[/] ([code]Windows[/] / [code]Command[/] / [code]Meta key[/])',
+    display: <Icon as={BsCommand} />,
     Windows: true,
     macOS: true,
     Linux: true,

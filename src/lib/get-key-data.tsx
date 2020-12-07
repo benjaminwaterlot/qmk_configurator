@@ -3,7 +3,6 @@ import KEYCODES_DATA from 'content/keycodes/keycodes-data'
 import KEYCODE_CATEGORIES from 'content/keycodes/keycodes.categories'
 import Keycode from 'content/keycodes/keycodes.enum'
 import reactStringReplace from 'react-string-replace'
-import React from 'react'
 
 const COMPONENTS = {
   kbd: {

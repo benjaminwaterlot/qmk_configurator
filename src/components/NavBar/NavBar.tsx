@@ -9,7 +9,6 @@ import {
   useColorMode,
 } from '@chakra-ui/react'
 import { Link as ReachLink } from '@reach/router'
-import React from 'react'
 import { persistor } from 'store'
 
 const NavBar = () => {

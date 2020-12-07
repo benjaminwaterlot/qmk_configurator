@@ -1,6 +1,6 @@
 import { AspectRatio, Box, Stack } from '@chakra-ui/react'
 import Key from 'components/Key/Key'
-import React, { FC, useCallback, useEffect } from 'react'
+import { FC } from 'react'
 import { KeyboardLayoutDto } from 'store/keyboards/dto/get-keyboard.dto'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import KeymapPopover from '../KeymapPopover'
@@ -55,24 +55,6 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
     setPopoverOpenedAtIndex: popover.setPopoverOpenedAtIndex,
   })
 
-  const ARROW_KEYS = new Set([
-    'ArrowLeft',
-    'ArrowRight',
-    'ArrowUp',
-    'ArrowDown',
-  ])
-  useEffect(() => {
-    const onKeyDown = (key: KeyboardEvent) => {
-      if (!ARROW_KEYS.has(key.key)) return
-    }
-
-    document.addEventListener('keydown', onKeyDown)
-
-    return () => {
-      document.removeEventListener('keydown', onKeyDown)
-    }
-  }, [])
-
   return (
     // Generate a canvas with correct proportions for this keyboard
     <AspectRatio ratio={width / height} maxW={width * 100}>
@@ -95,7 +77,6 @@ const KeymapVisualizer: FC<KeymapVisualizerProps> = ({
             key={`${key.x}-${key.y}`}
             // Absolute positioning of the key
             pos="absolute"
-            overflow="hidden"
             top={`${(key.y / height) * 100}%`}
             left={`${(key.x / width) * 100}%`}
             w={`${((key.w ?? 1) / width) * 100}%`}

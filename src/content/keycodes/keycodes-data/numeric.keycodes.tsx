@@ -4,6 +4,7 @@ const numericKeycodesData = {
   KC_1: {
     aliases: '',
     description: '[kbd]1[/kbd] and [kbd]![/kbd]',
+    display: ['1', '!'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -12,6 +13,7 @@ const numericKeycodesData = {
   KC_2: {
     aliases: '',
     description: '[kbd]2[/kbd] and [kbd]@[/kbd]',
+    display: ['2', '@'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -20,6 +22,7 @@ const numericKeycodesData = {
   KC_3: {
     aliases: '',
     description: '[kbd]3[/kbd] and [kbd]#[/kbd]',
+    display: ['3', '#'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -28,6 +31,7 @@ const numericKeycodesData = {
   KC_4: {
     aliases: '',
     description: '[kbd]4[/kbd] and [kbd]$[/kbd]',
+    display: ['4', '$'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -36,6 +40,7 @@ const numericKeycodesData = {
   KC_5: {
     aliases: '',
     description: '[kbd]5[/kbd] and [kbd]%[/kbd]',
+    display: ['5', '%'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -44,6 +49,7 @@ const numericKeycodesData = {
   KC_6: {
     aliases: '',
     description: '[kbd]6[/kbd] and [kbd]^[/kbd]',
+    display: ['6', '^'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -52,6 +58,7 @@ const numericKeycodesData = {
   KC_7: {
     aliases: '',
     description: '[kbd]7[/kbd] and [kbd]&[/kbd]',
+    display: ['7', '&'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -60,6 +67,7 @@ const numericKeycodesData = {
   KC_8: {
     aliases: '',
     description: '[kbd]8[/kbd] and [kbd]*[/kbd]',
+    display: ['8', '*'],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -68,6 +76,7 @@ const numericKeycodesData = {
   KC_9: {
     aliases: '',
     description: '[kbd]9[/kbd] and [kbd]([/kbd]',
+    display: ['9', '('],
     Windows: true,
     macOS: true,
     Linux: true,
@@ -76,6 +85,7 @@ const numericKeycodesData = {
   KC_0: {
     aliases: '',
     description: '[kbd]0[/kbd] and [kbd])[/kbd]',
+    display: ['0', ')'],
     Windows: true,
     macOS: true,
     Linux: true,
