@@ -31,9 +31,11 @@ const KeymapLayerItem: FC<KeymapLayerItemProps> = ({
   // The space we let between keys. For comparison, a regular key is 1 by 1.
   const KEY_OFFSET = 0.15
 
-  const getKeyPreviewColor = (key: string) =>
-    getColor(theme, `${getKeyData(key).category.color}.400`)
-
+  // const colorCode = getKeyData(key).category.color
+  const getKeyPreviewColor = (key: string) => {
+    const color = getKeyData(key).category.color
+    return getColor(theme, color === 'white' ? 'gray.300' : `${color}.400`)
+  }
   return (
     <Button
       {...props}

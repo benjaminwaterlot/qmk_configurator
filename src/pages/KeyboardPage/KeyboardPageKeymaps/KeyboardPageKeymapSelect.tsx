@@ -13,8 +13,7 @@ import {
 } from '@chakra-ui/react'
 import { AddIcon, CopyIcon, LockIcon, SettingsIcon } from '@chakra-ui/icons'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
-import { useDispatch } from 'react-redux'
-import store from 'store'
+import store, { useAppDispatch } from 'store'
 import { v4 } from 'uuid'
 
 interface KeyboardPageKeymapSelectProps {
@@ -36,7 +35,7 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
   keyboard,
   // keymapSettings,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <Wrap>
@@ -141,11 +140,8 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
           variant="outline"
           icon={<AddIcon />}
           onClick={() => {
-            const id = v4()
-
-            dispatch(
+            const id = dispatch(
               store.keymaps.thunks.createKeymap({
-                id,
                 keyboardId: keyboard,
                 keymapName: `New`,
                 layoutId: currentLayout,

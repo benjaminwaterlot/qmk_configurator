@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import keyboards from 'store/keyboards'
 import {
   Box,
@@ -13,14 +13,14 @@ import {
   Spinner,
   Center,
 } from '@chakra-ui/react'
-import { AppDispatch, RootState } from 'store'
+import { RootState, useAppDispatch } from 'store'
 import { Link as ReachLink, RouteComponentProps } from '@reach/router'
 import { encodeName } from 'lib/encode-keyboard-name'
 import { CloseIcon } from '@chakra-ui/icons'
 
 const Home = (props: RouteComponentProps) => {
   const [input, setInput] = useState('')
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
   const keyboardNamesFiltered = useSelector((state: RootState) =>
     keyboards.selectors.selectNamesByString(state, input),
   )

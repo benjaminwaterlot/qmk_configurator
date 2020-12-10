@@ -7,18 +7,20 @@ import {
   useDisclosure,
   Button,
   ButtonGroup,
+  Input,
+  useToast,
 } from '@chakra-ui/react'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
 import KeyboardPageLayoutSelect from './KeyboardPageLayouts/KeyboardPageLayoutSelect'
 import { ChevronRightIcon, DownloadIcon } from '@chakra-ui/icons'
-import store, { useAppSelector } from 'store'
+import store, { useAppDispatch, useAppSelector } from 'store'
 import Keymap from 'components/Keymap'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import KeyboardPageKeymapSelect from './KeyboardPageKeymaps/KeyboardPageKeymapSelect'
 import KeyboardPageKeymapSettings from './KeyboardPageKeymaps/KeyboardPageKeymapSettings'
 import useLayoutState from './hooks/use-layout-state'
-import { useDispatch } from 'react-redux'
 import { RouteComponentProps } from '@reach/router'
+import { importKeymap } from 'store/keymaps/keymaps.thunks'
 
 /**
  * This page displays a keyboard, its available layouts, its available keymaps,
@@ -39,6 +41,7 @@ const KeyboardPage: FC<KeyboardPageProps> = ({
   location,
 }) => {
   const modal = useDisclosure()
+  const toast = useToast()
 
   const { currentLayout, setCurrentLayout } = useLayoutState({
     keymaps,
@@ -50,7 +53,7 @@ const KeyboardPage: FC<KeyboardPageProps> = ({
     store.keymaps.selectors.selectById(state, currentKeymap),
   ) as KeymapEntity
 
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <Stack direction="column" spacing={5}>
@@ -109,7 +112,7 @@ const KeyboardPage: FC<KeyboardPageProps> = ({
       />
 
       <Box>
-        <ButtonGroup isAttached>
+        <ButtonGroup>
           <Button
             aria-label="Download this keymap"
             title="Download this keymap"
@@ -125,16 +128,36 @@ const KeyboardPage: FC<KeyboardPageProps> = ({
             Download
           </Button>
           <Button
+            as="label"
+            cursor="pointer"
+            tabIndex={0}
+            htmlFor="keymap-upload"
             aria-label="Import a new keymap"
             title="Import a new keymap"
             variant="outline"
-            onClick={() => alert('yey')}
             leftIcon={<DownloadIcon transform="rotate(180deg)" />}
             mr="-px"
           >
             Import
           </Button>
         </ButtonGroup>
+        <Input
+          onChange={async (e) => {
+            if (!e.target.files?.[0]) return
+
+            const id = dispatch(
+              importKeymap({
+                toast,
+                text: await e.target.files[0].text(),
+              }),
+            )
+
+            if (id) setCurrentKeymap(id)
+          }}
+          hidden
+          type="file"
+          id="keymap-upload"
+        />
       </Box>
     </Stack>
   )

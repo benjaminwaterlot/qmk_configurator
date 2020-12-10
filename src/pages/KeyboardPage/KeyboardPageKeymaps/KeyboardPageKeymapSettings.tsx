@@ -21,8 +21,7 @@ import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 import KeyboardPageLayoutSelect from '../KeyboardPageLayouts/KeyboardPageLayoutSelect'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import { KeyboardDto } from 'store/keyboards/dto/get-keyboard.dto'
-import { useDispatch } from 'react-redux'
-import store from 'store'
+import store, { useAppDispatch } from 'store'
 
 type UseDisclosure = ReturnType<typeof useDisclosure>
 
@@ -43,7 +42,7 @@ const KeyboardPageKeymapSettings: FC<KeyboardPageKeymapSettingsProps> = ({
   isOpen,
   onClose,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const [nameInputValue, setNameInputValue] = useState(currentKeymap.name)
 

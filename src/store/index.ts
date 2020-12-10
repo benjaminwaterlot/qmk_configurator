@@ -1,5 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { createSelectorHook } from 'react-redux'
+import {
+  Action,
+  configureStore,
+  ThunkAction,
+  ThunkDispatch,
+} from '@reduxjs/toolkit'
+import { createSelectorHook, useDispatch } from 'react-redux'
 import logger from 'redux-logger'
 import {
   persistStore,
@@ -48,7 +53,15 @@ export const persistor = persistStore(rootStore)
 
 export type AppDispatch = typeof rootStore.dispatch
 export type RootState = ReturnType<typeof reducer>
-// export const useAppDispatch = createDispatchHook<RootState>()
+export const useAppDispatch = () =>
+  useDispatch<ThunkDispatch<RootState, undefined, Action>>()
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>
+
 export const useAppSelector = createSelectorHook<RootState>()
 
 const store = {
@@ -57,6 +70,7 @@ const store = {
 }
 
 window.dev = {
+  ...window.dev,
   modules: store,
   getState: rootStore.getState,
   dispatch: rootStore.dispatch,

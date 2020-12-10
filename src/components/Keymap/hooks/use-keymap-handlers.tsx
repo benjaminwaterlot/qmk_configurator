@@ -1,7 +1,6 @@
 import { useDisclosure } from '@chakra-ui/react'
 import { Dispatch, SetStateAction, useCallback, useRef } from 'react'
-import { useDispatch } from 'react-redux'
-import store from 'store'
+import store, { useAppDispatch } from 'store'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import { KeymapLayerPickerProps } from '../views/KeymapLayerPicker/KeymapLayerPicker'
 import { KeymapVisualizerProps } from '../views/KeymapVisualizer/KeymapVisualizer'
@@ -15,7 +14,7 @@ const useKeymapHandlers = ({
   currentLayerIndex: number
   setCurrentLayerIndex: Dispatch<SetStateAction<number>>
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   /**
    * Warns that the user was trying to modify a readonly keymap.

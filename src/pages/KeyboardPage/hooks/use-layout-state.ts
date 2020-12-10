@@ -1,7 +1,6 @@
 import { useToast } from '@chakra-ui/react'
 import { useCallback, useMemo } from 'react'
-import { useDispatch } from 'react-redux'
-import store, { useAppSelector } from 'store'
+import store, { useAppDispatch, useAppSelector } from 'store'
 import { KeymapEntity } from 'store/keymaps/keymaps.adapter'
 import { v4 } from 'uuid'
 
@@ -14,7 +13,7 @@ const useLayoutState = ({
   currentKeymap: string
   setCurrentKeymap: (keymap: string) => Promise<void>
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const toast = useToast()
 
   const defaultKeymap = useMemo(
@@ -29,14 +28,14 @@ const useLayoutState = ({
   )
 
   const setCurrentLayout = useCallback(
-    (layoutID: string) => {
+    (layoutName: string) => {
       let compatibleKeymapID = keymaps.find(
-        (keymap) => keymap.layout === layoutID,
+        (keymap) => keymap.layout === layoutName,
       )?.id
 
       if (!compatibleKeymapID) {
         compatibleKeymapID = v4()
-        const duplicatedName = `${defaultKeymap.name} [${layoutID}]`
+        const duplicatedName = `${defaultKeymap.name} [${layoutName}]`
 
         dispatch(
           store.keymaps.actions.duplicate({
@@ -49,7 +48,7 @@ const useLayoutState = ({
         dispatch(
           store.keymaps.thunks.changeKeymapLayout({
             keymapId: compatibleKeymapID,
-            layoutName: layoutID,
+            layoutName: layoutName,
           }),
         )
 

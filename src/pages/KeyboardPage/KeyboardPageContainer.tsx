@@ -6,10 +6,9 @@ import {
   WindowLocation,
 } from '@reach/router'
 import { decodeName } from 'lib/encode-keyboard-name'
-import { useDispatch } from 'react-redux'
 import { Spinner, Text, VStack } from '@chakra-ui/react'
 import KeyboardPage from './KeyboardPage'
-import { useAppSelector } from 'store'
+import { useAppDispatch, useAppSelector } from 'store'
 import store from 'store'
 
 // type T = RouteComponentProps
@@ -33,7 +32,7 @@ declare module '@reach/router' {
 
 const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
   const navigate = props.navigate as NavigateFn
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const keyboardName = decodeName(props.keyboard)
 
   const keyboard = useAppSelector((state) =>
@@ -43,6 +42,7 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
   const keymaps = useAppSelector((state) =>
     store.keymaps.selectors.selectByKeyboard(state, keyboardName),
   )
+  console.log(`[LOG]   keymaps`, keymaps)
 
   const defaultKeymap = useMemo(
     () => keymaps.find((keymap) => keymap.isDefault),

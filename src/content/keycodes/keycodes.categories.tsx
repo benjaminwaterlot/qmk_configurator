@@ -28,7 +28,7 @@ const KEYCODE_CATEGORIES: Record<KeycodeCategory, KeycodeCategoryData> = {
   alphabet: {
     label: 'Alphabet',
     icon: 'aA',
-    color: 'gray',
+    color: 'white',
   },
   numeric: {
     label: 'Numeric',
