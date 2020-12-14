@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit'
-import assert from 'lib/assert'
+import { required } from 'lib/validation'
 import store, { RootState } from 'store'
+import { assert } from 'superstruct'
 import keymapsAdapter from './keymaps.adapter'
 
 const {
@@ -25,7 +26,7 @@ const selectDefaultForKeyboard = createSelector(
     const keymap = keymaps.find(
       (keymap) => keymap.isDefault && keymap.keyboard === keyboard,
     )
-    assert(keymap)
+    assert(keymap, required)
     return keymap
   },
 )
@@ -33,13 +34,13 @@ const selectDefaultForKeyboard = createSelector(
 const selectLayoutByKeymap = createSelector(
   (state: RootState, args: { keymapId: string }) => {
     const keymap = selectById(state, args.keymapId)
-    assert(keymap, 'selectLayoutByName > keymap')
+    assert(keymap, required)
 
     const keyboard = store.keyboards.selectors.selectById(
       state,
       keymap.keyboard,
     )
-    assert(keyboard, 'selectLayoutByName > keyboard')
+    assert(keyboard, required)
 
     const layout = keyboard.layouts[keymap.layout]
 
@@ -52,12 +53,19 @@ const selectLayoutByKeymap = createSelector(
   (layout) => layout,
 )
 
+const selectUserKeymaps = createSelector(
+  (state: RootState) => selectAll(state),
+
+  (keymaps) => keymaps.filter((keymap) => !keymap.isDefault),
+)
+
 export {
   selectAll,
   selectById,
   selectEntities,
   selectIds,
   selectTotal,
+  selectUserKeymaps,
   selectByKeyboard,
   selectDefaultForKeyboard,
   selectLayoutByKeymap,

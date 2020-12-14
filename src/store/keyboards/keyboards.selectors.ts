@@ -1,6 +1,7 @@
-import assert from 'lib/assert'
 import { createSelector } from '@reduxjs/toolkit'
+import { required } from 'lib/validation'
 import { RootState } from 'store'
+import { assert } from 'superstruct'
 import keyboardsAdapter from './keyboards.adapter'
 
 const {
@@ -17,7 +18,7 @@ const selectNamesByString = (state: RootState, input: string) =>
 const selectLayouts = createSelector(
   (state: RootState, args: { keyboard: string }) => {
     const keyboard = selectById(state, args.keyboard)
-    assert(keyboard, 'selectLayouts')
+    assert(keyboard, required)
     return keyboard
   },
 

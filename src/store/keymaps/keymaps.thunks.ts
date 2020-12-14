@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 import Keycode from 'content/keycodes/keycodes.enum'
-import store, { AppDispatch, AppThunk, RootState } from 'store'
+import store, { AppThunk } from 'store'
 import { QMKKeymapDto } from 'types/keymap.type'
 import { v4 } from 'uuid'
 import { KeymapEntity } from './keymaps.adapter'
@@ -13,16 +13,8 @@ import {
   convertKeymapToDownloadable,
 } from './lib/convert-keymap-downloadable'
 import { useToast } from '@chakra-ui/react'
-import {
-  assert,
-  object,
-  number,
-  string,
-  array,
-  define,
-  Struct,
-} from 'superstruct'
-import { print } from 'superstruct/lib/utils'
+import { assert, object, number } from 'superstruct'
+import { required } from 'lib/validation'
 
 export const fetchDefaultKeymap = createAsyncThunk<KeymapEntity, string>(
   'fetchDefaultKeymap',
@@ -80,53 +72,13 @@ export const changeKeymapLayout = (payload: {
 }): AppThunk<string> => (dispatch, getState) => {
   const state = getState()
   const keymap = state.keymaps.entities[payload.keymapId]
-  // assert(keymap, 'changeKeymapLayout > keymap')
-  // const nonNull = (): Struct<boolean, null> =>
-  //   define('nonNull', (value) => value !== undefined && value !== null)
 
-  // const reboolean = (): Struct<boolean, null> => {
-  //   return define('boolean', (value) => {
-  //     return typeof value === 'boolean'
-  //   })
-  // }
-
-  function redefined<T extends Struct<any>>(Element?: T): any {
-    return new Struct({
-      type: 'redefined',
-      schema: Element,
-      coercer: (value) => {
-        return value
-        // ? value.map((v) => Element.coercer(v))
-        // : value
-      },
-      *validator(value, ctx) {
-        if (!value) {
-          yield ctx.fail(`Expected an array value, but received: `)
-        } else if (Element) {
-          ctx.check(value, Element, value)
-        }
-        // } else if (Element) {
-        //   for (const [i, v] of value.entries()) {
-        //     yield* ctx.check(v, Element, value, i)
-        //   }
-        // }
-        // }
-      },
-    })
-  }
-
-  function nonull(): Struct<NonNullable<{}>, null> {
-    return define('boolean', (value) => {
-      return typeof value === 'boolean'
-    })
-  }
-
-  assert(keymap, nonull())
+  assert(keymap, required)
 
   const layout =
     state.keyboards.entities[keymap.keyboard]?.layouts[payload.layoutName]
-  // assert(layout, 'changeKeymapLayout > layout')
-  if (!layout) throw new Error()
+
+  assert(layout, required)
 
   dispatch(
     keymapsSlice.actions.updateOne({
@@ -134,7 +86,7 @@ export const changeKeymapLayout = (payload: {
       changes: {
         layout: payload.layoutName,
         layers: keymap.layers.map((layer) =>
-          Array(layout.key_count)
+          Array(layout?.key_count)
             .fill(undefined)
             .map((_, i) => layer[i] ?? Keycode.KC_TRNS),
         ),

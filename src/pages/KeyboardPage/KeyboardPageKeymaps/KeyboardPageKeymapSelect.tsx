@@ -23,7 +23,6 @@ interface KeyboardPageKeymapSelectProps {
   currentKeymap: string
   keyboard: string
   setCurrentKeymap: (keymap: string) => Promise<void>
-  // keymapSettings: JSX.Element
 }
 
 const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
@@ -33,14 +32,11 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
   setCurrentKeymap,
   keymaps,
   keyboard,
-  // keymapSettings,
 }) => {
   const dispatch = useAppDispatch()
 
   return (
     <Wrap>
-      {/* {keymapSettings} */}
-
       {keymaps.map((keymap, keymapIndex) => {
         const isReadonly = keymap.isDefault
         const isActive = keymap.id === currentKeymap
@@ -95,7 +91,13 @@ const KeyboardPageKeymapSelect: FC<KeyboardPageKeymapSelectProps> = ({
                   cursor={isActive && isReadonly ? 'unset' : 'pointer'}
                   isActive={isActive}
                   onClick={() => setCurrentKeymap(keymap.id)}
-                  leftIcon={isReadonly ? <LockIcon mb="1px" /> : undefined}
+                  leftIcon={
+                    isReadonly ? (
+                      <Tooltip hasArrow label="This keymap is readonly.">
+                        <LockIcon mb="1px" />
+                      </Tooltip>
+                    ) : undefined
+                  }
                 >
                   {keymap.name}
                 </Button>

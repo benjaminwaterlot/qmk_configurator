@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import keymapsAdapter from './keymaps.adapter'
 import { fetchDefaultKeymap } from './keymaps.thunks'
-import assert from 'lib/assert'
 import { cloneDeep } from 'lodash'
 import Keycode from 'content/keycodes/keycodes.enum'
+import { assert } from 'superstruct'
+import { required } from 'lib/validation'
 
 export interface KeymapsState {
   isLoading: boolean
@@ -55,7 +56,7 @@ const keymapsSlice = createSlice({
       }>,
     ) => {
       const keymap = state.entities[payload.fromId]
-      assert(keymap, 'duplicate > keymap')
+      assert(keymap, required)
 
       keymapsAdapter.addOne(state, {
         ...cloneDeep(keymap),
@@ -84,7 +85,7 @@ const keymapsSlice = createSlice({
       }>,
     ) => {
       const layer = state.entities[payload.keymap]?.layers[payload.layerIndex]
-      assert(layer, 'layer')
+      assert(layer, required)
 
       const sourceKey = layer[payload.sourceKeyIndex]
       const destinationKey = layer[payload.destinationKeyIndex]
@@ -104,7 +105,7 @@ const keymapsSlice = createSlice({
 
     createLayer: (state, { payload }: PayloadAction<{ keymapId: string }>) => {
       const keymap = state.entities[payload.keymapId]
-      assert(keymap, 'createLayer > keymap')
+      assert(keymap, required)
 
       if (keymap.layers.length >= 32) return
 
@@ -120,7 +121,7 @@ const keymapsSlice = createSlice({
       { payload }: PayloadAction<{ keymapId: string; layerIndex: number }>,
     ) => {
       const keymap = state.entities[payload.keymapId]
-      assert(keymap, 'createLayer > keymap')
+      assert(keymap, required)
 
       if (keymap.layers.length <= 1) return
 
@@ -132,7 +133,7 @@ const keymapsSlice = createSlice({
       { payload }: PayloadAction<{ keymap: string; from: number; to: number }>,
     ) => {
       const keymap = state.entities[payload.keymap]
-      assert(keymap, 'swapLayers > keymap')
+      assert(keymap, required)
 
       const fromLayer = keymap.layers[payload.from]
       keymap.layers[payload.from] = keymap.layers[payload.to]
@@ -151,7 +152,7 @@ const keymapsSlice = createSlice({
       }>,
     ) => {
       const layer = state.entities[payload.keymap]?.layers[payload.layerIndex]
-      assert(layer, 'layer')
+      assert(layer, required)
 
       layer[payload.keyIndex] = payload.keycode
     },

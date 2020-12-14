@@ -1,36 +1,20 @@
 import { FC, useCallback, useEffect, useMemo } from 'react'
-import {
-  NavigateFn,
-  RouteComponentProps2,
-  useMatch,
-  WindowLocation,
-} from '@reach/router'
+import { NavigateFn, RouteComponentProps, useMatch } from '@reach/router'
 import { decodeName } from 'lib/encode-keyboard-name'
 import { Spinner, Text, VStack } from '@chakra-ui/react'
 import KeyboardPage from './KeyboardPage'
 import { useAppDispatch, useAppSelector } from 'store'
 import store from 'store'
-
-// type T = RouteComponentProps
+import { assert } from 'superstruct'
+import { required } from 'lib/validation'
 
 /**
  * This component loads the data needed for KeyboardPageContent, then renders it.
  */
-type KeyboardPageContainerProps = RouteComponentProps2<{ keyboard: string }>
-
-declare module '@reach/router' {
-  // namespace React {
-  type RouteComponentProps2<TParams = {}> = TParams & {
-    path?: string
-    default?: boolean
-    location?: WindowLocation
-    navigate?: NavigateFn
-    uri?: string
-  }
-  // }
-}
+type KeyboardPageContainerProps = RouteComponentProps<{ keyboard: string }>
 
 const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
+  assert(props.keyboard, required)
   const navigate = props.navigate as NavigateFn
   const dispatch = useAppDispatch()
   const keyboardName = decodeName(props.keyboard)
@@ -50,8 +34,10 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
   )
 
   useEffect(() => {
-    dispatch(store.keyboards.thunks.fetchKeyboard(keyboardName))
+    if (!keyboard) dispatch(store.keyboards.thunks.fetchKeyboard(keyboardName))
+  }, [dispatch, keyboard, keyboardName])
 
+  useEffect(() => {
     if (!defaultKeymap)
       dispatch(store.keymaps.thunks.fetchDefaultKeymap(keyboardName))
   }, [dispatch, keyboardName, defaultKeymap])
@@ -74,33 +60,29 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
     currentKeymap,
   ])
 
-  return (
-    <>
-      {keyboard && currentKeymap ? (
-        <KeyboardPage
-          keymaps={keymaps}
-          {...props}
-          currentKeymap={currentKeymap.id}
-          setCurrentKeymap={setCurrentKeymap}
-          keyboard={keyboard}
-        />
-      ) : (
-        <VStack minH="50vh" justify="center" spacing={8}>
-          <Spinner size="xl" speed=".8s" color="primary.400" thickness="5px" />
-          {!keyboard && (
-            <Text as="span" color="primary.400" fontWeight="bold" size="xl">
-              Loading keyboard...
-            </Text>
-          )}
-
-          {!currentKeymap && (
-            <Text as="span" color="primary.400" fontWeight="bold" size="xl">
-              Loading keymap...
-            </Text>
-          )}
-        </VStack>
+  return keyboard && currentKeymap ? (
+    <KeyboardPage
+      keymaps={keymaps}
+      {...props}
+      currentKeymap={currentKeymap.id}
+      setCurrentKeymap={setCurrentKeymap}
+      keyboard={keyboard}
+    />
+  ) : (
+    <VStack minH="50vh" justify="center" spacing={8}>
+      <Spinner size="xl" speed=".8s" color="primary.400" thickness="5px" />
+      {!keyboard && (
+        <Text as="span" color="primary.400" fontWeight="bold" size="xl">
+          Loading keyboard...
+        </Text>
       )}
-    </>
+
+      {!currentKeymap && (
+        <Text as="span" color="primary.400" fontWeight="bold" size="xl">
+          Loading keymap...
+        </Text>
+      )}
+    </VStack>
   )
 }
 
