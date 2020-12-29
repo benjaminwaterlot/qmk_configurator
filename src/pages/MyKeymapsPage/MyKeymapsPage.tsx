@@ -33,9 +33,9 @@ const KeymapsPage: FC<RouteComponentProps> = () => {
 
   return (
     <PageLayout>
-      <Stack direction="column" spacing={8}>
+      <Stack direction="column" spacing={8} minH="100%">
         <Heading as="h1" size="4xl" color="primary.400" fontFamily="mono">
-          My keymaps
+          My keyboards
         </Heading>
 
         {keymaps.length ? (
@@ -79,7 +79,7 @@ const KeymapsPage: FC<RouteComponentProps> = () => {
           </SimpleGrid>
         ) : (
           <Center>
-            <VStack maxW="500px" spacing={8}>
+            <VStack maxW="50%" spacing={8}>
               <Image src={illustration} draggable={false} />
               <Text textAlign="center" fontSize="2xl">
                 No keymap found.

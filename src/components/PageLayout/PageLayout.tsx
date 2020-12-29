@@ -1,13 +1,15 @@
-import { Container } from '@chakra-ui/react'
+import { Container, Flex } from '@chakra-ui/react'
 import NavBar from 'components/NavBar'
 import React, { FC } from 'react'
 
 const PageLayout: FC = (props) => {
   return (
-    <>
-      <NavBar />
-      <Container maxWidth="1400px">{props.children}</Container>
-    </>
+    <Flex minH="100vh" direction="column">
+      <NavBar mb={6} />
+      <Container flexGrow={1} maxWidth={1400}>
+        {props.children}
+      </Container>
+    </Flex>
   )
 }
 

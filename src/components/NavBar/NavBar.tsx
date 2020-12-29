@@ -2,7 +2,7 @@ import { MoonIcon, RepeatIcon, SunIcon, UpDownIcon } from '@chakra-ui/icons'
 import {
   Button,
   Container,
-  Divider,
+  ContainerProps,
   Flex,
   Heading,
   HStack,
@@ -17,8 +17,9 @@ import { MdKeyboard } from 'react-icons/md'
 import { IoIosKeypad } from 'react-icons/io'
 import { persistor } from 'store'
 import useIsLightMode from 'lib/use-is-light-mode'
+import { FC } from 'react'
 
-const NavBar = () => {
+const NavBar: FC<ContainerProps> = (props) => {
   const { toggleColorMode, colorMode } = useColorMode()
   const ColorModeIcon = colorMode === 'dark' ? SunIcon : MoonIcon
   const isLight = useIsLightMode()
@@ -27,18 +28,18 @@ const NavBar = () => {
 
   return (
     <Container
-      maxWidth={1440}
+      maxWidth={1400}
       d="flex"
       alignItems="center"
       justifyContent="space-between"
-      mb={5}
       px={4}
-      py={1}
-      bg={isLight ? 'gray.50' : 'gray.900'}
+      py={3}
+      bg={isLight ? 'gray.50' : 'gray.700'}
       borderBottomRadius="xl"
+      {...props}
     >
       <Link as={ReachLink} to="/">
-        <Flex my={4} align="center">
+        <Flex align="center">
           <UpDownIcon mr={3} boxSize={6} />
           <Heading as="h1" size="md">
             QMK
@@ -69,7 +70,7 @@ const NavBar = () => {
           aria-label=""
           rounded="xl"
         >
-          My keymaps
+          My keyboards
         </Button>
       </HStack>
 

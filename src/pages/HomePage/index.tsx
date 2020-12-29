@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import keyboards from 'store/keyboards'
 import {
-  Box,
   Heading,
   Input,
   List,

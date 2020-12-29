@@ -9,6 +9,19 @@ const theme = extendTheme({
   colors,
   components,
   fontSizes,
+  styles: {
+    global: {
+      html: {
+        height: '100%',
+      },
+      body: {
+        height: '100vh',
+      },
+    },
+    '#root': {
+      height: '100%',
+    },
+  },
   fonts: {
     mono: 'Fira Code',
   },

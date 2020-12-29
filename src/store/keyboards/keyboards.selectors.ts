@@ -12,6 +12,8 @@ const {
   selectTotal,
 } = keyboardsAdapter.getSelectors((state: RootState) => state.keyboards)
 
+const selectNames = (state: RootState) => state.keyboards.names
+
 const selectNamesByString = (state: RootState, input: string) =>
   state.keyboards.names.filter((keyboard) => keyboard.includes(input))
 
@@ -31,6 +33,7 @@ export {
   selectEntities,
   selectIds,
   selectTotal,
+  selectNames,
   selectNamesByString,
   selectLayouts,
 }

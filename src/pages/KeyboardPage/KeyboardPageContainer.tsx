@@ -26,7 +26,6 @@ const KeyboardPageContainer: FC<KeyboardPageContainerProps> = (props) => {
   const keymaps = useAppSelector((state) =>
     store.keymaps.selectors.selectByKeyboard(state, keyboardName),
   )
-  console.log(`[LOG]   keymaps`, keymaps)
 
   const defaultKeymap = useMemo(
     () => keymaps.find((keymap) => keymap.isDefault),
